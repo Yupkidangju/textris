@@ -1,7 +1,8 @@
 """검증된 리플레이 파일과 결정적 재생. 원본 데이터는 재생 중 변경하지 않는다."""
 from copy import deepcopy
-from datetime import datetime
+from datetime import datetime,timedelta
 import json
+import os
 import re
 from pathlib import Path
 import tempfile
@@ -9,6 +10,18 @@ from .session import Session,COMMANDS
 
 LIMIT=2*1024*1024
 OWN_NAME=re.compile(r'replay-[0-9]{8}-[0-9]{6}-[0-9]{6}\.json\Z')
+
+
+def _comparison_path(path):
+    # Windows resolve는 생성 경합 중 동등한 확장 경로를 반환할 수 있다. I/O 경로는 유지한다.
+    if os.name!='nt': return path
+    text=str(path)
+    if text.startswith('\\\\?\\'):
+        if text.startswith('\\\\?\\UNC\\'): text='\\\\'+text[8:]
+        elif len(text)>=7 and text[4].isascii() and text[4].isalpha() and text[5:7]==':\\': text=text[4:]
+        else: raise ValueError('unsupported device path')
+    if text.startswith('\\\\.\\'): raise ValueError('unsupported device path')
+    return Path(text)
 
 
 def validate(data):
@@ -47,13 +60,13 @@ class ReplayStore:
         if not isinstance(name,str) or not OWN_NAME.fullmatch(name):
             raise ValueError('invalid replay filename')
         path=self.directory/name
-        if not path.resolve().is_relative_to(self.root) or path.is_symlink():
+        if not _comparison_path(path.resolve()).is_relative_to(_comparison_path(self.root)) or path.is_symlink():
             raise ValueError('unsafe replay path')
         return path
 
     def list(self):
         try:
-            if not self.directory.resolve().is_relative_to(self.root): raise ValueError('unsafe directory')
+            if not _comparison_path(self.directory.resolve()).is_relative_to(_comparison_path(self.root)): raise ValueError('unsafe directory')
             return sorted((p.name for p in self.directory.glob('replay-*.json') if OWN_NAME.fullmatch(p.name) and not p.is_symlink()),reverse=True)[:20]
         except (OSError,ValueError): self.warning='replay_error'; return []
 
@@ -63,18 +76,35 @@ class ReplayStore:
             validate(data)
             text=json.dumps(data,ensure_ascii=False,separators=(',',':'),allow_nan=False)
             if len(text.encode())>LIMIT: raise ValueError('replay too large')
-            name='replay-'+datetime.now().strftime('%Y%m%d-%H%M%S-%f')+'.json'
-            target=self._path(name)
+            stamp=datetime.now()
+            self._path('replay-'+stamp.strftime('%Y%m%d-%H%M%S-%f')+'.json')
             self.directory.mkdir(parents=True,exist_ok=True)
             with tempfile.NamedTemporaryFile('w',encoding='utf-8',dir=self.directory,suffix='.tmp',delete=False) as f:
                 temporary=Path(f.name); f.write(text)
-            temporary.replace(target); temporary=None
+            for _ in range(128):
+                # 낮은 시계 해상도/시각 역행에도 이름 순서가 저장 순서를 유지한다.
+                names=self.list()
+                if names:
+                    latest=datetime.strptime(names[0],'replay-%Y%m%d-%H%M%S-%f.json')
+                    stamp=max(stamp,latest+timedelta(microseconds=1))
+                name='replay-'+stamp.strftime('%Y%m%d-%H%M%S-%f')+'.json'
+                target=self._path(name)
+                try:
+                    # POSIX rename은 덮어쓰므로 완성된 임시 파일의 hardlink를 게시한다.
+                    if os.name=='nt': os.rename(temporary,target)
+                    else: os.link(temporary,target)
+                    break
+                except FileExistsError:
+                    stamp+=timedelta(microseconds=1)
+            else:
+                raise OSError('replay filename contention')
+            temporary.unlink(missing_ok=True); temporary=None
             files=sorted((p for p in self.directory.glob('replay-*.json') if OWN_NAME.fullmatch(p.name) and not p.is_symlink()),reverse=True)
             for path in files[20:]:
-                self._path(path.name).unlink()
+                self._path(path.name).unlink(missing_ok=True)
             self.warning=''
             return name
-        except (OSError,ValueError,TypeError): self.warning='replay_error'; return None
+        except (OSError,ValueError,TypeError,OverflowError): self.warning='replay_error'; return None
         finally:
             if temporary:
                 try: temporary.unlink(missing_ok=True)

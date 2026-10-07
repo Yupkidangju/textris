@@ -68,6 +68,7 @@ zip추출캐시128MiB/64파일/개별24MiB, 장치실패3회 및2초콜백정지
 | 검사 | 결과 | 근거 |
 | --- | --- | --- |
 | 전체 Windows unittest discover |217개 중207PASS/10명시skip, 종료0 |[전체로그](audio-evidence/unit-tests.log) |
+| CI 수정 후 전체 Windows unittest |230개 중220PASS/10명시skip, 종료0 |[최신 전체로그](audio-evidence/ci-fixed-unit-tests.log) |
 | 음악자산/MIDI/전곡decode |7/7PASS,26/26decode |assets/audio-production/music/validation-summary.json |
 | SFX자산 |4/4PASS,30/30decode |assets/audio-production/sfx/validation.json |
 | schema/패키지 gate |5/5PASS,잘못된BPM/ID RED→GREEN |[로그](../.antigravity/audio-overhaul-20261008/package-schema-green.log) |
@@ -104,6 +105,12 @@ GeneralUserGS원문/역사적샘플출처한계, miniaudio/CFFI/pycparser, 프�
 SFX생성provenance고지를패키지에포함했다. 모델terms를사용자대신수락하지않았다.
 
 ## 최종 게이트
+
+초기 원격 main CI에서 Linux x64·단위 테스트·zipapp은 통과했다. Windows Python3.12의
+coarse clock 저장 이름 충돌, macOS의 고정350ms PTY 대기, ARM64의 c++ 미설치를 찾아 수정했다.
+리플레이는 기존 형식과 최근20개 계약을 유지하면서 원자적 no-clobber 게시로 바꿨고,
+Windows DOS/UNC 경로의 비교 표기만 정규화했다. [상세 설계와 회귀](ci-replay-fix.md).
+오디오 엔진과 음원은 이 CI 수정에서 변경하지 않았다.
 
 - 실제26곡 정상속도39분 완주: 2339.999초에26곡을 각1회 완료했다. source/catalog가
   전후 일치하고 underrun/device failure/clipping은0, 종료 후worker정리와200msdrain을 확인했다.

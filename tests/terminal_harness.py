@@ -13,6 +13,7 @@ import sys
 import termios
 import time
 import unicodedata
+from .terminal_wait import wait_for_startup
 
 
 class Screen:
@@ -95,7 +96,11 @@ class Terminal:
         self.process=subprocess.Popen([sys.executable,'-m','textris','--data-dir',str(directory),*arguments],
             stdin=self.slave,stdout=self.slave,stderr=self.slave,env=env,
             cwd=Path(__file__).resolve().parent.parent,start_new_session=True)
-        self.pump(.35)
+        try:
+            wait_for_startup(self)
+        except Exception:
+            self.close()
+            raise
 
     def pump(self,seconds):
         deadline=time.monotonic()+seconds
