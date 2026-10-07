@@ -1,0 +1,42 @@
+[
+  {
+    "mode": "marathon",
+    "tick": 101,
+    "seconds": 1.6666666666666656,
+    "state": "over",
+    "score": 230,
+    "lines": 0,
+    "checksum": "d8a22045f59f2240bdde33dea954f27cf1aed91d0f1169e39c93d2f324d26ae8",
+    "verified": true
+  },
+  {
+    "mode": "sprint",
+    "tick": 101,
+    "seconds": 1.6666666666666656,
+    "state": "over",
+    "score": 230,
+    "lines": 0,
+    "checksum": "d8a22045f59f2240bdde33dea954f27cf1aed91d0f1169e39c93d2f324d26ae8",
+    "verified": true
+  },
+  {
+    "mode": "ultra",
+    "tick": 101,
+    "seconds": 1.6666666666666656,
+    "state": "over",
+    "score": 230,
+    "lines": 0,
+    "checksum": "d8a22045f59f2240bdde33dea954f27cf1aed91d0f1169e39c93d2f324d26ae8",
+    "verified": true
+  },
+  {
+    "mode": "boss",
+    "tick": 1646,
+    "seconds": 27.433333333333056,
+    "state": "won",
+    "score": 4540,
+    "lines": 18,
+    "checksum": "d08f5c1e4650372eb2359922aa87c60531b897407a4659e4b090a06723e4f4dc",
+    "verified": true
+  }
+]

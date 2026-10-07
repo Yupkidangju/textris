@@ -1,0 +1,22 @@
+{
+  "python": "3.14.4",
+  "size": [
+    120,
+    40
+  ],
+  "includes_terminal_io": false,
+  "profiles": {
+    "full": {
+      "frames": 360,
+      "mean_ms": 9.153,
+      "p95_ms": 15.069,
+      "max_ms": 29.188
+    },
+    "adaptive": {
+      "frames": 360,
+      "mean_ms": 8.029,
+      "p95_ms": 14.052,
+      "max_ms": 20.86
+    }
+  }
+}

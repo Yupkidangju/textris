@@ -1,0 +1,31 @@
+{
+  "python": "3.14.4",
+  "size": [
+    120,
+    40
+  ],
+  "frames": 540,
+  "mean_ms": 15.708,
+  "max_ms": 35.079,
+  "scenes": {
+    "rain": 14.09,
+    "plasma": 14.877,
+    "tunnel": 15.535,
+    "grid": 14.567,
+    "braille": 17.783,
+    "cube": 13.761,
+    "tetromino": 13.819,
+    "torus": 15.358,
+    "mandelbrot": 19.588,
+    "julia": 19.462,
+    "aurora": 15.048,
+    "fluid": 17.325,
+    "metaball": 17.736,
+    "space": 15.422,
+    "warp": 15.127,
+    "city": 15.733,
+    "logo": 13.743,
+    "reflection": 13.763
+  },
+  "includes_terminal_io": false
+}

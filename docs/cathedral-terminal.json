@@ -1,0 +1,15 @@
+{
+  "terminal": "xterm-256color",
+  "size": [
+    120,
+    40
+  ],
+  "seconds": 2.5,
+  "output_bytes": 156126,
+  "bytes_per_second": 62447,
+  "extended_color_sequences": true,
+  "braille_utf8_present": true,
+  "exit_code": 0,
+  "terminal_restored": true,
+  "traceback": false
+}

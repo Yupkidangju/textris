@@ -1,0 +1,106 @@
+name: Multi-Platform Build & Release
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit tests
+        run: |
+          python3 -m unittest discover -s .
+
+  build-zipapp:
+    name: Build Universal Zipapp
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build zipapp
+        run: |
+          python3 scripts/build.py --mode zipapp --skip-tests
+
+      - name: Upload zipapp artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: textris-universal-zipapp
+          path: dist/textris.pyz
+
+  build-binaries:
+    name: Build Standalone Binary (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: textris-linux-amd64
+            binary_src: dist/textris
+            binary_dest: textris-linux-amd64
+          - os: macos-latest
+            artifact_name: textris-macos-arm64
+            binary_src: dist/textris
+            binary_dest: textris-macos-arm64
+          - os: windows-latest
+            artifact_name: textris-windows-amd64
+            binary_src: dist/textris.exe
+            binary_dest: textris-windows-amd64.exe
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+
+      - name: Build Standalone Binary
+        run: |
+          python scripts/build.py --mode binary --skip-tests
+
+      - name: Rename artifact (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          cp ${{ matrix.binary_src }} ${{ matrix.binary_dest }}
+          chmod +x ${{ matrix.binary_dest }}
+
+      - name: Rename artifact (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          cp ${{ matrix.binary_src }} ${{ matrix.binary_dest }}
+
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.binary_dest }}
