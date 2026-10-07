@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+env:
+  PYTHONUTF8: "1"
+  PYTHONIOENCODING: "utf-8"
+
 jobs:
   test:
     name: Run Unit Tests
@@ -84,10 +88,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install PyInstaller
+      - name: Install Dependencies
+        shell: bash
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            pip install windows-curses
+          fi
 
       - name: Build Standalone Binary
         run: |
@@ -103,7 +111,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: bash
         run: |
-          cp ${{ matrix.binary_src }} ${{ matrix.binary_dest }}
+          cp dist/textris.exe textris-windows-amd64.exe
 
       - name: Upload binary artifact
         uses: actions/upload-artifact@v4

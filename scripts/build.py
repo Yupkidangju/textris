@@ -16,6 +16,12 @@ import sys
 import tempfile
 import zipapp
 
+# Windows 및 다양한 환경에서 UTF-8 입출력 강제
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DIST_DIR = ROOT_DIR / "dist"
 BUILD_DIR = ROOT_DIR / "build"
@@ -102,22 +108,22 @@ def build_zipapp() -> Path:
 
 
 def get_pyinstaller_cmd() -> list[str] | None:
-    """사용 가능한 pyinstaller 실행 명령어 감지 (시스템 pyinstaller 또는 uv 기반)."""
-    # 1. 시스템 또는 현재 가상환경의 pyinstaller
+    """사용 가능한 pyinstaller 실행 명령어 감지 (python -m PyInstaller, 시스템 pyinstaller 또는 uv 기반)."""
+    # 1. python -m PyInstaller (현재 파이썬 환경과 정확히 일치하여 가장 안전)
+    res = subprocess.run([sys.executable, "-m", "PyInstaller", "--version"],
+                         capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if res.returncode == 0:
+        return [sys.executable, "-m", "PyInstaller"]
+
+    # 2. 시스템 또는 현재 가상환경의 pyinstaller executable
     pyi_path = shutil.which("pyinstaller")
     if pyi_path:
         return [pyi_path]
 
-    # 2. uv 확인
+    # 3. uv 확인
     uv_path = shutil.which("uv") or str(Path.home() / ".local" / "bin" / "uv")
     if Path(uv_path).is_file():
         return [str(uv_path), "run", "--with", "pyinstaller", "pyinstaller"]
-
-    # 3. python -m PyInstaller
-    res = subprocess.run([sys.executable, "-m", "PyInstaller", "--version"],
-                         capture_output=True, text=True)
-    if res.returncode == 0:
-        return [sys.executable, "-m", "PyInstaller"]
 
     return None
 
@@ -178,13 +184,15 @@ def verify_executable(executable_path: Path, is_python_script: bool = False) -> 
     run_cmd = [sys.executable, str(executable_path)] if is_python_script else [str(executable_path)]
 
     # 1. --version 검증
-    res_ver = subprocess.run([*run_cmd, "--version"], capture_output=True, text=True)
+    res_ver = subprocess.run([*run_cmd, "--version"], capture_output=True, text=True,
+                             encoding="utf-8", errors="replace")
     if res_ver.returncode != 0 or not res_ver.stdout.strip():
         log_error(f"{executable_path.name} --version 검증 실패 (코드 {res_ver.returncode})")
         return False
 
     # 2. --help 검증
-    res_help = subprocess.run([*run_cmd, "--help"], capture_output=True, text=True)
+    res_help = subprocess.run([*run_cmd, "--help"], capture_output=True, text=True,
+                              encoding="utf-8", errors="replace")
     if res_help.returncode != 0 or "TEXTRIS" not in res_help.stdout:
         log_error(f"{executable_path.name} --help 검증 실패 (코드 {res_help.returncode})")
         return False
