@@ -4,7 +4,7 @@
 
 ### Added
 - 멀티플랫폼 단일 실행 파일 빌드 스크립트 (`build.sh`, `scripts/build.py`): zipapp 및 PyInstaller Standalone 바이너리 빌드 지원.
-- Linux/macOS/Windows 멀티플랫폼 자동 빌드 GitHub Actions 워크플로우.
+- Linux x86_64, Linux ARM64, Windows x64, macOS arm64 멀티플랫폼 자동 빌드 및 Git 태그 기반 GitHub Release 배포 워크플로우.
 - Apache-2.0 오픈소스 라이선스 (`LICENSE`, 작성자: yupkidangju@gmail.com, 2026).
 - 우주 대성당 기본 테마: 연속 Braille 곡선 장미창·원근 아치·깊이 기반 천체 조각·빛 커튼.
 - 보호 영역을 가진 문자 합성기, 256색 팔레트와 기본색/모노/ASCII 폴백.

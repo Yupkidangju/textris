@@ -151,7 +151,14 @@ python3 scripts/build.py --mode binary
   - Linux/macOS: `./dist/textris.pyz` 또는 `python3 dist/textris.pyz`
   - Windows: `python dist\textris.pyz`
 - **독립 단일 바이너리 (`dist/textris` / `dist/textris-linux-x86_64`)**: Python 인터프리터 설치 없이 직접 실행 가능한 완전한 네이티브 단일 실행 파일입니다.
-- **GitHub Actions**: Windows / macOS / Linux 3대 OS 전용 바이너리가 Push / Release 시 자동 매트릭스 빌드됩니다.
+- **CI/CD 및 GitHub Release 자동 배포**:
+  - 지원 플랫폼:
+    - **Linux x86_64** (`textris-linux-amd64`)
+    - **Linux ARM64** (`textris-linux-arm64`, QEMU 컨테이너 빌드)
+    - **Windows x64** (`textris-windows-amd64.exe`)
+    - **macOS Apple Silicon** (`textris-macos-arm64`)
+    - **범용 zipapp** (`textris.pyz`)
+  - Git 태그(예: `git tag v1.0.0 && git push origin v1.0.0`)를 푸시하면 GitHub Actions 파이프라인이 위 5종 실행 파일과 `SHA256SUMS.txt`를 자동으로 빌드하여 **GitHub Release**에 등록합니다.
 
 ## 라이선스 (License)
 

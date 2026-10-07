@@ -8,9 +8,12 @@ on:
     branches: [ "main", "master" ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
-    name: Run Tests
+    name: Run Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -49,25 +52,28 @@ jobs:
           path: dist/textris.pyz
 
   build-binaries:
-    name: Build Standalone Binary (${{ matrix.os }})
+    name: Build Standalone Binary (${{ matrix.target }})
     runs-on: ${{ matrix.os }}
     needs: test
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          - target: linux-amd64
+            os: ubuntu-latest
             artifact_name: textris-linux-amd64
             binary_src: dist/textris
             binary_dest: textris-linux-amd64
-          - os: macos-latest
-            artifact_name: textris-macos-arm64
-            binary_src: dist/textris
-            binary_dest: textris-macos-arm64
-          - os: windows-latest
+          - target: windows-amd64
+            os: windows-latest
             artifact_name: textris-windows-amd64
             binary_src: dist/textris.exe
             binary_dest: textris-windows-amd64.exe
+          - target: macos-arm64
+            os: macos-latest
+            artifact_name: textris-macos-arm64
+            binary_src: dist/textris
+            binary_dest: textris-macos-arm64
 
     steps:
       - name: Checkout code
@@ -78,7 +84,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Install PyInstaller
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
@@ -104,3 +110,59 @@ jobs:
         with:
           name: ${{ matrix.artifact_name }}
           path: ${{ matrix.binary_dest }}
+
+  build-linux-arm64:
+    name: Build Standalone Binary (linux-arm64)
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU for ARM64
+        uses: docker/setup-qemu-action@v3
+
+      - name: Build Linux ARM64 binary in Docker container
+        run: |
+          docker run --rm --platform linux/arm64 -v "$PWD":/workspace -w /workspace python:3.12-slim bash -c "
+            set -e
+            apt-get update && apt-get install -y --no-install-recommends binutils gcc libc-dev
+            pip install --no-cache-dir pyinstaller
+            python3 scripts/build.py --mode binary --skip-tests
+            cp dist/textris textris-linux-arm64
+            chmod +x textris-linux-arm64
+          "
+
+      - name: Upload Linux ARM64 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: textris-linux-arm64
+          path: textris-linux-arm64
+
+  release:
+    name: Publish GitHub Release with Assets
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build-zipapp, build-binaries, build-linux-arm64]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+          merge-multiple: true
+
+      - name: Generate Checksums
+        working-directory: release-assets
+        run: |
+          sha256sum * > SHA256SUMS.txt
+          echo "=== Release Assets to Publish ==="
+          ls -la
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/*
+          generate_release_notes: true
+          draft: false
+          prerelease: false

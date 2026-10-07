@@ -84,6 +84,8 @@ cathedral, Braille 연속 곡선·깊이 기반 입체 아트·장미창·빛 �
 - 빌드 스크립트: `build.sh` 및 `scripts/build.py`.
 - 범용 멀티플랫폼 단일 파일 번들: Python `zipapp` 기반 `dist/textris.pyz` (Linux/macOS/Windows 호환).
 - Standalone 독립 단일 바이너리: PyInstaller `--onefile` 기반 `dist/textris` (호스트 OS 네이티브).
-- CI/CD: `.github/workflows/build.yml`을 통한 Linux, macOS, Windows 3대 플랫폼 자동 빌드.
+- CI/CD 파이프라인: `.github/workflows/build.yml`을 통한 Linux (x86_64, arm64), Windows (x64), macOS (arm64) 자동 매트릭스 빌드.
+- 릴리즈 자동화: `v*` Git 태그 푸시 시 GitHub Release 생성 및 바이너리/체크섬 자동 첨부.
 - 라이선스: Apache License 2.0 (`LICENSE`, Copyright 2026 yupkidangju@gmail.com).
+
 
