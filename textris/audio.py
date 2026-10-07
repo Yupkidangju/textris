@@ -90,7 +90,6 @@ class Audio:
         self.settings = settings
         self.backend = find_backend()
         self.failed = False
-        self.bells = queue.Queue(maxsize=8)
         self.requests = queue.Queue(maxsize=24)
         self.music_wanted = False
         self.stopping = threading.Event()
@@ -104,7 +103,7 @@ class Audio:
 
     @property
     def status(self):
-        return self.backend[0] if self.backend and not self.failed else 'audio_bell'
+        return self.backend[0] if self.backend and not self.failed else 'audio_silent'
 
     def play(self, name):
         if not self.settings['sound'] or self.settings['volume'] <= 0 or name not in EFFECTS:
@@ -149,12 +148,6 @@ class Audio:
             self.failed = True
             return None
 
-    def _bell(self):
-        try:
-            self.bells.put_nowait(True)
-        except queue.Full:
-            pass
-
     def _worker(self):
         current_volume = self.settings['volume']
         try:
@@ -165,7 +158,7 @@ class Audio:
                     if code is None:
                         active.append(process)
                     elif code != 0:
-                        self.failed = True; self._bell()
+                        self.failed = True
                 self.effects = active
                 volume_changed = current_volume != self.settings['volume']
                 current_volume = self.settings['volume']
@@ -173,7 +166,7 @@ class Audio:
                              and self.settings['volume'] > 0 and self.backend and not self.failed)
                 if not can_music or volume_changed:
                     self._stop(self.music_process); self.music_process = None
-                if not self.settings['sound'] or volume_changed:
+                if not self.settings['sound'] or self.failed or volume_changed:
                     for process in self.effects:
                         self._stop(process)
                     self.effects.clear()
@@ -200,8 +193,6 @@ class Audio:
                     process = self._launch(name)
                     if process:
                         self.effects.append(process)
-                else:
-                    self._bell()
         finally:
             self._stop(self.music_process)
             for process in self.effects:

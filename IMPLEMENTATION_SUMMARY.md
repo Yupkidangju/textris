@@ -166,3 +166,12 @@ curses.wrapper를 통해 터미널 상태를 복원한다.
   `tests/capture_cathedral.py` 컬러 프레임 HTML/선택 PNG,
   `tests/benchmark_cathedral.py` 이벤트를 포함한 렌더 비용 측정.
 - 성능/시각/PTY 최종 근거는 `docs/cathedral-verification.md`에 기록한다.
+
+## 1.1.0 영문/전체 테마 통합 (2026-10-07 최신 상태)
+이 절이 위의 초기 구현 기록 중 언어/벨/렌더링 설명을 대체한다.
+제품 UI는 영문 단일, 오디오 실패는 무음, 모든 테마는 공통 ArtUI/ArtCanvas/ArtDirector를 사용한다.
+`terminal.py`는 ASCII 출력 정책, `theme_art.py`는 6테마 무대,
+`gallery_art.py`는 19배경/25효과를 담당한다. Effects는 시간축/캐시/합성 연결에 집중한다.
+Bresenham 서브셀 선분, 보스/분석/모달과 기존 파일 이행을 구현했다.
+전체118테스트/93컬러프레임/zipapp 검증 완료. 원격 릴리스는 .git 읽기 전용과 DNS 제한으로 미완료.
+자세한 수치·변경·제약·릴리스 인계는 [최신 검증](docs/terminal-art-verification.md).

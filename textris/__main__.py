@@ -12,11 +12,13 @@ from .scenes import THEMES
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description='TEXTRIS — keyboard-driven terminal Tetris')
+    parser = argparse.ArgumentParser(description='TEXTRIS - keyboard-driven terminal Tetris')
     parser.add_argument('--version',action='version',version=__version__)
-    parser.add_argument('--language',choices=('ko','en'),help='display language')
+    parser.add_argument('--language',choices=('ko','en'),help=argparse.SUPPRESS)
     parser.add_argument('--no-sound',action='store_true',help='mute this session')
-    parser.add_argument('--ascii',action='store_true',help='ASCII block glyphs')
+    glyphs=parser.add_mutually_exclusive_group()
+    glyphs.add_argument('--ascii',action='store_true',help='ASCII-safe text and art')
+    glyphs.add_argument('--unicode',action='store_true',help='enable Unicode art (requires a suitable terminal font)')
     parser.add_argument('--theme',choices=THEMES,help='visual theme for this session')
     parser.add_argument('--seed',type=int,help='reproducible piece sequence')
     parser.add_argument('--data-dir',type=Path,help='settings, records and generated audio directory')
@@ -26,13 +28,13 @@ def main(argv=None):
     is_bundled = getattr(sys, 'frozen', False) or not project.is_dir()
     default_dir = (Path.home() / '.textris-data') if is_bundled else (project / '.textris-data')
     directory = args.data_dir or default_dir
-    lang = args.language or 'ko'
+    lang = 'en'
     if args.data_dir is None and not is_bundled and not directory.resolve().is_relative_to(project):
         print(tr(lang,'unsafe_data'),file=sys.stderr); return 1
     if not args.audio_check and (not sys.stdin.isatty() or not sys.stdout.isatty()):
         print(tr(lang,'need_terminal'),file=sys.stderr); return 1
     store = Store(directory); store.load()
-    if args.language: store.settings['language'] = args.language
+    store.settings['language'] = 'en'
     lang = store.settings['language']
     # CLI의 임시 옵션은 종료 시 영구 설정을 덮어쓰지 않는다.
     original_sound,original_ascii = store.settings['sound'],store.settings['ascii']
@@ -40,6 +42,7 @@ def main(argv=None):
     if args.theme: store.settings['theme']=args.theme
     if args.no_sound: store.settings['sound'] = False
     if args.ascii: store.settings['ascii'] = True
+    if args.unicode: store.settings['ascii'] = False
     if args.audio_check:
         backend = find_backend()
         print(tr(lang,'backend_check',value=backend[0] if backend else tr(lang,'audio_bell')))
@@ -60,7 +63,7 @@ def main(argv=None):
         print(tr(lang,'no_curses'),file=sys.stderr); return 1
     audio = Audio(directory,store.settings)
     try:
-        curses.wrapper(lambda window: App(window,store,audio,args.seed).run())
+        curses.wrapper(lambda window: App(window,store,audio,args.seed,unicode_art=args.unicode).run())
     except KeyboardInterrupt:
         pass
     except curses.error:
@@ -69,7 +72,7 @@ def main(argv=None):
         audio.close()
         if args.no_sound:
             store.settings['sound'] = original_sound
-        if args.ascii:
+        if args.ascii or args.unicode:
             store.settings['ascii'] = original_ascii
         if args.theme:
             store.settings['theme']=original_theme

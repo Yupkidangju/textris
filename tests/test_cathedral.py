@@ -175,11 +175,11 @@ class CathedralReviewTests(unittest.TestCase):
         self.assertFalse(a.effects.director.local)
         self.assertEqual(a.effects.headline,'')
 
-    def test_gallery_f_toggle_keeps_legacy_effect_visible(self):
+    def test_gallery_f_toggle_keeps_selected_effect_visible(self):
         from textris.scenes import BACKGROUNDS
         a=self.app; a.now=100; a.open_gallery(); a.gallery_index=len(BACKGROUNDS)
         a.gallery_trigger(); a.handle('f'); a.handle('f')
-        self.assertIsNotNone(a.effects.scene)
+        self.assertTrue(a.effects.actions)
         a.win.erase(); a.effects.draw(a,22,4,100.1)
         self.assertTrue(a.win.lines)
 

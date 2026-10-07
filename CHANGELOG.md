@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-07
+
+### Added
+- 6개 테마의 독립 구도/팔레트, 전체 19개 배경·25개 효과를 공통 서브셀/깊이 합성으로 재구성.
+- 천체 기계 보스, 분석 곡선, 테마별 메뉴·프레임·카운트다운과 컬러 아틀라스.
+- Windows/비UTF-8 자동 ASCII 안전 출력 및 `--unicode` 명시 선택.
+- Windows 소스 설치용 조건부 windows-curses 의존성 및 플랫폼별 릴리스 smoke 검증.
+
+### Changed
+- 제품 UI 영문 단일화. 기존 ko 설정은 영어로 이행하며 점수/리플레이는 보존.
+- 모든 게임 테마가 보드/HUD 보호와 유한한 단일 주 연출을 사용.
+
+### Fixed
+- 재생기 부재/실패 시 키 입력마다 울리던 terminal bell을 제거하고 무음 상태 표시.
+- 테마 전환 팔레트와 갤러리 선택 효과 유지, 전체 테마의 밀도 설정 적용.
+
+## 1.0.0까지의 추가 구현 이력
+
+
 ### Added
 - 멀티플랫폼 단일 실행 파일 빌드 스크립트 (`build.sh`, `scripts/build.py`): zipapp 및 PyInstaller Standalone 바이너리 빌드 지원.
 - Linux x86_64, Linux ARM64, Windows x64, macOS arm64 멀티플랫폼 자동 빌드 및 Git 태그 기반 GitHub Release 배포 워크플로우.

@@ -97,9 +97,19 @@ jobs:
             pip install windows-curses
           fi
 
+      - name: Verify terminal portability
+        run: |
+          python -m unittest tests.test_terminal_compat tests.test_theme_art tests.test_gallery_art tests.test_audio_portability tests.test_auxiliary_art tests.test_commands
+
       - name: Build Standalone Binary
         run: |
           python scripts/build.py --mode binary --skip-tests
+
+      - name: Smoke test standalone executable
+        shell: bash
+        run: |
+          "./${{ matrix.binary_src }}" --version
+          "./${{ matrix.binary_src }}" --help
 
       - name: Rename artifact (Unix)
         if: runner.os != 'Windows'

@@ -11,7 +11,7 @@ class ExpansionTests(unittest.TestCase):
     setUp=test_ui.UITests.setUp
 
     def test_catalog_all_backgrounds_and_effects_render_bounded(self):
-        a=self.app
+        a=self.app; a.screen='gallery'
         self.assertGreaterEqual(len(scenes.BACKGROUNDS),17)
         self.assertGreaterEqual(len(scenes.EFFECTS),24)
         a.win.size=(40,120)
@@ -27,7 +27,7 @@ class ExpansionTests(unittest.TestCase):
                 for t in (100.1,100.5,101):
                     a.win.erase(); a.effects.update(t); a.effects.draw(a,25,5,t)
                     self.assertTrue(a.win.lines,name)
-        a.effects.update(110); self.assertFalse(a.effects.debris)
+        a.effects.update(110); self.assertFalse(a.effects.actions)
 
     def test_fever_profile_and_priority(self):
         fx=Effects()
@@ -37,7 +37,7 @@ class ExpansionTests(unittest.TestCase):
         self.assertEqual(fx.headline,'ALL CLEAR')
         fx.trigger('lock',dict(cells=((1,21),)),100)
         self.assertEqual(fx.headline,'ALL CLEAR')
-        self.assertLessEqual(len(fx.debris),600)
+        self.assertLessEqual(len(fx.director.local),8)
         fx.update(110); self.assertEqual(fx.fever,0)
 
     def test_replay_store_validation_and_preservation(self):
@@ -115,7 +115,7 @@ class ExpansionTests(unittest.TestCase):
         a.effects.preview('impact',100)
         self.assertEqual(a.effects.offset(100.05),(0,0))
         a.settings['flash']=False; a.effects.update(103)
-        self.assertFalse(a.effects.debris)
+        self.assertFalse(a.effects.actions)
 
     def test_replay_path_symlink_and_recent_twenty(self):
         from textris.replay import ReplayStore
@@ -223,7 +223,7 @@ class ExpansionTests(unittest.TestCase):
         self.assertEqual(user.read_text(),'user content')
 
     def test_unicode_particles_use_subcell_braille_with_ascii_fallback(self):
-        a=self.app; a.settings.update(ascii=False,theme='cyberpunk'); a.effects.configure(a.settings)
+        a=self.app; a.screen='gallery'; a.settings.update(ascii=False,theme='cyberpunk'); a.effects.configure(a.settings)
         a.effects.preview('ricochet',100); a.effects.update(100.1)
         a.effects.draw(a,25,5,100.1)
         self.assertTrue(any(0x2800<ord(c)<=0x28ff for y,x,text in a.win.lines for c in text))

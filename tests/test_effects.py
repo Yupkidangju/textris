@@ -8,17 +8,15 @@ class EffectsTests(unittest.TestCase):
     def setUp(self):
         test_ui.UITests.setUp(self)
         self.app.settings['theme']='cyberpunk'
-    def test_impact_moves_board_then_settles_and_debris_expires(self):
+    def test_impact_moves_board_then_settles_and_cues_expire(self):
         a=self.app; a.start(); a.now=100
         a.game.emit('drop',cells=((4,2),(4,3),(4,4),(4,5)),distance=14)
         a.process_events()
         self.assertTrue(any(a.effects.offset(100+t) != (0,0) for t in (.02,.05,.1)))
-        self.assertTrue(a.effects.debris)
-        self.assertTrue(a.effects.rings)
+        self.assertEqual([c.name for c in a.effects.director.local],['drop'])
         self.assertEqual(a.effects.offset(102),(0,0))
         a.effects.update(103)
-        self.assertFalse(a.effects.debris)
-        self.assertFalse(a.effects.rings)
+        self.assertFalse(a.effects.director.local)
 
     def test_clear_storm_is_bounded_and_does_not_change_engine(self):
         a=self.app; a.start(); a.now=100
@@ -27,13 +25,13 @@ class EffectsTests(unittest.TestCase):
         for _ in range(50):
             a.game.emit('clear',**data)
         a.process_events()
-        self.assertGreater(len(a.effects.debris),40)
-        self.assertLessEqual(len(a.effects.debris),600)
-        self.assertLessEqual(len(a.effects.rings),12)
-        self.assertLessEqual(len(a.effects.labels),8)
+        self.assertEqual(a.effects.director.major.name,'ascension')
+        self.assertLessEqual(a.effects.director.major.power,1.6)
+        self.assertAlmostEqual(a.effects.director.major.end,101.8)
+        self.assertLessEqual(len(a.effects.director.local),8)
         self.assertEqual(a.game.board,before)
         self.assertEqual(a.game.score,0)
-        a.start(); self.assertFalse(a.effects.debris)
+        a.start(); self.assertIsNone(a.effects.director.major)
 
     def test_showcase_cycles_without_time_records_and_returns(self):
         a=self.app; a.handle('v')
@@ -42,7 +40,7 @@ class EffectsTests(unittest.TestCase):
         first=a.banner
         a.now+=1.7; a.tick(1.7)
         self.assertNotEqual(a.banner,first)
-        self.assertTrue(a.effects.debris)
+        self.assertTrue(a.effects.director.major or a.effects.director.local)
         self.assertEqual(a.game.elapsed,0)
         self.assertFalse(any(self.store.records.values()))
         with patch('curses.doupdate'):
@@ -53,7 +51,8 @@ class EffectsTests(unittest.TestCase):
     def test_real_drop_lock_sequence_retains_drop_impact(self):
         a=self.app; a.start(); a.screen='playing'; a.game.state='playing'; a.now=100
         a.game.hard_drop(); a.process_events()
-        self.assertGreaterEqual(a.effects.strength,1.5)
+        self.assertEqual([c.name for c in a.effects.director.local],['drop'])
+        self.assertGreater(a.effects.strength,0)
 
     def test_victory_art_has_visible_final_letter(self):
         from textris.effects import art
@@ -75,7 +74,7 @@ class EffectsTests(unittest.TestCase):
                         a.effects.trigger(name,data,a.now)
                         for age in (.01,.2,.7,1.2):
                             a.effects.update(a.now+age)
-                            a.effects.draw(a,22,4,a.now+age)
+                            a.effects.background(a,a.now+age)
             self.assertTrue(a.win.lines)
 
     def test_background_changes_and_ascii_effects_clip_at_all_sizes(self):

@@ -69,16 +69,16 @@ class TerminalTests(unittest.TestCase):
         self.assertEqual(t.process.returncode,0)
         self.assertNotIn(b'Traceback',t.raw)
 
-    def test_settings_records_korean_and_persistence(self):
-        t=self.launch('--language','en')
+    def test_settings_records_legacy_language_migration_and_persistence(self):
+        (Path(self.tmp.name)/'records.json').write_text(json.dumps({'version':1,'settings':{'language':'ko'},'records':{}}))
+        t=self.launch('--language','ko')
         t.send('sss\n'); self.assertScreen(t,'Settings')
-        t.send('\n'); self.assertScreen(t,'설정')
-        t.send('s\n'); self.assertScreen(t,'끔')
-        t.send('\x1b'); t.send('s\n'); self.assertScreen(t,'최고 기록')
-        t.send('\x1bOC'); self.assertScreen(t,'스프린트')
+        t.send('\n'); self.assertScreen(t,'OFF')
+        t.send('\x1b'); t.send('s\n'); self.assertScreen(t,'High scores')
+        t.send('\x1bOC'); self.assertScreen(t,'Sprint')
         t.send('\x1b'); t.send('q'); t.process.wait(timeout=3)
         data=json.loads((Path(self.tmp.name)/'records.json').read_text())
-        self.assertEqual(data['settings']['language'],'ko')
+        self.assertEqual(data['settings']['language'],'en')
         self.assertFalse(data['settings']['sound'])
         self.assertEqual(t.process.returncode,0)
 
@@ -107,7 +107,7 @@ class ExpansionTerminalTests(unittest.TestCase):
         t.send('\n'); self.assertScreen(t,'FX Gallery')
         t.send(' '*2+'ad'); self.assertScreen(t,'FX Gallery')
         t.send('\x1b'); t.send('s\n'); self.assertScreen(t,'Effects & themes')
-        t.send('d'); self.assertScreen(t,'Cyberpunk')
+        t.send('d'); self.assertScreen(t,'Neon metropolis')
         t.send('\x1b'); t.send('s\n'); self.assertScreen(t,'READY')
         t.pump(3.1); self.assertScreen(t,'BOSS HP')
         t.send('p'); self.assertScreen(t,'PAUSED')

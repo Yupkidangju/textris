@@ -2,9 +2,10 @@
 import curses
 from datetime import datetime
 import math
-import queue
 import random
 import time
+import sys
+import locale
 import unicodedata
 from functools import lru_cache
 
@@ -16,7 +17,8 @@ from .session import Session,STEP
 from .replay import ReplayStore
 from .expansion_ui import ExpansionUI, CATALOG
 from .art import Palette
-from .art_ui import CathedralUI
+from .art_ui import ArtUI
+from .terminal import needs_ascii,safe_ascii
 
 LOGO = (
     '████████╗███████╗██╗  ██╗████████╗██████╗ ██╗███████╗',
@@ -57,10 +59,12 @@ def clock(seconds):
     return f'{int(seconds)//60:02}:{int(seconds)%60:02}.{int(seconds*10)%10}'
 
 
-class App(CathedralUI, ExpansionUI):
-    def __init__(self, window, store, audio, seed=None):
+class App(ArtUI, ExpansionUI):
+    def __init__(self, window, store, audio, seed=None,unicode_art=False):
         self.win, self.store, self.audio, self.seed = window, store, audio, seed
         self.settings = store.settings
+        self.settings['language']='en'
+        self.terminal_ascii=needs_ascii(sys.platform,getattr(window,'encoding',locale.getpreferredencoding(False)),unicode_art)
         self.screen = 'menu'
         self.selection = self.setting_selection = self.pause_selection = 0
         self.mode_index = 0
@@ -94,6 +98,10 @@ class App(CathedralUI, ExpansionUI):
         self.art_palette=Palette()
         self._setup()
 
+    @property
+    def ascii_mode(self):
+        return self.terminal_ascii or self.settings['ascii']
+
     def _setup(self):
         self.win.keypad(True)
         self.win.nodelay(True)
@@ -116,7 +124,7 @@ class App(CathedralUI, ExpansionUI):
                 for i,color in enumerate(colors,1):
                     curses.init_pair(i,color,background)
                 self.has_color = True
-                self.art_palette.setup(curses.COLORS,curses.COLOR_PAIRS)
+                self.art_palette.setup(curses.COLORS,curses.COLOR_PAIRS,self.settings['theme'])
             except curses.error:
                 pass
 
@@ -127,9 +135,7 @@ class App(CathedralUI, ExpansionUI):
         if not self.has_color or not self.settings['color']:
             return 0
         if self.settings.get('theme')=='mono': return 0
-        if self.cathedral_enabled:
-            return self.art_attr(16+'IOTSZJL'.index(kind)) if kind else self.art_attr(3)
-        return curses.color_pair('IOTSZJL'.index(kind)+1 if kind in 'IOTSZJL' else 1) if kind else curses.color_pair(1)
+        return self.art_attr(16+'IOTSZJL'.index(kind)) if kind else self.art_attr(3)
 
     def fx_color(self,index):
         palette={'cathedral':'IITIJOL','cyberpunk':'ITIZTJL','space':'IJITJLI','fire':'ZOLZOLZ','crt':'SSSIOOS','mono':'IIIIIII'}
@@ -139,8 +145,8 @@ class App(CathedralUI, ExpansionUI):
         h,w = self.win.getmaxyx()
         if y < 0 or y >= h or x < 0 or x >= w-1:
             return
-        text = clip(str(text),w-x-1)
-        if self.cathedral_enabled and not attr & curses.A_COLOR:
+        text = clip(safe_ascii(text) if self.ascii_mode else str(text).replace('\a',''),w-x-1)
+        if not attr & curses.A_COLOR:
             attr |= self.art_attr(15 if text.strip() else 0)
         canvas=getattr(self,'_canvas',None)
         if canvas is not None:
@@ -172,11 +178,13 @@ class App(CathedralUI, ExpansionUI):
         y,x = (h-ph)//2,(w-pw)//2
         for row in range(ph):
             self.put(y+row,x,' '*pw)
-        self.put(y,x,'+'+'-'*(pw-2)+'+',self.color())
-        self.put(y+ph-1,x,'+'+'-'*(pw-2)+'+',self.color())
+        tl,tr,bl,br,hline,vline=('+','+','+','+','-','|') if self.ascii_mode else ('╭','╮','╰','╯','─','│')
+        self.put(y,x,tl+hline*(pw-2)+tr,self.art_attr(4))
+        self.put(y+ph-1,x,bl+hline*(pw-2)+br,self.art_attr(6))
         for row in range(1,ph-1):
-            self.put(y+row,x,'|',self.color()); self.put(y+row,x+pw-1,'|',self.color())
-        self.put(y+1,x+max(1,(pw-width(title))//2),title,curses.A_BOLD|self.color('O'))
+            self.put(y+row,x,vline,self.art_attr(3)); self.put(y+row,x+pw-1,vline,self.art_attr(3))
+        self.put(y+1,x+max(1,(pw-width(title))//2),title,self.art_attr(9))
+        self.put(y+2,x+pw//2-5,'--- + ---' if self.ascii_mode else '─── ◇ ───',self.art_attr(6))
         for i,line in enumerate(lines):
             attr = curses.A_REVERSE|curses.A_BOLD if selected == i else 0
             prefix = '> ' if selected == i else '  '
@@ -189,37 +197,14 @@ class App(CathedralUI, ExpansionUI):
             self.effects.background(self,self.now)
 
     def draw_menu(self):
-        if self.cathedral_enabled:
-            self.draw_cathedral_menu(LOGO)
-            return
-        h,_ = self.win.getmaxyx()
-        if self.settings['ascii']:
-            for i,text in enumerate(('T E X T R I S','[ ][ ][ ][ ][ ][ ][ ]')):
-                self.center(3+i,text,curses.A_BOLD|self.color('I'))
-        else:
-            for i,row in enumerate(LOGO):
-                # 가로 파형으로 이동해 이웃 행을 덮어쓰지 않는다.
-                x = (self.win.getmaxyx()[1]-width(row))//2+round(math.sin(self.now*2+i*.6))
-                self.put(2+i,max(0,x),row,self.color('IOTSZJL'[i])|curses.A_BOLD)
-        self.center(9,self.t('subtitle'),curses.A_DIM)
-        options = [self.t(m) for m in MODES[:3]]+[self.t('settings'),self.t('records'),self.t('quit'),self.t('extras')]
-        for i,item in enumerate(options):
-            text = ('▶ ' if i == self.selection and not self.settings['ascii'] else '> ' if i == self.selection else '  ')+item
-            self.center(11+2*i,text,curses.A_REVERSE|curses.A_BOLD if i == self.selection else 0)
-        self.center(24,self.t('start_level',value=self.start_level),self.color('O'))
-        self.center(h-3,self.t('fx_hint'),self.color('T')|curses.A_BOLD)
-        self.center(h-2,self.t('menu_hint'),curses.A_DIM)
-        if self.store.warning:
-            self.center(h-1,self.t(self.store.warning),self.color('Z'))
+        self.draw_art_menu(LOGO)
 
     def draw_settings(self):
-        keys = ['language','sound','music','volume','ascii','color']
+        keys = ['sound','music','volume','ascii','color']
         lines = []
         for key in keys:
             value = self.settings[key]
-            if key == 'language':
-                label = '한국어' if value == 'ko' else 'English'
-            elif key == 'volume':
+            if key == 'volume':
                 label = f'{round(value*100)}%'
             else:
                 label = self.t('on' if value else 'off')
@@ -231,7 +216,7 @@ class App(CathedralUI, ExpansionUI):
     def audio_label(self):
         if not self.settings['sound'] or self.settings['volume'] <= 0:
             return self.t('audio_muted')
-        return self.t('audio_bell') if self.audio.status == 'audio_bell' else self.audio.status
+        return self.t('audio_silent') if self.audio.status in ('audio_bell','audio_silent') else self.audio.status
 
     def draw_records(self):
         mode = MODES[self.mode_index]
@@ -250,7 +235,7 @@ class App(CathedralUI, ExpansionUI):
     def preview(self, kind, y, x, dim=False):
         if not kind:
             return
-        char = '[]' if self.settings['ascii'] else '██'
+        char = '[]' if self.ascii_mode else '██'
         for px,py in cells(Piece(kind,0,0,0)):
             self.put(y+py,x+2*px,char,self.color(kind)|(curses.A_DIM if dim else curses.A_BOLD))
 
@@ -259,31 +244,17 @@ class App(CathedralUI, ExpansionUI):
         h,w = self.win.getmaxyx()
         ox,oy = (w-64)//2,max(0,(h-28)//2)
         # HUD는 고정하고 보드와 그에 속한 효과만 흔든다.
-        if not self.cathedral_enabled:
-            for row in range(oy+2,oy+25):
-                self.put(row,ox+1,' '*19)
-                self.put(row,ox+44,' '*19)
         dx,dy=self.effects.offset(self.now) if self.fx_enabled else (0,0)
         bx,by = ox+21+dx,oy+3+dy
         self.center(oy,'T E X T R I S  /  '+self.t(self.session.mode if self.session else g.mode),curses.A_BOLD|self.color())
-        border=self.color('Z')|(curses.A_BOLD if math.sin(self.now*4)>0 else curses.A_DIM) if self.effects.danger and self.settings.get('flash',True) else self.color('Z') if self.effects.danger else self.color()
-        self.put(by,bx,'+'+'-'*20+'+',border)
-        self.put(by+21,bx,'+'+'-'*20+'+',border)
-        if self.fx_enabled and self.settings.get('flash',True) and self.now < self.effects.glow_until:
-            self.put(by,bx,'+'+'='*20+'+',self.color('O')|curses.A_BOLD)
-            self.put(by+21,bx,'+'+'='*20+'+',self.color('O')|curses.A_BOLD)
-        glyph = '[]' if self.settings['ascii'] else '██'
-        empty = '. ' if self.settings['ascii'] else '· '
-        ghost = '::' if self.settings['ascii'] else '░░'
+        glyph = '[]' if self.ascii_mode else '██'
+        ghost = '::' if self.ascii_mode else '░░'
         for y in range(20):
             self.put(by+1+y,bx,'|',self.color())
             self.put(by+1+y,bx+21,'|',self.color())
             for x in range(10):
                 kind = g.board[y+HIDDEN][x]
-                pattern = ('. ', ': ', '· ', '░ ')[(x+y+int(self.now*4))%4] if self.fx_enabled else empty
-                if self.settings['ascii']: pattern = '. ' if (x+y+int(self.now*3))%5 else ': '
-                if self.cathedral_enabled: pattern='  '
-                self.put(by+1+y,bx+1+2*x,glyph if kind else pattern,self.color(kind) if kind else curses.A_DIM)
+                self.put(by+1+y,bx+1+2*x,glyph if kind else '  ',self.color(kind) if kind else 0)
         if g.state in ('playing','paused'):
             p = g.active
             for x,y in cells(Piece(p.kind,p.rotation,p.x,g.ghost_y())):
@@ -292,45 +263,11 @@ class App(CathedralUI, ExpansionUI):
             for x,y in cells(p):
                 if y >= HIDDEN:
                     self.put(by+1+y-HIDDEN,bx+1+2*x,glyph,self.color(p.kind)|curses.A_BOLD)
-        for start,coords,distance in ([] if self.cathedral_enabled else self.trails):
-            if self.now-start < .18:
-                for x,y in coords:
-                    for dy in range(0,distance,2):
-                        if HIDDEN <= y+dy < 22:
-                            self.put(by+1+y+dy-HIDDEN,bx+1+2*x,'||' if self.settings['ascii'] else '╎╎',curses.A_DIM|self.color('I'))
-        if not self.cathedral_enabled and self.settings.get('flash',True) and self.now < self.flash_until and int(self.now*30) % 2 == 0:
-            for y in self.flash_rows:
-                if y >= HIDDEN:
-                    self.put(by+1+y-HIDDEN,bx+1,'='*20,curses.A_BOLD|self.color('O'))
-        for start,x,y,vx,vy in ([] if self.fx_enabled else self.particles):
-            age = self.now-start
-            if age < .5:
-                px = int(bx+1+x*2+vx*age)
-                py = int(by+1+y-HIDDEN+vy*age+10*age*age)
-                self.put(py,px,'*' if self.settings['ascii'] else '✦',self.color('O')|curses.A_BOLD)
         if self.screen == 'result':
             fill = min(20,int((self.now-self.result_since)*34))
             for y in range(20-fill,20):
-                self.put(by+1+y,bx+1,'..'*10 if self.settings['ascii'] else '░░'*10,curses.A_DIM)
-        if self.fx_enabled:
-            self.effects.draw(self,bx+1,by+1,self.now)
-        if self.fx_enabled:
-            self.effects.reflection(self,bx+1,by+1,self.now)
-        # 최종 게임 정보는 연출보다 위에 그려 판정과 고스트를 보존한다.
-        if self.screen != 'result' and not self.cathedral_enabled:
-            for y,row in enumerate(g.board[HIDDEN:]):
-                for x,kind in enumerate(row):
-                    if kind: self.put(by+1+y,bx+1+2*x,glyph,self.color(kind)|curses.A_BOLD)
-            if g.state in ('playing','paused'):
-                p=g.active
-                for x,y in cells(Piece(p.kind,p.rotation,p.x,g.ghost_y())):
-                    if y>=HIDDEN: self.put(by+1+y-HIDDEN,bx+1+2*x,ghost,self.color(p.kind)|curses.A_DIM)
-                for x,y in cells(p):
-                    if y>=HIDDEN: self.put(by+1+y-HIDDEN,bx+1+2*x,glyph,self.color(p.kind)|curses.A_BOLD)
-        if self.cathedral_enabled: self.cathedral_frame(bx,by)
-        if not self.cathedral_enabled:
-            for row in range(oy+2,oy+25):
-                self.put(row,ox+1,' '*19); self.put(row,ox+44,' '*19)
+                self.put(by+1+y,bx+1,'..'*10 if self.ascii_mode else '░░'*10,curses.A_DIM)
+        self.art_frame(bx,by)
         self.put(oy+3,ox+2,self.t('hold'),curses.A_BOLD)
         self.preview(g.held,oy+5,ox+4,g.hold_used)
         stats = [('score',f'{g.score:,}'),('best',f'{self.best_score(self.session.mode if self.session else g.mode):,}'),
@@ -344,7 +281,7 @@ class App(CathedralUI, ExpansionUI):
         self.put(oy+3,ox+46,self.t('next'),curses.A_BOLD)
         for i,kind in enumerate(list(g.queue)[:5]):
             self.preview(kind,oy+5+i*4,ox+47)
-        self.center(oy+25,self.banner if self.now < self.banner_until else self.t('help_pause')+' · H: '+self.t('help'),
+        self.center(oy+25,self.banner if self.now < self.banner_until else self.t('help_pause')+' / H: '+self.t('help'),
                     self.color('O')|curses.A_BOLD if self.now < self.banner_until else curses.A_DIM)
         self.center(oy+27,self.t('showcase_hint') if self.screen == 'showcase' else self.t('sound_status',value=self.audio_label()),curses.A_DIM)
         if self.session and self.session.mode=='boss': self.draw_boss(oy)
@@ -356,7 +293,7 @@ class App(CathedralUI, ExpansionUI):
             number = max(1,3-int(self.ready_elapsed))
             self.panel(self.t('ready'),['']*6)
             for i,row in enumerate(NUMBERS[number]):
-                self.center(h//2-2+i,row.replace('#','██' if not self.settings['ascii'] else '##').replace(' ','  '),self.color('O')|curses.A_BOLD)
+                self.center(h//2-2+i,row.replace('#','██' if not self.ascii_mode else '##').replace(' ','  '),self.art_attr((5,4,3,6,8)[i%5]))
         elif self.screen == 'paused':
             self.panel(self.t('paused'),[self.t(k) for k in ('resume','restart','help','main_menu','quit')],self.pause_selection)
         elif self.screen == 'result' and self.now-self.result_since > .65:
@@ -369,9 +306,11 @@ class App(CathedralUI, ExpansionUI):
         return max((r['score'] for r in self.store.records[mode]),default=0)
 
     def draw(self):
+        if self.art_palette.theme!=self.settings['theme']:
+            self.art_palette.setup(*self.art_palette.limits,self.settings['theme'])
         self.win.erase()
         h,w = self.win.getmaxyx()
-        self._canvas=[[(' ',self.art_attr(0) if self.cathedral_enabled else 0)]*(w-1) for _ in range(h)]
+        self._canvas=[[(' ',self.art_attr(0))]*(w-1) for _ in range(h)]
         if h < 28 or w < 64:
             self.center(max(0,h//2-1),self.t('resize'),curses.A_BOLD)
             self.center(min(h-1,h//2+1),self.t('resize_hint'))
@@ -405,8 +344,13 @@ class App(CathedralUI, ExpansionUI):
                 while x<len(row) and row[x][1]==attr:
                     chars.append(row[x][0]); x+=1
                 text=''.join(chars)
+                if self.ascii_mode: text=safe_ascii(text)
                 if text:
                     try: self.win.addstr(y,start,text,attr)
+                    except UnicodeError:
+                        self.terminal_ascii=True
+                        try: self.win.addstr(y,start,safe_ascii(text),attr)
+                        except curses.error: pass
                     except curses.error: pass
         self.win.noutrefresh()
         curses.doupdate()
@@ -484,16 +428,14 @@ class App(CathedralUI, ExpansionUI):
                 self.screen = self.help_return
             return
         if self.screen == 'settings':
-            keys = ['language','sound','music','volume','ascii','color','profiles']
+            keys = ['sound','music','volume','ascii','color','profiles']
             if up or down:
                 self.setting_selection = (self.setting_selection+(-1 if up else 1)) % len(keys)
             elif left or right or enter:
                 name = keys[self.setting_selection]
                 if name == 'profiles':
                     self.profile_return='settings'; self.screen='profiles'; return
-                if name == 'language':
-                    self.settings[name] = 'en' if self.settings[name] == 'ko' else 'ko'
-                elif name == 'volume':
+                if name == 'volume':
                     self.settings[name] = round(max(0,min(1,self.settings[name]+(-.1 if left else .1))),1)
                 else:
                     self.settings[name] = not self.settings[name]
@@ -594,7 +536,7 @@ class App(CathedralUI, ExpansionUI):
                 keys = ('','single','double','triple','tetris')
                 text = self.t('tspin') if data['spin'] else self.t(keys[data['count']])
                 if data['combo'] > 0:
-                    text += ' · '+self.t('combo',value=data['combo'])
+                    text += ' / '+self.t('combo',value=data['combo'])
                 if data['perfect']:
                     text = self.t('perfect')
                 self.banner = text+f' +{data["points"]:,}'
@@ -703,12 +645,6 @@ class App(CathedralUI, ExpansionUI):
         self.audio.set_music(music)
         if hasattr(self.audio,'set_intensity'):
             self.audio.set_intensity(3 if self.effects.fever_until>self.now else min(3,self.effects.combo//2))
-        try:
-            self.audio.bells.get_nowait()
-            if self.settings['sound'] and self.settings['volume'] > 0:
-                curses.beep()
-        except (queue.Empty,curses.error):
-            pass
 
     def run(self):
         last = time.monotonic()

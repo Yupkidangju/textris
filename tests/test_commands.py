@@ -3,11 +3,12 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from textris import __version__
 
 
 class CommandTests(unittest.TestCase):
     def test_help_and_version_without_terminal(self):
-        for arg,text in [('--help','--audio-check'),('--version','1.0.0')]:
+        for arg,text in [('--help','--audio-check'),('--version',__version__)]:
             result=subprocess.run([sys.executable,'-m','textris',arg],capture_output=True,text=True)
             self.assertEqual(result.returncode,0)
             self.assertIn(text,result.stdout)

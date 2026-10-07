@@ -36,7 +36,7 @@ class ServicesTests(unittest.TestCase):
                 'records':{'sprint':[{'score':-1},None]}}))
             s = Store(Path(tmp)); s.load()
             self.assertEqual(s.settings['volume'],.5)
-            self.assertEqual(s.settings['language'],'ko')
+            self.assertEqual(s.settings['language'],'en')
             self.assertIs(s.settings['sound'],True)
             self.assertIs(s.settings['ascii'],True)
             self.assertEqual(s.records['sprint'],[])
@@ -64,7 +64,8 @@ class ServicesTests(unittest.TestCase):
                     if name == 'music': self.assertGreater(len(data)/22050,5)
 
     def test_translation_keys(self):
-        self.assertEqual(set(STRINGS['ko']),set(STRINGS['en']))
+        self.assertEqual(set(STRINGS), {'en'})
+        self.assertEqual(tr('ko', 'level', value=2), STRINGS['en']['level'].format(value=2))
         for lang in STRINGS:
             self.assertEqual(tr(lang,'level',value=2), STRINGS[lang]['level'].format(value=2))
 
@@ -154,8 +155,7 @@ class AudioLifecycleTests(unittest.TestCase):
                     self.wait_for(lambda: bool(audio.effects))
                     audio.effects[0].returncode=1
                     self.wait_for(lambda: audio.failed)
-                    self.wait_for(lambda: not audio.bells.empty())
-                    self.assertEqual(audio.status,'audio_bell')
+                    self.assertEqual(audio.status,'audio_silent')
                 finally:
                     audio.close()
                 self.assertFalse(audio.thread.is_alive())

@@ -1,15 +1,15 @@
 # TEXTRIS 실행 스펙
 
 작성: 2026-10-07. 근거: 사용자 요청, AGENTS.md, AI_IMPLEMENTATION_DOC_STANDARD.md.
-프로젝트명 TEXTRIS, 초기 버전 1.0.0, 로컬 Python TUI 게임. 사용자 언어는 한국어/영어로 가정.
+프로젝트명 TEXTRIS, 현재 버전 1.1.0, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
 
 ## 목표와 완료 기준
 터미널에서 키보드로 즐기는 완성형 싱글 플레이 테트리스. 독립 코어 테스트,
 실제 PTY 키 입력/화면/종료/리사이즈 검증, WAV 신호 검증과 오디오 백엔드 확인을 완료한다.
-온라인 대전, 계정, 외부 배포는 이번 범위가 아니다.
+온라인 대전/계정은 범위 밖이다. 검증 후 태그 푸시와 GitHub Release는 최신 사용자 승인 범위다.
 
 ## 동결 결정
-- Python 3.10 이상, 표준 라이브러리만 사용. Linux/macOS curses 터미널.
+- Python 3.10 이상, Linux/macOS 표준 curses 및 Windows 조건부 windows-curses.
 - `python3 -m textris` 또는 `python3 run.py`. 설치와 네트워크 불필요.
 - 코어/화면/오디오/저장/번역 분리. 화면 60 FPS 목표, 실제 시간 delta로 진행.
 - 보드 10×20 표시 + 상단 숨김 2행, I/O/T/S/Z/J/L 7-bag, NEXT 5개, HOLD 1개.
@@ -22,21 +22,21 @@
   연속 Tetris/T-spin 삭제 B2B 1.5배, combo 두 번째 삭제부터 50×combo×레벨.
   All clear는 3500×레벨 추가. 레벨은 해당 삭제 이전 레벨로 점수 계산.
 - READY → PLAYING ↔ PAUSED/HELP/CONFIRM → RESULT → MENU.
-  줄 삭제 0.24초 깜빡임/입자, hard drop 잔상, 레벨 배너, 타이틀 낙하 문자,
+  줄 삭제 유한 성취 연출, hard drop 빛 기둥, 레벨 배너, 타이틀 조립 문자,
   종료 보드 순차 채움. 모든 애니메이션은 입력 루프를 막지 않는다.
 - 방향키/A/D 좌우, 아래/S soft drop, 위/X 우회전, Z 좌회전,
   Space hard drop, C 홀드, P/Esc 일시정지, H/? 도움말, M 음소거,
   B 배경음 토글, R 재시작 확인, Q 종료 확인. 메뉴 Enter 선택.
-- 메뉴: 모드 3개, 시작 레벨 1~15, 설정, 기록, 종료. 설정: 언어, 색상/모노,
+- 메뉴: 모드 3개, 시작 레벨 1~15, 설정, 기록, 종료. 설정: 색상/모노,
   블록 Unicode/ASCII, 전체 사운드, 음악, 볼륨 0~100%.
   전체 사운드 설정은 M과 같은 마스터 음소거이며 음악에도 적용된다. 시작 전 3초 카운트다운.
 - i18n 문자열 외부화. 최소 64×28, 미달 시 안내와 자동 게임 정지, 확대 후 재개.
 - stdlib wave로 직접 합성한 효과음/오리지널 루프 음악. 외부 유료 서비스나 음원 사용 없음.
-  aplay/paplay/ffplay/afplay 자동 선택, 비동기 실행, 실패하면 터미널 bell fallback.
+  aplay/paplay/ffplay/afplay 자동 선택, 비동기 실행, 실패하면 무음 상태 표시, beep/BEL 사용하지 않음.
   음악은 pause/help/resize/confirm 시 중단, 프로세스 종료 시 모두 정리.
   생성 음원 디렉터리/파일의 정규 경로는 지정한 데이터 루트 내부인지 검증한다.
 - 기본 저장은 프로젝트 내부 `.textris-data/records.json` (외부 쓰기 방지).
-  스키마 `{"version":1,"settings":{"language":"ko","sound":true,"music":true,
+  스키마 `{"version":1,"settings":{"language":"en","sound":true,"music":true,
   "volume":0.5,"ascii":false,"color":true},"records":{"marathon":[],"sprint":[],"ultra":[]}}`.
   기록 필드 score:int, lines:int, level:int, seconds:float (0~10^12), completed:bool, date:str.
   모드당 10개, sprint 완료 시간 우선/나머지 점수 우선. 임시 파일 후 원자 교체.
@@ -89,3 +89,9 @@ cathedral, Braille 연속 곡선·깊이 기반 입체 아트·장미창·빛 �
 - 라이선스: Apache License 2.0 (`LICENSE`, Copyright 2026 yupkidangju@gmail.com).
 
 
+
+## 영문/터미널 호환과 전체 아트 확장 — 최신 기준 (2026-10-07)
+`docs/terminal-art-upgrade-plan.md`가 언어·벨 폴백·테마/갤러리 구현의 최신 기준이다.
+제품 UI는 영문 단일/ASCII 문자열, 아트에는 자동 ASCII 폴백과 Unicode 선택을 제공한다.
+재생 불가 시 벨을 울리지 않는다. 6테마와 모든 갤러리 아트를 공통 합성기로 갱신한다.
+게임 규칙/리플레이/기록은 유지한다. 검증 후 태그 푸시/릴리스는 사용자 명시 승인됨.

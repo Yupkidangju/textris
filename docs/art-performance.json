@@ -1,0 +1,262 @@
+{
+  "python": "3.14.4",
+  "size": [
+    120,
+    40
+  ],
+  "includes_terminal_io": false,
+  "themes": {
+    "cathedral": {
+      "mean_ms": 8.44,
+      "p95_ms": 14.4,
+      "max_ms": 25.91
+    },
+    "cyberpunk": {
+      "mean_ms": 6.38,
+      "p95_ms": 13.01,
+      "max_ms": 15.41
+    },
+    "space": {
+      "mean_ms": 7.06,
+      "p95_ms": 15.5,
+      "max_ms": 22.37
+    },
+    "fire": {
+      "mean_ms": 6.23,
+      "p95_ms": 14.96,
+      "max_ms": 15.7
+    },
+    "crt": {
+      "mean_ms": 5.82,
+      "p95_ms": 11.66,
+      "max_ms": 12.77
+    },
+    "mono": {
+      "mean_ms": 8.46,
+      "p95_ms": 18.91,
+      "max_ms": 20.23
+    }
+  },
+  "gallery": {
+    "background/rain": {
+      "mean_ms": 1.79,
+      "p95_ms": 3.74,
+      "max_ms": 4.18
+    },
+    "background/plasma": {
+      "mean_ms": 2.89,
+      "p95_ms": 7.45,
+      "max_ms": 7.94
+    },
+    "background/tunnel": {
+      "mean_ms": 3.07,
+      "p95_ms": 9.41,
+      "max_ms": 10.0
+    },
+    "background/grid": {
+      "mean_ms": 2.98,
+      "p95_ms": 8.94,
+      "max_ms": 9.55
+    },
+    "background/braille": {
+      "mean_ms": 2.99,
+      "p95_ms": 8.87,
+      "max_ms": 9.44
+    },
+    "background/cube": {
+      "mean_ms": 2.39,
+      "p95_ms": 6.09,
+      "max_ms": 6.66
+    },
+    "background/tetromino": {
+      "mean_ms": 2.58,
+      "p95_ms": 7.65,
+      "max_ms": 7.93
+    },
+    "background/torus": {
+      "mean_ms": 3.31,
+      "p95_ms": 11.01,
+      "max_ms": 11.09
+    },
+    "background/mandelbrot": {
+      "mean_ms": 4.34,
+      "p95_ms": 14.85,
+      "max_ms": 15.42
+    },
+    "background/julia": {
+      "mean_ms": 4.49,
+      "p95_ms": 15.22,
+      "max_ms": 16.29
+    },
+    "background/aurora": {
+      "mean_ms": 2.93,
+      "p95_ms": 9.07,
+      "max_ms": 9.39
+    },
+    "background/fluid": {
+      "mean_ms": 3.03,
+      "p95_ms": 9.11,
+      "max_ms": 10.17
+    },
+    "background/metaball": {
+      "mean_ms": 3.58,
+      "p95_ms": 11.62,
+      "max_ms": 11.84
+    },
+    "background/space": {
+      "mean_ms": 2.98,
+      "p95_ms": 8.68,
+      "max_ms": 8.91
+    },
+    "background/warp": {
+      "mean_ms": 1.64,
+      "p95_ms": 2.78,
+      "max_ms": 2.86
+    },
+    "background/city": {
+      "mean_ms": 4.63,
+      "p95_ms": 15.0,
+      "max_ms": 21.23
+    },
+    "background/logo": {
+      "mean_ms": 2.41,
+      "p95_ms": 7.03,
+      "max_ms": 9.9
+    },
+    "background/reflection": {
+      "mean_ms": 2.37,
+      "p95_ms": 6.5,
+      "max_ms": 7.0
+    },
+    "background/cathedral": {
+      "mean_ms": 5.45,
+      "p95_ms": 13.85,
+      "max_ms": 25.04
+    },
+    "effect/impact": {
+      "mean_ms": 4.65,
+      "p95_ms": 13.87,
+      "max_ms": 14.45
+    },
+    "effect/elastic": {
+      "mean_ms": 5.08,
+      "p95_ms": 14.59,
+      "max_ms": 15.32
+    },
+    "effect/echoes": {
+      "mean_ms": 5.57,
+      "p95_ms": 15.42,
+      "max_ms": 15.79
+    },
+    "effect/cracks": {
+      "mean_ms": 4.89,
+      "p95_ms": 14.06,
+      "max_ms": 14.48
+    },
+    "effect/shatter": {
+      "mean_ms": 5.71,
+      "p95_ms": 15.01,
+      "max_ms": 15.23
+    },
+    "effect/ricochet": {
+      "mean_ms": 4.46,
+      "p95_ms": 13.46,
+      "max_ms": 20.82
+    },
+    "effect/chain": {
+      "mean_ms": 10.21,
+      "p95_ms": 19.34,
+      "max_ms": 20.03
+    },
+    "effect/lightning": {
+      "mean_ms": 4.41,
+      "p95_ms": 13.66,
+      "max_ms": 13.86
+    },
+    "effect/blackhole": {
+      "mean_ms": 8.5,
+      "p95_ms": 17.73,
+      "max_ms": 18.4
+    },
+    "effect/glitch": {
+      "mean_ms": 4.3,
+      "p95_ms": 13.43,
+      "max_ms": 13.69
+    },
+    "effect/smoke": {
+      "mean_ms": 10.8,
+      "p95_ms": 19.96,
+      "max_ms": 20.29
+    },
+    "effect/fire": {
+      "mean_ms": 8.39,
+      "p95_ms": 17.76,
+      "max_ms": 18.62
+    },
+    "effect/braille": {
+      "mean_ms": 6.96,
+      "p95_ms": 16.25,
+      "max_ms": 17.23
+    },
+    "effect/laser": {
+      "mean_ms": 5.46,
+      "p95_ms": 14.6,
+      "max_ms": 15.46
+    },
+    "effect/gold": {
+      "mean_ms": 4.3,
+      "p95_ms": 13.38,
+      "max_ms": 13.95
+    },
+    "effect/vortex": {
+      "mean_ms": 10.07,
+      "p95_ms": 19.52,
+      "max_ms": 19.7
+    },
+    "effect/electric": {
+      "mean_ms": 6.01,
+      "p95_ms": 15.37,
+      "max_ms": 15.85
+    },
+    "effect/ice": {
+      "mean_ms": 5.8,
+      "p95_ms": 15.42,
+      "max_ms": 15.86
+    },
+    "effect/embers": {
+      "mean_ms": 4.41,
+      "p95_ms": 13.6,
+      "max_ms": 14.41
+    },
+    "effect/typewriter": {
+      "mean_ms": 3.99,
+      "p95_ms": 13.12,
+      "max_ms": 13.57
+    },
+    "effect/assemble": {
+      "mean_ms": 4.2,
+      "p95_ms": 13.34,
+      "max_ms": 13.36
+    },
+    "effect/odometer": {
+      "mean_ms": 4.05,
+      "p95_ms": 13.11,
+      "max_ms": 13.33
+    },
+    "effect/victory": {
+      "mean_ms": 5.34,
+      "p95_ms": 14.45,
+      "max_ms": 14.51
+    },
+    "effect/collapse": {
+      "mean_ms": 4.26,
+      "p95_ms": 13.72,
+      "max_ms": 14.16
+    },
+    "effect/ripple": {
+      "mean_ms": 5.89,
+      "p95_ms": 15.47,
+      "max_ms": 15.68
+    }
+  }
+}

@@ -5,7 +5,7 @@ import math
 from pathlib import Path
 import tempfile
 
-DEFAULTS = dict(language='ko',sound=True,music=True,volume=.5,ascii=False,color=True,
+DEFAULTS = dict(language='en',sound=True,music=True,volume=.5,ascii=False,color=True,
                 theme='cathedral',fx_intensity=.75,fx_speed=1.,fx_density=.75,
                 shake=True,flash=True,braille=True)
 MODES = ('marathon','sprint','ultra','boss')
@@ -42,7 +42,8 @@ class Store:
                 for key, default in DEFAULTS.items():
                     value = settings.get(key, default)
                     if key == 'language':
-                        valid = value in ('ko','en')
+                        value='en'
+                        valid = True
                     elif key == 'theme':
                         valid = isinstance(value,str) and value in ('cathedral','cyberpunk','space','fire','crt','mono')
                     elif key in ('fx_intensity','fx_density','fx_speed'):

@@ -96,7 +96,7 @@ class UITests(unittest.TestCase):
         self.assertEqual(len(a.trails),1)
         self.assertEqual(len(a.particles),6)
         self.assertEqual(a.flash_until,100.24)
-        self.assertIn('COMBO ×2',a.banner)
+        self.assertIn('COMBO x2',a.banner)
         with patch('curses.doupdate'):
             a.draw(); before=a.win.lines[:]
             a.now=100.6; a.process_events(); a.draw()
@@ -107,11 +107,12 @@ class UITests(unittest.TestCase):
 
     def test_title_animation_preserves_all_six_logo_rows(self):
         from textris.ui import LOGO
-        a=self.app; a.settings['theme']='cyberpunk'; a.now=.1
+        a=self.app; a.settings['theme']='cyberpunk'; a.now=a.art_epoch+2
         a.draw_menu()
-        rows=[y for y,x,text in a.win.lines if text in LOGO]
-        self.assertEqual(len(rows),6)
-        self.assertEqual(len(set(rows)),6)
+        for y,row in enumerate(LOGO):
+            actual={x:text for py,x,text in a.win.lines if py==3+y and len(text)==1}
+            left=(a.win.size[1]-len(row))//2
+            self.assertEqual(''.join(actual.get(left+x,' ') for x in range(len(row))),row)
 
     def test_controls_change_piece_and_preferences(self):
         a=self.app; a.start('marathon'); a.screen='playing'; a.game.state='playing'
