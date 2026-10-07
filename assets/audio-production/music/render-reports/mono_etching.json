@@ -1,0 +1,25 @@
+{
+  "id": "mono_etching",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.97,
+  "true_peak_dbtp": -4.5,
+  "lra": 6.1,
+  "peak": 0.595083475112915,
+  "rms": 0.09853498988839503,
+  "stereo_correlation": 0.9751903749977298,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.8,
+  "spectral_energy": {
+    "sub": 0.125665,
+    "low": 0.281481,
+    "mid": 0.590298,
+    "presence": 0.002517,
+    "air": 3.9e-05
+  },
+  "sha256": "29e985dcdb0b76bf18924e342735eaf87a68e29654e6a2aaff724af26923d9fb",
+  "master_sha256": "0b75c8609f91a5af6913b6de0753884e30f0774fd96c6e62bc676c83fb53f07b",
+  "midi_sha256": "6cbd20645fcac25218c2a45551d66dcb3142db2f25e85dfb50ca17f278009376",
+  "human_listening": "not performed"
+}

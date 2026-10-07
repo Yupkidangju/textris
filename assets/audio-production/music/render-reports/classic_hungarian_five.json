@@ -1,0 +1,25 @@
+{
+  "id": "classic_hungarian_five",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.97,
+  "true_peak_dbtp": -7.58,
+  "lra": 5.7,
+  "peak": 0.4150599241256714,
+  "rms": 0.0816230514087871,
+  "stereo_correlation": 0.9920847592137008,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.029454,
+    "low": 0.188493,
+    "mid": 0.565631,
+    "presence": 0.214768,
+    "air": 0.001653
+  },
+  "sha256": "9fc380ff867622ba35df77de6fab76b7cd178d84d24b2150631dbe8f97184242",
+  "master_sha256": "8bc16f3ae76f433272df3abb477e436b6db33f2756318a191d19aab39142017f",
+  "midi_sha256": "6789285c9d430fb05295fc73288117258b0ad5882efc22d3ec0ad97ef4d4df5e",
+  "human_listening": "not performed"
+}

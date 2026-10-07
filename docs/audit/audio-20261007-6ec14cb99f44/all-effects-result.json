@@ -1,0 +1,150 @@
+{
+  "endpoint": {
+    "endpoint_id": "{0.0.0.00000000}.{a05e0919-8477-4033-8e91-73f8b507d78a}",
+    "master_volume": 0.0,
+    "master_muted": true
+  },
+  "baseline": {
+    "samples": 28,
+    "peak": 2.3283064365386963e-10,
+    "positive_samples": 0
+  },
+  "effects": {
+    "move": {
+      "samples": 51,
+      "peak": 3.0517810955643654e-05,
+      "positive_samples": 0,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\move-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "rotate": {
+      "samples": 51,
+      "peak": 0.181732177734375,
+      "positive_samples": 2,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\rotate-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "hold": {
+      "samples": 52,
+      "peak": 0.200531005859375,
+      "positive_samples": 10,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\hold-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "drop": {
+      "samples": 51,
+      "peak": 0.20062255859375,
+      "positive_samples": 9,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\drop-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "lock": {
+      "samples": 51,
+      "peak": 0.043792724609375,
+      "positive_samples": 1,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\lock-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "clear": {
+      "samples": 62,
+      "peak": 0.2005615234375,
+      "positive_samples": 28,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\clear-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "tetris": {
+      "samples": 73,
+      "peak": 0.2005615234375,
+      "positive_samples": 36,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\tetris-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "level": {
+      "samples": 75,
+      "peak": 0.200592041015625,
+      "positive_samples": 43,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\level-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "gameover": {
+      "samples": 106,
+      "peak": 0.200592041015625,
+      "positive_samples": 71,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\gameover-5.wav",
+          "returncode": 0
+        }
+      ]
+    },
+    "win": {
+      "samples": 102,
+      "peak": 0.200592041015625,
+      "positive_samples": 70,
+      "status": "ffplay",
+      "launches": [
+        {
+          "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\all-effects-runtime\\audio\\win-5.wav",
+          "returncode": 0
+        }
+      ]
+    }
+  },
+  "failed": false,
+  "closed": {
+    "thread_alive": false,
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

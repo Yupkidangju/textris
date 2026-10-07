@@ -1,0 +1,8 @@
+include spec.md designs.md DESIGN_DECISIONS.md
+include docs/audio-overhaul-plan.md
+include docs/audio-overhaul-verification.md docs/audio-overhaul-progress.md
+recursive-include docs/audio-evidence *.json *.log
+recursive-include scripts *.py
+recursive-include tests *.py
+recursive-include assets/audio-production/music *.mid *.json *.md *.txt *.ly *.abc
+recursive-include assets/audio-production/sfx *.json *.md *.txt

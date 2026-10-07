@@ -1,0 +1,12 @@
+*.ogg binary
+*.wav binary
+*.mid binary
+*.pdf binary
+# 콘솔 제어문자가 포함된 원시 감사 로그는 바이트 그대로 보존한다.
+docs/audit/**/ffplay-stderr.log binary
+# 해시로 검증하는 배포 자산과 원전 바이트는 checkout의 줄바꿈 변환을 받지 않는다.
+textris/assets/audio/** -text whitespace=cr-at-eol
+assets/audio-production/music/sources/** -text whitespace=cr-at-eol
+# 제작 검증에서 이 두 텍스트의 SHA-256을 직접 사용한다.
+scripts/prepare_sfx.py text eol=lf
+assets/audio-production/sfx/requests.json text eol=lf

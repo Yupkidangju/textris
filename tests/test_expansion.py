@@ -117,16 +117,22 @@ class ExpansionTests(unittest.TestCase):
         a.settings['flash']=False; a.effects.update(103)
         self.assertFalse(a.effects.actions)
 
-    def test_replay_path_symlink_and_recent_twenty(self):
+    def test_replay_recent_twenty(self):
         from textris.replay import ReplayStore
         from textris.session import Session
         s=Session(seed=1); s.command('drop'); s.step()
         r=ReplayStore(self.tmp.name)
         for _ in range(22): self.assertIsNotNone(r.save(s.replay()))
         self.assertEqual(len(r.list()),20)
+
+    def test_replay_path_symlink(self):
+        from tests.filesystem_helpers import symlink_or_skip
+        from textris.replay import ReplayStore
+        from textris.session import Session
+        s=Session(seed=1); s.command('drop'); s.step()
         with tempfile.TemporaryDirectory() as other:
             unsafe=Path(self.tmp.name)/'outside'
-            unsafe.mkdir(); (unsafe/'replays').symlink_to(other,target_is_directory=True)
+            unsafe.mkdir(); symlink_or_skip(unsafe/'replays',other,directory=True)
             store=ReplayStore(unsafe)
             self.assertIsNone(store.save(s.replay()))
             self.assertFalse(list(Path(other).iterdir()))

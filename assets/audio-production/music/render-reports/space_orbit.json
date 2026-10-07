@@ -1,0 +1,25 @@
+{
+  "id": "space_orbit",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.96,
+  "true_peak_dbtp": -4.21,
+  "lra": 6.4,
+  "peak": 0.6154673099517822,
+  "rms": 0.09754479871794444,
+  "stereo_correlation": 0.9790535178168582,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.1,
+  "spectral_energy": {
+    "sub": 0.047504,
+    "low": 0.207724,
+    "mid": 0.718056,
+    "presence": 0.026436,
+    "air": 0.00028
+  },
+  "sha256": "d4b24073c915ce976c2919f1e18b71b1125dd7c45eab9f6c8b5303c3e829dac5",
+  "master_sha256": "6f3081ca7768dea8311306cd393b096619c700e072572895c2a1873a391cb1d9",
+  "midi_sha256": "8806aaea7b7869a1afd24347ebc40935963a757bbfd0a89afd769154d06db6d7",
+  "human_listening": "not performed"
+}

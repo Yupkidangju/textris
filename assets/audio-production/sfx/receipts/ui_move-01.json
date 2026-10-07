@@ -1,0 +1,30 @@
+{
+  "id": "ui_move",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:07:39.037Z",
+  "finished_at": "2026-10-07T15:08:26.065Z",
+  "request": {
+    "id": "ui_move",
+    "prompt": "A single very small dry wooden key tap, fingertip pressing a tight walnut mechanical key once. Fine papery contact, soft body, crisp tiny attack and immediate short decay. Close microphone in a silent dry room. An isolated physical click, no ringing, no beeps, no voice, no music.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_move-01.wav",
+    "min_duration": 0.04,
+    "max_duration": 0.15,
+    "gain": 0.31,
+    "priority": 10,
+    "cooldown": 0.045,
+    "target_peak_db": -10
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\ui_move-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\ui_move-01.wav"
+    },
+    "isError": false
+  }
+}

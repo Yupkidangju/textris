@@ -1,0 +1,30 @@
+{
+  "id": "hold",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:15:12.458Z",
+  "finished_at": "2026-10-07T15:15:44.334Z",
+  "request": {
+    "id": "hold",
+    "prompt": "A smooth hollow wooden cube is caught in a leather-padded tray. A compact warm tok and a soft suction-like air release, slightly deeper than a key click, immediate dry decay. One isolated action. No voice, no music, no sustained tones or beeps.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/hold-01.wav",
+    "min_duration": 0.09,
+    "max_duration": 0.25,
+    "gain": 0.55,
+    "priority": 25,
+    "cooldown": 0.1,
+    "target_peak_db": -7
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\hold-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\hold-01.wav"
+    },
+    "isError": false
+  }
+}

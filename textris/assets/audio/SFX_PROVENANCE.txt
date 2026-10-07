@@ -1,0 +1,20 @@
+TEXTRIS generated sound-effects provenance (2026-10-08)
+
+Thirty distributed effects were generated locally through Agent Audio using
+Stable Audio 3 Medium (TFLite runtime). Thirty-two source generations were retained;
+combo and fever_end each received one additional candidate. No model weights or
+generation runtime are included in this package.
+
+Requests, generation receipts, original-file hashes and processing measurements
+are preserved in assets/audio-production/sfx in the source repository. Source WAVs
+are retained in the project's local production archive. Runtime effects were
+trimmed to their useful events, faded, level-balanced and encoded as PCM16 WAV.
+
+Model project: https://github.com/Stability-AI/stable-audio-3
+Model card: https://huggingface.co/stabilityai/stable-audio-3-medium
+Use of model weights is governed by the upstream model license, separately from
+the source code. The automated production process did not accept license terms
+on behalf of the user. No third-party recording was supplied as a generation input.
+
+Signal and decoding checks do not establish human listening approval or guarantee
+that the generated sound follows every acoustic detail of the prompt.

@@ -1,0 +1,30 @@
+{
+  "id": "clear_double",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:17:12.032Z",
+  "finished_at": "2026-10-07T15:17:35.834Z",
+  "request": {
+    "id": "clear_double",
+    "prompt": "Two tightly layered crisp ceramic fractures merge into a single broader dry scattering burst, supported by a short warm wooden impact. Bright gritty fragments fall away quickly, clear compact tail. Close isolated sound, no voice, no music, no beeps or sustained tones.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/clear_double-01.wav",
+    "min_duration": 0.4,
+    "max_duration": 0.85,
+    "gain": 0.77,
+    "priority": 70,
+    "cooldown": 0.1,
+    "target_peak_db": -4.5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\clear_double-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\clear_double-01.wav"
+    },
+    "isError": false
+  }
+}

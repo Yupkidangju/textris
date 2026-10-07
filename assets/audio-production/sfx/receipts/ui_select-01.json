@@ -1,0 +1,30 @@
+{
+  "id": "ui_select",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:10:33.543Z",
+  "finished_at": "2026-10-07T15:11:14.499Z",
+  "request": {
+    "id": "ui_select",
+    "prompt": "A small brass latch clicks firmly into a felt-lined recess once. Compact tactile double contact, rounded low body, precise crisp attack, very short dry decay. Close isolated recording with silence afterwards. No voice, no music, no beeps or sustained tones.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_select-01.wav",
+    "min_duration": 0.06,
+    "max_duration": 0.15,
+    "gain": 0.53,
+    "priority": 20,
+    "cooldown": 0.09,
+    "target_peak_db": -8
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\ui_select-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\ui_select-01.wav"
+    },
+    "isError": false
+  }
+}

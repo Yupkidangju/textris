@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-10-07T15:30:09.971Z",
+  "scope": "30 Agent Audio sound effects; production and distribution assets only",
+  "generation": {
+    "selected": 30,
+    "total_attempts": 32,
+    "backend": "local tflite / Stable Audio 3 Medium",
+    "regenerated_once": [
+      "combo",
+      "fever_end"
+    ],
+    "originals_preserved": true
+  },
+  "checks": [
+    {
+      "command": "python scripts/prepare_sfx.py",
+      "result": "30 completed; zero missing; 14.480 runtime seconds"
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_sfx_assets.py",
+      "result": "4 tests passed; 30 catalog IDs, byte hashes, WAV boundaries/levels, generation receipts and immutable source inventory checked"
+    },
+    {
+      "command": "miniaudio.decode_file for all catalog entries (SIGNED16, 2 channels, 44100Hz)",
+      "result": "30/30 decoded; frame durations match catalog"
+    },
+    {
+      "command": "git diff --check -- scripts/prepare_sfx.py tests/test_sfx_assets.py assets/audio-production/sfx textris/assets/audio/sfx.json",
+      "result": "passed"
+    }
+  ],
+  "runtime": {
+    "format": "WAV PCM16 stereo",
+    "sample_rate": 44100,
+    "files": 30,
+    "bytes": 2555672,
+    "peak_dbfs_range": [
+      -11,
+      -3
+    ],
+    "clipped_samples": 0,
+    "source_clipped_samples": 0
+  },
+  "quality_scope": {
+    "waveform_and_metadata_review": true,
+    "human_listening_verified": false,
+    "native_game_output": "Owned by integration validation; not asserted by this asset report.",
+    "prompt_adherence": "Not established by numerical checks."
+  }
+}

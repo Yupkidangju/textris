@@ -1,0 +1,30 @@
+{
+  "id": "win",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:22:48.043Z",
+  "finished_at": "2026-10-07T15:23:11.122Z",
+  "request": {
+    "id": "win",
+    "prompt": "A broad wooden mechanism opens with a confident compact thump, followed by a joyful wide shower of tiny dry glass and mineral fragments in a soft air sweep. Bright layered natural texture, graceful short decay. One physical celebration, no voice, no music, no tune or electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/win-01.wav",
+    "min_duration": 1,
+    "max_duration": 1.8,
+    "gain": 0.95,
+    "priority": 100,
+    "cooldown": 0.5,
+    "target_peak_db": -3.5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\win-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\win-01.wav"
+    },
+    "isError": false
+  }
+}

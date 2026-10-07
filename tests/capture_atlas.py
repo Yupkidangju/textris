@@ -71,8 +71,9 @@ def main():
             def snapshot(theme, screen, size=(120, 40), ascii_mode=False, catalog_index=None, event=None):
                 w, h = size
                 store = Store(Path(state))
-                store.settings.update(language='en', shake=False, theme=theme, ascii=ascii_mode)
-                app = App(capture.ColorWindow(h, w), store, AudioStub(), 42, unicode_art=True)
+                store.settings.update(language='en', shake=False, theme=theme, ascii=ascii_mode,
+                                      display_mode='ascii' if ascii_mode else 'unicode')
+                app = App(capture.ColorWindow(h, w), store, AudioStub(), 42)
                 app.has_color = True
                 app.art_palette.setup(256, 256, theme)
                 app.art_epoch = 90

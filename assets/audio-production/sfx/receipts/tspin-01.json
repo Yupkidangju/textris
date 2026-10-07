@@ -1,0 +1,30 @@
+{
+  "id": "tspin",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:18:34.696Z",
+  "finished_at": "2026-10-07T15:18:56.199Z",
+  "request": {
+    "id": "tspin",
+    "prompt": "A heavy metal puzzle ring whips through a brief curved air swish and snaps decisively into a ceramic socket. Crisp twisting scrape, sharp textured impact, airy granular decay. A single confident physical flourish, no voice, no music, no electronic tones or melodic chimes.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/tspin-01.wav",
+    "min_duration": 0.55,
+    "max_duration": 1.1,
+    "gain": 0.87,
+    "priority": 85,
+    "cooldown": 0.15,
+    "target_peak_db": -4
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\tspin-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\tspin-01.wav"
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,5 @@
+Audio backend: WASAPI
+App audio: muted=False / volume=50%
+OS output: muted=False / volume=39%
+Backend completion: PASS
+Listening: unconfirmed; backend completion does not prove audible sound.

@@ -8,6 +8,7 @@ from textris.ui import App, width, clip
 
 
 class Window:
+    encoding = 'utf-8'
     def __init__(self, height=28, columns=64):
         self.size = (height,columns)
         self.lines = []
@@ -22,9 +23,35 @@ class Window:
 
 class AudioStub:
     status = 'audio_bell'
-    def __init__(self): self.events=[]; self.music=False; import queue; self.bells=queue.Queue()
+    def __init__(self):
+        self.events=[]; self.music=False; self.suspended=False; self.theme=None
+        self.catalog=[]; self.calls=[]
+        self.music_state=dict(track_id=None,title='',theme='',position=0.,duration=0.,bpm=0.,
+                              instruments=[],paused=False,buffering=False,mode='game',
+                              shuffle=False,repeat=False,error='')
+        import queue
+        self.bells=queue.Queue()
     def play(self,name): self.events.append(name)
     def set_music(self,enabled): self.music=enabled
+    def set_suspended(self,enabled): self.suspended=enabled
+    def set_theme(self,theme): self.theme=theme; self.calls.append(('theme',theme))
+    def audition(self,track_id,*,playlist=None,shuffle=False,repeat=False):
+        self.calls.append(('audition',track_id,playlist,shuffle,repeat))
+        track=next(track for track in self.catalog if track['id']==track_id)
+        self.music_state.update(track_id=track_id,mode='audition',position=0.,paused=False,
+                                shuffle=shuffle,repeat=repeat,
+                                **{key:track[key] for key in ('title','theme','duration','bpm','instruments')})
+    def pause_audition(self,paused):
+        self.calls.append(('pause',paused)); self.music_state['paused']=paused
+    def set_audition_options(self,shuffle=None,repeat=None):
+        if shuffle is not None: self.music_state['shuffle']=shuffle
+        if repeat is not None: self.music_state['repeat']=repeat
+    def seek_music(self,seconds):
+        self.calls.append(('seek',seconds))
+        self.music_state['position']=max(0.,min(self.music_state['duration'],self.music_state['position']+seconds))
+    def next_track(self,direction=1): self.calls.append(('next',direction))
+    def stop_audition(self):
+        self.calls.append(('stop',)); self.music_state['mode']='game'
 
 
 class UITests(unittest.TestCase):
@@ -103,7 +130,7 @@ class UITests(unittest.TestCase):
         self.assertEqual(a.trails,[])
         self.assertEqual(a.particles,[])
         self.assertNotEqual(before,a.win.lines)
-        self.assertIn('clear',a.audio.events)
+        self.assertIn('clear_single',a.audio.events)
 
     def test_title_animation_preserves_all_six_logo_rows(self):
         from textris.ui import LOGO

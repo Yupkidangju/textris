@@ -1,11 +1,14 @@
 import json
 from pathlib import Path
 import tempfile
-import termios
+import sys
 import unittest
-from .terminal_harness import Terminal
+if sys.platform != 'win32':
+    import termios
+    from .terminal_harness import Terminal
 
 
+@unittest.skipIf(sys.platform == 'win32', 'Unix PTY only; run scripts/windows_terminal_probe.py on Windows')
 class TerminalTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
@@ -97,6 +100,7 @@ class TerminalTests(unittest.TestCase):
 
 if __name__=='__main__': unittest.main()
 
+@unittest.skipIf(sys.platform == 'win32', 'Unix PTY only; run scripts/windows_terminal_probe.py on Windows')
 class ExpansionTerminalTests(unittest.TestCase):
     setUp=TerminalTests.setUp
     launch=TerminalTests.launch
@@ -129,6 +133,7 @@ class ExpansionTerminalTests(unittest.TestCase):
         self.assertEqual(len(data['records']['boss']),1)
         self.assertFalse(data['records']['marathon'])
 
+@unittest.skipIf(sys.platform == 'win32', 'Unix PTY only; run scripts/windows_terminal_probe.py on Windows')
 class CathedralTerminalTests(unittest.TestCase):
     setUp=TerminalTests.setUp
     def test_session_theme_restores_existing_choice_and_terminal(self):

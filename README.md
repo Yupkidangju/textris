@@ -1,7 +1,9 @@
 # TEXTRIS
 
 키보드로 플레이하는 터미널 테트리스. 컬러 블록과 텍스트 애니메이션,
-직접 합성한 효과음·배경음악을 제공합니다. Linux/macOS 게임 런타임은 Python 표준 라이브러리를 사용합니다. Windows 소스 실행에는 `windows-curses`가 필요하며 배포 EXE에는 포함됩니다.
+테마별 4파트 MIDI 편곡 음악과 생성형 효과음을 제공합니다. 음악/효과음은 패키지에 포함되며
+실행 중 네트워크나 외부 재생기는 필요하지 않습니다. 소스 실행은 `python -m pip install .`로
+miniaudio 및 Windows의 windows-curses를 설치하세요. 배포 EXE에는 런타임 의존성이 포함됩니다.
 
 기본 미술 테마는 **우주 대성당**입니다. Braille 곡선의 장미창, 원근 아치,
 깊이가 있는 천체 고리, 빛 커튼과 성취에 반응하는 문자 아트가 보드를 감쌉니다.
@@ -21,7 +23,9 @@ python3 -m textris --theme cathedral
 [플레이 화면](docs/cathedral-idle.png) · [올 클리어](docs/cathedral-all-clear.png)
 
 모든 테마에서 보드의 빈칸과 HUD를 안정적으로 유지하고, 하드 드롭에는 빛 기둥,
-테트리스/T-spin에는 장미창 개화, 올 클리어에는 공간이 펼쳐지는 고리를 표시합니다.
+테트리스/T-spin과 올 클리어에는 테마별 격자 폭발·초신성·불꽃·파형·판화·대성당 연출을 표시합니다.
+삭제·강한 삭제·올 클리어·승리·게임 오버·레벨업은 서로 다른 유한 형상으로 반응하며,
+섬광을 꺼도 강도 설정과 콤보 power가 형상에 반영됩니다.
 효과가 겹쳐도 주 연출은 하나이며 게임 입력과 시간을 멈추지 않습니다.
 256색이 없으면 기본 색상으로, Braille을 끄면 점/선 문자로 대체합니다.
 `--ascii`, 모노 설정, 흔들림·섬광 옵션과 **F** 효과 토글도 지원합니다.
@@ -35,8 +39,10 @@ Python 3.10 이상과 대화형 터미널이 필요합니다. Windows는 배포 
 `python -m pip install .`로 조건부 의존성까지 설치하세요. WSL도 지원합니다.
 터미널 크기는 최소 **64열 × 28행**입니다. 창을 줄이면 게임과 시간이 멈춥니다.
 `python3 run.py`도 같은 게임을 실행합니다. 제품 UI는 영문 단일입니다. 기존 한국어 설정은 기록을 보존하면서 영어로 이행합니다.
-Windows 및 비UTF-8 출력 환경은 기본적으로 ASCII 안전 아트를 사용합니다.
-Unicode 폰트와 출력이 준비된 터미널에서는 `--unicode`로 선택할 수 있습니다.
+설정의 **Display mode**에서 **AUTO / UNICODE / ASCII**를 선택하고 저장할 수 있습니다.
+Windows AUTO는 Unicode 타일(`██`)을 기본 사용하고, Unix AUTO는 UTF-8 여부를 따릅니다.
+`--unicode` 또는 `--ascii`는 저장 선택보다 우선하며 이번 실행에만 적용됩니다.
+기존 ASCII 설정은 유지됩니다. 실제 인코딩 오류가 발생하면 재시작 전까지 ASCII로 전환합니다.
 영문 UI만으로 Unicode 글리프 호환성이 보장되지는 않으며, 깨지면 `--ascii`를 사용하세요.
 ASCII 모드에서는 메뉴·아트·동적 파일명까지 최종 출력 경계에서 7비트 문자로 바꿉니다.
 
@@ -99,23 +105,42 @@ python3 -m textris --unicode
 python3 -m textris --ascii --no-sound
 python3 -m textris --seed 42
 python3 -m textris --audio-check
+python3 -m textris --verify-audio-assets
 python3 -m unittest discover -v
 ```
 
-효과음과 창작 배경음악은 실행 중 WAV로 합성합니다. 설치된 `paplay`, `aplay`,
-`ffplay`, `afplay` 중 하나를 자동 사용합니다. 재생기가 없거나 장치가 재생에 실패하면
-무음으로 전환하고 `silent (no playback backend)`를 표시합니다.
-키 입력이나 재생 실패를 경고음(beep/BEL)으로 바꾸지 않습니다. Windows에서는
-설치된 `ffplay`가 없으면 무음입니다. 음악은 일시정지와
-작은 창에서 멈추고 종료 시 재생 프로세스를 정리합니다. `--audio-check`는 실제
-장치 재생을 시험하며 재생 실패 시 종료 코드 1을 반환합니다.
+음악은 **6테마×3곡 + Classic 8곡 = 26곡**, 각85~95초입니다. lead/harmony/bass/drums
+네 MIDI 파트로 편곡하고 풍부한 악기 음색으로 미리 렌더한 Ogg를 사용합니다.
+현재 테마의3곡과 Classic8곡을 약1:1로 섞으며 곡을 모두 소진하기 전 같은 범주의 곡을
+반복하지 않습니다. 다른 테마의 전용곡이 현재 게임에 섞이지 않습니다.
+
+메뉴 **Extras → Soundtrack**에서 전체 곡을 감상할 수 있습니다. 위/아래로 선택,
+Enter 재생, Space 일시정지, N/P 다음/이전, 좌/우5초 탐색, Tab 필터,
+S 셔플, R 한 곡 반복, +/- 음악 음량, M 전체 음소거, B 음악 토글, Esc/Q 복귀입니다.
+곡명·분류·시간·진행·BPM·4파트 악기를 표시하며 감상은 점수·기록을 만들지 않습니다.
+
+Agent Audio 효과음30종을 실제 조작·삭제·연속 성취·위험 진입·보스·UI 결과에 연결합니다.
+음악1곡과 효과음최대6개를 믹싱하며 주요 성취가 중복 착지음보다 우선합니다.
+설정의 마스터/음악/효과음 음량을 별도로 조절할 수 있습니다.
+Windows는 miniaudio의 WASAPI를 우선 사용하며 WINMM으로 대체할 수 있습니다.
+음악은 pause/help/confirm/작은 창에서 위치를 보존해 정지하고 재개 시 이어집니다.
+장치/음원 실패는 무음과 상태로 안내하며 경고음(beep/BEL)으로 대체하지 않습니다.
+
+`--audio-check`는 백엔드 완료와 앱 설정, Windows OS 음소거·볼륨을 구분해 표시합니다.
+종료 코드 0은 백엔드 완료를 뜻하며 **스피커 청취 성공을 뜻하지 않습니다**.
+앱 음소거/볼륨 0 또는 재생 실패는 종료 코드 1입니다. OS 설정은 자동 변경하지 않습니다.
+OS가 음소거되었거나 볼륨이 0이면 사용자가 Windows 출력 장치 설정에서 확인하세요.
+
+`--verify-audio-assets`는 장치를 열지 않고 포함된26곡/30효과음의 목록·경로·해시를
+검사합니다. 제작 원본/출처와 상세 계약은 [사운드 개편 설계](docs/audio-overhaul-plan.md)에 있습니다.
 
 리플레이는 `.textris-data/replays/`에 최근 20개를 보관합니다. 한 게임당 최대
 2MiB·10만 명령·2시간이며, 한도나 저장 실패는 플레이를 중단하지 않습니다.
 리플레이는 고정 60Hz 명령 기록과 최종 상태 체크섬으로 재생 결과를 확인합니다.
 
-설정/기록은 프로젝트 내부 `.textris-data/records.json`, 생성 음원은
-`.textris-data/audio/`에 저장됩니다. `--data-dir 경로`로 저장 위치를 지정할 수 있습니다.
+설정/기록은 프로젝트 내부 `.textris-data/records.json`에 저장됩니다. 배포 음악과 효과음은
+패키지의 `textris/assets/audio`에 있으며 필요한 zipapp 추출 캐시는 데이터 디렉터리 안에 둡니다.
+`--data-dir 경로`로 저장 위치를 지정할 수 있습니다.
 `--no-sound`, `--ascii`, `--unicode`는 해당 실행에만 적용됩니다. 저장 파일이 손상됐으면
 원본을 보존하고 화면에 안내합니다. 게임 종료 후 해당 파일을 직접 다른 이름으로
 옮기면 다음 실행에서 새 기록 파일을 만들 수 있습니다.
@@ -156,7 +181,15 @@ python3 scripts/build.py --mode zipapp
 python3 scripts/build.py --mode binary
 ```
 
-- **범용 zipapp (`dist/textris.pyz`)**: Python 3.10 이상과 curses를 제공하는 Linux/macOS에서 실행할 수 있습니다. Windows에서는 먼저 `python -m pip install windows-curses`가 필요합니다.
+Windows 전체 회귀 검사는 `python -m unittest discover -s . -v`입니다.
+Unix PTY 6개는 Windows에서 제외 사유를 표시하며, 실제 콘솔 검사는 별도로
+`python scripts/windows_terminal_probe.py --output .antigravity/native-console-new`를 실행합니다.
+출력 경로는 기존 증거를 덮어쓰지 않도록 새 디렉터리를 지정해야 합니다.
+symlink 권한이 없으면 해당 3개 테스트를 명시적으로 제외하며 Windows junction 경계는 별도로 검사합니다.
+감사 2의 설계와 실행 증거는 [수정 계획](docs/audit/audit_2_remediation_plan.md) 및
+[재검증 보고서](docs/audit/audit_2_revalidation.md)를 참고하세요.
+
+- **범용 zipapp (`dist/textris.pyz`)**: Python 3.10 이상과 miniaudio가 필요합니다. Windows에서는 windows-curses도 필요하며 소스의 `python -m pip install .`로 설치할 수 있습니다.
   - Linux/macOS: `./dist/textris.pyz` 또는 `python3 dist/textris.pyz`
   - Windows: `python dist\textris.pyz`
 - **독립 단일 바이너리 (`dist/textris` / `dist/textris-linux-x86_64`)**: Python 인터프리터 설치 없이 직접 실행 가능한 완전한 네이티브 단일 실행 파일입니다.
@@ -173,4 +206,9 @@ python3 scripts/build.py --mode binary
 
 Apache License, Version 2.0 (Apache-2.0)  
 Copyright 2026 yupkidangju@gmail.com
+
+소프트웨어의 라이선스와 개별 음원의 출처/이용 조건은 구분합니다. Bach Minuet 편곡
+자산은 원전 디지털 판본을 따라 CC BY-SA 4.0이며, 상세 저작자·변경사항·악기 뱅크 고지는
+[음악 attribution](textris/assets/audio/MUSIC_ATTRIBUTION.txt)에 있습니다.
+효과음의 생성 요청·영수증·원본 해시는 `assets/audio-production/sfx`에 보존합니다.
 

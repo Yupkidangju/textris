@@ -1,0 +1,25 @@
+{
+  "id": "cathedral_orbits",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.99,
+  "true_peak_dbtp": -5.18,
+  "lra": 4.5,
+  "peak": 0.5495700240135193,
+  "rms": 0.09184006182205878,
+  "stereo_correlation": 0.9278811494331881,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.6,
+  "spectral_energy": {
+    "sub": 0.036529,
+    "low": 0.290991,
+    "mid": 0.602884,
+    "presence": 0.068983,
+    "air": 0.000614
+  },
+  "sha256": "26386e4a53b95c4ade7354c442d980b79e9a74355c91e46e5c9e20ec5c58298c",
+  "master_sha256": "6ca99f323ee78447e000480529856d005ed4d5d2277c86c4242c995f0d22f832",
+  "midi_sha256": "e1f53b28a5293c760dd553ae16dc9aebc64df1a230df8fe4d205e0aa848008cf",
+  "human_listening": "not performed"
+}

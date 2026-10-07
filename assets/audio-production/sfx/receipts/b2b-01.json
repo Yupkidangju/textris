@@ -1,0 +1,30 @@
+{
+  "id": "b2b",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:20:17.638Z",
+  "finished_at": "2026-10-07T15:20:46.839Z",
+  "request": {
+    "id": "b2b",
+    "prompt": "Two firm dry iron latch clunks interlock in quick succession, followed by a short bright gritty metal scatter. Compact substantial body, clean decisive attack, damped tail. Close isolated physical sound, no voice, no music, no beeps or sustained ringing.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/b2b-01.wav",
+    "min_duration": 0.4,
+    "max_duration": 0.9,
+    "gain": 0.79,
+    "priority": 75,
+    "cooldown": 0.2,
+    "target_peak_db": -5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\b2b-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\b2b-01.wav"
+    },
+    "isError": false
+  }
+}

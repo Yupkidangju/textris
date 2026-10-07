@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-08 Asia/Seoul",
+  "original_result_preserved": true,
+  "original_os_state_check": false,
+  "user_confirmation": "User explicitly confirmed changing Windows volume during the 39-minute run.",
+  "observed_volume_before": 1.0,
+  "observed_volume_after": 0.38999998569488525,
+  "interpretation": "Expected externally changed environment; not an application volume-write failure.",
+  "playback_checks": {
+    "all_tracks_once": true,
+    "normal_wall_clock": true,
+    "worker_closed": true,
+    "signal_observed": true,
+    "no_device_failures": true,
+    "source_unchanged": true,
+    "no_output_clipping": true
+  },
+  "playback_checks_passed": true,
+  "independent_mixed_run_os_unchanged": true
+}

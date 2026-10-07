@@ -1,0 +1,181 @@
+{
+  "cases": [
+    {
+      "name": "64x28-ascii",
+      "stage": 22,
+      "checks": [
+        "theme-filter",
+        "classic-filter",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-extras"
+      ],
+      "frames": 24,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.24,
+      "before_seek": 2.48,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.24,
+      "music_off_at": 1.24,
+      "small_at": 3.72,
+      "encoding": "cp65001",
+      "elapsed": 30.048,
+      "no_games_or_replays": true
+    },
+    {
+      "name": "64x28-mono",
+      "stage": 22,
+      "checks": [
+        "theme-filter",
+        "classic-filter",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-extras"
+      ],
+      "frames": 24,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.24,
+      "before_seek": 2.48,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.24,
+      "music_off_at": 1.24,
+      "small_at": 3.76,
+      "encoding": "cp65001",
+      "elapsed": 29.912,
+      "no_games_or_replays": true
+    },
+    {
+      "name": "120x40-ascii",
+      "stage": 22,
+      "checks": [
+        "theme-filter",
+        "classic-filter",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-extras"
+      ],
+      "frames": 24,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.24,
+      "before_seek": 2.48,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.24,
+      "music_off_at": 1.24,
+      "small_at": 3.76,
+      "encoding": "cp65001",
+      "elapsed": 30.207,
+      "no_games_or_replays": true
+    },
+    {
+      "name": "120x40-mono",
+      "stage": 22,
+      "checks": [
+        "theme-filter",
+        "classic-filter",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-extras"
+      ],
+      "frames": 24,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.24,
+      "before_seek": 2.48,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.24,
+      "music_off_at": 1.24,
+      "small_at": 3.72,
+      "encoding": "cp65001",
+      "elapsed": 30.123,
+      "no_games_or_replays": true
+    }
+  ],
+  "input_diagnostics": [
+    {
+      "method": "unget_wch",
+      "requested": 259,
+      "observed": "'\u0103'",
+      "type": "str"
+    },
+    {
+      "method": "ungetch",
+      "requested": 259,
+      "observed": "'\u0103'",
+      "type": "str"
+    },
+    {
+      "method": "WriteConsoleInputW",
+      "requested": 259,
+      "observed": "259",
+      "type": "int"
+    }
+  ],
+  "scope": "real App.run, WriteConsoleInputW key events, native curses, Audio callback, local storage; no physical keyboard/listening claim"
+}

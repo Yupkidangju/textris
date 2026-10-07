@@ -1,0 +1,25 @@
+{
+  "id": "crt_radio",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.97,
+  "true_peak_dbtp": -3.59,
+  "lra": 5.1,
+  "peak": 0.6599918603897095,
+  "rms": 0.0964949353346226,
+  "stereo_correlation": 0.9611797157187453,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.140179,
+    "low": 0.291086,
+    "mid": 0.525334,
+    "presence": 0.040062,
+    "air": 0.003338
+  },
+  "sha256": "ff57b0130962cc619123a12b738973e8eb6215a0fb6e744721bb7200e91b1502",
+  "master_sha256": "7b8169686b4e51494f20bf12cf23c3783cfaebd98ea20a34c6546f9c7f0c7713",
+  "midi_sha256": "0dd5e1764773093d69b259384e11e3706676989fcbba487397176a1d0df024c9",
+  "human_listening": "not performed"
+}

@@ -1,0 +1,26 @@
+{
+  "cathedral": {
+    "intensity_changes_with_flash_off": true,
+    "cue_power_changes": true
+  },
+  "cyberpunk": {
+    "intensity_changes_with_flash_off": false,
+    "cue_power_changes": false
+  },
+  "space": {
+    "intensity_changes_with_flash_off": false,
+    "cue_power_changes": false
+  },
+  "fire": {
+    "intensity_changes_with_flash_off": false,
+    "cue_power_changes": false
+  },
+  "crt": {
+    "intensity_changes_with_flash_off": false,
+    "cue_power_changes": false
+  },
+  "mono": {
+    "intensity_changes_with_flash_off": false,
+    "cue_power_changes": false
+  }
+}

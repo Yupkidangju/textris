@@ -1,0 +1,49 @@
+{
+  "endpoint": {
+    "endpoint_id": "{0.0.0.00000000}.{a05e0919-8477-4033-8e91-73f8b507d78a}",
+    "master_volume": 0.0,
+    "master_muted": true
+  },
+  "baseline": {
+    "samples": 29,
+    "peak": 2.3283064365386963e-10,
+    "positive_samples": 0
+  },
+  "device_name_error": "[WinError 2] \uc9c0\uc815\ub41c \ud30c\uc77c\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4",
+  "loop": {
+    "seconds": 11.508553600171581,
+    "peak": 0.178009033203125,
+    "positive_samples": 1009,
+    "total_samples": 1059,
+    "status": "ffplay",
+    "failed": false,
+    "thread_alive": true,
+    "music_alive": true,
+    "launches_before_close": [
+      {
+        "since_start": 0.21994500001892447,
+        "pid": 39480,
+        "returncode": 0,
+        "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\loop-runtime\\audio\\music-5.wav"
+      },
+      {
+        "since_start": 8.480194700183347,
+        "pid": 11060,
+        "returncode": null,
+        "file": "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\loop-runtime\\audio\\music-5.wav"
+      }
+    ]
+  },
+  "closed": {
+    "thread_alive": false,
+    "returncodes": [
+      0,
+      1
+    ]
+  },
+  "after": {
+    "samples": 28,
+    "peak": 0.173431396484375,
+    "positive_samples": 1
+  }
+}

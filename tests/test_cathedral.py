@@ -123,11 +123,12 @@ class CathedralUITests(unittest.TestCase):
     def test_palette_fallback_never_uses_unallocated_pair(self):
         from textris.art import Palette
         for colors,pairs in ((256,64),(8,8),(0,0)):
-            with patch('curses.init_pair') as init, patch('curses.color_pair',side_effect=lambda n:n<<8):
+            unit=curses.A_COLOR & -curses.A_COLOR
+            with patch('curses.init_pair') as init, patch('curses.color_pair',side_effect=lambda n:n*unit):
                 p=Palette(); p.setup(colors,pairs)
                 for style in range(16):
                     attr=p.attr(style,True)
-                    self.assertLessEqual((attr & curses.A_COLOR)>>8,max(0,pairs-1))
+                    self.assertLessEqual((attr & curses.A_COLOR)//unit,max(0,pairs-1))
                 self.assertTrue(all(call.args[0]<pairs for call in init.call_args_list))
                 self.assertEqual(p.attr(3,False)&curses.A_COLOR,0)
 
@@ -220,7 +221,8 @@ class CathedralDangerTests(unittest.TestCase):
 class BasicPaletteTests(unittest.TestCase):
     def test_limited_pairs_preserve_piece_color_identity(self):
         from textris.art import Palette
-        with patch('curses.init_pair'),patch('curses.color_pair',side_effect=lambda n:n<<8):
+        unit=curses.A_COLOR & -curses.A_COLOR
+        with patch('curses.init_pair'),patch('curses.color_pair',side_effect=lambda n:n*unit):
             p=Palette(); p.setup(8,8)
-            self.assertEqual(p.attr(16)&curses.A_COLOR,1<<8)
-            self.assertEqual(p.attr(17)&curses.A_COLOR,2<<8)
+            self.assertEqual(p.attr(16)&curses.A_COLOR,unit)
+            self.assertEqual(p.attr(17)&curses.A_COLOR,2*unit)

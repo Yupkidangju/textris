@@ -1,0 +1,30 @@
+{
+  "id": "all_clear",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:18:58.065Z",
+  "finished_at": "2026-10-07T15:19:45.654Z",
+  "request": {
+    "id": "all_clear",
+    "prompt": "A dense crystal enclosure opens outward in one bright broad shower of fine mineral fragments above a warm low wooden impact. Expansive clean airy release, detailed sparkling unpitched texture with a graceful natural decay. Isolated one-shot, no voice, no music, no melody, no beeps.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/all_clear-01.wav",
+    "min_duration": 1,
+    "max_duration": 1.8,
+    "gain": 0.97,
+    "priority": 100,
+    "cooldown": 0.5,
+    "target_peak_db": -3
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\all_clear-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\all_clear-01.wav"
+    },
+    "isError": false
+  }
+}

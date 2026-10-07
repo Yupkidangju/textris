@@ -1,0 +1,1696 @@
+{
+  "version": 1,
+  "generator": "Agent Audio / Stable Audio 3 Medium",
+  "generated_at": "2026-10-07T15:28:52.657098+00:00",
+  "generation_backend": "local tflite",
+  "expected_count": 30,
+  "processor_sha256": "49d17503c7a9acae9c4ab1ca3a78a3fae549b22745280dc07e51e397e80b413f",
+  "requests_sha256": "5227270306ff134accd57022c92da7b971e6187269de6a78d376a6f24efd07c5",
+  "rebuild_command": "python scripts/prepare_sfx.py",
+  "completed_count": 30,
+  "missing": [],
+  "listening_verified": false,
+  "quality_limit": "Technical metrics and source event selection do not prove prompt adherence or human listening quality.",
+  "effects": [
+    {
+      "id": "ui_move",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_move-01.wav",
+      "source_sha256": "520246599cb1179e57bfa8e0666607dbff0222ee1f60e515ab7f1cd6addb70d2",
+      "file": "textris/assets/audio/sfx/ui_move.wav",
+      "sha256": "e74d05471d016a97f353e64ae66cd888b64cbda51f586707c6c76eac61a41bc5",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -4.692,
+      "source_clipped_samples": 0,
+      "trim_start": 0.079796,
+      "trim_end": 0.147687,
+      "duration": 0.067891,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -5.305,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 19.288
+      },
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -29.288,
+      "dc": [
+        -2.894e-05,
+        -3.027e-05
+      ],
+      "stereo_correlation": 0.999955,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.31,
+      "effective_peak_dbfs": -20.173,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.097778,
+      "source_event_rms_peak": 0.21176413,
+      "source_natural_end": 0.147687,
+      "duration_limited": false
+    },
+    {
+      "id": "ui_select",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_select-01.wav",
+      "source_sha256": "638515a9446295ad0c836f2ef5da3c564c6865f90524fcd2fd0dd2de547c7bbb",
+      "file": "textris/assets/audio/sfx/ui_select.wav",
+      "sha256": "0e86f5c9f5e30c8b7d1a6fc703cb1530307239d656e7e2916af6cc34187baa32",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -10.489,
+      "source_clipped_samples": 0,
+      "trim_start": 1.137392,
+      "trim_end": 1.197392,
+      "duration": 0.06,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 3.326,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 21.285
+      },
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -29.285,
+      "dc": [
+        -4.59e-06,
+        -1.91e-06
+      ],
+      "stereo_correlation": 0.999926,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.53,
+      "effective_peak_dbfs": -13.515,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 1.151383,
+      "source_event_rms_peak": 0.11138476,
+      "source_natural_end": 1.187324,
+      "duration_limited": false
+    },
+    {
+      "id": "ui_back",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_back-01.wav",
+      "source_sha256": "9593f06ef4aeea9bd96c6d51a9a99cc6d6d89ecbca82923c8d48fd7df70048d7",
+      "file": "textris/assets/audio/sfx/ui_back.wav",
+      "sha256": "b6d91751ae3c457adf91e76fd96077b837a1961431f6d9e67b558bb2040e261e",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -6.112,
+      "source_clipped_samples": 0,
+      "trim_start": 0.039887,
+      "trim_end": 0.147687,
+      "duration": 0.1078,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -1.881,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 17.155
+      },
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -25.155,
+      "dc": [
+        -5.8e-07,
+        4.873e-05
+      ],
+      "stereo_correlation": 0.861177,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.49,
+      "effective_peak_dbfs": -14.196,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.075828,
+      "source_event_rms_peak": 0.21442145,
+      "source_natural_end": 0.147687,
+      "duration_limited": false
+    },
+    {
+      "id": "ui_toggle",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_toggle-01.wav",
+      "source_sha256": "f4a112cb5467299eedd6496aa14c0c2b6cb41ff56fc225f08a20f1f20d6b79ad",
+      "file": "textris/assets/audio/sfx/ui_toggle.wav",
+      "sha256": "42fb4dccf55e7d579d06f41b6d47559e6859771cb760222f3f76ff5a0a448de5",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -0.202,
+      "source_clipped_samples": 0,
+      "trim_start": 0.067823,
+      "trim_end": 0.133719,
+      "duration": 0.065896,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -8.796,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 19.484
+      },
+      "peak_dbfs": -9.0,
+      "rms_dbfs": -28.484,
+      "dc": [
+        -6.5e-06,
+        -6.79e-06
+      ],
+      "stereo_correlation": 0.99998,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.43,
+      "effective_peak_dbfs": -16.331,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.085805,
+      "source_event_rms_peak": 0.39866741,
+      "source_natural_end": 0.133719,
+      "duration_limited": false
+    },
+    {
+      "id": "ui_error",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_error-01.wav",
+      "source_sha256": "b82bec887a22edfc4b40f62c811d604bc7a811c25cd212414e245ab2b37eab55",
+      "file": "textris/assets/audio/sfx/ui_error.wav",
+      "sha256": "32f051222d17cd9f4075527cbbc1a9f2c804d8075176d19e9db1915f8b51710e",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -4.979,
+      "source_clipped_samples": 0,
+      "trim_start": 0.023923,
+      "trim_end": 0.093923,
+      "duration": 0.07,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.019,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 17.864
+      },
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -25.865,
+      "dc": [
+        1.14e-05,
+        1.161e-05
+      ],
+      "stereo_correlation": 0.999974,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.58,
+      "effective_peak_dbfs": -12.732,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.039909,
+      "source_event_rms_peak": 0.22803202,
+      "source_natural_end": 0.091814,
+      "duration_limited": false
+    },
+    {
+      "id": "countdown",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/countdown-01.wav",
+      "source_sha256": "ca25d0097b0093f542ba31350f105a9f5bd5f38cba76762f08c84f50e214c253",
+      "file": "textris/assets/audio/sfx/countdown.wav",
+      "sha256": "1bb95c870748ca23ce0b1c131d18d686e842309916619deb2afbc8cbb2da707b",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -3.311,
+      "source_clipped_samples": 0,
+      "trim_start": 0.005964,
+      "trim_end": 0.085964,
+      "duration": 0.08,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.688,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 19.996
+      },
+      "peak_dbfs": -7.001,
+      "rms_dbfs": -26.997,
+      "dc": [
+        -8.24e-06,
+        -8.45e-06
+      ],
+      "stereo_correlation": 0.999991,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.6,
+      "effective_peak_dbfs": -11.438,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.019955,
+      "source_event_rms_peak": 0.33185888,
+      "source_natural_end": 0.069864,
+      "duration_limited": false
+    },
+    {
+      "id": "go",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/go-01.wav",
+      "source_sha256": "27f489112bc01162b3cb9d453159100a72175b478bd159d6293f88efaa370097",
+      "file": "textris/assets/audio/sfx/go.wav",
+      "sha256": "f159a7d77a88bf9149c64aa8c6373348883215c223282df654727332c344bcff",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -4.259,
+      "source_clipped_samples": 0,
+      "trim_start": 0.05585,
+      "trim_end": 0.27585,
+      "duration": 0.22,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 0.343,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 16.58
+      },
+      "peak_dbfs": -4.0,
+      "rms_dbfs": -20.581,
+      "dc": [
+        0.0002382,
+        0.00023717
+      ],
+      "stereo_correlation": 0.999982,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.8,
+      "effective_peak_dbfs": -5.938,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.12771,
+      "source_event_rms_peak": 0.2781468,
+      "source_natural_end": 0.263424,
+      "duration_limited": false
+    },
+    {
+      "id": "pause",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/pause-01.wav",
+      "source_sha256": "56e1c7cfd2bbac6bda8c90896ee5d1a24a34beeb4a57330b90c79bc2218099ca",
+      "file": "textris/assets/audio/sfx/pause.wav",
+      "sha256": "8d07250b39951cb6e5f10cbbce4ff278b16700e7ed47392e186ea4de8a21d7dc",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -2.783,
+      "source_clipped_samples": 0,
+      "trim_start": 1.803878,
+      "trim_end": 1.873878,
+      "duration": 0.07,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -5.218,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 22.321
+      },
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -30.322,
+      "dc": [
+        -5.35e-06,
+        -9.39e-06
+      ],
+      "stereo_correlation": 0.999927,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.53,
+      "effective_peak_dbfs": -13.515,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 1.819864,
+      "source_event_rms_peak": 0.21201805,
+      "source_natural_end": 1.869773,
+      "duration_limited": false
+    },
+    {
+      "id": "resume",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/resume-01.wav",
+      "source_sha256": "754e7dbdda52ae8f3d7f07ed47e921abf053591dc1e3e7f6cdc3502d574c4129",
+      "file": "textris/assets/audio/sfx/resume.wav",
+      "sha256": "8f9172e20ee2d72d781d09907d1fbf3889510bb1aa2453eb3b92fc3d496bbb87",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -3.289,
+      "source_clipped_samples": 0,
+      "trim_start": 0.075805,
+      "trim_end": 0.155669,
+      "duration": 0.079864,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.713,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 15.797
+      },
+      "peak_dbfs": -7.001,
+      "rms_dbfs": -22.797,
+      "dc": [
+        8.78e-06,
+        4.06e-06
+      ],
+      "stereo_correlation": 0.999969,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.59,
+      "effective_peak_dbfs": -11.584,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.111746,
+      "source_event_rms_peak": 0.33646372,
+      "source_natural_end": 0.155669,
+      "duration_limited": false
+    },
+    {
+      "id": "move",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/move-01.wav",
+      "source_sha256": "340508c36426ec53a8289b4eb911345daf55745e314e69ed3fbb0b0601d21232",
+      "file": "textris/assets/audio/sfx/move.wav",
+      "sha256": "88c89fdef13129b240b6881b0d9c12908668b897595475c05eaf372edcbfe012",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -4.629,
+      "source_clipped_samples": 0,
+      "trim_start": 1.49458,
+      "trim_end": 1.692177,
+      "duration": 0.197596,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -6.355,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 18.345
+      },
+      "peak_dbfs": -11.0,
+      "rms_dbfs": -29.345,
+      "dc": [
+        -0.00019276,
+        8.546e-05
+      ],
+      "stereo_correlation": 0.417359,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.26,
+      "effective_peak_dbfs": -22.701,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 1.620317,
+      "source_event_rms_peak": 0.17348888,
+      "source_natural_end": 1.692177,
+      "duration_limited": false
+    },
+    {
+      "id": "rotate",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/rotate-01.wav",
+      "source_sha256": "6a3bff2802f51222d04da016cee26605f57c73c2c343a8661384a96b7175163c",
+      "file": "textris/assets/audio/sfx/rotate.wav",
+      "sha256": "fefd9be980b90419f17bdd68d2088c15bea9a0e827a0c64f2645a7843769abae",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -3.278,
+      "source_clipped_samples": 0,
+      "trim_start": 1.34093,
+      "trim_end": 1.41093,
+      "duration": 0.07,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -5.722,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 21.439
+      },
+      "peak_dbfs": -9.0,
+      "rms_dbfs": -30.439,
+      "dc": [
+        -6e-07,
+        -1.95e-06
+      ],
+      "stereo_correlation": 0.99994,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.39,
+      "effective_peak_dbfs": -17.179,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 1.356916,
+      "source_event_rms_peak": 0.26611184,
+      "source_natural_end": 1.40483,
+      "duration_limited": false
+    },
+    {
+      "id": "hold",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/hold-01.wav",
+      "source_sha256": "c070c0ffde13755bb783b8fab22636a7ef40fb2ef28cf9d66a6ea54155d73084",
+      "file": "textris/assets/audio/sfx/hold.wav",
+      "sha256": "70054f345dcd260a5536002eb0ad033710e329dd6958ab73e6069daf9514343c",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -3.172,
+      "source_clipped_samples": 0,
+      "trim_start": 0.115714,
+      "trim_end": 0.215533,
+      "duration": 0.099819,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.824,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 16.982
+      },
+      "peak_dbfs": -7.001,
+      "rms_dbfs": -23.982,
+      "dc": [
+        1.873e-05,
+        1.882e-05
+      ],
+      "stereo_correlation": 0.999992,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.55,
+      "effective_peak_dbfs": -12.193,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.129705,
+      "source_event_rms_peak": 0.33640027,
+      "source_natural_end": 0.215533,
+      "duration_limited": false
+    },
+    {
+      "id": "drop",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/drop-01.wav",
+      "source_sha256": "843b9122e300b242ed922dd0c41e3833a51c9716b826f5940a9c7edf75da0819",
+      "file": "textris/assets/audio/sfx/drop.wav",
+      "sha256": "512b6d64e8e25d802082fb0e8151da5b8f0e29b1cd4e8dab90ee2ebe629ed105",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -1.139,
+      "source_clipped_samples": 0,
+      "trim_start": 0.097755,
+      "trim_end": 0.22551,
+      "duration": 0.127755,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.859,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 13.033
+      },
+      "peak_dbfs": -5.0,
+      "rms_dbfs": -18.034,
+      "dc": [
+        -0.00013749,
+        -0.00013738
+      ],
+      "stereo_correlation": 0.999998,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.78,
+      "effective_peak_dbfs": -7.158,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.121723,
+      "source_event_rms_peak": 0.69194113,
+      "source_natural_end": 0.22551,
+      "duration_limited": false
+    },
+    {
+      "id": "lock",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/lock-01.wav",
+      "source_sha256": "746ea0e61f5e52d74876a1a90db148c0061da56cf1d241df450f6af053a69f82",
+      "file": "textris/assets/audio/sfx/lock.wav",
+      "sha256": "9b52bbdc3dbaff8000d46e18c7463b8bc38b7541b60fc4c8e6047ff6a5e3d52e",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -6.329,
+      "source_clipped_samples": 0,
+      "trim_start": 1.570408,
+      "trim_end": 1.654263,
+      "duration": 0.083855,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -0.181,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 15.203
+      },
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -23.204,
+      "dc": [
+        -3.427e-05,
+        -3.834e-05
+      ],
+      "stereo_correlation": 0.99999,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.49,
+      "effective_peak_dbfs": -14.196,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 1.594376,
+      "source_event_rms_peak": 0.23783594,
+      "source_natural_end": 1.654263,
+      "duration_limited": false
+    },
+    {
+      "id": "clear_single",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/clear_single-01.wav",
+      "source_sha256": "ef5267d6fc3355dc7953dd4f1e7175a62fc0ab4803ca6a21f92866069fa6a9bd",
+      "file": "textris/assets/audio/sfx/clear_single.wav",
+      "sha256": "9b78e542c1cfcbb68f07162ef9a6b8cf3414485ea4c2824b9e0fa335a41f8448",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -10.917,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 0.421995,
+      "duration": 0.421995,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 17.964,
+      "transient_control": {
+        "enabled": true,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 26.414
+      },
+      "peak_dbfs": -5.0,
+      "rms_dbfs": -22.266,
+      "dc": [
+        3.261e-05,
+        4.528e-05
+      ],
+      "stereo_correlation": 0.999827,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.71,
+      "effective_peak_dbfs": -7.975,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.05,
+      "source_event_rms_peak": 0.0592234,
+      "source_natural_end": 0.421995,
+      "duration_limited": false
+    },
+    {
+      "id": "clear_double",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/clear_double-01.wav",
+      "source_sha256": "526eb77fc3cbc8ec28ee040d7f34b6c65e0302ce51e9acd3ce4936e6bd0d38f7",
+      "file": "textris/assets/audio/sfx/clear_double.wav",
+      "sha256": "06ced0e06422a83af0ec9b2ca2675b2296ec532890f52eca69e4ca4439c72417",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -3.71,
+      "source_clipped_samples": 0,
+      "trim_start": 0.908005,
+      "trim_end": 1.308005,
+      "duration": 0.4,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -0.79,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 22.696
+      },
+      "peak_dbfs": -4.5,
+      "rms_dbfs": -27.197,
+      "dc": [
+        -4.1e-07,
+        -7.2e-07
+      ],
+      "stereo_correlation": 0.999958,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.77,
+      "effective_peak_dbfs": -6.77,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 1.01,
+      "source_event_rms_peak": 0.15345708,
+      "source_natural_end": 1.101995,
+      "duration_limited": false
+    },
+    {
+      "id": "clear_triple",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/clear_triple-01.wav",
+      "source_sha256": "c8fbf21f085e4273a365ab6382f039cfe1e9afa4fccdfc773db2ffdab67f4826",
+      "file": "textris/assets/audio/sfx/clear_triple.wav",
+      "sha256": "b80c37c1d4932fe266a7a6e6d9dec7a9191ba10d823e3bec89d6ef39c47111ed",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -1.048,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 1.1,
+      "duration": 1.1,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 9.095,
+      "transient_control": {
+        "enabled": true,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 25.475
+      },
+      "peak_dbfs": -4.0,
+      "rms_dbfs": -19.312,
+      "dc": [
+        -0.0001334,
+        -0.00011974
+      ],
+      "stereo_correlation": 0.816983,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.84,
+      "effective_peak_dbfs": -5.515,
+      "listening_verified": false,
+      "selection": "explicit reviewed source event window",
+      "source_peak_time": 0.05,
+      "source_event_rms_peak": 0.16169283,
+      "source_natural_end": 0.271995,
+      "duration_limited": false
+    },
+    {
+      "id": "tetris",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/tetris-01.wav",
+      "source_sha256": "d3adaf6398bb0ea1740778520dbc821e9335abfb7e1e3b7c2df612875edef7ee",
+      "file": "textris/assets/audio/sfx/tetris.wav",
+      "sha256": "3ab4edc3a3d5a8eb348adb02e1df1d43b33b33a2959db7c6ca1894e7ab186b74",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -0.202,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 0.8,
+      "duration": 0.8,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.291,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 14.55
+      },
+      "peak_dbfs": -3.5,
+      "rms_dbfs": -18.05,
+      "dc": [
+        0.00012411,
+        0.00017929
+      ],
+      "stereo_correlation": 0.868154,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.94,
+      "effective_peak_dbfs": -4.038,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.05,
+      "source_event_rms_peak": 0.56952844,
+      "source_natural_end": 0.601995,
+      "duration_limited": false
+    },
+    {
+      "id": "tspin",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/tspin-01.wav",
+      "source_sha256": "fba49641e9aef00494eff4bbe8084eb0c32aa1208873cd5ccedcba3edd007eee",
+      "file": "textris/assets/audio/sfx/tspin.wav",
+      "sha256": "44bb78810edf0786d8bb988b3bd7e629ea755902fd4c8f0651d790ff76aaeb77",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -9.055,
+      "source_clipped_samples": 0,
+      "trim_start": 0.078005,
+      "trim_end": 0.628005,
+      "duration": 0.55,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 5.056,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 17.99
+      },
+      "peak_dbfs": -4.0,
+      "rms_dbfs": -21.99,
+      "dc": [
+        -8.81e-06,
+        -8.7e-06
+      ],
+      "stereo_correlation": 0.99522,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.87,
+      "effective_peak_dbfs": -5.21,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.25,
+      "source_event_rms_peak": 0.13082406,
+      "source_natural_end": 0.611995,
+      "duration_limited": false
+    },
+    {
+      "id": "all_clear",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/all_clear-01.wav",
+      "source_sha256": "d07d4d41db2ea7057d1001bcdc8f781738512c3f10d17988e59a2991d6914e0d",
+      "file": "textris/assets/audio/sfx/all_clear.wav",
+      "sha256": "f1fcaee636af66de7cfcff28a94bd57dbd7697fbb0d11b272547a3163b16bbb2",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -5.805,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 1.571995,
+      "duration": 1.571995,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 2.859,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 17.711
+      },
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -20.711,
+      "dc": [
+        -1.95e-06,
+        3.431e-05
+      ],
+      "stereo_correlation": 0.238315,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.97,
+      "effective_peak_dbfs": -3.265,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.3,
+      "source_event_rms_peak": 0.21533331,
+      "source_natural_end": 1.571995,
+      "duration_limited": false
+    },
+    {
+      "id": "combo",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/combo-02.wav",
+      "source_sha256": "0f6fbd0a123e4cbcf56045206dcd6a9f8cf57fafa83c93178ee4b43bc2ae62ef",
+      "file": "textris/assets/audio/sfx/combo.wav",
+      "sha256": "169a7ae4614023fb4fdfc9d7f8c261a7900a1290390d33ca6b60ce5f2f8abbb5",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -4.402,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 0.671995,
+      "duration": 0.671995,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 10.448,
+      "transient_control": {
+        "enabled": true,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 29.924
+      },
+      "peak_dbfs": -6.0,
+      "rms_dbfs": -25.852,
+      "dc": [
+        8.507e-05,
+        5.66e-05
+      ],
+      "stereo_correlation": 0.628572,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.65,
+      "effective_peak_dbfs": -9.742,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.0,
+      "source_event_rms_peak": 0.06105608,
+      "source_natural_end": 0.671995,
+      "duration_limited": false
+    },
+    {
+      "id": "b2b",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/b2b-01.wav",
+      "source_sha256": "e0bb9f99b8c9f568c46f2fc7404266a96f0b92d8c5dc1aef5325375d38ebbd42",
+      "file": "textris/assets/audio/sfx/b2b.wav",
+      "sha256": "5626a067bc1f630d276610cf9c15191775285326f21b77e34d32650994c5c425",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -3.846,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 0.45,
+      "duration": 0.45,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 1.169,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 22.883
+      },
+      "peak_dbfs": -5.0,
+      "rms_dbfs": -27.883,
+      "dc": [
+        3.72e-06,
+        2.42e-06
+      ],
+      "stereo_correlation": 0.999943,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.79,
+      "effective_peak_dbfs": -7.048,
+      "listening_verified": false,
+      "selection": "explicit reviewed source event window",
+      "source_peak_time": 0.98,
+      "source_event_rms_peak": 0.12544355,
+      "source_natural_end": 1.071995,
+      "duration_limited": false
+    },
+    {
+      "id": "fever_start",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/fever_start-01.wav",
+      "source_sha256": "1c319cf5ec32ca9ee10d0576a6afa076dbec13c6815227ee0fcee65477fcde5b",
+      "file": "textris/assets/audio/sfx/fever_start.wav",
+      "sha256": "4e326b8e7bb412ffc09cbd55d9a6886f8a9dca966a38a795f7a970a526c1342a",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -4.425,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 1.6,
+      "duration": 1.6,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 0.496,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 9.094
+      },
+      "peak_dbfs": -4.0,
+      "rms_dbfs": -13.095,
+      "dc": [
+        0.00077288,
+        0.00079116
+      ],
+      "stereo_correlation": 0.35444,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.92,
+      "effective_peak_dbfs": -4.724,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.69,
+      "source_event_rms_peak": 0.36702132,
+      "source_natural_end": 2.331995,
+      "duration_limited": true
+    },
+    {
+      "id": "fever_end",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/fever_end-02.wav",
+      "source_sha256": "3ea3c78004a2e03d709b726cc39d2ce5531b99f3278e3d1616f5f2364e576e73",
+      "file": "textris/assets/audio/sfx/fever_end.wav",
+      "sha256": "2a3dbd56168d9f22ffc8e9a335067b5ed40065d84d61a8b25f7135835a0b6fb6",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -12.215,
+      "source_clipped_samples": 0,
+      "trim_start": 1.888005,
+      "trim_end": 2.601995,
+      "duration": 0.713991,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 6.206,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 17.492
+      },
+      "peak_dbfs": -6.0,
+      "rms_dbfs": -23.492,
+      "dc": [
+        -3.82e-06,
+        -4.14e-06
+      ],
+      "stereo_correlation": 0.999987,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.73,
+      "effective_peak_dbfs": -8.734,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 2.5,
+      "source_event_rms_peak": 0.10334095,
+      "source_natural_end": 2.601995,
+      "duration_limited": false
+    },
+    {
+      "id": "level",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/level-01.wav",
+      "source_sha256": "74cf62e182a79a3f1d7f76b6fc871dadbd61b2f4fb9bdb532207184f1bef35fa",
+      "file": "textris/assets/audio/sfx/level.wav",
+      "sha256": "274bbc26f9516df94e58f40b5cf5bc77f1ceb5e8a680d05d3c808064ef1dd7a6",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -8.13,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 0.45,
+      "duration": 0.45,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 3.807,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 22.786
+      },
+      "peak_dbfs": -5.0,
+      "rms_dbfs": -27.787,
+      "dc": [
+        -4.4e-07,
+        -9.5e-07
+      ],
+      "stereo_correlation": 0.999845,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.81,
+      "effective_peak_dbfs": -6.831,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.07,
+      "source_event_rms_peak": 0.08220013,
+      "source_natural_end": 0.441995,
+      "duration_limited": false
+    },
+    {
+      "id": "danger",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/danger-01.wav",
+      "source_sha256": "4a24bc71cea949158481c5e2f116cfdadfde5d387f821ad91429219432c97a7c",
+      "file": "textris/assets/audio/sfx/danger.wav",
+      "sha256": "9f67fd2f47afc77027cf95894325d3538a296c7517752e9df6b2d2346456b71f",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -12.413,
+      "source_clipped_samples": 0,
+      "trim_start": 0.148005,
+      "trim_end": 0.648005,
+      "duration": 0.5,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": 6.412,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 19.285
+      },
+      "peak_dbfs": -6.0,
+      "rms_dbfs": -25.285,
+      "dc": [
+        2.523e-05,
+        2.657e-05
+      ],
+      "stereo_correlation": 0.999986,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.69,
+      "effective_peak_dbfs": -9.223,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.17,
+      "source_event_rms_peak": 0.09990231,
+      "source_natural_end": 0.341995,
+      "duration_limited": false
+    },
+    {
+      "id": "win",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/win-01.wav",
+      "source_sha256": "c3ca6e6208b14ba6ccef51af075618d7dbf22d78963b83c31cd5e454e54290a1",
+      "file": "textris/assets/audio/sfx/win.wav",
+      "sha256": "3a9100f20979c1f50335c7fbc96e9fd15fe534439213b9dfb33133e950ee8dd8",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -0.202,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 1.0,
+      "duration": 1.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.298,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 18.415
+      },
+      "peak_dbfs": -3.5,
+      "rms_dbfs": -21.915,
+      "dc": [
+        -8.85e-06,
+        -1.33e-06
+      ],
+      "stereo_correlation": 0.216445,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.95,
+      "effective_peak_dbfs": -3.946,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.14,
+      "source_event_rms_peak": 0.46785314,
+      "source_natural_end": 0.321995,
+      "duration_limited": false
+    },
+    {
+      "id": "gameover",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/gameover-01.wav",
+      "source_sha256": "a0f8f99373001619db77037cf66ec85a4cadff3cbda0e6ecdb2703ee6a7c02ef",
+      "file": "textris/assets/audio/sfx/gameover.wav",
+      "sha256": "e4b7e57dd84ee005c885fa63c772e14cd1bd8db15d9ef3720dae1a661f7e40c9",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -0.535,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 1.7,
+      "duration": 1.7,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.967,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 13.318
+      },
+      "peak_dbfs": -4.5,
+      "rms_dbfs": -17.818,
+      "dc": [
+        -1.182e-05,
+        -1.196e-05
+      ],
+      "stereo_correlation": 0.999999,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.9,
+      "effective_peak_dbfs": -5.415,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.09,
+      "source_event_rms_peak": 0.46440392,
+      "source_natural_end": 1.991995,
+      "duration_limited": true
+    },
+    {
+      "id": "boss_hit",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/boss_hit-01.wav",
+      "source_sha256": "8ad2e5a9a26c7fe93adbe04582dd2c713cf986609ce986df694a52fb7174a9b0",
+      "file": "textris/assets/audio/sfx/boss_hit.wav",
+      "sha256": "85c20df45327408ff93d349f8d418134e9f05224523a189caa0aaf1c131ec93e",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -0.202,
+      "source_clipped_samples": 0,
+      "trim_start": 0.0,
+      "trim_end": 0.15,
+      "duration": 0.15,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -4.802,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 20.379
+      },
+      "peak_dbfs": -5.0,
+      "rms_dbfs": -25.379,
+      "dc": [
+        -0.0001318,
+        -0.00013226
+      ],
+      "stereo_correlation": 0.999986,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.8,
+      "effective_peak_dbfs": -6.939,
+      "listening_verified": false,
+      "selection": "strongest 2ms RMS event; preceding quiet boundary; natural decay boundary",
+      "source_peak_time": 0.011973,
+      "source_event_rms_peak": 0.38651261,
+      "source_natural_end": 0.099796,
+      "duration_limited": false
+    },
+    {
+      "id": "boss_break",
+      "source": ".antigravity/audio-overhaul-20261008/production/sfx-source/boss_break-01.wav",
+      "source_sha256": "b23aea4b764613466021b8a4b1cf2db9b538ce8fb02ec06af00e8fe2fdf779d7",
+      "file": "textris/assets/audio/sfx/boss_break.wav",
+      "sha256": "632f24008095038475f53be14a4291e71244ce390a63dd96f42975b1efe85663",
+      "source_duration": 3.0,
+      "source_format": {
+        "sample_rate": 44100,
+        "channels": 2,
+        "sample_width": 2,
+        "frames": 132300
+      },
+      "source_peak_dbfs": -0.202,
+      "source_clipped_samples": 0,
+      "trim_start": 0.048005,
+      "trim_end": 1.048005,
+      "duration": 1.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sample_width": 2,
+      "fade_in": 0.002993,
+      "fade_out": 0.01,
+      "normalization_db": -3.315,
+      "transient_control": {
+        "enabled": false,
+        "shape": "tanh",
+        "threshold_relative_to_peak": 0.25,
+        "input_crest_db": 15.858
+      },
+      "peak_dbfs": -3.5,
+      "rms_dbfs": -19.358,
+      "dc": [
+        -3.597e-05,
+        -0.00010087
+      ],
+      "stereo_correlation": 0.937615,
+      "clipped_samples": 0,
+      "finite": true,
+      "first_sample": [
+        0,
+        0
+      ],
+      "last_sample": [
+        0,
+        0
+      ],
+      "gain": 0.96,
+      "effective_peak_dbfs": -3.855,
+      "listening_verified": false,
+      "selection": "strongest 10ms RMS event cluster; 60ms quiet boundary; natural decay boundary",
+      "source_peak_time": 0.29,
+      "source_event_rms_peak": 0.46719457,
+      "source_natural_end": 0.791995,
+      "duration_limited": false
+    }
+  ]
+}

@@ -17,7 +17,7 @@ class AuxiliaryArtTests(unittest.TestCase):
         store = Store(Path(temporary.name))
         store.load()
         with patch.object(App, '_setup'):
-            self.app = App(Window(40, 120), store, AudioStub(), seed=3, unicode_art=True)
+            self.app = App(Window(40, 120), store, AudioStub(), seed=3)
         self.app.start('boss')
         self.app.settings['braille'] = True
 
@@ -60,6 +60,7 @@ class AuxiliaryArtTests(unittest.TestCase):
         a.session.samples = [[0, 0, 0], [60, 80, 1], [180, 240, 3]]
         for ascii_mode in (False, True):
             a.settings['ascii'] = ascii_mode
+            a.settings['display_mode'] = 'ascii' if ascii_mode else 'unicode'
             a.win = Window(28, 64)
             frames = self.render(a.draw_expansion)
             self.assertTrue(frames, 'analysis must draw a subcell chart')

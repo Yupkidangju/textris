@@ -1,0 +1,25 @@
+{
+  "id": "crt_scanline",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.98,
+  "true_peak_dbtp": -3.9,
+  "lra": 3.7,
+  "peak": 0.6385823488235474,
+  "rms": 0.0981255889328224,
+  "stereo_correlation": 0.9606924482935651,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.148807,
+    "low": 0.290399,
+    "mid": 0.518979,
+    "presence": 0.039503,
+    "air": 0.002312
+  },
+  "sha256": "519aa2e67fffdf325240418e890e3bb64a8ff2c5c245fc771eaa0f846d1f90e3",
+  "master_sha256": "16aa0765b54c7c7cc21975bc8417196108266179da2a5cf2b852721d4be5c008",
+  "midi_sha256": "eebd2051512c350bd440e8e9fabac6bb0797e0b9f5fe3301589dfacdda63c84f",
+  "human_listening": "not performed"
+}

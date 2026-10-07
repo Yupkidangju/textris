@@ -1,0 +1,25 @@
+{
+  "id": "fire_furnace",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -18.03,
+  "true_peak_dbtp": -4.16,
+  "lra": 5.0,
+  "peak": 0.6189064383506775,
+  "rms": 0.08328995199574143,
+  "stereo_correlation": 0.9217108590368149,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.9,
+  "spectral_energy": {
+    "sub": 0.075637,
+    "low": 0.188902,
+    "mid": 0.558729,
+    "presence": 0.171803,
+    "air": 0.00493
+  },
+  "sha256": "a814eea66de1c8ebcc57d059357348bac416fa4eaa47e25dfa74db7b2f29067f",
+  "master_sha256": "17b565e6d9ca30c3028c6730351a2aff2dc384717ca05e15d4ad9243c0adfd7c",
+  "midi_sha256": "455556519da0d151f82a201eef873be30f32914fa874fc07c1f34304ea1ee731",
+  "human_listening": "not performed"
+}

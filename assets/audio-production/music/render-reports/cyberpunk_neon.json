@@ -1,0 +1,25 @@
+{
+  "id": "cyberpunk_neon",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.98,
+  "true_peak_dbtp": -4.65,
+  "lra": 5.0,
+  "peak": 0.5805224180221558,
+  "rms": 0.09389241714063967,
+  "stereo_correlation": 0.9463209855258796,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.8,
+  "spectral_energy": {
+    "sub": 0.12725,
+    "low": 0.277454,
+    "mid": 0.509645,
+    "presence": 0.07481,
+    "air": 0.010842
+  },
+  "sha256": "be9fa08ce4af2735d60cb132baf6fe01f68fdb77fa5e52a48c8f5f56bb28463b",
+  "master_sha256": "4cd985fd1899f306c1bbba926fe4a026bb70ffb5032d9010f379c996a1e26bdc",
+  "midi_sha256": "5f35d95cffc0eade477d9db13cef787fb8b581017d8a0d0c44a4e3d2181cc601",
+  "human_listening": "not performed"
+}

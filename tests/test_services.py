@@ -7,6 +7,7 @@ import wave
 from textris.storage import Store
 from textris.audio import synthesize
 from textris.i18n import STRINGS, tr
+from tests.filesystem_helpers import symlink_or_skip
 
 
 class ServicesTests(unittest.TestCase):
@@ -102,7 +103,7 @@ class AudioBoundaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)/'data'; root.mkdir()
             outside=Path(tmp)/'outside'; outside.mkdir()
-            (root/'audio').symlink_to(outside,target_is_directory=True)
+            symlink_or_skip(root/'audio',outside,directory=True)
             with self.assertRaises(ValueError): audio_path(root,'move-5.wav')
             self.assertFalse(list(outside.iterdir()))
 
@@ -110,55 +111,53 @@ class AudioBoundaryTests(unittest.TestCase):
         from textris.audio import audio_path
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)/'data'; (root/'audio').mkdir(parents=True)
-            (root/'audio'/'move-5.wav').symlink_to(Path(tmp)/'outside.wav')
+            symlink_or_skip(root/'audio'/'move-5.wav',Path(tmp)/'outside.wav')
             with self.assertRaises(ValueError): audio_path(root,'move-5.wav')
 
 class AudioLifecycleTests(unittest.TestCase):
-    def wait_for(self, condition):
-        import time
-        deadline=time.monotonic()+3
-        while time.monotonic()<deadline:
-            if condition(): return
-            time.sleep(.01)
-        self.fail('audio worker condition timed out')
-
     def test_music_pause_mute_close_and_failed_backend_fallback(self):
+        import time
         from unittest.mock import patch
         from textris.audio import Audio
         from textris.storage import DEFAULTS
-        class Process:
-            def __init__(self): self.returncode=None; self.terminated=False
-            def poll(self): return self.returncode
-            def terminate(self): self.terminated=True; self.returncode=0
-            def wait(self,timeout=None): return self.returncode
-            def kill(self): self.returncode=-9
-        processes=[]
-        def launch(*args,**kw):
-            p=Process(); processes.append(p); return p
+        from tests.test_soundtrack_audio import make_assets, FakeDevice
+        devices = []
+        def launch(callback):
+            device = FakeDevice(); device.start(callback); devices.append(device)
+            return device
+        def wait_for(condition):
+            deadline = time.monotonic() + 3
+            while time.monotonic() < deadline:
+                if condition(): return
+                time.sleep(.005)
+            self.fail('audio lifecycle condition timed out')
         with tempfile.TemporaryDirectory() as tmp:
-            settings=dict(DEFAULTS)
-            with patch('textris.audio.find_backend',return_value=('aplay','fake')), patch('textris.audio.subprocess.Popen',side_effect=launch):
-                audio=Audio(Path(tmp),settings)
+            root = Path(tmp) / 'assets'; make_assets(root)
+            settings = dict(DEFAULTS)
+            with patch('textris.audio.resource_root', return_value=root), patch('textris.audio.open_device', side_effect=launch):
+                audio = Audio(Path(tmp) / 'data', settings)
                 try:
                     audio.set_music(True)
-                    self.wait_for(lambda: audio.music_process is not None)
-                    music=audio.music_process
+                    wait_for(lambda: bool(devices) and not audio.music_state['buffering'])
+                    devices[-1].pump()
                     audio.set_music(False)
-                    self.wait_for(lambda: music.terminated)
+                    wait_for(lambda: audio.music_state['paused'])
+                    position = audio.music_state['position']
+                    devices[-1].pump()
+                    self.assertEqual(audio.music_state['position'], position)
                     audio.play('drop')
-                    self.wait_for(lambda: bool(audio.effects))
-                    effect=audio.effects[0]
-                    settings['sound']=False
-                    self.wait_for(lambda: effect.terminated)
-                    settings['sound']=True
-                    audio.play('clear')
-                    self.wait_for(lambda: bool(audio.effects))
-                    audio.effects[0].returncode=1
-                    self.wait_for(lambda: audio.failed)
-                    self.assertEqual(audio.status,'audio_silent')
+                    wait_for(lambda: audio.diagnostics['active_voices'] == 1)
+                    settings['sound'] = False
+                    wait_for(lambda: audio.diagnostics['active_voices'] == 0)
+                    settings['sound'] = True
+                    audio.play('tetris')
+                    wait_for(lambda: audio.diagnostics['active_voices'] == 1)
+                    devices[-1].running = False
+                    wait_for(lambda: audio.failed)
+                    self.assertEqual(audio.status, 'audio_silent')
                 finally:
                     audio.close()
                 self.assertFalse(audio.thread.is_alive())
-                self.assertTrue(all(p.poll() is not None for p in processes))
+                self.assertTrue(all(device.closed for device in devices))
 
 if __name__ == '__main__': unittest.main()

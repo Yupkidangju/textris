@@ -1,0 +1,25 @@
+{
+  "id": "crt_arcade",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.96,
+  "true_peak_dbtp": -4.25,
+  "lra": 5.4,
+  "peak": 0.609363317489624,
+  "rms": 0.09346646760703545,
+  "stereo_correlation": 0.9602617974556154,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.079123,
+    "low": 0.3354,
+    "mid": 0.532753,
+    "presence": 0.048693,
+    "air": 0.004032
+  },
+  "sha256": "6c5fcf5dc066a4f7b2c2664eedeb722a33d74abf692e37164cf6525654997d9d",
+  "master_sha256": "bd40bfc71be82fd59c86cecc0e60062b4efb6da4420bd21018d86b2391e5829a",
+  "midi_sha256": "e2bf3593fab58065196fd9628096f1a9bc2df8ec5a90792dc90c020323406da5",
+  "human_listening": "not performed"
+}

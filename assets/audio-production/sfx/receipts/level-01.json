@@ -1,0 +1,30 @@
+{
+  "id": "level",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:21:45.666Z",
+  "finished_at": "2026-10-07T15:22:14.755Z",
+  "request": {
+    "id": "level",
+    "prompt": "A precision brass ratchet makes a short upward mechanical turn and locks with a firm warm wooden knock, followed by tiny dry metal grains falling away. Confident compact physical flourish, no voice, no music, no ringing chimes, no electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/level-01.wav",
+    "min_duration": 0.45,
+    "max_duration": 0.95,
+    "gain": 0.81,
+    "priority": 80,
+    "cooldown": 0.3,
+    "target_peak_db": -5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\level-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\level-01.wav"
+    },
+    "isError": false
+  }
+}

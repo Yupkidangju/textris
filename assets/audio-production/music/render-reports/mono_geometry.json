@@ -1,0 +1,25 @@
+{
+  "id": "mono_geometry",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.97,
+  "true_peak_dbtp": -4.87,
+  "lra": 6.2,
+  "peak": 0.5709569454193115,
+  "rms": 0.09830863800934732,
+  "stereo_correlation": 0.9772662624531822,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.7,
+  "spectral_energy": {
+    "sub": 0.096447,
+    "low": 0.309,
+    "mid": 0.591958,
+    "presence": 0.002561,
+    "air": 3.4e-05
+  },
+  "sha256": "996379e6ddff47f6a870a390114f4617c685100cf5db996c35815cefe33d1633",
+  "master_sha256": "23a4f55d15e664846e9e0a9007c161f8d5ad8137a2e5ddd8f0b3a8099cf45706",
+  "midi_sha256": "2961326404c9a3601279cba5f9ba606d7c38c351b6f45a27063ecf38d0c74ad4",
+  "human_listening": "not performed"
+}

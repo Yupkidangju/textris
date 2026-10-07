@@ -1,0 +1,98 @@
+{
+  "output": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\independent-review-finalmix-1791387824928105500",
+  "music": "cathedral_vault",
+  "source_sha256": "cc7b86cd11bdd8650cf77367707fe319e733809a1698cccf8ef3fab14fbd561a",
+  "catalog_sha256": "a8eb828cab87ba7408ff737d8eea5d569b6d969762a416e9525b9decb3c8e8f4",
+  "limiter_ceiling": 0.87,
+  "requested_cues": [
+    "tetris",
+    "combo",
+    "b2b",
+    "level",
+    "boss_hit",
+    "boss_break",
+    "fever_start"
+  ],
+  "reports": [
+    {
+      "offset": 0.0,
+      "frames": 70560,
+      "sample_peak": 0.8700000047683716,
+      "pre_limiter_peak": 1.1829575300216675,
+      "clipped_samples": 0,
+      "true_peak_dbtp": -1.13,
+      "ffmpeg": {
+        "input_i": "-18.68",
+        "input_tp": "-1.13",
+        "input_lra": "0.00",
+        "input_thresh": "-28.68",
+        "output_i": "-19.06",
+        "output_tp": "-1.50",
+        "output_lra": "0.00",
+        "output_thresh": "-29.06",
+        "normalization_type": "linear",
+        "target_offset": "1.06"
+      }
+    },
+    {
+      "offset": 15.0,
+      "frames": 70560,
+      "sample_peak": 0.8700000047683716,
+      "pre_limiter_peak": 1.1955488920211792,
+      "clipped_samples": 0,
+      "true_peak_dbtp": -1.13,
+      "ffmpeg": {
+        "input_i": "-18.27",
+        "input_tp": "-1.13",
+        "input_lra": "0.00",
+        "input_thresh": "-28.27",
+        "output_i": "-18.65",
+        "output_tp": "-1.50",
+        "output_lra": "0.00",
+        "output_thresh": "-28.65",
+        "normalization_type": "linear",
+        "target_offset": "0.65"
+      }
+    },
+    {
+      "offset": 45.0,
+      "frames": 70560,
+      "sample_peak": 0.8700000047683716,
+      "pre_limiter_peak": 1.2037426233291626,
+      "clipped_samples": 0,
+      "true_peak_dbtp": -1.14,
+      "ffmpeg": {
+        "input_i": "-18.32",
+        "input_tp": "-1.14",
+        "input_lra": "0.00",
+        "input_thresh": "-28.32",
+        "output_i": "-18.66",
+        "output_tp": "-1.50",
+        "output_lra": "0.00",
+        "output_thresh": "-28.66",
+        "normalization_type": "linear",
+        "target_offset": "0.66"
+      }
+    },
+    {
+      "offset": 70.0,
+      "frames": 70560,
+      "sample_peak": 0.8700000047683716,
+      "pre_limiter_peak": 1.2650384902954102,
+      "clipped_samples": 0,
+      "true_peak_dbtp": -1.14,
+      "ffmpeg": {
+        "input_i": "-18.26",
+        "input_tp": "-1.14",
+        "input_lra": "0.00",
+        "input_thresh": "-28.26",
+        "output_i": "-18.64",
+        "output_tp": "-1.50",
+        "output_lra": "0.00",
+        "output_thresh": "-28.64",
+        "normalization_type": "linear",
+        "target_offset": "0.64"
+      }
+    }
+  ]
+}

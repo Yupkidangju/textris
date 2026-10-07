@@ -1,0 +1,25 @@
+{
+  "id": "classic_kalinka",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.96,
+  "true_peak_dbtp": -6.23,
+  "lra": 3.4,
+  "peak": 0.48812592029571533,
+  "rms": 0.09350727871821632,
+  "stereo_correlation": 0.9958730642288578,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.030665,
+    "low": 0.346502,
+    "mid": 0.595544,
+    "presence": 0.027219,
+    "air": 7e-05
+  },
+  "sha256": "d325d1749142deafc0ed6fed7e9395379ca273376f9b5a1704245d8cb90ed5bb",
+  "master_sha256": "d0d322ecb69e791b7d5f8d158c82adbf71c97c3c3b45a852e701ea5dacbf1ebe",
+  "midi_sha256": "6ab3813a3d53645714029b8dd3fbb468323071c7dc902576d91c98f1c2aebb8b",
+  "human_listening": "not performed"
+}

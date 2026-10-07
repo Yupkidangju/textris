@@ -1,16 +1,18 @@
 # TEXTRIS 실행 스펙
 
 작성: 2026-10-07. 근거: 사용자 요청, AGENTS.md, AI_IMPLEMENTATION_DOC_STANDARD.md.
-프로젝트명 TEXTRIS, 현재 버전 1.1.0, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
+프로젝트명 TEXTRIS, 현재 버전 1.2.0, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
 
 ## 목표와 완료 기준
 터미널에서 키보드로 즐기는 완성형 싱글 플레이 테트리스. 독립 코어 테스트,
-실제 PTY 키 입력/화면/종료/리사이즈 검증, WAV 신호 검증과 오디오 백엔드 확인을 완료한다.
-온라인 대전/계정은 범위 밖이다. 검증 후 태그 푸시와 GitHub Release는 최신 사용자 승인 범위다.
+실제 PTY 키 입력/화면/종료/리사이즈 검증, MIDI/Ogg/WAV 신호 검증과 오디오 백엔드 확인을 완료한다.
+온라인 대전/계정은 범위 밖이다. 현재 작업 범위는 사운드 개편·Windows 재검증과
+사용자가 후속 승인한 패키징·커밋·v1.2.0 태그 푸시다.
 
 ## 동결 결정
 - Python 3.10 이상, Linux/macOS 표준 curses 및 Windows 조건부 windows-curses.
-- `python3 -m textris` 또는 `python3 run.py`. 설치와 네트워크 불필요.
+- `python3 -m textris` 또는 `python3 run.py`. 실행 중 네트워크 불필요.
+  Windows 소스 실행은 windows-curses 설치가 필요하며 단일 EXE에 포함한다.
 - 코어/화면/오디오/저장/번역 분리. 화면 60 FPS 목표, 실제 시간 delta로 진행.
 - 보드 10×20 표시 + 상단 숨김 2행, I/O/T/S/Z/J/L 7-bag, NEXT 5개, HOLD 1개.
 - 90도 좌/우 회전과 SRS 벽 차기, ghost, soft/hard drop, 0.5초 lock delay,
@@ -28,16 +30,18 @@
   Space hard drop, C 홀드, P/Esc 일시정지, H/? 도움말, M 음소거,
   B 배경음 토글, R 재시작 확인, Q 종료 확인. 메뉴 Enter 선택.
 - 메뉴: 모드 3개, 시작 레벨 1~15, 설정, 기록, 종료. 설정: 색상/모노,
-  블록 Unicode/ASCII, 전체 사운드, 음악, 볼륨 0~100%.
+  표시 Auto/Unicode/ASCII, 전체 사운드, 음악, master/music/SFX 볼륨 0~100%.
   전체 사운드 설정은 M과 같은 마스터 음소거이며 음악에도 적용된다. 시작 전 3초 카운트다운.
 - i18n 문자열 외부화. 최소 64×28, 미달 시 안내와 자동 게임 정지, 확대 후 재개.
-- stdlib wave로 직접 합성한 효과음/오리지널 루프 음악. 외부 유료 서비스나 음원 사용 없음.
-  aplay/paplay/ffplay/afplay 자동 선택, 비동기 실행, 실패하면 무음 상태 표시, beep/BEL 사용하지 않음.
-  음악은 pause/help/resize/confirm 시 중단, 프로세스 종료 시 모두 정리.
-  생성 음원 디렉터리/파일의 정규 경로는 지정한 데이터 루트 내부인지 검증한다.
+- 26곡의 4파트 MIDI 편곡을 FluidSynth/GeneralUser GS로 제작 단계에서 렌더한 Ogg와
+  Agent Audio로 생성한30효과음을 포함한다. 실행 시 외부 유료서비스/재생기/네트워크는 불필요하다.
+  miniaudio Windows WASAPI 우선/WINMM fallback 및 각 플랫폼 native backend를 사용한다.
+  비동기 스트리밍, 실패하면 무음 상태 표시, beep/BEL 사용하지 않음.
+  음악은 pause/help/resize/confirm 시 위치를 보존해 정지하고 종료 시 모두 정리한다.
+  압축 패키지 추출 캐시의 정규 경로는 지정한 데이터 루트 내부인지 검증한다.
 - 기본 저장은 프로젝트 내부 `.textris-data/records.json` (외부 쓰기 방지).
   스키마 `{"version":1,"settings":{"language":"en","sound":true,"music":true,
-  "volume":0.5,"ascii":false,"color":true},"records":{"marathon":[],"sprint":[],"ultra":[]}}`.
+  "volume":0.5,"music_volume":0.75,"sfx_volume":0.85,"ascii":false,"display_mode":"auto","color":true},"records":{"marathon":[],"sprint":[],"ultra":[]}}`.
   기록 필드 score:int, lines:int, level:int, seconds:float (0~10^12), completed:bool, date:str.
   모드당 10개, sprint 완료 시간 우선/나머지 점수 우선. 임시 파일 후 원자 교체.
   손상/권한 오류는 실행을 중단하지 않고 상태 안내, 원본 손상 파일 유지.
@@ -60,8 +64,8 @@ clear/level/gameover/win. UI가 큐를 소비해 효과를 표시한다.
 
 ## 잔여 환경 제한
 터미널 키 반복은 OS/터미널 설정을 따른다(키 release 이벤트 없음).
-오디오 장치/서버가 없으면 실제 청취는 불가능하고 bell도 터미널 설정에 의존한다.
-Windows 기본 Python에는 curses가 없어 WSL 실행을 안내한다.
+오디오 장치/서버가 없으면 실제 청취는 불가능하며 terminal bell은 사용하지 않는다.
+Windows 기본 Python에는 curses가 없어 windows-curses 또는 배포 EXE를 사용한다.
 
 ## 화려한 TUI 연출 확장 (2026-10-07)
 최신 요구에 따라 충격·감쇠 흔들림·충격파·블록 파괴 파편·폭죽·상승 점수·
@@ -95,3 +99,19 @@ cathedral, Braille 연속 곡선·깊이 기반 입체 아트·장미창·빛 �
 제품 UI는 영문 단일/ASCII 문자열, 아트에는 자동 ASCII 폴백과 Unicode 선택을 제공한다.
 재생 불가 시 벨을 울리지 않는다. 6테마와 모든 갤러리 아트를 공통 합성기로 갱신한다.
 게임 규칙/리플레이/기록은 유지한다. 검증 후 태그 푸시/릴리스는 사용자 명시 승인됨.
+
+## 감사 2 수정 — 최신 기준 (2026-10-07)
+현재 사용자 요청의 구현/검증 기준은 `docs/audit/audit_2_remediation_plan.md`다.
+Windows 자동 Unicode 타일, 저장 가능한 Auto/Unicode/ASCII 선택과 안전 폴백,
+외부 플레이어 없는 Windows waveOut 재생, 다섯 테마의 의미·강도·좌표별 성취 연출을 제공한다.
+이 절은 이전 Windows 기본 ASCII·외부 플레이어 전용 설명보다 우선한다.
+Windows에는 windows-curses를 사용하며 WSL이 필수는 아니다. 저장 version 1, 규칙,
+리플레이와 기록은 유지한다. 이번 요청은 수정과 로컬 Windows 재검증이며 게시/릴리스는 수행하지 않는다.
+
+## 사운드 전면 개편 — 최신 승인 기준 (2026-10-08)
+`docs/audio-overhaul-plan.md`를 구현 기준으로 한다. 26곡의 4채널 MIDI 편곡을
+사전 렌더한 Ogg, Agent Audio 효과음30종, miniaudio 독립 재생, 테마/Classic 1:1 셔플,
+Extras Soundtrack 감상과 버스별 음량을 제공한다. 이 절은 이전 8초 합성루프·waveOut
+전용 재생 설명보다 우선한다. 제품 실행은 offline이며 EXE에 음원/decoder를 포함한다.
+기존 저장 version1/게임 규칙/리플레이 계약은 유지하고 OS 출력 설정은 변경하지 않는다.
+완료 후 v1.2.0 태그 푸시와 기존 Release workflow의 결과를 확인한다.

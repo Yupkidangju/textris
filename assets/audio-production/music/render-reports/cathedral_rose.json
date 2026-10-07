@@ -1,0 +1,25 @@
+{
+  "id": "cathedral_rose",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -18.0,
+  "true_peak_dbtp": -4.91,
+  "lra": 4.5,
+  "peak": 0.5682996511459351,
+  "rms": 0.08900157367670473,
+  "stereo_correlation": 0.9352902426202532,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.6,
+  "spectral_energy": {
+    "sub": 0.047975,
+    "low": 0.230721,
+    "mid": 0.612303,
+    "presence": 0.106795,
+    "air": 0.002205
+  },
+  "sha256": "5e41183012faffe7da381fe389ca7a36d7428b2da118968966069efa0a4b6a02",
+  "master_sha256": "f99e15a11179abab86dc0930c3d1c4b5e8df69d78de976ee619dc8396dcafb23",
+  "midi_sha256": "4ed1d03a23e726c26b9d7573b8a89def73a94764d3ea29c78cc3bf4bf09b459f",
+  "human_listening": "not performed"
+}

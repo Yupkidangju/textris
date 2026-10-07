@@ -146,6 +146,10 @@ def build_standalone_binary() -> Path | None:
         *cmd_prefix,
         "--name", "textris",
         "--onefile",
+        "--collect-data", "textris",
+        "--hidden-import", "_cffi_backend",
+        "--hidden-import", "_miniaudio",
+        "--exclude-module", "numpy",
         "--clean",
         "--distpath", str(DIST_DIR),
         "--workpath", str(BUILD_DIR / "pyinstaller"),
@@ -198,6 +202,12 @@ def verify_executable(executable_path: Path, is_python_script: bool = False) -> 
         return False
 
     log_success(f"{executable_path.name} 정상 검증 완료! (버전: {res_ver.stdout.strip()})")
+    assets = subprocess.run([*run_cmd, "--verify-audio-assets"], capture_output=True,
+                            text=True, encoding="utf-8", errors="replace")
+    if assets.returncode != 0:
+        log_error(f"{executable_path.name} 음원 무결성 검사 실패: {assets.stderr.strip()}")
+        return False
+    log_success(f"음원 목록/해시 검증: {assets.stdout.strip()}")
     return True
 
 
@@ -212,6 +222,14 @@ def main() -> int:
     parser.add_argument("--no-clean", dest="clean", action="store_false",
                         help="이전 빌드 산출물 유지")
     args = parser.parse_args()
+
+    sys.path.insert(0, str(ROOT_DIR))
+    from textris.asset_check import verify_audio_assets
+    try:
+        verify_audio_assets()
+    except ValueError as exc:
+        log_error(str(exc))
+        return 1
 
     print("=" * 60)
     print("           TEXTRIS MULTI-PLATFORM BUILDER")

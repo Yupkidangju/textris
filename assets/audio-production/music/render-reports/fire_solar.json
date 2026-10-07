@@ -1,0 +1,25 @@
+{
+  "id": "fire_solar",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -18.02,
+  "true_peak_dbtp": -2.79,
+  "lra": 5.4,
+  "peak": 0.7236289381980896,
+  "rms": 0.08226723631391011,
+  "stereo_correlation": 0.9229383425699864,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.075658,
+    "low": 0.163152,
+    "mid": 0.56562,
+    "presence": 0.188827,
+    "air": 0.006743
+  },
+  "sha256": "7343c32c19db877d3154e352c2d9f0425a930368d361d8459b99c98f2cb0da02",
+  "master_sha256": "ba931f865f97c39ef66cb208bc6055dc83439e1c02d42f1f591e7038b4f17a26",
+  "midi_sha256": "2e22255a54628c6ac4e24bf75d37ad9cd024af23e2f555d1ad6ad0d369687bbe",
+  "human_listening": "not performed"
+}

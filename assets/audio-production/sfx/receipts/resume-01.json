@@ -1,0 +1,30 @@
+{
+  "id": "resume",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:13:47.915Z",
+  "finished_at": "2026-10-07T15:14:10.357Z",
+  "request": {
+    "id": "resume",
+    "prompt": "A spring-loaded wooden carriage releases with a light crisp click and brief upward airy swish. Compact tactile dry attack and short soft tail, a single isolated action. No voice, no music, no electronic beep or sustained ringing.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/resume-01.wav",
+    "min_duration": 0.07,
+    "max_duration": 0.25,
+    "gain": 0.59,
+    "priority": 40,
+    "cooldown": 0.15,
+    "target_peak_db": -7
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\resume-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\resume-01.wav"
+    },
+    "isError": false
+  }
+}

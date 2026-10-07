@@ -1,0 +1,30 @@
+{
+  "id": "fever_start",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:20:48.498Z",
+  "finished_at": "2026-10-07T15:21:16.357Z",
+  "request": {
+    "id": "fever_start",
+    "prompt": "A pressure valve releases a fast rising rush of textured air into a deep contained furnace ignition whoomp, then a short bright ember crackle. Strong fast physical transition with a controlled airy decay, no voice, no music, no siren, no electronic beep or pitched melody.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/fever_start-01.wav",
+    "min_duration": 0.9,
+    "max_duration": 1.6,
+    "gain": 0.92,
+    "priority": 95,
+    "cooldown": 0.5,
+    "target_peak_db": -4
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\fever_start-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\fever_start-01.wav"
+    },
+    "isError": false
+  }
+}

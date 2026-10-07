@@ -1,0 +1,30 @@
+{
+  "id": "go",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:12:59.921Z",
+  "finished_at": "2026-10-07T15:13:21.747Z",
+  "request": {
+    "id": "go",
+    "prompt": "A taut compressed air latch bursts open with a short broad whoosh and a solid wooden release knock. Immediate confident attack, bright textured air, quick natural decay, dry close perspective. One isolated event. No voice, no music, no beep, no sustained pitch.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/go-01.wav",
+    "min_duration": 0.22,
+    "max_duration": 0.65,
+    "gain": 0.8,
+    "priority": 75,
+    "cooldown": 0.3,
+    "target_peak_db": -4
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\go-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\go-01.wav"
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "backend": [
+    "ffplay",
+    "C:\\Users\\temp\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffplay.EXE"
+  ],
+  "sdl_audio_env": {},
+  "endpoint": {
+    "endpoint_id": "{0.0.0.00000000}.{a05e0919-8477-4033-8e91-73f8b507d78a}",
+    "master_volume": 0.0,
+    "master_muted": true
+  },
+  "baseline": {
+    "samples": 56,
+    "peak": 2.3283064365386963e-10,
+    "positive_samples": 0
+  },
+  "wav": {
+    "move": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.03501133786848073,
+      "minimum": -7290,
+      "maximum": 6872,
+      "rms": 2870.912293847329
+    },
+    "rotate": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.08498866213151927,
+      "minimum": -9284,
+      "maximum": 9277,
+      "rms": 3511.2015713883416
+    },
+    "hold": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.12,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 4430.815259599686
+    },
+    "drop": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.16997732426303855,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 4983.327403894679
+    },
+    "lock": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.055011337868480725,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 4246.750594381793
+    },
+    "clear": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.32,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 5244.194702399248
+    },
+    "tetris": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.44,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 5273.241226892876
+    },
+    "level": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.47002267573696144,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 5332.356495921363
+    },
+    "gameover": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.8,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 5676.545383344727
+    },
+    "win": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 0.76,
+      "minimum": -9288,
+      "maximum": 9288,
+      "rms": 5650.966194510051
+    },
+    "music": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 8.0,
+      "minimum": -8244,
+      "maximum": 8244,
+      "rms": 3749.205134828876
+    },
+    "music1": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 8.0,
+      "minimum": -8534,
+      "maximum": 8496,
+      "rms": 3755.052365732524
+    },
+    "music2": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 8.0,
+      "minimum": -8826,
+      "maximum": 8750,
+      "rms": 3762.319871890751
+    },
+    "music3": {
+      "rate": 22050,
+      "channels": 1,
+      "width": 2,
+      "duration": 8.0,
+      "minimum": -9119,
+      "maximum": 9004,
+      "rms": 3770.998698553934
+    }
+  },
+  "direct_ffplay": {
+    "samples": 138,
+    "peak": 0.2005615234375,
+    "positive_samples": 35,
+    "returncode": 0
+  },
+  "engine_effect": {
+    "samples": 120,
+    "peak": 0.2005615234375,
+    "positive_samples": 35,
+    "status": "ffplay"
+  },
+  "engine_music": {
+    "samples": 106,
+    "peak": 0.177886962890625,
+    "positive_samples": 80,
+    "process_alive": true
+  },
+  "engine_pause": {
+    "samples": 56,
+    "peak": 0.177520751953125,
+    "positive_samples": 4,
+    "music_stopped": true
+  },
+  "engine_mute": {
+    "samples": 55,
+    "peak": 0.174652099609375,
+    "positive_samples": 4,
+    "music_stopped": true
+  },
+  "engine_zero_volume": {
+    "samples": 28,
+    "peak": 2.3283064365386963e-10,
+    "positive_samples": 0
+  },
+  "ui_drop_event": {
+    "samples": 110,
+    "peak": 0.20062255859375,
+    "positive_samples": 9,
+    "board_cells": 4
+  },
+  "ui_music_tick": {
+    "samples": 54,
+    "peak": 0.177886962890625,
+    "positive_samples": 35
+  },
+  "ui_pause_tick": {
+    "samples": 55,
+    "peak": 0.177490234375,
+    "positive_samples": 2,
+    "music_stopped": true
+  },
+  "engine_closed": {
+    "thread_alive": false,
+    "status": "ffplay",
+    "failed": false,
+    "launches": [
+      {
+        "command": [
+          "C:\\Users\\temp\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffplay.EXE",
+          "-nodisp",
+          "-autoexit",
+          "-loglevel",
+          "quiet",
+          "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\engine\\audio\\tetris-5.wav"
+        ],
+        "pid": 10704,
+        "returncode": 0
+      },
+      {
+        "command": [
+          "C:\\Users\\temp\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffplay.EXE",
+          "-nodisp",
+          "-autoexit",
+          "-loglevel",
+          "quiet",
+          "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\engine\\audio\\music-5.wav"
+        ],
+        "pid": 37332,
+        "returncode": 1
+      },
+      {
+        "command": [
+          "C:\\Users\\temp\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffplay.EXE",
+          "-nodisp",
+          "-autoexit",
+          "-loglevel",
+          "quiet",
+          "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\engine\\audio\\music-5.wav"
+        ],
+        "pid": 37132,
+        "returncode": 1
+      },
+      {
+        "command": [
+          "C:\\Users\\temp\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffplay.EXE",
+          "-nodisp",
+          "-autoexit",
+          "-loglevel",
+          "quiet",
+          "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\engine\\audio\\hold-5.wav"
+        ],
+        "pid": 46616,
+        "returncode": 0
+      },
+      {
+        "command": [
+          "C:\\Users\\temp\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffplay.EXE",
+          "-nodisp",
+          "-autoexit",
+          "-loglevel",
+          "quiet",
+          "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\engine\\audio\\drop-5.wav"
+        ],
+        "pid": 23680,
+        "returncode": 0
+      },
+      {
+        "command": [
+          "C:\\Users\\temp\\AppData\\Local\\Microsoft\\WinGet\\Links\\ffplay.EXE",
+          "-nodisp",
+          "-autoexit",
+          "-loglevel",
+          "quiet",
+          "C:\\LocalDev\\python\\textris\\docs\\audit\\audio-20261007-6ec14cb99f44\\engine\\audio\\music-5.wav"
+        ],
+        "pid": 18052,
+        "returncode": 1
+      }
+    ]
+  },
+  "after_close": {
+    "samples": 28,
+    "peak": 2.3283064365386963e-10,
+    "positive_samples": 0
+  }
+}

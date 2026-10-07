@@ -1,0 +1,1 @@
+{"dependencies": [{"name": "-e -", "skip_reason": "could not deduce package version from URL requirement"}, {"name": "cffi", "version": "2.1.1", "vulns": []}, {"name": "miniaudio", "version": "1.71", "vulns": []}, {"name": "pycparser", "version": "3.0", "vulns": []}, {"name": "windows-curses", "version": "2.4.2", "vulns": []}], "fixes": []}

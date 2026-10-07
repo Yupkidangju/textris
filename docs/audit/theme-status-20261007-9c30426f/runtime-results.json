@@ -1,0 +1,1118 @@
+{
+  "python": "3.14.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "seed": 42,
+  "time": 100.6,
+  "captures": [
+    "cathedral-idle-unicode-120x40.png",
+    "cathedral-all-clear-unicode-120x40.png",
+    "cathedral-clear-phase050.png",
+    "cathedral-bloom-phase050.png",
+    "cathedral-ascension-phase050.png",
+    "cathedral-victory-phase050.png",
+    "cathedral-eclipse-phase050.png",
+    "cathedral-awakening-phase050.png",
+    "cathedral-ascii-64x28.png",
+    "cathedral-ascii-160x50.png",
+    "cyberpunk-idle-unicode-120x40.png",
+    "cyberpunk-all-clear-unicode-120x40.png",
+    "cyberpunk-clear-phase050.png",
+    "cyberpunk-bloom-phase050.png",
+    "cyberpunk-ascension-phase050.png",
+    "cyberpunk-victory-phase050.png",
+    "cyberpunk-eclipse-phase050.png",
+    "cyberpunk-awakening-phase050.png",
+    "cyberpunk-ascii-64x28.png",
+    "cyberpunk-ascii-160x50.png",
+    "space-idle-unicode-120x40.png",
+    "space-all-clear-unicode-120x40.png",
+    "space-clear-phase050.png",
+    "space-bloom-phase050.png",
+    "space-ascension-phase050.png",
+    "space-victory-phase050.png",
+    "space-eclipse-phase050.png",
+    "space-awakening-phase050.png",
+    "space-ascii-64x28.png",
+    "space-ascii-160x50.png",
+    "fire-idle-unicode-120x40.png",
+    "fire-all-clear-unicode-120x40.png",
+    "fire-clear-phase050.png",
+    "fire-bloom-phase050.png",
+    "fire-ascension-phase050.png",
+    "fire-victory-phase050.png",
+    "fire-eclipse-phase050.png",
+    "fire-awakening-phase050.png",
+    "fire-ascii-64x28.png",
+    "fire-ascii-160x50.png",
+    "crt-idle-unicode-120x40.png",
+    "crt-all-clear-unicode-120x40.png",
+    "crt-clear-phase050.png",
+    "crt-bloom-phase050.png",
+    "crt-ascension-phase050.png",
+    "crt-victory-phase050.png",
+    "crt-eclipse-phase050.png",
+    "crt-awakening-phase050.png",
+    "crt-ascii-64x28.png",
+    "crt-ascii-160x50.png",
+    "mono-idle-unicode-120x40.png",
+    "mono-all-clear-unicode-120x40.png",
+    "mono-clear-phase050.png",
+    "mono-bloom-phase050.png",
+    "mono-ascension-phase050.png",
+    "mono-victory-phase050.png",
+    "mono-eclipse-phase050.png",
+    "mono-awakening-phase050.png",
+    "mono-ascii-64x28.png",
+    "mono-ascii-160x50.png"
+  ],
+  "contracts": {
+    "cathedral": {
+      "board_glyphs_equal": true,
+      "hud_glyphs_equal": true,
+      "idle_cells": 1391,
+      "event_changes_cells": true,
+      "palette_distinct": null,
+      "size_modes": [
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 6
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 6
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 6
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 331
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 331
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 331
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 1711
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1711
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1711
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 2737
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 2737
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 2737
+        }
+      ]
+    },
+    "cyberpunk": {
+      "board_glyphs_equal": true,
+      "hud_glyphs_equal": true,
+      "idle_cells": 915,
+      "event_changes_cells": true,
+      "palette_distinct": true,
+      "size_modes": [
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 8
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 8
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 8
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 243
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 243
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 243
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 1297
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1297
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1297
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 2085
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 2085
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 2085
+        }
+      ]
+    },
+    "space": {
+      "board_glyphs_equal": true,
+      "hud_glyphs_equal": true,
+      "idle_cells": 833,
+      "event_changes_cells": true,
+      "palette_distinct": true,
+      "size_modes": [
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 3
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 3
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 3
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 166
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 166
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 166
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 981
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 981
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 981
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 1583
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1583
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1583
+        }
+      ]
+    },
+    "fire": {
+      "board_glyphs_equal": true,
+      "hud_glyphs_equal": true,
+      "idle_cells": 696,
+      "event_changes_cells": true,
+      "palette_distinct": true,
+      "size_modes": [
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 0
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 0
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 0
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 155
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 155
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 155
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 771
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 771
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 771
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 1061
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1061
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 1061
+        }
+      ]
+    },
+    "crt": {
+      "board_glyphs_equal": true,
+      "hud_glyphs_equal": true,
+      "idle_cells": 727,
+      "event_changes_cells": true,
+      "palette_distinct": true,
+      "size_modes": [
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 0
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 0
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 0
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 203
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 203
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 203
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 796
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 796
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 796
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 938
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 938
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 938
+        }
+      ]
+    },
+    "mono": {
+      "board_glyphs_equal": true,
+      "hud_glyphs_equal": true,
+      "idle_cells": 812,
+      "event_changes_cells": true,
+      "palette_distinct": true,
+      "size_modes": [
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 6
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 6
+        },
+        {
+          "size": [
+            64,
+            28
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 6
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 237
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 237
+        },
+        {
+          "size": [
+            80,
+            30
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 237
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 836
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 836
+        },
+        {
+          "size": [
+            120,
+            40
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 836
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": true,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": true,
+          "glyph_count": 956
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": true,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 956
+        },
+        {
+          "size": [
+            160,
+            50
+          ],
+          "ascii": false,
+          "braille": false,
+          "clipped": true,
+          "protected": true,
+          "ascii_safe": null,
+          "glyph_count": 956
+        }
+      ]
+    }
+  },
+  "event_variation": {
+    "cathedral": {
+      "signatures": {
+        "clear": "a081f32447d07bad7c3729aae8d78f287df9f320a8f616b71b250cd332918125",
+        "bloom": "30bd180e3166d10968b4c37684e41e59098468a165bf86d0b68b883e65ca00a1",
+        "ascension": "bd1d445cb48e2bbc696bdfe9f7a22ffdb66ef9cb063cd4786d7839d5e6050f0f",
+        "victory": "bd1d445cb48e2bbc696bdfe9f7a22ffdb66ef9cb063cd4786d7839d5e6050f0f",
+        "eclipse": "89fb8f59191b5afceba0073bf79db9c67c8d880c98a8472e34eb3d6bd721be7c",
+        "awakening": "ad2aa328199f62cdd08c437581d6a1e5560a08eb5ace430b623eea2361ed8e19"
+      },
+      "distinct_geometry_count": 5
+    },
+    "cyberpunk": {
+      "signatures": {
+        "clear": "c4dc4df6820e2a7aa23b66bc4ed118cf12890162cf49c66fb7a673e8f39e0c2a",
+        "bloom": "c4dc4df6820e2a7aa23b66bc4ed118cf12890162cf49c66fb7a673e8f39e0c2a",
+        "ascension": "c4dc4df6820e2a7aa23b66bc4ed118cf12890162cf49c66fb7a673e8f39e0c2a",
+        "victory": "c4dc4df6820e2a7aa23b66bc4ed118cf12890162cf49c66fb7a673e8f39e0c2a",
+        "eclipse": "c4dc4df6820e2a7aa23b66bc4ed118cf12890162cf49c66fb7a673e8f39e0c2a",
+        "awakening": "c4dc4df6820e2a7aa23b66bc4ed118cf12890162cf49c66fb7a673e8f39e0c2a"
+      },
+      "distinct_geometry_count": 1
+    },
+    "space": {
+      "signatures": {
+        "clear": "1849b4969b7361039b098f796d6deeae4b4e3014cbe454ed0a9d6723443ffe76",
+        "bloom": "1849b4969b7361039b098f796d6deeae4b4e3014cbe454ed0a9d6723443ffe76",
+        "ascension": "1849b4969b7361039b098f796d6deeae4b4e3014cbe454ed0a9d6723443ffe76",
+        "victory": "1849b4969b7361039b098f796d6deeae4b4e3014cbe454ed0a9d6723443ffe76",
+        "eclipse": "1849b4969b7361039b098f796d6deeae4b4e3014cbe454ed0a9d6723443ffe76",
+        "awakening": "1849b4969b7361039b098f796d6deeae4b4e3014cbe454ed0a9d6723443ffe76"
+      },
+      "distinct_geometry_count": 1
+    },
+    "fire": {
+      "signatures": {
+        "clear": "ed05005706247b6a63d84d4d56b844eef2bc9de8fe14d796534cb74213c2d922",
+        "bloom": "ed05005706247b6a63d84d4d56b844eef2bc9de8fe14d796534cb74213c2d922",
+        "ascension": "ed05005706247b6a63d84d4d56b844eef2bc9de8fe14d796534cb74213c2d922",
+        "victory": "ed05005706247b6a63d84d4d56b844eef2bc9de8fe14d796534cb74213c2d922",
+        "eclipse": "ed05005706247b6a63d84d4d56b844eef2bc9de8fe14d796534cb74213c2d922",
+        "awakening": "ed05005706247b6a63d84d4d56b844eef2bc9de8fe14d796534cb74213c2d922"
+      },
+      "distinct_geometry_count": 1
+    },
+    "crt": {
+      "signatures": {
+        "clear": "54b9365604944f1bc4314789413b376a2705058814ec1f37dc5ccaf6e640e1d4",
+        "bloom": "54b9365604944f1bc4314789413b376a2705058814ec1f37dc5ccaf6e640e1d4",
+        "ascension": "54b9365604944f1bc4314789413b376a2705058814ec1f37dc5ccaf6e640e1d4",
+        "victory": "54b9365604944f1bc4314789413b376a2705058814ec1f37dc5ccaf6e640e1d4",
+        "eclipse": "54b9365604944f1bc4314789413b376a2705058814ec1f37dc5ccaf6e640e1d4",
+        "awakening": "54b9365604944f1bc4314789413b376a2705058814ec1f37dc5ccaf6e640e1d4"
+      },
+      "distinct_geometry_count": 1
+    },
+    "mono": {
+      "signatures": {
+        "clear": "2d4c69d035dca3a3a969d79d246c534b62ce7c9fe251e69c95d4a90f284c837c",
+        "bloom": "2d4c69d035dca3a3a969d79d246c534b62ce7c9fe251e69c95d4a90f284c837c",
+        "ascension": "2d4c69d035dca3a3a969d79d246c534b62ce7c9fe251e69c95d4a90f284c837c",
+        "victory": "2d4c69d035dca3a3a969d79d246c534b62ce7c9fe251e69c95d4a90f284c837c",
+        "eclipse": "2d4c69d035dca3a3a969d79d246c534b62ce7c9fe251e69c95d4a90f284c837c",
+        "awakening": "2d4c69d035dca3a3a969d79d246c534b62ce7c9fe251e69c95d4a90f284c837c"
+      },
+      "distinct_geometry_count": 1
+    }
+  },
+  "performance": {
+    "cathedral": {
+      "frames": 240,
+      "mean_ms": 8.046,
+      "p95_ms": 11.972,
+      "max_ms": 54.779,
+      "includes_terminal_io": false,
+      "unicode": true,
+      "color_emulated": true
+    },
+    "cyberpunk": {
+      "frames": 240,
+      "mean_ms": 6.56,
+      "p95_ms": 9.823,
+      "max_ms": 73.197,
+      "includes_terminal_io": false,
+      "unicode": true,
+      "color_emulated": true
+    },
+    "space": {
+      "frames": 240,
+      "mean_ms": 6.47,
+      "p95_ms": 9.46,
+      "max_ms": 118.541,
+      "includes_terminal_io": false,
+      "unicode": true,
+      "color_emulated": true
+    },
+    "fire": {
+      "frames": 240,
+      "mean_ms": 5.416,
+      "p95_ms": 9.269,
+      "max_ms": 10.655,
+      "includes_terminal_io": false,
+      "unicode": true,
+      "color_emulated": true
+    },
+    "crt": {
+      "frames": 240,
+      "mean_ms": 6.784,
+      "p95_ms": 9.737,
+      "max_ms": 169.467,
+      "includes_terminal_io": false,
+      "unicode": true,
+      "color_emulated": true
+    },
+    "mono": {
+      "frames": 240,
+      "mean_ms": 3.76,
+      "p95_ms": 8.563,
+      "max_ms": 9.678,
+      "includes_terminal_io": false,
+      "unicode": true,
+      "color_emulated": true
+    }
+  },
+  "notes": [
+    "Actual App.draw with emulated Linux color-pair bit masks; no terminal IO.",
+    "Unicode intentionally enabled. PNG Braille dots drawn from exact cell masks; other glyphs use Windows fonts.",
+    "Protected playfield/HUD comparison uses unchanged game state and event cues directly injected.",
+    "Original baseline is the current HEAD cathedral, not a pre-upgrade historical version."
+  ]
+}

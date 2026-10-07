@@ -5,7 +5,8 @@ import math
 from pathlib import Path
 import tempfile
 
-DEFAULTS = dict(language='en',sound=True,music=True,volume=.5,ascii=False,color=True,
+DEFAULTS = dict(language='en',sound=True,music=True,volume=.5,ascii=False,display_mode='auto',color=True,
+                music_volume=.75,sfx_volume=.85,
                 theme='cathedral',fx_intensity=.75,fx_speed=1.,fx_density=.75,
                 shake=True,flash=True,braille=True)
 MODES = ('marathon','sprint','ultra','boss')
@@ -39,21 +40,28 @@ class Store:
                 raise ValueError('unsupported save version')
             settings = data.get('settings',{})
             if isinstance(settings,dict):
+                display_mode = settings.get('display_mode')
+                if display_mode not in ('auto','unicode','ascii'):
+                    display_mode = 'ascii' if settings.get('ascii') is True else 'auto'
                 for key, default in DEFAULTS.items():
                     value = settings.get(key, default)
                     if key == 'language':
                         value='en'
                         valid = True
+                    elif key == 'display_mode':
+                        value = display_mode
+                        valid = True
                     elif key == 'theme':
                         valid = isinstance(value,str) and value in ('cathedral','cyberpunk','space','fire','crt','mono')
                     elif key in ('fx_intensity','fx_density','fx_speed'):
                         valid = type(value) in (int,float) and math.isfinite(value) and (.5 if key=='fx_speed' else .25) <= value <= (2 if key=='fx_speed' else 1)
-                    elif key == 'volume':
+                    elif key in ('volume','music_volume','sfx_volume'):
                         valid = type(value) in (int,float) and 0 <= value <= 1 and math.isfinite(value)
                     else:
                         valid = type(value) is bool
                     if valid:
                         self.settings[key] = value
+                self.settings['ascii'] = display_mode == 'ascii'
             records = data.get('records',{})
             if isinstance(records,dict):
                 for mode in MODES:

@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-10-07T16:11:17.502198+00:00",
+  "exe_sha256": "b02a5cfb0a78eb9c8ec81b7b9c064ef2a8c316b01fe48242e8e7be6617d41962",
+  "method": "Fresh onefile process/extraction per command, empty PATH/PYTHONPATH, CREATE_NO_WINDOW, 20ms process-tree memory sampling; OS file cache not flushed; concurrent audio soak active; no audio/UI invocation.",
+  "runs": [
+    {
+      "argument": "--version",
+      "iteration": 1,
+      "elapsed_seconds": 1.4729209998622537,
+      "exit_code": 0,
+      "stdout": "1.2.0\r\n",
+      "stderr": "",
+      "sample_count": 31,
+      "sampled_tree_working_set_peak_bytes": 46870528,
+      "observed_process_peak_working_set_bytes": {
+        "63340": 7389184,
+        "47396": 9478144,
+        "29612": 31330304
+      },
+      "remaining_temp_entries": [],
+      "working_directory_entries": []
+    },
+    {
+      "argument": "--verify-audio-assets",
+      "iteration": 1,
+      "elapsed_seconds": 1.5975834000855684,
+      "exit_code": 0,
+      "stdout": "{\"bytes\": 47790454, \"effects\": 30, \"music_seconds\": 2340.0, \"tracks\": 26}\r\n",
+      "stderr": "",
+      "sample_count": 33,
+      "sampled_tree_working_set_peak_bytes": 50065408,
+      "observed_process_peak_working_set_bytes": {
+        "16924": 10121216,
+        "55636": 7389184,
+        "65716": 35360768
+      },
+      "remaining_temp_entries": [],
+      "working_directory_entries": []
+    },
+    {
+      "argument": "--help",
+      "iteration": 1,
+      "elapsed_seconds": 1.4955979001242667,
+      "exit_code": 0,
+      "stdout": "usage: textris.exe [-h] [--version] [--no-sound] [--ascii | --unicode]\r\n                   [--theme {cathedral,cyberpunk,space,fire,crt,mono}]\r\n                   [--seed SEED] [--data-dir DATA_DIR] [--audio-check]\r\n                   [--verify-audio-assets]\r\n\r\nTEXTRIS - keyboard-driven terminal Tetris\r\n\r\noptions:\r\n  -h, --help            show this help message and exit\r\n  --version             show program's version number and exit\r\n  --no-sound            mute this session\r\n  --ascii               ASCII-safe text and art\r\n  --unicode             enable Unicode art (requires a suitable terminal font)\r\n  --theme {cathedral,cyberpunk,space,fire,crt,mono}\r\n                        visual theme for this session\r\n  --seed SEED           reproducible piece sequence\r\n  --data-dir DATA_DIR   settings, records and generated audio directory\r\n  --audio-check         test packaged audio playback and report output state,\r\n                        then exit\r\n  --verify-audio-assets\r\n                        verify packaged soundtrack/effect inventory and\r\n                        hashes, then exit\r\n",
+      "stderr": "",
+      "sample_count": 31,
+      "sampled_tree_working_set_peak_bytes": 47857664,
+      "observed_process_peak_working_set_bytes": {
+        "7696": 7397376,
+        "75988": 9474048,
+        "6424": 31449088
+      },
+      "remaining_temp_entries": [],
+      "working_directory_entries": []
+    },
+    {
+      "argument": "--version",
+      "iteration": 2,
+      "elapsed_seconds": 1.2364572000224143,
+      "exit_code": 0,
+      "stdout": "1.2.0\r\n",
+      "stderr": "",
+      "sample_count": 28,
+      "sampled_tree_working_set_peak_bytes": 46534656,
+      "observed_process_peak_working_set_bytes": {
+        "66488": 7393280,
+        "74172": 9474048,
+        "74644": 31440896
+      },
+      "remaining_temp_entries": [],
+      "working_directory_entries": []
+    },
+    {
+      "argument": "--verify-audio-assets",
+      "iteration": 2,
+      "elapsed_seconds": 1.35653440002352,
+      "exit_code": 0,
+      "stdout": "{\"bytes\": 47790454, \"effects\": 30, \"music_seconds\": 2340.0, \"tracks\": 26}\r\n",
+      "stderr": "",
+      "sample_count": 31,
+      "sampled_tree_working_set_peak_bytes": 50212864,
+      "observed_process_peak_working_set_bytes": {
+        "49320": 10117120,
+        "53232": 7385088,
+        "68824": 35364864
+      },
+      "remaining_temp_entries": [],
+      "working_directory_entries": []
+    },
+    {
+      "argument": "--help",
+      "iteration": 2,
+      "elapsed_seconds": 1.2260443000122905,
+      "exit_code": 0,
+      "stdout": "usage: textris.exe [-h] [--version] [--no-sound] [--ascii | --unicode]\r\n                   [--theme {cathedral,cyberpunk,space,fire,crt,mono}]\r\n                   [--seed SEED] [--data-dir DATA_DIR] [--audio-check]\r\n                   [--verify-audio-assets]\r\n\r\nTEXTRIS - keyboard-driven terminal Tetris\r\n\r\noptions:\r\n  -h, --help            show this help message and exit\r\n  --version             show program's version number and exit\r\n  --no-sound            mute this session\r\n  --ascii               ASCII-safe text and art\r\n  --unicode             enable Unicode art (requires a suitable terminal font)\r\n  --theme {cathedral,cyberpunk,space,fire,crt,mono}\r\n                        visual theme for this session\r\n  --seed SEED           reproducible piece sequence\r\n  --data-dir DATA_DIR   settings, records and generated audio directory\r\n  --audio-check         test packaged audio playback and report output state,\r\n                        then exit\r\n  --verify-audio-assets\r\n                        verify packaged soundtrack/effect inventory and\r\n                        hashes, then exit\r\n",
+      "stderr": "",
+      "sample_count": 28,
+      "sampled_tree_working_set_peak_bytes": 47988736,
+      "observed_process_peak_working_set_bytes": {
+        "76372": 9474048,
+        "75068": 7393280,
+        "48444": 31637504
+      },
+      "remaining_temp_entries": [],
+      "working_directory_entries": []
+    }
+  ]
+}

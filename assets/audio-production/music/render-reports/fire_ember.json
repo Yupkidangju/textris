@@ -1,0 +1,25 @@
+{
+  "id": "fire_ember",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -18.03,
+  "true_peak_dbtp": -3.71,
+  "lra": 5.1,
+  "peak": 0.6519291400909424,
+  "rms": 0.08379233534013628,
+  "stereo_correlation": 0.922522518859371,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.083956,
+    "low": 0.169246,
+    "mid": 0.609764,
+    "presence": 0.133621,
+    "air": 0.003414
+  },
+  "sha256": "0ce7367566ba80cf367816a9fabc7f351b710e841106adc9471808b7ee8c61fb",
+  "master_sha256": "db0aa01a5170931a3e83f92390172d68f98284d7a3cd8c1214c408f8faf42f24",
+  "midi_sha256": "23773cbc6e51ea10ee4ef42eec1e4341bc71190947ecd59e259023a0926a4a08",
+  "human_listening": "not performed"
+}

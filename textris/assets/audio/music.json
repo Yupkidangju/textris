@@ -1,0 +1,1422 @@
+{
+  "version": 1,
+  "tracks": [
+    {
+      "id": "cathedral_vault",
+      "title": "Vault of Light",
+      "theme": "cathedral",
+      "file": "music/cathedral_vault.ogg",
+      "duration": 90.0,
+      "bpm": 87.272727,
+      "time_signature": "4/4",
+      "instruments": [
+        "Church Organ",
+        "String Ensemble",
+        "Contrabass",
+        "Orchestral Percussion"
+      ],
+      "sha256": "cc7b86cd11bdd8650cf77367707fe319e733809a1698cccf8ef3fab14fbd561a",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/cathedral_vault.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "contrast",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "variation",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "outro",
+          "start_beat": 112,
+          "end_beat": 128
+        }
+      ]
+    },
+    {
+      "id": "cathedral_rose",
+      "title": "Rose Window",
+      "theme": "cathedral",
+      "file": "music/cathedral_rose.ogg",
+      "duration": 90.0,
+      "bpm": 81.818182,
+      "time_signature": "3/4",
+      "instruments": [
+        "Church Organ",
+        "String Ensemble",
+        "Contrabass",
+        "Orchestral Percussion"
+      ],
+      "sha256": "5e41183012faffe7da381fe389ca7a36d7428b2da118968966069efa0a4b6a02",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/cathedral_rose.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 12
+        },
+        {
+          "name": "theme",
+          "start_beat": 12,
+          "end_beat": 36
+        },
+        {
+          "name": "answer",
+          "start_beat": 36,
+          "end_beat": 60
+        },
+        {
+          "name": "contrast",
+          "start_beat": 60,
+          "end_beat": 84
+        },
+        {
+          "name": "variation",
+          "start_beat": 84,
+          "end_beat": 108
+        },
+        {
+          "name": "outro",
+          "start_beat": 108,
+          "end_beat": 120
+        }
+      ]
+    },
+    {
+      "id": "cathedral_orbits",
+      "title": "Celestial Procession",
+      "theme": "cathedral",
+      "file": "music/cathedral_orbits.ogg",
+      "duration": 90.0,
+      "bpm": 98.181818,
+      "time_signature": "4/4",
+      "instruments": [
+        "Church Organ",
+        "String Ensemble",
+        "Contrabass",
+        "Orchestral Percussion"
+      ],
+      "sha256": "26386e4a53b95c4ade7354c442d980b79e9a74355c91e46e5c9e20ec5c58298c",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/cathedral_orbits.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "contrast",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "variation",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "bridge",
+          "start_beat": 112,
+          "end_beat": 128
+        },
+        {
+          "name": "outro",
+          "start_beat": 128,
+          "end_beat": 144
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk_neon",
+      "title": "Neon Lattice",
+      "theme": "cyberpunk",
+      "file": "music/cyberpunk_neon.ogg",
+      "duration": 90.0,
+      "bpm": 130.909091,
+      "time_signature": "4/4",
+      "instruments": [
+        "Saw Lead",
+        "Warm Synth Pad",
+        "Synth Bass",
+        "Electronic Kit"
+      ],
+      "sha256": "be9fa08ce4af2735d60cb132baf6fe01f68fdb77fa5e52a48c8f5f56bb28463b",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/cyberpunk_neon.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "bridge",
+          "start_beat": 144,
+          "end_beat": 176
+        },
+        {
+          "name": "outro",
+          "start_beat": 176,
+          "end_beat": 192
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk_pursuit",
+      "title": "Chrome Pursuit",
+      "theme": "cyberpunk",
+      "file": "music/cyberpunk_pursuit.ogg",
+      "duration": 90.0,
+      "bpm": 130.909091,
+      "time_signature": "4/4",
+      "instruments": [
+        "Saw Lead",
+        "Warm Synth Pad",
+        "Synth Bass",
+        "Electronic Kit"
+      ],
+      "sha256": "86e612e914111e421a65f2209cd00ed2d772aa9afefab6c63541b64c3de86df8",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/cyberpunk_pursuit.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "bridge",
+          "start_beat": 144,
+          "end_beat": 176
+        },
+        {
+          "name": "outro",
+          "start_beat": 176,
+          "end_beat": 192
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk_midnight",
+      "title": "Midnight Circuit",
+      "theme": "cyberpunk",
+      "file": "music/cyberpunk_midnight.ogg",
+      "duration": 90.0,
+      "bpm": 120.0,
+      "time_signature": "4/4",
+      "instruments": [
+        "Saw Lead",
+        "Warm Synth Pad",
+        "Synth Bass",
+        "Electronic Kit"
+      ],
+      "sha256": "5dcef55a469c004cbe85b51af147d84dbc13a66b947f9f4895168425f632c590",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/cyberpunk_midnight.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "bridge",
+          "start_beat": 144,
+          "end_beat": 160
+        },
+        {
+          "name": "outro",
+          "start_beat": 160,
+          "end_beat": 176
+        }
+      ]
+    },
+    {
+      "id": "space_orbit",
+      "title": "Quiet Orbit",
+      "theme": "space",
+      "file": "music/space_orbit.ogg",
+      "duration": 90.0,
+      "bpm": 87.272727,
+      "time_signature": "4/4",
+      "instruments": [
+        "New Age Lead",
+        "Warm Pad",
+        "Round Synth Bass",
+        "Light Percussion"
+      ],
+      "sha256": "d4b24073c915ce976c2919f1e18b71b1125dd7c45eab9f6c8b5303c3e829dac5",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/space_orbit.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "contrast",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "variation",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "outro",
+          "start_beat": 112,
+          "end_beat": 128
+        }
+      ]
+    },
+    {
+      "id": "space_nebula",
+      "title": "Nebula Lanterns",
+      "theme": "space",
+      "file": "music/space_nebula.ogg",
+      "duration": 90.0,
+      "bpm": 73.636364,
+      "time_signature": "3/4",
+      "instruments": [
+        "New Age Lead",
+        "Warm Pad",
+        "Round Synth Bass",
+        "Light Percussion"
+      ],
+      "sha256": "e8fffcf63f2612888c114aba46b739a10042da13dc914a9f756b6fdc4c169a27",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/space_nebula.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 12
+        },
+        {
+          "name": "theme",
+          "start_beat": 12,
+          "end_beat": 36
+        },
+        {
+          "name": "contrast",
+          "start_beat": 36,
+          "end_beat": 60
+        },
+        {
+          "name": "variation",
+          "start_beat": 60,
+          "end_beat": 84
+        },
+        {
+          "name": "bridge",
+          "start_beat": 84,
+          "end_beat": 96
+        },
+        {
+          "name": "outro",
+          "start_beat": 96,
+          "end_beat": 108
+        }
+      ]
+    },
+    {
+      "id": "space_starlight",
+      "title": "Starlight Transit",
+      "theme": "space",
+      "file": "music/space_starlight.ogg",
+      "duration": 90.0,
+      "bpm": 87.272727,
+      "time_signature": "4/4",
+      "instruments": [
+        "New Age Lead",
+        "Warm Pad",
+        "Round Synth Bass",
+        "Light Percussion"
+      ],
+      "sha256": "74bba199acb3e145c6bcf1bfe8b2fd8d33fc325749490fcc088531846fda7de5",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/space_starlight.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "contrast",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "variation",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "outro",
+          "start_beat": 112,
+          "end_beat": 128
+        }
+      ]
+    },
+    {
+      "id": "fire_ember",
+      "title": "Ember Foundry",
+      "theme": "fire",
+      "file": "music/fire_ember.ogg",
+      "duration": 90.0,
+      "bpm": 109.090909,
+      "time_signature": "4/4",
+      "instruments": [
+        "Brass Section",
+        "Overdriven Guitar",
+        "Electric Bass",
+        "Tight Rock Kit"
+      ],
+      "sha256": "0ce7367566ba80cf367816a9fabc7f351b710e841106adc9471808b7ee8c61fb",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/fire_ember.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "outro",
+          "start_beat": 144,
+          "end_beat": 160
+        }
+      ]
+    },
+    {
+      "id": "fire_furnace",
+      "title": "Furnace Heart",
+      "theme": "fire",
+      "file": "music/fire_furnace.ogg",
+      "duration": 90.0,
+      "bpm": 120.0,
+      "time_signature": "4/4",
+      "instruments": [
+        "Brass Section",
+        "Overdriven Guitar",
+        "Electric Bass",
+        "Tight Rock Kit"
+      ],
+      "sha256": "a814eea66de1c8ebcc57d059357348bac416fa4eaa47e25dfa74db7b2f29067f",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/fire_furnace.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "bridge",
+          "start_beat": 144,
+          "end_beat": 160
+        },
+        {
+          "name": "outro",
+          "start_beat": 160,
+          "end_beat": 176
+        }
+      ]
+    },
+    {
+      "id": "fire_solar",
+      "title": "Solar Breaker",
+      "theme": "fire",
+      "file": "music/fire_solar.ogg",
+      "duration": 90.0,
+      "bpm": 109.090909,
+      "time_signature": "4/4",
+      "instruments": [
+        "Brass Section",
+        "Overdriven Guitar",
+        "Electric Bass",
+        "Tight Rock Kit"
+      ],
+      "sha256": "7343c32c19db877d3154e352c2d9f0425a930368d361d8459b99c98f2cb0da02",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/fire_solar.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "outro",
+          "start_beat": 144,
+          "end_beat": 160
+        }
+      ]
+    },
+    {
+      "id": "crt_arcade",
+      "title": "After Hours Arcade",
+      "theme": "crt",
+      "file": "music/crt_arcade.ogg",
+      "duration": 90.0,
+      "bpm": 120.0,
+      "time_signature": "4/4",
+      "instruments": [
+        "Square Lead",
+        "Electric Piano",
+        "Synth Bass",
+        "Electronic Kit"
+      ],
+      "sha256": "6c5fcf5dc066a4f7b2c2664eedeb722a33d74abf692e37164cf6525654997d9d",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/crt_arcade.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "bridge",
+          "start_beat": 144,
+          "end_beat": 160
+        },
+        {
+          "name": "outro",
+          "start_beat": 160,
+          "end_beat": 176
+        }
+      ]
+    },
+    {
+      "id": "crt_scanline",
+      "title": "Scanline Carousel",
+      "theme": "crt",
+      "file": "music/crt_scanline.ogg",
+      "duration": 90.0,
+      "bpm": 98.181818,
+      "time_signature": "3/4",
+      "instruments": [
+        "Square Lead",
+        "Electric Piano",
+        "Synth Bass",
+        "Electronic Kit"
+      ],
+      "sha256": "519aa2e67fffdf325240418e890e3bb64a8ff2c5c245fc771eaa0f846d1f90e3",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/crt_scanline.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 12
+        },
+        {
+          "name": "theme",
+          "start_beat": 12,
+          "end_beat": 36
+        },
+        {
+          "name": "answer",
+          "start_beat": 36,
+          "end_beat": 60
+        },
+        {
+          "name": "contrast",
+          "start_beat": 60,
+          "end_beat": 84
+        },
+        {
+          "name": "variation",
+          "start_beat": 84,
+          "end_beat": 108
+        },
+        {
+          "name": "bridge",
+          "start_beat": 108,
+          "end_beat": 132
+        },
+        {
+          "name": "outro",
+          "start_beat": 132,
+          "end_beat": 144
+        }
+      ]
+    },
+    {
+      "id": "crt_radio",
+      "title": "Phosphor Radio",
+      "theme": "crt",
+      "file": "music/crt_radio.ogg",
+      "duration": 90.0,
+      "bpm": 109.090909,
+      "time_signature": "4/4",
+      "instruments": [
+        "Square Lead",
+        "Electric Piano",
+        "Synth Bass",
+        "Electronic Kit"
+      ],
+      "sha256": "ff57b0130962cc619123a12b738973e8eb6215a0fb6e744721bb7200e91b1502",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/crt_radio.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "answer",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "contrast",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "variation",
+          "start_beat": 112,
+          "end_beat": 144
+        },
+        {
+          "name": "outro",
+          "start_beat": 144,
+          "end_beat": 160
+        }
+      ]
+    },
+    {
+      "id": "mono_geometry",
+      "title": "Paper Geometry",
+      "theme": "mono",
+      "file": "music/mono_geometry.ogg",
+      "duration": 90.0,
+      "bpm": 87.272727,
+      "time_signature": "4/4",
+      "instruments": [
+        "Grand Piano",
+        "Soft Strings",
+        "Acoustic Bass",
+        "Brush Kit"
+      ],
+      "sha256": "996379e6ddff47f6a870a390114f4617c685100cf5db996c35815cefe33d1633",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/mono_geometry.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "contrast",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "variation",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "outro",
+          "start_beat": 112,
+          "end_beat": 128
+        }
+      ]
+    },
+    {
+      "id": "mono_nocturne",
+      "title": "Graphite Nocturne",
+      "theme": "mono",
+      "file": "music/mono_nocturne.ogg",
+      "duration": 90.0,
+      "bpm": 73.636364,
+      "time_signature": "3/4",
+      "instruments": [
+        "Grand Piano",
+        "Soft Strings",
+        "Acoustic Bass",
+        "Brush Kit"
+      ],
+      "sha256": "ad74078f1767a745f60ff1919dc7c945ba43b06c9366110609ae018791fa1233",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/mono_nocturne.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 12
+        },
+        {
+          "name": "theme",
+          "start_beat": 12,
+          "end_beat": 36
+        },
+        {
+          "name": "contrast",
+          "start_beat": 36,
+          "end_beat": 60
+        },
+        {
+          "name": "variation",
+          "start_beat": 60,
+          "end_beat": 84
+        },
+        {
+          "name": "bridge",
+          "start_beat": 84,
+          "end_beat": 96
+        },
+        {
+          "name": "outro",
+          "start_beat": 96,
+          "end_beat": 108
+        }
+      ]
+    },
+    {
+      "id": "mono_etching",
+      "title": "Silver Etching",
+      "theme": "mono",
+      "file": "music/mono_etching.ogg",
+      "duration": 90.0,
+      "bpm": 98.181818,
+      "time_signature": "4/4",
+      "instruments": [
+        "Grand Piano",
+        "Soft Strings",
+        "Acoustic Bass",
+        "Brush Kit"
+      ],
+      "sha256": "29e985dcdb0b76bf18924e342735eaf87a68e29654e6a2aaff724af26923d9fb",
+      "composer": "TEXTRIS contributors",
+      "source": "Original composition for TEXTRIS",
+      "license": "Apache-2.0",
+      "source_midi": "assets/audio-production/music/midi/mono_etching.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 16
+        },
+        {
+          "name": "theme",
+          "start_beat": 16,
+          "end_beat": 48
+        },
+        {
+          "name": "contrast",
+          "start_beat": 48,
+          "end_beat": 80
+        },
+        {
+          "name": "variation",
+          "start_beat": 80,
+          "end_beat": 112
+        },
+        {
+          "name": "bridge",
+          "start_beat": 112,
+          "end_beat": 128
+        },
+        {
+          "name": "outro",
+          "start_beat": 128,
+          "end_beat": 144
+        }
+      ]
+    },
+    {
+      "id": "classic_korobeiniki",
+      "title": "Korobeiniki",
+      "theme": "classic",
+      "file": "music/classic_korobeiniki.ogg",
+      "duration": 90.0,
+      "bpm": 76.363636,
+      "time_signature": "2/4",
+      "instruments": [
+        "Accordion",
+        "Nylon Guitar",
+        "Acoustic Bass",
+        "Folk Percussion"
+      ],
+      "sha256": "2c955707728fae6014fd0940801c5c3968e803453ecdb2343796024cef998054",
+      "composer": "Traditional",
+      "source": "Traditional Russian melody; Jack Campin Nine-Note Tunebook, tune 371 (melody-only reference)",
+      "license": "Apache-2.0 (new arrangement); public-domain composition",
+      "source_midi": "assets/audio-production/music/midi/classic_korobeiniki.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 8
+        },
+        {
+          "name": "theme",
+          "start_beat": 8,
+          "end_beat": 24
+        },
+        {
+          "name": "answer",
+          "start_beat": 24,
+          "end_beat": 40
+        },
+        {
+          "name": "contrast",
+          "start_beat": 40,
+          "end_beat": 56
+        },
+        {
+          "name": "development",
+          "start_beat": 56,
+          "end_beat": 72
+        },
+        {
+          "name": "variation",
+          "start_beat": 72,
+          "end_beat": 88
+        },
+        {
+          "name": "reprise",
+          "start_beat": 88,
+          "end_beat": 104
+        },
+        {
+          "name": "outro",
+          "start_beat": 104,
+          "end_beat": 112
+        }
+      ]
+    },
+    {
+      "id": "classic_kalinka",
+      "title": "Kalinka",
+      "theme": "classic",
+      "file": "music/classic_kalinka.ogg",
+      "duration": 90.0,
+      "bpm": 98.181818,
+      "time_signature": "2/4",
+      "instruments": [
+        "Clarinet",
+        "Accordion",
+        "Acoustic Bass",
+        "Folk Percussion"
+      ],
+      "sha256": "d325d1749142deafc0ed6fed7e9395379ca273376f9b5a1704245d8cb90ed5bb",
+      "composer": "Ivan Larionov",
+      "source": "Ivan Larionov (1860), public-domain melody; John Chambers Kalinka.abc melody transcription reference",
+      "license": "Apache-2.0 (new arrangement); public-domain composition",
+      "source_midi": "assets/audio-production/music/midi/classic_kalinka.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 8
+        },
+        {
+          "name": "theme",
+          "start_beat": 8,
+          "end_beat": 24
+        },
+        {
+          "name": "answer",
+          "start_beat": 24,
+          "end_beat": 40
+        },
+        {
+          "name": "contrast",
+          "start_beat": 40,
+          "end_beat": 72
+        },
+        {
+          "name": "development",
+          "start_beat": 72,
+          "end_beat": 104
+        },
+        {
+          "name": "variation",
+          "start_beat": 104,
+          "end_beat": 120
+        },
+        {
+          "name": "reprise",
+          "start_beat": 120,
+          "end_beat": 136
+        },
+        {
+          "name": "outro",
+          "start_beat": 136,
+          "end_beat": 144
+        }
+      ]
+    },
+    {
+      "id": "classic_trepak",
+      "title": "Trepak",
+      "theme": "classic",
+      "file": "music/classic_trepak.ogg",
+      "duration": 90.0,
+      "bpm": 76.363636,
+      "time_signature": "2/4",
+      "instruments": [
+        "Violin",
+        "String Ensemble",
+        "Contrabass",
+        "Dance Percussion"
+      ],
+      "sha256": "8712326d45d7087202721e737b1ffd74d84fc969911c96eace2d124ad31f8ce6",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "source": "Tchaikovsky, composer piano reduction, Jurgenson 1892 / Rahter 1898; IMSLP 57454, printed pp.16-17, opening theme and middle offbeat contrast; new four-part accompaniment",
+      "license": "Apache-2.0 (new arrangement); public-domain composition",
+      "source_midi": "assets/audio-production/music/midi/classic_trepak.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 8
+        },
+        {
+          "name": "theme",
+          "start_beat": 8,
+          "end_beat": 24
+        },
+        {
+          "name": "answer",
+          "start_beat": 24,
+          "end_beat": 40
+        },
+        {
+          "name": "contrast",
+          "start_beat": 40,
+          "end_beat": 56
+        },
+        {
+          "name": "development",
+          "start_beat": 56,
+          "end_beat": 72
+        },
+        {
+          "name": "variation",
+          "start_beat": 72,
+          "end_beat": 88
+        },
+        {
+          "name": "reprise",
+          "start_beat": 88,
+          "end_beat": 104
+        },
+        {
+          "name": "outro",
+          "start_beat": 104,
+          "end_beat": 112
+        }
+      ]
+    },
+    {
+      "id": "classic_sugar_plum",
+      "title": "Dance of the Sugar Plum Fairy",
+      "theme": "classic",
+      "file": "music/classic_sugar_plum.ogg",
+      "duration": 90.0,
+      "bpm": 76.363636,
+      "time_signature": "2/4",
+      "instruments": [
+        "Celesta",
+        "Pizzicato Strings",
+        "Contrabass",
+        "Delicate Percussion"
+      ],
+      "sha256": "4ce43a32657e55bfb3e938da1f5d9c3280542a7609b07d1bb73e409131cfadd8",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "source": "Tchaikovsky, composer piano reduction, Jurgenson 1892 / Rahter 1898; IMSLP 57454, printed p.13, melody mm.5-20, directly transcribed (octave placement preserved)",
+      "license": "Apache-2.0 (new arrangement); public-domain composition",
+      "source_midi": "assets/audio-production/music/midi/classic_sugar_plum.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 8
+        },
+        {
+          "name": "theme",
+          "start_beat": 8,
+          "end_beat": 24
+        },
+        {
+          "name": "answer",
+          "start_beat": 24,
+          "end_beat": 40
+        },
+        {
+          "name": "contrast",
+          "start_beat": 40,
+          "end_beat": 56
+        },
+        {
+          "name": "development",
+          "start_beat": 56,
+          "end_beat": 72
+        },
+        {
+          "name": "variation",
+          "start_beat": 72,
+          "end_beat": 88
+        },
+        {
+          "name": "reprise",
+          "start_beat": 88,
+          "end_beat": 104
+        },
+        {
+          "name": "outro",
+          "start_beat": 104,
+          "end_beat": 112
+        }
+      ]
+    },
+    {
+      "id": "classic_reed_flutes",
+      "title": "Dance of the Reed Flutes",
+      "theme": "classic",
+      "file": "music/classic_reed_flutes.ogg",
+      "duration": 90.0,
+      "bpm": 76.363636,
+      "time_signature": "2/4",
+      "instruments": [
+        "Flute",
+        "Pizzicato Strings",
+        "Cello",
+        "Light Percussion"
+      ],
+      "sha256": "21b1e8f4310031b330b1ddfc90c1f578c69932d98d049d973078539bb60379bf",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "source": "Tchaikovsky, composer piano reduction, Jurgenson 1892 / Rahter 1898; IMSLP 57454, printed p.25, opening melody mm.3-18 (grace ornament omitted)",
+      "license": "Apache-2.0 (new arrangement); public-domain composition",
+      "source_midi": "assets/audio-production/music/midi/classic_reed_flutes.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 8
+        },
+        {
+          "name": "theme",
+          "start_beat": 8,
+          "end_beat": 24
+        },
+        {
+          "name": "answer",
+          "start_beat": 24,
+          "end_beat": 40
+        },
+        {
+          "name": "contrast",
+          "start_beat": 40,
+          "end_beat": 56
+        },
+        {
+          "name": "development",
+          "start_beat": 56,
+          "end_beat": 72
+        },
+        {
+          "name": "variation",
+          "start_beat": 72,
+          "end_beat": 88
+        },
+        {
+          "name": "reprise",
+          "start_beat": 88,
+          "end_beat": 104
+        },
+        {
+          "name": "outro",
+          "start_beat": 104,
+          "end_beat": 112
+        }
+      ]
+    },
+    {
+      "id": "classic_hungarian_five",
+      "title": "Hungarian Dance No. 5",
+      "theme": "classic",
+      "file": "music/classic_hungarian_five.ogg",
+      "duration": 90.0,
+      "bpm": 76.363636,
+      "time_signature": "2/4",
+      "instruments": [
+        "Violin",
+        "Nylon Guitar",
+        "Acoustic Bass",
+        "Dance Percussion"
+      ],
+      "sha256": "9fc380ff867622ba35df77de6fab76b7cd178d84d24b2150631dbe8f97184242",
+      "composer": "Johannes Brahms",
+      "source": "Brahms own piano arrangement; Brahms Werke Breitkopf, IMSLP 103981, printed p.17, melody mm.1-16; A transposed +12 semitones, B in original register",
+      "license": "Apache-2.0 (new arrangement); public-domain composition",
+      "source_midi": "assets/audio-production/music/midi/classic_hungarian_five.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 8
+        },
+        {
+          "name": "theme",
+          "start_beat": 8,
+          "end_beat": 24
+        },
+        {
+          "name": "answer",
+          "start_beat": 24,
+          "end_beat": 40
+        },
+        {
+          "name": "contrast",
+          "start_beat": 40,
+          "end_beat": 56
+        },
+        {
+          "name": "development",
+          "start_beat": 56,
+          "end_beat": 72
+        },
+        {
+          "name": "variation",
+          "start_beat": 72,
+          "end_beat": 88
+        },
+        {
+          "name": "reprise",
+          "start_beat": 88,
+          "end_beat": 104
+        },
+        {
+          "name": "outro",
+          "start_beat": 104,
+          "end_beat": 112
+        }
+      ]
+    },
+    {
+      "id": "classic_bach_minuet",
+      "title": "French Suite No. 3 - Minuet",
+      "theme": "classic",
+      "file": "music/classic_bach_minuet.ogg",
+      "duration": 90.0,
+      "bpm": 106.363636,
+      "time_signature": "3/4",
+      "instruments": [
+        "Harpsichord",
+        "Strings",
+        "Cello",
+        "Light Percussion"
+      ],
+      "sha256": "5aae58b4932b229a6787ec1f8f079b422377a1389053c2f178fbbc1a8efd1ce2",
+      "composer": "Johann Sebastian Bach",
+      "source": "Bach-Gesellschaft 1863; literal digital edition Mutopia 100, Knute Snortum 2018, BWV 814 Menuet complete 36 bars plus eight-bar variation",
+      "license": "CC-BY-SA-4.0",
+      "source_midi": "assets/audio-production/music/midi/classic_bach_minuet.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 12
+        },
+        {
+          "name": "theme",
+          "start_beat": 12,
+          "end_beat": 60
+        },
+        {
+          "name": "contrast",
+          "start_beat": 60,
+          "end_beat": 120
+        },
+        {
+          "name": "variation",
+          "start_beat": 120,
+          "end_beat": 144
+        },
+        {
+          "name": "outro",
+          "start_beat": 144,
+          "end_beat": 156
+        }
+      ]
+    },
+    {
+      "id": "classic_rondo_turca",
+      "title": "Rondo alla Turca",
+      "theme": "classic",
+      "file": "music/classic_rondo_turca.ogg",
+      "duration": 90.0,
+      "bpm": 98.181818,
+      "time_signature": "2/4",
+      "instruments": [
+        "Grand Piano",
+        "Strings",
+        "Acoustic Bass",
+        "March Percussion"
+      ],
+      "sha256": "18b703deb818267b275343cf727e6ba34204bd93b84588fb562a8b4ded3f2f57",
+      "composer": "Wolfgang Amadeus Mozart",
+      "source": "Mozart KV331 movement III; public-domain literal digital edition Mutopia 108, Rune Zedeler and Chris Sawer, opening 48 bars and varied reprise; one-quarter pickup preserved",
+      "license": "Apache-2.0 (new arrangement); public-domain composition and digital edition",
+      "source_midi": "assets/audio-production/music/midi/classic_rondo_turca.mid",
+      "sections": [
+        {
+          "name": "intro",
+          "start_beat": 0,
+          "end_beat": 8
+        },
+        {
+          "name": "theme",
+          "start_beat": 8,
+          "end_beat": 40
+        },
+        {
+          "name": "contrast",
+          "start_beat": 40,
+          "end_beat": 72
+        },
+        {
+          "name": "development",
+          "start_beat": 72,
+          "end_beat": 104
+        },
+        {
+          "name": "variation",
+          "start_beat": 104,
+          "end_beat": 136
+        },
+        {
+          "name": "outro",
+          "start_beat": 136,
+          "end_beat": 144
+        }
+      ]
+    }
+  ]
+}

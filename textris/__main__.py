@@ -1,11 +1,10 @@
 """CLI 진입점. curses wrapper가 모든 종료 경로에서 터미널을 복구한다."""
 import argparse
 from pathlib import Path
-import subprocess
 import sys
 
 from . import __version__
-from .audio import Audio, audio_path, command, find_backend, synthesize
+from .audio import Audio, check_audio
 from .i18n import tr
 from .storage import Store
 from .scenes import THEMES
@@ -22,8 +21,16 @@ def main(argv=None):
     parser.add_argument('--theme',choices=THEMES,help='visual theme for this session')
     parser.add_argument('--seed',type=int,help='reproducible piece sequence')
     parser.add_argument('--data-dir',type=Path,help='settings, records and generated audio directory')
-    parser.add_argument('--audio-check',action='store_true',help='synthesize and test audio playback, then exit')
+    parser.add_argument('--audio-check',action='store_true',help='test packaged audio playback and report output state, then exit')
+    parser.add_argument('--verify-audio-assets',action='store_true',help='verify packaged soundtrack/effect inventory and hashes, then exit')
     args = parser.parse_args(argv)
+    if args.verify_audio_assets:
+        from .asset_check import verify_audio_assets
+        import json
+        try:
+            print(json.dumps(verify_audio_assets(),sort_keys=True)); return 0
+        except ValueError as exc:
+            print(str(exc),file=sys.stderr); return 1
     project = Path(__file__).resolve().parent.parent
     is_bundled = getattr(sys, 'frozen', False) or not project.is_dir()
     default_dir = (Path.home() / '.textris-data') if is_bundled else (project / '.textris-data')
@@ -37,24 +44,21 @@ def main(argv=None):
     store.settings['language'] = 'en'
     lang = store.settings['language']
     # CLI의 임시 옵션은 종료 시 영구 설정을 덮어쓰지 않는다.
-    original_sound,original_ascii = store.settings['sound'],store.settings['ascii']
+    original_sound = store.settings['sound']
     original_theme=store.settings['theme']
     if args.theme: store.settings['theme']=args.theme
     if args.no_sound: store.settings['sound'] = False
-    if args.ascii: store.settings['ascii'] = True
-    if args.unicode: store.settings['ascii'] = False
+    display_override = 'ascii' if args.ascii else 'unicode' if args.unicode else None
     if args.audio_check:
-        backend = find_backend()
-        print(tr(lang,'backend_check',value=backend[0] if backend else tr(lang,'audio_bell')))
-        if backend:
-            try:
-                path = audio_path(directory,'check.wav'); synthesize('tetris',path,.5)
-                result = subprocess.run(command(backend,path),stdin=subprocess.DEVNULL,
-                                        stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=5)
-                if result.returncode == 0:
-                    return 0
-            except (OSError,ValueError,subprocess.TimeoutExpired):
-                pass
+        result = check_audio(directory,store.settings)
+        print(tr(lang,'backend_check',value=result['backend'] or tr(lang,'audio_silent')))
+        print(tr(lang,'audio_check_app',muted=result['app_muted'],volume=round(result['app_volume']*100)))
+        output=result['os_output']
+        print(tr(lang,'audio_check_os',muted=output['master_muted'],volume=round(output['master_volume']*100))
+              if output['available'] else tr(lang,'audio_check_os_unknown'))
+        print(tr(lang,'audio_check_completion',value='PASS' if result['backend_completed'] else 'FAIL'))
+        print(tr(lang,'audio_check_listening'))
+        if result['backend_completed']: return 0
         print(tr(lang,'audio_check_failed')); return 1
     try:
         import curses
@@ -63,7 +67,7 @@ def main(argv=None):
         print(tr(lang,'no_curses'),file=sys.stderr); return 1
     audio = Audio(directory,store.settings)
     try:
-        curses.wrapper(lambda window: App(window,store,audio,args.seed,unicode_art=args.unicode).run())
+        curses.wrapper(lambda window: App(window,store,audio,args.seed,display_override=display_override).run())
     except KeyboardInterrupt:
         pass
     except curses.error:
@@ -72,8 +76,6 @@ def main(argv=None):
         audio.close()
         if args.no_sound:
             store.settings['sound'] = original_sound
-        if args.ascii or args.unicode:
-            store.settings['ascii'] = original_ascii
         if args.theme:
             store.settings['theme']=original_theme
         store.save()

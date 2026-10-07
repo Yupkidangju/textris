@@ -1,0 +1,25 @@
+{
+  "id": "classic_korobeiniki",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.97,
+  "true_peak_dbtp": -4.71,
+  "lra": 2.8,
+  "peak": 0.5776825547218323,
+  "rms": 0.09422738090214859,
+  "stereo_correlation": 0.9879090073497294,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.9,
+  "spectral_energy": {
+    "sub": 0.14234,
+    "low": 0.406648,
+    "mid": 0.402616,
+    "presence": 0.045688,
+    "air": 0.002707
+  },
+  "sha256": "2c955707728fae6014fd0940801c5c3968e803453ecdb2343796024cef998054",
+  "master_sha256": "93a2c263c0e4733ba03389b66afde99f767d1c8dae733d280788f3cbcf6c655c",
+  "midi_sha256": "5c13c961b4ae99b9e92fa050980d8ae52d6ee3e60e7ecf7e087dab2680eea770",
+  "human_listening": "not performed"
+}

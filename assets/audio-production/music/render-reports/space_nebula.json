@@ -1,0 +1,25 @@
+{
+  "id": "space_nebula",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.96,
+  "true_peak_dbtp": -3.92,
+  "lra": 5.7,
+  "peak": 0.6370875239372253,
+  "rms": 0.09677151410916497,
+  "stereo_correlation": 0.983295516797799,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.2,
+  "spectral_energy": {
+    "sub": 0.057215,
+    "low": 0.272725,
+    "mid": 0.63934,
+    "presence": 0.026308,
+    "air": 0.004413
+  },
+  "sha256": "e8fffcf63f2612888c114aba46b739a10042da13dc914a9f756b6fdc4c169a27",
+  "master_sha256": "2a3a650ef5324666b67be11101a463fd7887c0b47f7810d9cfc3bd47ecf9f2d7",
+  "midi_sha256": "37af1bfc0fef06104e33eb524659038fe7a7f20cc7ca9290802378427d3bfb7b",
+  "human_listening": "not performed"
+}

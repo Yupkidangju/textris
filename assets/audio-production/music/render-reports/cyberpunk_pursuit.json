@@ -1,0 +1,25 @@
+{
+  "id": "cyberpunk_pursuit",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.99,
+  "true_peak_dbtp": -5.24,
+  "lra": 5.0,
+  "peak": 0.5470575094223022,
+  "rms": 0.08992543952511675,
+  "stereo_correlation": 0.9468253586487289,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.8,
+  "spectral_energy": {
+    "sub": 0.075788,
+    "low": 0.326863,
+    "mid": 0.493842,
+    "presence": 0.090256,
+    "air": 0.013251
+  },
+  "sha256": "86e612e914111e421a65f2209cd00ed2d772aa9afefab6c63541b64c3de86df8",
+  "master_sha256": "799927acc5b16183cd140022b2df8d7d6b8c66c10b4a9acbf0c119ef7c73c534",
+  "midi_sha256": "54564d988d72b875854bb6fd5eda081be4eb6ad314252a7bc2dabf35f7bd5c99",
+  "human_listening": "not performed"
+}

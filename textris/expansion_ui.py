@@ -1,11 +1,12 @@
 """확장 허브, 효과 갤러리, 프로필과 분석의 화면/입력."""
 import curses
+from .engine import HIDDEN
 from .scenes import BACKGROUNDS,EFFECTS,THEMES,PROFILES
 from .replay import Player
 from .autoplay import Autoplayer
 
 CATALOG=BACKGROUNDS+EFFECTS
-HUB=('gallery','profiles','boss','replays','autoplay')
+HUB=('gallery','profiles','boss','replays','autoplay','soundtrack')
 
 
 class ExpansionUI:
@@ -16,6 +17,8 @@ class ExpansionUI:
         self.player=None; self.replay_paused=False; self.replay_speed=1.
         self.director=True; self.slow_until=0.; self.last_replay=None
         self.notice=''; self.bot=Autoplayer(); self.auto_restart=0.
+        self.soundtrack_selection=self.soundtrack_filter=self.soundtrack_scroll=0
+        self.soundtrack_shuffle=self.soundtrack_repeat=False
 
     def open_gallery(self):
         self.screen='gallery'; self.game=None; self.session=None
@@ -29,8 +32,10 @@ class ExpansionUI:
         elif name in ('fx_intensity','fx_density','fx_speed'):
             value=max(.5 if name=='fx_speed' else .25,min(2 if name=='fx_speed' else 1,value+delta*.25))
         else: value=not value
-        self.settings[name]=value; self.store.save()
+        self.settings[name]=value; self.save_preferences()
         if name=='theme':
+            self.audio.set_theme(value)
+            self._audio_theme=value
             scene=self.effects.scene
             self.reset_presentation()
             self.effects.scene=scene if self.screen=='gallery' else None
@@ -53,8 +58,10 @@ class ExpansionUI:
                 if choice=='gallery': self.open_gallery()
                 elif choice=='profiles': self.profile_return='hub'; self.screen='profiles'
                 elif choice=='boss': self.start('boss')
+                elif choice=='soundtrack':
+                    self.screen='soundtrack'; self.soundtrack_selection=self.soundtrack_scroll=0
                 elif choice=='autoplay':
-                    self.start('marathon',record=False); self.screen='autoplay'; self.game.state='playing'
+                    self.start('marathon',record=False,countdown=False); self.screen='autoplay'; self.game.state='playing'
                     self.bot=Autoplayer(); self.auto_restart=0.
                 else: self.screen='replays'; self.replay_selection=0
             elif escape or key=='q': self.screen='menu'
@@ -63,7 +70,8 @@ class ExpansionUI:
             elif left or right or enter: self.change_profile(-1 if left else 1)
             elif escape or key=='q': self.screen=self.profile_return
         elif screen=='gallery':
-            if key=='s': self.store.save()
+            if key=='s':
+                if self.save_preferences(): self.audio.play('ui_select')
             elif key=='a': self.gallery_auto=not self.gallery_auto; self.gallery_next=self.now+3
             elif left or right or up or down:
                 self.gallery_index=(self.gallery_index+(-1 if left or up else 1))%len(CATALOG)
@@ -80,15 +88,14 @@ class ExpansionUI:
             elif enter and files:
                 try: self.open_replay(self.replays.load(files[self.replay_selection]))
                 except (OSError,ValueError,TypeError): self.notice='replay_error'
+            elif enter: self.audio.play('ui_error')
             elif escape or key=='q': self.screen='hub'
         elif screen=='replay':
             if escape or key=='q': self.screen='replays'; self.game=None; self.player=None
             elif key in (' ','p'): self.replay_paused=not self.replay_paused
             elif key=='a': self.analysis_return='replay'; self.screen='analysis'
             elif left or right:
-                self.player.seek(self.player.session.tick+(-300 if left else 300))
-                self.session=self.player.session; self.game=self.session.game
-                self.reset_presentation()
+                self.seek_replay(self.player.session.tick+(-300 if left else 300))
             elif up or down:
                 speeds=(.5,1.,2.,4.)
                 self.replay_speed=speeds[(speeds.index(self.replay_speed)+(1 if up else -1))%4]
@@ -100,12 +107,14 @@ class ExpansionUI:
             elif enter and highlights:
                 data=self.player.data if self.player and self.analysis_return=='replay' else self.last_replay
                 if data:
-                    self.open_replay(data); self.player.seek(max(0,highlights[self.highlight_selection%len(highlights)]['tick']-60))
-                    self.session=self.player.session; self.game=self.session.game
+                    self.open_replay(data)
+                    self.seek_replay(max(0,highlights[self.highlight_selection%len(highlights)]['tick']-60))
             elif escape or key=='q': self.screen=self.analysis_return
         elif screen=='autoplay':
             if escape or key=='q': self.screen='hub'; self.game=None; self.session=None
             elif key=='p': self.auto_paused=not getattr(self,'auto_paused',False)
+        elif screen=='soundtrack':
+            self.soundtrack_handle(key,enter,escape)
         else: return False
         return True
 
@@ -117,6 +126,102 @@ class ExpansionUI:
         self.player=Player(data); self.session=self.player.session; self.game=self.session.game
         self.screen='replay'; self.replay_paused=False; self.accumulator=0.
         self.replay_speed=1.; self.slow_until=0.; self.reset_presentation()
+        self.audio_events.reset()
+
+    def seek_replay(self,tick):
+        self.player.seek(tick)
+        self.session=self.player.session; self.game=self.session.game
+        self.reset_presentation()
+        self.effects.danger=any(any(row) for row in self.game.board[HIDDEN:HIDDEN+6])
+        # 탐색으로 복원한 상태는 새로운 성취/위험 진입 사건이 아니다.
+        self.audio_events.reset(b2b=self.game.b2b,danger=self.effects.danger,
+                                fever=self.effects.fever_until>self.now)
+
+    def soundtrack_tracks(self):
+        theme=(self.settings['theme'],'classic',None)[self.soundtrack_filter]
+        return [track for track in self.audio.catalog if theme is None or track['theme']==theme]
+
+    def soundtrack_handle(self,key,enter,escape):
+        tracks=self.soundtrack_tracks(); state=self.audio.music_state
+        self.soundtrack_selection%=max(1,len(tracks))
+        if escape or key=='q':
+            self.audio.stop_audition(); self.screen='hub'
+        elif key=='\t':
+            self.soundtrack_filter=(self.soundtrack_filter+1)%3
+            self.soundtrack_selection=self.soundtrack_scroll=0
+        elif key in (curses.KEY_UP,curses.KEY_DOWN,'w'):
+            if tracks:
+                self.soundtrack_selection=(self.soundtrack_selection+(-1 if key in (curses.KEY_UP,'w') else 1))%len(tracks)
+        elif key in ('s','r'):
+            option='shuffle' if key=='s' else 'repeat'
+            value=not getattr(self,'soundtrack_'+option)
+            setattr(self,'soundtrack_'+option,value)
+            self.audio.set_audition_options(**{option:value})
+        elif key in ('+','=','-'):
+            self.settings['music_volume']=round(max(0.,min(1.,self.settings['music_volume']+(-.05 if key=='-' else .05))),2)
+            self.save_preferences()
+        elif enter:
+            if tracks:
+                self.audio.audition(tracks[self.soundtrack_selection]['id'],
+                    playlist=[track['id'] for track in tracks],shuffle=self.soundtrack_shuffle,repeat=self.soundtrack_repeat)
+                self.audio.play('ui_select')
+            else: self.audio.play('ui_error')
+        elif key in (' ','n','p',curses.KEY_LEFT,curses.KEY_RIGHT):
+            if state['mode']!='audition' or not state['track_id']:
+                self.audio.play('ui_error'); return
+            if key==' ':
+                paused=not state['paused']
+                self.audio.pause_audition(paused)
+                self.audio.play('pause' if paused else 'resume')
+            elif key in ('n','p'):
+                self.audio.next_track(-1 if key=='p' else 1); self.audio.play('ui_select')
+            else:
+                self.audio.seek_music(-5 if key==curses.KEY_LEFT else 5); self.audio.play('ui_move')
+
+    def draw_soundtrack(self):
+        from .ui import clip
+        h,w=self.win.getmaxyx(); tracks=self.soundtrack_tracks(); state=self.audio.music_state
+        left=max(2,(w-86)//2); available=min(w-left*2-1,85); rows=max(1,h-19)
+        # 넓은 감상 패널의 문자열 뒤로 장식이 비치지 않도록 읽기 영역을 비운다.
+        for row in range(1,h-1): self.put(row,1,' '*(w-3))
+        self.soundtrack_selection%=max(1,len(tracks))
+        self.soundtrack_scroll=max(0,min(self.soundtrack_scroll,self.soundtrack_selection))
+        if self.soundtrack_selection>=self.soundtrack_scroll+rows:
+            self.soundtrack_scroll=self.soundtrack_selection-rows+1
+        theme=(self.t('theme_'+self.settings['theme']),self.t('soundtrack_classic'),self.t('soundtrack_all'))[self.soundtrack_filter]
+        self.center(1,self.t('soundtrack'),self.art_attr(9))
+        self.center(2,self.t('soundtrack_filter',filter=theme,count=len(tracks)),self.art_attr(4))
+        def line(row,text,attr=0): self.put(row,left,clip(text,available),attr)
+        def duration(seconds):
+            seconds=max(0,int(seconds)); return f'{seconds//60:02}:{seconds%60:02}'
+        for index,track in enumerate(tracks[self.soundtrack_scroll:self.soundtrack_scroll+rows],self.soundtrack_scroll):
+            selected=index==self.soundtrack_selection
+            label=self.t('soundtrack_classic') if track['theme']=='classic' else self.t('theme_'+track['theme'])
+            suffix=f" {label[:11]:11} {duration(track['duration'])}"
+            title=clip(track['title'],max(1,available-len(suffix)-6))
+            line(4+index-self.soundtrack_scroll,f'{">" if selected else " "} {index+1:02} {title:<{max(1,available-len(suffix)-6)}}'+suffix,
+                 curses.A_REVERSE|curses.A_BOLD if selected else 0)
+        if not tracks: line(4,self.t('soundtrack_loading' if state['buffering'] else 'soundtrack_empty'))
+        if tracks:
+            track=tracks[self.soundtrack_selection]
+            line(h-14,track['title'],self.art_attr(9))
+            label=self.t('soundtrack_classic') if track['theme']=='classic' else self.t('theme_'+track['theme'])
+            line(h-13,f"{label} / {duration(track['duration'])} / {track['bpm']:g} BPM / {track.get('time_signature','4/4')}")
+            instruments=track['instruments']
+            line(h-12,self.t('soundtrack_instruments',first=instruments[0],second=instruments[1]))
+            line(h-11,self.t('soundtrack_instruments',first=instruments[2],second=instruments[3]))
+        line(h-10,self.t('soundtrack_now',title=state['title'] or self.t('soundtrack_stopped')))
+        position=state['position']; length=state['duration']; bar_width=max(6,available-17)
+        filled=min(bar_width,max(0,int(bar_width*position/length))) if length else 0
+        line(h-9,'['+'='*filled+'-'*(bar_width-filled)+f"] {duration(position)}/{duration(length)}")
+        status=self.t('soundtrack_stopped' if state['mode']!='audition' or not state['track_id'] else
+                      'soundtrack_buffering' if state['buffering'] else
+                      'soundtrack_paused' if state['paused'] else 'soundtrack_playing')
+        line(h-8,self.t('soundtrack_status',status=status,shuffle=self.t('on' if self.soundtrack_shuffle else 'off'),repeat=self.t('on' if self.soundtrack_repeat else 'off')))
+        if state['error']: line(h-7,self.t('soundtrack_error',error=state['error']),self.color('Z'))
+        else: line(h-7,self.t('soundtrack_volume',volume=round(self.settings['music_volume']*100),master=self.t('on' if self.settings['sound'] else 'off'),music=self.t('on' if self.settings['music'] else 'off')))
+        for row,key in ((h-6,'soundtrack_hint_select'),(h-5,'soundtrack_hint_transport'),(h-4,'soundtrack_hint_options'),(h-3,'soundtrack_hint_volume'),(h-2,'soundtrack_hint_back')):
+            self.center(row,self.t(key),curses.A_DIM)
 
     def draw_expansion(self):
         h,w=self.win.getmaxyx()
@@ -144,6 +249,8 @@ class ExpansionUI:
             self.panel(self.t('replays'),lines,self.replay_selection-start if files else None,self.t('back'))
         elif self.screen=='analysis':
             self.draw_analysis()
+        elif self.screen=='soundtrack':
+            self.draw_soundtrack()
 
     def draw_analysis(self):
         from .art import ArtCanvas, RenderContext

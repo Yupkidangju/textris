@@ -1,0 +1,25 @@
+{
+  "id": "cathedral_vault",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.99,
+  "true_peak_dbtp": -6.31,
+  "lra": 4.1,
+  "peak": 0.483431875705719,
+  "rms": 0.09316018276447947,
+  "stereo_correlation": 0.9141584831479921,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.6,
+  "spectral_energy": {
+    "sub": 0.055401,
+    "low": 0.296583,
+    "mid": 0.574118,
+    "presence": 0.073018,
+    "air": 0.000881
+  },
+  "sha256": "cc7b86cd11bdd8650cf77367707fe319e733809a1698cccf8ef3fab14fbd561a",
+  "master_sha256": "59d5d4501dd78c78a4412bfd06ff06ffb2d945ca3384534da34f5a0f7e35b123",
+  "midi_sha256": "0d335f69ebbdbaed73409ba8ac78924d69cb8c5e7fc0f2ff80fd00db07882599",
+  "human_listening": "not performed"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "mono_nocturne",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.96,
+  "true_peak_dbtp": -2.33,
+  "lra": 5.5,
+  "peak": 0.7640911340713501,
+  "rms": 0.09668500152537587,
+  "stereo_correlation": 0.952121589109747,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.7,
+  "spectral_energy": {
+    "sub": 0.036299,
+    "low": 0.414239,
+    "mid": 0.546946,
+    "presence": 0.002477,
+    "air": 4e-05
+  },
+  "sha256": "ad74078f1767a745f60ff1919dc7c945ba43b06c9366110609ae018791fa1233",
+  "master_sha256": "23592c2496c5da07f36c4d4485333c71b7b4cf55b72022c50f1d06f50f78061f",
+  "midi_sha256": "f0811fe00950e5454cc00d5d53f4139e24692f07732b9da8bfdc40ddb28148a3",
+  "human_listening": "not performed"
+}

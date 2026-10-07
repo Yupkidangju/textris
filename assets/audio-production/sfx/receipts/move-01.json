@@ -1,0 +1,30 @@
+{
+  "id": "move",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:14:11.512Z",
+  "finished_at": "2026-10-07T15:14:38.273Z",
+  "request": {
+    "id": "move",
+    "prompt": "A tiny polished wooden tile slides one short step across dense felt, a fine dry swick with a subtle low contact tap. Restrained soft close texture, fast start and immediate stop. Single physical action, no voice, no music, no ringing, no electronic tones.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/move-01.wav",
+    "min_duration": 0.07,
+    "max_duration": 0.15,
+    "gain": 0.26,
+    "priority": 5,
+    "cooldown": 0.035,
+    "target_peak_db": -11
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\move-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\move-01.wav"
+    },
+    "isError": false
+  }
+}

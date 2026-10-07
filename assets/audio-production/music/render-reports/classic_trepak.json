@@ -1,0 +1,25 @@
+{
+  "id": "classic_trepak",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.98,
+  "true_peak_dbtp": -6.08,
+  "lra": 4.4,
+  "peak": 0.4969366192817688,
+  "rms": 0.08806055307790416,
+  "stereo_correlation": 0.9808822547729015,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.7,
+  "spectral_energy": {
+    "sub": 0.073123,
+    "low": 0.229344,
+    "mid": 0.628746,
+    "presence": 0.068413,
+    "air": 0.000374
+  },
+  "sha256": "8712326d45d7087202721e737b1ffd74d84fc969911c96eace2d124ad31f8ce6",
+  "master_sha256": "879ba534e300913e02c49883cf77dabcc05fcc1b7a9286572f877167aaded065",
+  "midi_sha256": "d72480cf0b061d69a50244e38da53218762955d452f284e6966382d4e6a86504",
+  "human_listening": "not performed"
+}

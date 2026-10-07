@@ -1,0 +1,30 @@
+{
+  "id": "danger",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:22:21.268Z",
+  "finished_at": "2026-10-07T15:22:45.844Z",
+  "request": {
+    "id": "danger",
+    "prompt": "Two deep damped wooden warning knocks with a rough breath of air between them. Hollow weight, restrained dry low body and crisp tactile edges, a short urgent physical burst. No voice, no music, no siren, no sustained electronic tone or beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/danger-01.wav",
+    "min_duration": 0.5,
+    "max_duration": 0.95,
+    "gain": 0.69,
+    "priority": 70,
+    "cooldown": 0.85,
+    "target_peak_db": -6
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\danger-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\danger-01.wav"
+    },
+    "isError": false
+  }
+}

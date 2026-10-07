@@ -1,0 +1,25 @@
+{
+  "id": "classic_rondo_turca",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.98,
+  "true_peak_dbtp": -3.81,
+  "lra": 6.9,
+  "peak": 0.6446316838264465,
+  "rms": 0.09360505252957334,
+  "stereo_correlation": 0.950299717002513,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.9,
+  "spectral_energy": {
+    "sub": 0.017199,
+    "low": 0.297947,
+    "mid": 0.683033,
+    "presence": 0.001803,
+    "air": 1.8e-05
+  },
+  "sha256": "18b703deb818267b275343cf727e6ba34204bd93b84588fb562a8b4ded3f2f57",
+  "master_sha256": "77960373560616008d191ca5e6a0589e5d57c7d7493f54ca63b62319836c63b2",
+  "midi_sha256": "6316cae0beae8253fa9538ad14b94c29ec4b46f99c2ef3b512668dd061960839",
+  "human_listening": "not performed"
+}

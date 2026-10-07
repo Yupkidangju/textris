@@ -1,0 +1,25 @@
+{
+  "id": "classic_reed_flutes",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.96,
+  "true_peak_dbtp": -7.53,
+  "lra": 7.3,
+  "peak": 0.4201209247112274,
+  "rms": 0.09124979355483047,
+  "stereo_correlation": 0.9938828214020904,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.1,
+  "spectral_energy": {
+    "sub": 0.000946,
+    "low": 0.155429,
+    "mid": 0.839081,
+    "presence": 0.004511,
+    "air": 3.3e-05
+  },
+  "sha256": "21b1e8f4310031b330b1ddfc90c1f578c69932d98d049d973078539bb60379bf",
+  "master_sha256": "2038f0db7bc6234a86d9ea0e9b420a4076f789b961f9c084d6f5e48a62351936",
+  "midi_sha256": "c72a08d0188a3513787025db4b7a09b8b9d48b5307b40ea4ad943f8505f9a7cf",
+  "human_listening": "not performed"
+}

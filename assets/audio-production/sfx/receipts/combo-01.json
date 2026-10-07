@@ -1,0 +1,30 @@
+{
+  "id": "combo",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:19:49.642Z",
+  "finished_at": "2026-10-07T15:20:12.896Z",
+  "request": {
+    "id": "combo",
+    "prompt": "A quick chain of three tiny dry ceramic snaps rolls into one short bright wooden clap. Closely spaced tactile impacts, increasing density, brief granular tail. Small energized physical burst, no voice, no music, no pitched chimes, no electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/combo-01.wav",
+    "min_duration": 0.3,
+    "max_duration": 0.7,
+    "gain": 0.65,
+    "priority": 60,
+    "cooldown": 0.14,
+    "target_peak_db": -6
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\combo-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\combo-01.wav"
+    },
+    "isError": false
+  }
+}

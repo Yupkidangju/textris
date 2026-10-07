@@ -1,0 +1,30 @@
+{
+  "id": "clear_triple",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:17:37.627Z",
+  "finished_at": "2026-10-07T15:18:06.921Z",
+  "request": {
+    "id": "clear_triple",
+    "prompt": "A dense stack of thin ceramic plates snaps into a rich rolling fragment cascade after one firm wooden strike. Three compact layers inside one brisk physical burst, warm weight and bright dry grains, quick decay. No voice, no music, no beeps or sustained pitch.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/clear_triple-01.wav",
+    "min_duration": 0.55,
+    "max_duration": 1.1,
+    "gain": 0.84,
+    "priority": 75,
+    "cooldown": 0.15,
+    "target_peak_db": -4
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\clear_triple-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\clear_triple-01.wav"
+    },
+    "isError": false
+  }
+}

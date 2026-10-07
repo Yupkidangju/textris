@@ -1,0 +1,25 @@
+{
+  "id": "classic_sugar_plum",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.97,
+  "true_peak_dbtp": -5.91,
+  "lra": 6.4,
+  "peak": 0.5062943696975708,
+  "rms": 0.09277660041415882,
+  "stereo_correlation": 0.9890529683180985,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.8,
+  "spectral_energy": {
+    "sub": 0.013388,
+    "low": 0.277636,
+    "mid": 0.706504,
+    "presence": 0.002257,
+    "air": 0.000215
+  },
+  "sha256": "4ce43a32657e55bfb3e938da1f5d9c3280542a7609b07d1bb73e409131cfadd8",
+  "master_sha256": "8ce32e7b5b28c934e98d747d932f22236d8626487dcba68945420b2fbea2c6c6",
+  "midi_sha256": "d89df5d508be8de73142f059a543ca5a3c1006f3694772381217c5e1775fcd1a",
+  "human_listening": "not performed"
+}

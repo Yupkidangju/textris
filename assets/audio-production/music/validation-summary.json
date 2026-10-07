@@ -1,0 +1,28 @@
+{
+  "catalog_sha256": "d72a186d8124afa44e860f13de4880500939ecc1d6706df75defc17bf6828c17",
+  "tracks": 26,
+  "originals": 18,
+  "classics": 8,
+  "duration_seconds": 2340.0,
+  "ogg_bytes": 45234782,
+  "lufs_range": [
+    -18.03,
+    -17.96
+  ],
+  "maximum_true_peak_dbtp": -2.33,
+  "stereo_correlation_range": [
+    0.9141584831479921,
+    0.9958730642288578
+  ],
+  "maximum_leading_silence_seconds": 0.0,
+  "maximum_trailing_silence_seconds": 2.1,
+  "checks": {
+    "music_asset_tests": "7/7 PASS",
+    "complete_miniaudio_decode": "26/26 PASS",
+    "source_midi_report_ogg_hashes": "26/26 PASS; independently rechecked",
+    "master_flac_hashes": "26/26 independently rechecked",
+    "source_score_review": "visual sampling; not exhaustive independently engraved-source comparison",
+    "human_listening": "not performed",
+    "native_real_time_soak": "parent integration task; not claimed by production check"
+  }
+}

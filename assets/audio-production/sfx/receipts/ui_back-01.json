@@ -1,0 +1,30 @@
+{
+  "id": "ui_back",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:11:15.655Z",
+  "finished_at": "2026-10-07T15:11:44.399Z",
+  "request": {
+    "id": "ui_back",
+    "prompt": "A single light wooden lever releases into a padded stop. Brief downward dusty scrape followed by a soft dry click, restrained weight and immediate decay. Close isolated physical sound in a silent room. No voice, no music, no beep, no sustained ringing.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/ui_back-01.wav",
+    "min_duration": 0.06,
+    "max_duration": 0.15,
+    "gain": 0.49,
+    "priority": 20,
+    "cooldown": 0.1,
+    "target_peak_db": -8
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\ui_back-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\ui_back-01.wav"
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "cyberpunk_midnight",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.98,
+  "true_peak_dbtp": -4.81,
+  "lra": 4.5,
+  "peak": 0.5699810981750488,
+  "rms": 0.09536207653227262,
+  "stereo_correlation": 0.9471258714937346,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 1.8,
+  "spectral_energy": {
+    "sub": 0.147242,
+    "low": 0.261381,
+    "mid": 0.531957,
+    "presence": 0.051797,
+    "air": 0.007623
+  },
+  "sha256": "5dcef55a469c004cbe85b51af147d84dbc13a66b947f9f4895168425f632c590",
+  "master_sha256": "977e91d4507eea7e7d507eb3dc01fec178a6eee1dc19026a998bdb3d3ad22428",
+  "midi_sha256": "7ad8dba9d045822b7b70569dd2c022c224382f5e12fda37fc8f40e334fd7a2f5",
+  "human_listening": "not performed"
+}

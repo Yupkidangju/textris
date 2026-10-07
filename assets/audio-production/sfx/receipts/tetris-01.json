@@ -1,0 +1,30 @@
+{
+  "id": "tetris",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:18:09.589Z",
+  "finished_at": "2026-10-07T15:18:33.082Z",
+  "request": {
+    "id": "tetris",
+    "prompt": "A wide crystalline stone wall breaks apart in one clean energetic impact, deep tight thump and a bright spray of fine glassy fragments, broad airy release with a rich natural scattering tail. Powerful controlled isolated physical effect, no voice, no music, no melody, no electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/tetris-01.wav",
+    "min_duration": 0.8,
+    "max_duration": 1.5,
+    "gain": 0.94,
+    "priority": 90,
+    "cooldown": 0.2,
+    "target_peak_db": -3.5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\tetris-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\tetris-01.wav"
+    },
+    "isError": false
+  }
+}

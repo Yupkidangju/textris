@@ -30,6 +30,7 @@ jobs:
 
       - name: Run unit tests
         run: |
+          python3 -m pip install ".[audio-production]"
           python3 -m unittest discover -s .
 
   build-zipapp:
@@ -47,6 +48,7 @@ jobs:
 
       - name: Build zipapp
         run: |
+          python3 -m pip install .
           python3 scripts/build.py --mode zipapp --skip-tests
 
       - name: Upload zipapp artifact
@@ -92,14 +94,11 @@ jobs:
         shell: bash
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller
-          if [ "${{ runner.os }}" = "Windows" ]; then
-            pip install windows-curses
-          fi
+          python -m pip install pyinstaller ".[audio-production]"
 
-      - name: Verify terminal portability
+      - name: Verify full platform test suite
         run: |
-          python -m unittest tests.test_terminal_compat tests.test_theme_art tests.test_gallery_art tests.test_audio_portability tests.test_auxiliary_art tests.test_commands
+          python -m unittest discover -s . -v
 
       - name: Build Standalone Binary
         run: |
@@ -110,6 +109,7 @@ jobs:
         run: |
           "./${{ matrix.binary_src }}" --version
           "./${{ matrix.binary_src }}" --help
+          "./${{ matrix.binary_src }}" --verify-audio-assets
 
       - name: Rename artifact (Unix)
         if: runner.os != 'Windows'
@@ -145,7 +145,7 @@ jobs:
           docker run --rm --platform linux/arm64 -v "$PWD":/workspace -w /workspace python:3.12-slim bash -c "
             set -e
             apt-get update && apt-get install -y --no-install-recommends binutils gcc libc-dev
-            pip install --no-cache-dir pyinstaller
+            pip install --no-cache-dir pyinstaller .
             python3 scripts/build.py --mode binary --skip-tests
             cp dist/textris textris-linux-arm64
             chmod +x textris-linux-arm64

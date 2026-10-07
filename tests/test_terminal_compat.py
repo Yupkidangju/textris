@@ -27,7 +27,8 @@ class TerminalCompatTests(unittest.TestCase):
         from textris.terminal import needs_ascii
         for encoding in ('cp949','cp1252','ascii','unknown'):
             self.assertTrue(needs_ascii('linux',encoding))
-        self.assertTrue(needs_ascii('win32','utf-8'))
+        self.assertFalse(needs_ascii('win32','utf-8'))
+        self.assertFalse(needs_ascii('win32','cp949'))
         self.assertFalse(needs_ascii('linux','UTF-8'))
         self.assertFalse(needs_ascii('win32','cp949',unicode_requested=True))
 

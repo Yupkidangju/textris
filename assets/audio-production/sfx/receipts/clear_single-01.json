@@ -1,0 +1,30 @@
+{
+  "id": "clear_single",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:16:46.332Z",
+  "finished_at": "2026-10-07T15:17:07.579Z",
+  "request": {
+    "id": "clear_single",
+    "prompt": "One slim row of ceramic tiles breaks cleanly into fine dry fragments with a brisk soft air sweep. Crisp textured crackle, light hollow body, short scattering decay, one contained burst. Close isolated sound, no voice, no music, no beeps or tonal melody.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/clear_single-01.wav",
+    "min_duration": 0.3,
+    "max_duration": 0.65,
+    "gain": 0.71,
+    "priority": 65,
+    "cooldown": 0.1,
+    "target_peak_db": -5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\clear_single-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\clear_single-01.wav"
+    },
+    "isError": false
+  }
+}

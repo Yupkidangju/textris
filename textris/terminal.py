@@ -4,10 +4,9 @@ import unicodedata
 
 
 def needs_ascii(platform,encoding,unicode_requested=False):
-    if unicode_requested and platform=='win32':
+    if unicode_requested or platform=='win32':
         # windows-curses의 wide-character 출력은 ANSI 코드페이지를 우회한다.
         return False
-    if platform=='win32': return True
     try:
         return codecs.lookup(encoding or 'ascii').name!='utf-8'
     except LookupError:

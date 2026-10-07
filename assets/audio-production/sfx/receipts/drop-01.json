@@ -1,0 +1,30 @@
+{
+  "id": "drop",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:15:47.013Z",
+  "finished_at": "2026-10-07T15:16:17.489Z",
+  "request": {
+    "id": "drop",
+    "prompt": "A heavy hardwood block snaps downward onto a thick rubber pad. Powerful dry low thud under a crisp woody crack, brief air displacement, concentrated fast impact and tight decay. Close isolated single impact, no reverb, no voice, no music, no beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/drop-01.wav",
+    "min_duration": 0.12,
+    "max_duration": 0.25,
+    "gain": 0.78,
+    "priority": 55,
+    "cooldown": 0.08,
+    "target_peak_db": -5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\drop-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\drop-01.wav"
+    },
+    "isError": false
+  }
+}

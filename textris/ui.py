@@ -19,6 +19,7 @@ from .expansion_ui import ExpansionUI, CATALOG
 from .art import Palette
 from .art_ui import ArtUI
 from .terminal import needs_ascii,safe_ascii
+from .audio_events import AudioEvents
 
 LOGO = (
     '████████╗███████╗██╗  ██╗████████╗██████╗ ██╗███████╗',
@@ -60,11 +61,16 @@ def clock(seconds):
 
 
 class App(ArtUI, ExpansionUI):
-    def __init__(self, window, store, audio, seed=None,unicode_art=False):
+    def __init__(self, window, store, audio, seed=None,unicode_art=False,display_override=None):
         self.win, self.store, self.audio, self.seed = window, store, audio, seed
         self.settings = store.settings
+        self.audio_events=AudioEvents(audio)
+        self._audio_theme=self.settings['theme']
+        self.audio.set_theme(self._audio_theme)
         self.settings['language']='en'
-        self.terminal_ascii=needs_ascii(sys.platform,getattr(window,'encoding',locale.getpreferredencoding(False)),unicode_art)
+        self.display_override=display_override or ('unicode' if unicode_art else None)
+        self.automatic_ascii=needs_ascii(sys.platform,getattr(window,'encoding',locale.getpreferredencoding(False)))
+        self.terminal_ascii=False
         self.screen = 'menu'
         self.selection = self.setting_selection = self.pause_selection = 0
         self.mode_index = 0
@@ -100,7 +106,10 @@ class App(ArtUI, ExpansionUI):
 
     @property
     def ascii_mode(self):
-        return self.terminal_ascii or self.settings['ascii']
+        if self.terminal_ascii: return True
+        mode=self.display_override or self.settings.get('display_mode','auto')
+        if mode!='auto': return mode=='ascii'
+        return self.automatic_ascii or self.settings['ascii']
 
     def _setup(self):
         self.win.keypad(True)
@@ -166,6 +175,10 @@ class App(ArtUI, ExpansionUI):
             return
         try:
             self.win.addstr(y,x,text,attr)
+        except UnicodeError:
+            self.terminal_ascii=True
+            try: self.win.addstr(y,x,safe_ascii(text),attr)
+            except curses.error: pass
         except curses.error:
             pass
 
@@ -200,18 +213,25 @@ class App(ArtUI, ExpansionUI):
         self.draw_art_menu(LOGO)
 
     def draw_settings(self):
-        keys = ['sound','music','volume','ascii','color']
+        keys = ['sound','music','volume','display_mode','color','music_volume','sfx_volume']
         lines = []
         for key in keys:
             value = self.settings[key]
-            if key == 'volume':
+            if key in ('volume','music_volume','sfx_volume'):
                 label = f'{round(value*100)}%'
+            elif key == 'display_mode':
+                label = self.t('display_'+value)
             else:
                 label = self.t('on' if value else 'off')
             lines.append(f'{self.t(key):<12}  {label}')
         lines.append(self.t('profiles'))
         self.panel(self.t('settings'),lines,self.setting_selection,self.t('settings_hint'))
+        selected=self.display_override or self.settings['display_mode']
+        status=self.t('display_fallback') if self.terminal_ascii else self.t(
+            'display_status',selected=self.t('display_'+selected),effective='ASCII' if self.ascii_mode else 'Unicode')
+        self.center(self.win.getmaxyx()[0]-4,status,curses.A_DIM)
         self.center(self.win.getmaxyx()[0]-3,self.t('sound_status',value=self.audio_label()),curses.A_DIM)
+        self.center(self.win.getmaxyx()[0]-2,self.t('audio_output_hint'),curses.A_DIM)
 
     def audio_label(self):
         if not self.settings['sound'] or self.settings['volume'] <= 0:
@@ -319,7 +339,7 @@ class App(ArtUI, ExpansionUI):
             underlying = self.confirm_return if self.screen == 'confirm' else self.help_return if self.screen == 'help' else self.screen
             if underlying in ('playing','paused','ready','result','showcase','replay','autoplay') and self.game:
                 self.draw_game()
-            elif underlying in ('hub','gallery','profiles','replays','analysis'):
+            elif underlying in ('hub','gallery','profiles','replays','analysis','soundtrack'):
                 self.draw_expansion()
             elif underlying == 'settings':
                 self.draw_settings()
@@ -355,7 +375,7 @@ class App(ArtUI, ExpansionUI):
         self.win.noutrefresh()
         curses.doupdate()
 
-    def start(self, mode=None,record=True):
+    def start(self, mode=None,record=True,countdown=True):
         mode=mode or (self.session.mode if self.session else MODES[min(2,self.selection)])
         self.session=Session(self.seed,mode,self.start_level,record=record)
         self.game=self.session.game
@@ -369,8 +389,9 @@ class App(ArtUI, ExpansionUI):
         self.flash_until = self.banner_until = 0.
         self.particles.clear(); self.trails.clear()
         self.effects = Effects()
+        self.audio_events.reset()
         self.new_record = False
-        self.audio.play('hold')
+        if countdown: self.audio.play('countdown')
 
     def show_help(self):
         self.help_return = self.screen
@@ -381,7 +402,48 @@ class App(ArtUI, ExpansionUI):
         self.confirm_action = action
         self.screen = 'confirm'
 
-    def handle(self, key):
+    def save_preferences(self):
+        saved=self.store.save()
+        if not saved:
+            self._ui_save_failed=True
+            self.audio.play('ui_error')
+        return saved
+
+    def _ui_selection(self):
+        return (self.selection,self.setting_selection,self.pause_selection,self.mode_index,
+                self.start_level,self.hub_selection,self.profile_selection,self.gallery_index,
+                self.replay_selection,self.highlight_selection,self.soundtrack_selection,
+                self.soundtrack_filter,self.replay_speed)
+
+    def _audio_paused_screen(self):
+        return (self.screen in ('paused','help','confirm') or
+                self.screen=='replay' and self.replay_paused or
+                self.screen=='autoplay' and getattr(self,'auto_paused',False))
+
+    def handle(self,key):
+        before=self.screen; selection=self._ui_selection(); settings=dict(self.settings)
+        toggles=(self.fx_enabled,self.gallery_auto,self.director,self.soundtrack_shuffle,self.soundtrack_repeat)
+        suspended=self._audio_paused_screen()
+        notice=self.notice; self._ui_save_failed=False
+        self._handle(key)
+        if self._ui_save_failed: return
+        if self.notice!=notice and self.notice: self.audio.play('ui_error'); return
+        if settings!=self.settings or toggles!=(self.fx_enabled,self.gallery_auto,self.director,self.soundtrack_shuffle,self.soundtrack_repeat):
+            self.audio.play('ui_toggle')
+        elif self.screen!=before:
+            back=isinstance(key,str) and key.lower() in ('\x1b','q','n') or before=='help'
+            self.audio.play('ui_back' if back else 'ui_select')
+        elif selection!=self._ui_selection(): self.audio.play('ui_move')
+        paused=self._audio_paused_screen()
+        if before in ('playing','paused','replay','autoplay','help','confirm') and suspended!=paused:
+            self.audio.play('pause' if paused else 'resume')
+
+    def _handle(self, key):
+        if isinstance(key,str): key=key.lower()
+        # 전역 음소거는 확장 화면과 작은 터미널에서도 접근 가능해야 한다.
+        if key in ('m','b'):
+            name='sound' if key=='m' else 'music'
+            self.settings[name]=not self.settings[name]; self.save_preferences(); return
         h,w = self.win.getmaxyx()
         if h < 28 or w < 64:
             if key in ('q','Q'):
@@ -408,10 +470,6 @@ class App(ArtUI, ExpansionUI):
                 self.running = False
             return
         if self.expansion_handle(key,enter,escape,up,down,left,right): return
-        if key == 'm':
-            self.settings['sound'] = not self.settings['sound']; self.store.save(); return
-        if key == 'b':
-            self.settings['music'] = not self.settings['music']; self.store.save(); return
         if self.screen == 'confirm':
             if enter or key == 'y':
                 if self.confirm_action == 'quit':
@@ -428,19 +486,22 @@ class App(ArtUI, ExpansionUI):
                 self.screen = self.help_return
             return
         if self.screen == 'settings':
-            keys = ['sound','music','volume','ascii','color','profiles']
+            keys = ['sound','music','volume','display_mode','color','music_volume','sfx_volume','profiles']
             if up or down:
                 self.setting_selection = (self.setting_selection+(-1 if up else 1)) % len(keys)
             elif left or right or enter:
                 name = keys[self.setting_selection]
                 if name == 'profiles':
                     self.profile_return='settings'; self.screen='profiles'; return
-                if name == 'volume':
+                if name in ('volume','music_volume','sfx_volume'):
                     self.settings[name] = round(max(0,min(1,self.settings[name]+(-.1 if left else .1))),1)
+                elif name == 'display_mode':
+                    modes=('auto','unicode','ascii')
+                    self.settings[name]=modes[(modes.index(self.settings[name])+(-1 if left else 1))%3]
+                    self.settings['ascii']=self.settings[name]=='ascii'
                 else:
                     self.settings[name] = not self.settings[name]
-                self.store.save()
-                self.audio.play('rotate')
+                self.save_preferences()
             elif escape or key == 'q':
                 self.screen = 'menu'
             return
@@ -453,12 +514,11 @@ class App(ArtUI, ExpansionUI):
         if self.screen == 'menu':
             if key == 'e': self.hub_selection=0; self.screen='hub'; return
             if key == 'v':
-                self.start('marathon',record=False); self.screen = 'showcase'
+                self.start('marathon',record=False,countdown=False); self.screen = 'showcase'
                 self.showcase_step = 0; self.showcase_next = self.now
                 return
             if up or down:
                 self.selection = (self.selection+(-1 if up else 1)) % 7
-                self.audio.play('move')
             elif left or right:
                 self.start_level = max(1,min(15,self.start_level+(-1 if left else 1)))
             elif enter:
@@ -526,12 +586,9 @@ class App(ArtUI, ExpansionUI):
                 fx_data=dict(data)
                 if event.name in ('win','gameover'): fx_data['cells']=tuple((x,y) for y,row in enumerate(g.board) for x,k in enumerate(row) if k)
                 self.effects.trigger(event.name,fx_data,self.now)
-            if event.name in ('move','rotate','hold','drop','lock','level','gameover','win'):
-                self.audio.play(event.name)
             if event.name == 'drop':
                 self.trails.append((self.now,data['cells'],data['distance']))
             elif event.name == 'clear':
-                self.audio.play('tetris' if data['count'] == 4 or data['spin'] else 'clear')
                 self.flash_rows = data['rows']; self.flash_until = self.now+.24
                 keys = ('','single','double','triple','tetris')
                 text = self.t('tspin') if data['spin'] else self.t(keys[data['count']])
@@ -547,8 +604,9 @@ class App(ArtUI, ExpansionUI):
                                                self.fx_rng.uniform(-8,8),self.fx_rng.uniform(-6,0)))
             elif event.name == 'level':
                 self.banner = self.t('level',value=data['level']); self.banner_until = self.now+1.6
-        g.events.clear()
         self.effects.update(self.now)
+        self.audio_events.process(g.events,danger=self.effects.danger,fever=self.effects.fever_until>self.now)
+        g.events.clear()
         self.trails = [t for t in self.trails if self.now-t[0] < .18]
         self.particles = [p for p in self.particles if self.now-p[0] < .5][-600:]
         if g.state in ('won','over') and self.screen not in ('result','showcase','replay','autoplay','analysis'):
@@ -597,11 +655,14 @@ class App(ArtUI, ExpansionUI):
         if self.screen == 'showcase' and playable:
             self.showcase()
         if self.screen == 'ready' and playable:
+            old_count=int(self.ready_elapsed)
             self.ready_elapsed += dt
+            for _ in range(old_count+1,min(3,int(self.ready_elapsed)+1)):
+                self.audio.play('countdown')
             if self.ready_elapsed >= 3:
                 self.screen = 'playing'; self.game.state = 'playing'
                 self.banner = self.t('go'); self.banner_until = self.now+1.
-                self.audio.play('level')
+                self.audio.play('go')
                 if self.fx_enabled: self.effects.trigger('go',{},self.now)
         if self.screen=='gallery' and playable:
             if self.gallery_auto and self.now>=self.gallery_next:
@@ -634,7 +695,7 @@ class App(ArtUI, ExpansionUI):
                 if self.screen=='autoplay' and self.game.state in ('won','over'):
                     if not self.auto_restart: self.auto_restart=self.now+1.5
                     elif self.now>=self.auto_restart:
-                        self.start('marathon',record=False); self.screen='autoplay'; self.game.state='playing'
+                        self.start('marathon',record=False,countdown=False); self.screen='autoplay'; self.game.state='playing'
                         self.bot=type(self.bot)(); self.auto_restart=0.
             elif self.screen!='analysis' and self.game.state not in ('won','over'):
                 self.game.state='paused'; self.accumulator=0.
@@ -642,6 +703,10 @@ class App(ArtUI, ExpansionUI):
         if self.session and self.session.warning:
             self.notice=self.session.warning
         music=playable and self.screen in ('playing','autoplay','showcase','gallery','replay') and not (self.screen=='replay' and self.replay_paused or self.screen=='autoplay' and getattr(self,'auto_paused',False))
+        self.audio.set_suspended(not playable)
+        if self._audio_theme!=self.settings['theme']:
+            self._audio_theme=self.settings['theme']
+            self.audio.set_theme(self._audio_theme)
         self.audio.set_music(music)
         if hasattr(self.audio,'set_intensity'):
             self.audio.set_intensity(3 if self.effects.fever_until>self.now else min(3,self.effects.combo//2))

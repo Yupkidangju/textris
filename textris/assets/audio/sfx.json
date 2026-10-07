@@ -1,0 +1,275 @@
+{
+  "version": 1,
+  "effects": [
+    {
+      "id": "ui_move",
+      "gain": 0.31,
+      "priority": 10,
+      "cooldown": 0.045,
+      "file": "sfx/ui_move.wav",
+      "duration": 0.067891,
+      "sha256": "e74d05471d016a97f353e64ae66cd888b64cbda51f586707c6c76eac61a41bc5"
+    },
+    {
+      "id": "ui_select",
+      "gain": 0.53,
+      "priority": 20,
+      "cooldown": 0.09,
+      "file": "sfx/ui_select.wav",
+      "duration": 0.06,
+      "sha256": "0e86f5c9f5e30c8b7d1a6fc703cb1530307239d656e7e2916af6cc34187baa32"
+    },
+    {
+      "id": "ui_back",
+      "gain": 0.49,
+      "priority": 20,
+      "cooldown": 0.1,
+      "file": "sfx/ui_back.wav",
+      "duration": 0.1078,
+      "sha256": "b6d91751ae3c457adf91e76fd96077b837a1961431f6d9e67b558bb2040e261e"
+    },
+    {
+      "id": "ui_toggle",
+      "gain": 0.43,
+      "priority": 15,
+      "cooldown": 0.08,
+      "file": "sfx/ui_toggle.wav",
+      "duration": 0.065896,
+      "sha256": "42fb4dccf55e7d579d06f41b6d47559e6859771cb760222f3f76ff5a0a448de5"
+    },
+    {
+      "id": "ui_error",
+      "gain": 0.58,
+      "priority": 30,
+      "cooldown": 0.16,
+      "file": "sfx/ui_error.wav",
+      "duration": 0.07,
+      "sha256": "32f051222d17cd9f4075527cbbc1a9f2c804d8075176d19e9db1915f8b51710e"
+    },
+    {
+      "id": "countdown",
+      "gain": 0.6,
+      "priority": 40,
+      "cooldown": 0.15,
+      "file": "sfx/countdown.wav",
+      "duration": 0.08,
+      "sha256": "1bb95c870748ca23ce0b1c131d18d686e842309916619deb2afbc8cbb2da707b"
+    },
+    {
+      "id": "go",
+      "gain": 0.8,
+      "priority": 75,
+      "cooldown": 0.3,
+      "file": "sfx/go.wav",
+      "duration": 0.22,
+      "sha256": "f159a7d77a88bf9149c64aa8c6373348883215c223282df654727332c344bcff"
+    },
+    {
+      "id": "pause",
+      "gain": 0.53,
+      "priority": 40,
+      "cooldown": 0.15,
+      "file": "sfx/pause.wav",
+      "duration": 0.07,
+      "sha256": "8d07250b39951cb6e5f10cbbce4ff278b16700e7ed47392e186ea4de8a21d7dc"
+    },
+    {
+      "id": "resume",
+      "gain": 0.59,
+      "priority": 40,
+      "cooldown": 0.15,
+      "file": "sfx/resume.wav",
+      "duration": 0.079864,
+      "sha256": "8f9172e20ee2d72d781d09907d1fbf3889510bb1aa2453eb3b92fc3d496bbb87"
+    },
+    {
+      "id": "move",
+      "gain": 0.26,
+      "priority": 5,
+      "cooldown": 0.035,
+      "file": "sfx/move.wav",
+      "duration": 0.197596,
+      "sha256": "88c89fdef13129b240b6881b0d9c12908668b897595475c05eaf372edcbfe012"
+    },
+    {
+      "id": "rotate",
+      "gain": 0.39,
+      "priority": 12,
+      "cooldown": 0.05,
+      "file": "sfx/rotate.wav",
+      "duration": 0.07,
+      "sha256": "fefd9be980b90419f17bdd68d2088c15bea9a0e827a0c64f2645a7843769abae"
+    },
+    {
+      "id": "hold",
+      "gain": 0.55,
+      "priority": 25,
+      "cooldown": 0.1,
+      "file": "sfx/hold.wav",
+      "duration": 0.099819,
+      "sha256": "70054f345dcd260a5536002eb0ad033710e329dd6958ab73e6069daf9514343c"
+    },
+    {
+      "id": "drop",
+      "gain": 0.78,
+      "priority": 55,
+      "cooldown": 0.08,
+      "file": "sfx/drop.wav",
+      "duration": 0.127755,
+      "sha256": "512b6d64e8e25d802082fb0e8151da5b8f0e29b1cd4e8dab90ee2ebe629ed105"
+    },
+    {
+      "id": "lock",
+      "gain": 0.49,
+      "priority": 20,
+      "cooldown": 0.06,
+      "file": "sfx/lock.wav",
+      "duration": 0.083855,
+      "sha256": "9b52bbdc3dbaff8000d46e18c7463b8bc38b7541b60fc4c8e6047ff6a5e3d52e"
+    },
+    {
+      "id": "clear_single",
+      "gain": 0.71,
+      "priority": 65,
+      "cooldown": 0.1,
+      "file": "sfx/clear_single.wav",
+      "duration": 0.421995,
+      "sha256": "9b78e542c1cfcbb68f07162ef9a6b8cf3414485ea4c2824b9e0fa335a41f8448"
+    },
+    {
+      "id": "clear_double",
+      "gain": 0.77,
+      "priority": 70,
+      "cooldown": 0.1,
+      "file": "sfx/clear_double.wav",
+      "duration": 0.4,
+      "sha256": "06ced0e06422a83af0ec9b2ca2675b2296ec532890f52eca69e4ca4439c72417"
+    },
+    {
+      "id": "clear_triple",
+      "gain": 0.84,
+      "priority": 75,
+      "cooldown": 0.15,
+      "file": "sfx/clear_triple.wav",
+      "duration": 1.1,
+      "sha256": "b80c37c1d4932fe266a7a6e6d9dec7a9191ba10d823e3bec89d6ef39c47111ed"
+    },
+    {
+      "id": "tetris",
+      "gain": 0.94,
+      "priority": 90,
+      "cooldown": 0.2,
+      "file": "sfx/tetris.wav",
+      "duration": 0.8,
+      "sha256": "3ab4edc3a3d5a8eb348adb02e1df1d43b33b33a2959db7c6ca1894e7ab186b74"
+    },
+    {
+      "id": "tspin",
+      "gain": 0.87,
+      "priority": 85,
+      "cooldown": 0.15,
+      "file": "sfx/tspin.wav",
+      "duration": 0.55,
+      "sha256": "44bb78810edf0786d8bb988b3bd7e629ea755902fd4c8f0651d790ff76aaeb77"
+    },
+    {
+      "id": "all_clear",
+      "gain": 0.97,
+      "priority": 100,
+      "cooldown": 0.5,
+      "file": "sfx/all_clear.wav",
+      "duration": 1.571995,
+      "sha256": "f1fcaee636af66de7cfcff28a94bd57dbd7697fbb0d11b272547a3163b16bbb2"
+    },
+    {
+      "id": "combo",
+      "gain": 0.65,
+      "priority": 60,
+      "cooldown": 0.14,
+      "file": "sfx/combo.wav",
+      "duration": 0.671995,
+      "sha256": "169a7ae4614023fb4fdfc9d7f8c261a7900a1290390d33ca6b60ce5f2f8abbb5"
+    },
+    {
+      "id": "b2b",
+      "gain": 0.79,
+      "priority": 75,
+      "cooldown": 0.2,
+      "file": "sfx/b2b.wav",
+      "duration": 0.45,
+      "sha256": "5626a067bc1f630d276610cf9c15191775285326f21b77e34d32650994c5c425"
+    },
+    {
+      "id": "fever_start",
+      "gain": 0.92,
+      "priority": 95,
+      "cooldown": 0.5,
+      "file": "sfx/fever_start.wav",
+      "duration": 1.6,
+      "sha256": "4e326b8e7bb412ffc09cbd55d9a6886f8a9dca966a38a795f7a970a526c1342a"
+    },
+    {
+      "id": "fever_end",
+      "gain": 0.73,
+      "priority": 70,
+      "cooldown": 0.3,
+      "file": "sfx/fever_end.wav",
+      "duration": 0.713991,
+      "sha256": "2a3dbd56168d9f22ffc8e9a335067b5ed40065d84d61a8b25f7135835a0b6fb6"
+    },
+    {
+      "id": "level",
+      "gain": 0.81,
+      "priority": 80,
+      "cooldown": 0.3,
+      "file": "sfx/level.wav",
+      "duration": 0.45,
+      "sha256": "274bbc26f9516df94e58f40b5cf5bc77f1ceb5e8a680d05d3c808064ef1dd7a6"
+    },
+    {
+      "id": "danger",
+      "gain": 0.69,
+      "priority": 70,
+      "cooldown": 0.85,
+      "file": "sfx/danger.wav",
+      "duration": 0.5,
+      "sha256": "9f67fd2f47afc77027cf95894325d3538a296c7517752e9df6b2d2346456b71f"
+    },
+    {
+      "id": "win",
+      "gain": 0.95,
+      "priority": 100,
+      "cooldown": 0.5,
+      "file": "sfx/win.wav",
+      "duration": 1.0,
+      "sha256": "3a9100f20979c1f50335c7fbc96e9fd15fe534439213b9dfb33133e950ee8dd8"
+    },
+    {
+      "id": "gameover",
+      "gain": 0.9,
+      "priority": 100,
+      "cooldown": 0.5,
+      "file": "sfx/gameover.wav",
+      "duration": 1.7,
+      "sha256": "e4b7e57dd84ee005c885fa63c772e14cd1bd8db15d9ef3720dae1a661f7e40c9"
+    },
+    {
+      "id": "boss_hit",
+      "gain": 0.8,
+      "priority": 60,
+      "cooldown": 0.1,
+      "file": "sfx/boss_hit.wav",
+      "duration": 0.15,
+      "sha256": "85c20df45327408ff93d349f8d418134e9f05224523a189caa0aaf1c131ec93e"
+    },
+    {
+      "id": "boss_break",
+      "gain": 0.96,
+      "priority": 95,
+      "cooldown": 0.4,
+      "file": "sfx/boss_break.wav",
+      "duration": 1.0,
+      "sha256": "632f24008095038475f53be14a4291e71244ce390a63dd96f42975b1efe85663"
+    }
+  ]
+}

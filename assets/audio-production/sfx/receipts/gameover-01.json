@@ -1,0 +1,30 @@
+{
+  "id": "gameover",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:23:12.325Z",
+  "finished_at": "2026-10-07T15:23:33.588Z",
+  "request": {
+    "id": "gameover",
+    "prompt": "A heavy wooden and iron mechanism shuts down with a deep padded impact, a short descending rough scrape and a sparse dry debris tail. Weighty subdued physical ending, no long echo. No voice, no music, no melody, no electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/gameover-01.wav",
+    "min_duration": 0.9,
+    "max_duration": 1.7,
+    "gain": 0.9,
+    "priority": 100,
+    "cooldown": 0.5,
+    "target_peak_db": -4.5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\gameover-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\gameover-01.wav"
+    },
+    "isError": false
+  }
+}

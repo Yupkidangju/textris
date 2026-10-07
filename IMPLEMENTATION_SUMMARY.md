@@ -1,5 +1,36 @@
 # TEXTRIS 구현 및 검증 증거
 
+## 사운드 전면 개편 1.2.0 (2026-10-08)
+
+승인 설계는 [사운드 개편 계획](docs/audio-overhaul-plan.md), 최신 증거는
+[검증 보고서](docs/audio-overhaul-verification.md)에 있다.
+
+- 테마 창작18곡과 Classic8곡, 각90초의4파트 MIDI/FLAC/Ogg 및 생성형SFX30종을 제작했다.
+- miniaudio 스트리밍·1:1 셔플·볼륨/duck/limiter·위치보존과 Extras Soundtrack을 구현했다.
+- 독립 악보/코드/패키지 검토에서 찾은 종지·음역·전사·preset·정리·clipping·seek·배포 gate
+  문제를 회귀 검증 후 수정했다. 217개 테스트:207통과/10제외(Unix6·symlink권한4).
+- 실제 Soundtrack UI4/4, 실제 게임+장치SFX5/5, 26곡39분완주와600초혼합을 확인했다.
+  39분검사의OS상태비교 실패는 사용자가 직접Windows볼륨을변경했다고 확인했다.
+  원본실패기록과 기능조건통과를 구분해 보존했다. 별도혼합검사의OS상태는불변이었다.
+- EXE/pyz/wheel63개runtime파일과소스/bytecode를대조했다. EXE약54.2MiB,
+  pyz약44.2MiB,외부재생기없이실제EXE재생·입력·정상종료를확인했다.
+- 사람청취에 의한 최종음질수용,물리장치탈착,Windows10실기는 수행했다고 주장하지 않는다.
+  사용자는 완료 후패키징·커밋·v1.2.0태그푸시를 승인했다. 원격CI/릴리스상태는검증보고서에남긴다.
+
+## 감사 2 수정 및 Windows 재검증 (2026-10-07)
+
+최신 계약/파일 책임/실행 증거는 [수정 설계](docs/audit/audit_2_remediation_plan.md)와
+[재검증 보고서](docs/audit/audit_2_revalidation.md)에 있다. 아래 과거 단계의 환경·결과와 구분한다.
+
+- Windows 자동 Unicode 타일, Auto/Unicode/ASCII 저장 및 CLI 우선순위, version 1 이행.
+- stdlib ctypes waveOut 재생: 음악 1+효과음 3, 버퍼 완료·정지·정리, 누적 실패 사건 3회 한도.
+  audio-check는 백엔드 완료·앱 설정·OS mute/volume·청취 미확인을 분리한다.
+- 다섯 테마의 6성취 형상과 intensity/power/삭제 행 반응. 코어·리플레이 규칙 불변.
+- Windows 전체 156개: 147통과/9명시 제외. 실제 콘솔 5시나리오, native 테마108조건,
+  실제 오디오25조건 통과. EXE/pyz 빌드 및 실행 검증 완료. Git 커밋/게시 없음.
+- OS mute=true/volume0 상태를 보존했다. Windows 10·사용자 폰트·실제 청취·물리 장치
+  교체·타 OS/CI·장시간 부하는 미검증이다. symlink 3개 권한 제외와 junction 2개 통과를 구분한다.
+
 작성: 2026-10-07. 근거: spec.md, designs.md, 현재 소스와 테스트 실행 결과.
 초기 사용자 요구: 터미널 TUI 테트리스, 텍스트 애니메이션, 사운드, 키보드 조작.
 

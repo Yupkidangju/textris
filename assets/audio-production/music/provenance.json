@@ -1,0 +1,85 @@
+{
+  "created": "2026-10-08",
+  "approach": "Explicit authored scores; literal source excerpts and manually transcribed public-domain themes; no random note generation",
+  "fluidsynth": {
+    "version": "2.6.1",
+    "download": "https://github.com/FluidSynth/fluidsynth/releases/download/v2.6.1/fluidsynth-v2.6.1-win10-x64-cpp11.zip",
+    "archive_sha256": "fab7a2e4b85675b66970f97a39bbc239729c5e0f237198b5922a6a73cbc8677c"
+  },
+  "soundfont": {
+    "name": "GeneralUser GS",
+    "version": "2.0.3",
+    "repository": "https://github.com/mrbumpy409/GeneralUser-GS",
+    "sha256": "9575028c7a1f589f5770fccc8cff2734566af40cd26ed836944e9a5152688cfe",
+    "license": "licenses/GeneralUser-GS-LICENSE.txt",
+    "distributed_at_runtime": false
+  },
+  "ffmpeg": "ffmpeg version 8.1.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+  "master_format": "FLAC 44.1 kHz stereo",
+  "delivery_format": "Ogg Vorbis q6 44.1 kHz stereo",
+  "master_location": ".antigravity/audio-overhaul-20261008/production/masters",
+  "normalization": "FFmpeg measured two-pass loudnorm, -18 LUFS target and -1.5 dBTP mastering ceiling",
+  "sources": [
+    {
+      "file": "sources/bach/bach-french-suite-3-menuet.mid",
+      "sha256": "dbc456cb46a3abb4f971e18f2adf286c7ac8ea24cc970733cff0c06bb8d7659e",
+      "bytes": 3097
+    },
+    {
+      "file": "sources/bach/french-suite-3-lys/header.ily",
+      "sha256": "da1ad2262bab8f9bafa96b5b950ee74c188332ce7b95723b8b28cbca62d30d71",
+      "bytes": 1879
+    },
+    {
+      "file": "sources/bach/french-suite-3-lys/parts/bach-french-suite-3-menuet.ly",
+      "sha256": "390fd094ba3793afd7e220a012d7e61e434cf347589ad7d356b271fc1293d6e6",
+      "bytes": 2520
+    },
+    {
+      "file": "sources/bach-source.html",
+      "sha256": "86e94ba33b7208d65658805dc19ce9ac6d2b228f2d7728215f4af1c3b214dd3a",
+      "bytes": 6401
+    },
+    {
+      "file": "sources/brahms-composer.pdf",
+      "sha256": "ece319f723bb8c5f46227bca3069fa3f552cd4c213e2fb448c87785b529d1494",
+      "bytes": 4023092
+    },
+    {
+      "file": "sources/kalinka.abc",
+      "sha256": "4333f369d73bacb449badfb7f35eaae57cdd21ab9d5285e5b0e849b48d3adf9c",
+      "bytes": 775
+    },
+    {
+      "file": "sources/mozart-KV331_3_RondoAllaTurca.mid",
+      "sha256": "c14299cbdd34c8b2081da84dc06519ef8a52a0d589ee53c758d28b8e3d727d1c",
+      "bytes": 13772
+    },
+    {
+      "file": "sources/mozart-source.html",
+      "sha256": "9cc7b2cf161830e8116b6dc55f0604560fe83ae0a9d03d9a9a328f31c102d550",
+      "bytes": 6131
+    },
+    {
+      "file": "sources/nutcracker-composer-1892.pdf",
+      "sha256": "6e15c63cdd52b3f83f50c41c359d82b40ddcaafc1cdbbcac9044b3e80a26f8c1",
+      "bytes": 2530039
+    }
+  ],
+  "human_listening": "not performed",
+  "generators": [
+    {
+      "file": "scripts/compose_soundtrack.py",
+      "sha256": "3a8b64f928e0c6956eda2476ed359e310a97357e4bf3978f0200775d1060b6b3"
+    },
+    {
+      "file": "scripts/soundtrack_classics.py",
+      "sha256": "fd4a402b699623c171742873fc1ff365c5d644cb4d1de4cdbb5fafae6c8aaad9"
+    },
+    {
+      "file": "scripts/render_soundtrack.py",
+      "sha256": "7f221ec8bd50e244196b893d64c75d62110539f160501cd60f661ad78a9e2ff4"
+    }
+  ],
+  "catalog_sha256": "d72a186d8124afa44e860f13de4880500939ecc1d6706df75defc17bf6828c17"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "boss_hit",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:23:36.436Z",
+  "finished_at": "2026-10-07T15:23:57.987Z",
+  "request": {
+    "id": "boss_hit",
+    "prompt": "A dense stone armored slab takes one forceful compact hammer strike. Hard gritty crack over a tight low thud, tiny chips scatter briefly, dry close perspective and short controlled tail. No voice, no music, no weapon gunshot, no ringing melody or electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/boss_hit-01.wav",
+    "min_duration": 0.15,
+    "max_duration": 0.35,
+    "gain": 0.8,
+    "priority": 60,
+    "cooldown": 0.1,
+    "target_peak_db": -5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\boss_hit-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\boss_hit-01.wav"
+    },
+    "isError": false
+  }
+}

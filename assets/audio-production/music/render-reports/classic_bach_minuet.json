@@ -1,0 +1,25 @@
+{
+  "id": "classic_bach_minuet",
+  "duration": 90.0,
+  "sample_rate": 44100,
+  "channels": 2,
+  "lufs": -17.98,
+  "true_peak_dbtp": -5.99,
+  "lra": 5.0,
+  "peak": 0.4929012656211853,
+  "rms": 0.08669021226182999,
+  "stereo_correlation": 0.9682371700126193,
+  "leading_silence_seconds": 0.0,
+  "trailing_silence_seconds": 2.0,
+  "spectral_energy": {
+    "sub": 0.001571,
+    "low": 0.180042,
+    "mid": 0.740848,
+    "presence": 0.051222,
+    "air": 0.026317
+  },
+  "sha256": "5aae58b4932b229a6787ec1f8f079b422377a1389053c2f178fbbc1a8efd1ce2",
+  "master_sha256": "64c771d6c5d6a26ca30298cc1753c912fc576369ceb0f5d46d5169620a219694",
+  "midi_sha256": "7a5cb6ed10e5b2a3f82d4f2c94f9ccbdeb7ab44f41311380d65a221fc9bc1761",
+  "human_listening": "not performed"
+}

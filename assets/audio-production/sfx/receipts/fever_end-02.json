@@ -1,0 +1,31 @@
+{
+  "id": "fever_end",
+  "attempt": 2,
+  "started_at": "2026-10-07T15:25:57.549Z",
+  "finished_at": "2026-10-07T15:26:18.551Z",
+  "request": {
+    "id": "fever_end",
+    "prompt": "A single low rushing air exhalation across hot coarse stone fades smoothly into a small dry sandy crackle. One continuous descending textured fwoosh about eight tenths of a second long, dense breathy friction at first then rapidly thinning away, warm low weight, close dry recording. No separate impacts, no rhythm, no voice, no music, no sustained note, no electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/fever_end-02.wav",
+    "min_duration": 0.6,
+    "max_duration": 1.2,
+    "gain": 0.73,
+    "priority": 70,
+    "cooldown": 0.3,
+    "target_peak_db": -6,
+    "regeneration_reason": "First candidate had separated short peaks rather than a continuous falling transition."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\fever_end-02.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\fever_end-02.wav"
+    },
+    "isError": false
+  }
+}

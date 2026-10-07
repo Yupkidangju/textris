@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-10-07T16:38:13.446533+00:00",
+  "state": {
+    "available": true,
+    "master_volume": 0.38999998569488525,
+    "master_muted": false
+  },
+  "original_before": {
+    "available": true,
+    "master_volume": 1.0,
+    "master_muted": false
+  }
+}

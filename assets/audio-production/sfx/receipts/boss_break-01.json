@@ -1,0 +1,30 @@
+{
+  "id": "boss_break",
+  "attempt": 1,
+  "started_at": "2026-10-07T15:23:59.233Z",
+  "finished_at": "2026-10-07T15:24:20.569Z",
+  "request": {
+    "id": "boss_break",
+    "prompt": "A thick stone armor shell fractures open in one forceful deep impact, followed by a broad coarse rubble cascade and gritty air release. Strong layered crack, dense low body, detailed natural decay. Isolated physical destruction, no voice, no music, no explosion blast, no electronic beep.",
+    "seconds": 3,
+    "source_file": ".antigravity/audio-overhaul-20261008/production/sfx-source/boss_break-01.wav",
+    "min_duration": 1,
+    "max_duration": 1.8,
+    "gain": 0.96,
+    "priority": 95,
+    "cooldown": 0.4,
+    "target_peak_db": -3.5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\boss_break-01.wav"
+      }
+    ],
+    "structuredContent": {
+      "result": "C:\\LocalDev\\python\\textris\\.antigravity\\audio-overhaul-20261008\\production\\sfx-source\\boss_break-01.wav"
+    },
+    "isError": false
+  }
+}
