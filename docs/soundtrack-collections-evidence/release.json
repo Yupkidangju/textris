@@ -1,0 +1,54 @@
+{
+  "assets": [
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.2.1/SHA256SUMS.txt",
+      "digest": "sha256:1bb8b7182a1792fd2ff0c8d8566d1e5e0a55fd7629e11643739ff5776ae3d2a0",
+      "name": "SHA256SUMS.txt",
+      "size": 428
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.2.1/textris-linux-amd64",
+      "digest": "sha256:25094447c7af98defc020df9400fc2e149c996304d9013b932731dc79fbec4cf",
+      "name": "textris-linux-amd64",
+      "size": 69320544
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.2.1/textris-linux-arm64",
+      "digest": "sha256:1d625d13e196dea0ebee16b5838e0e42fff1acfac79def56d6c348890f9d2bfc",
+      "name": "textris-linux-arm64",
+      "size": 56878328
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.2.1/textris-macos-arm64",
+      "digest": "sha256:60cbd2d915e28a8e0d34bbffa62628ccf41a2455ff4f45af716edfa2cbc4e267",
+      "name": "textris-macos-arm64",
+      "size": 55454368
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.2.1/textris-windows-amd64.exe",
+      "digest": "sha256:83ef00056646bfa64ed61838c1ec3e4ada675cd552cc514d72fda904a52b3126",
+      "name": "textris-windows-amd64.exe",
+      "size": 56115009
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.2.1/textris.pyz",
+      "digest": "sha256:ca545526cb65be5c5fbff02f297045d2064eeed854311ad7d554f134d67faaf7",
+      "name": "textris.pyz",
+      "size": 46422637
+    }
+  ],
+  "draft": false,
+  "html_url": "https://github.com/Yupkidangju/textris/releases/tag/v1.2.1",
+  "prerelease": false,
+  "published_at": "2026-10-08T08:05:14Z",
+  "tag_name": "v1.2.1",
+  "target_commitish": "main",
+  "release_ci": {
+    "url": "https://github.com/Yupkidangju/textris/actions/runs/37746663428",
+    "conclusion": "success",
+    "jobs": 7
+  },
+  "tag_target": "4b6da745d20398cb1db77a2103e37d7891b55460",
+  "release_checksums_match": true,
+  "windows_matches_tested_ci_artifact": true
+}

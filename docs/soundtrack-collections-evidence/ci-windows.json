@@ -1,0 +1,27 @@
+{
+  "run": "https://github.com/Yupkidangju/textris/actions/runs/37746663428",
+  "commit": "4b6da745d20398cb1db77a2103e37d7891b55460",
+  "artifact": "textris-windows-amd64.exe",
+  "bytes": 56115009,
+  "sha256": "83ef00056646bfa64ed61838c1ec3e4ada675cd552cc514d72fda904a52b3126",
+  "version": "1.2.1",
+  "path_empty": true,
+  "pythonpath_empty": true,
+  "console_size": [
+    120,
+    40
+  ],
+  "collection_picker": true,
+  "traditional_tracks": 8,
+  "played": "Korobeiniki",
+  "other_collection": "Orbital observatory",
+  "other_tracks": 3,
+  "exit_code": 0,
+  "game_theme_preserved": true,
+  "records_empty": true,
+  "backend": "WASAPI",
+  "backend_completion": "PASS",
+  "os_muted": false,
+  "os_volume": 0.39,
+  "listening": "unconfirmed"
+}

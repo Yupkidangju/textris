@@ -115,4 +115,6 @@ Windows에는 windows-curses를 사용하며 WSL이 필수는 아니다. 저장 
 Extras Soundtrack 감상과 버스별 음량을 제공한다. 이 절은 이전 8초 합성루프·waveOut
 전용 재생 설명보다 우선한다. 제품 실행은 offline이며 EXE에 음원/decoder를 포함한다.
 기존 저장 version1/게임 규칙/리플레이 계약은 유지하고 OS 출력 설정은 변경하지 않는다.
-완료 후 v1.2.0 태그 푸시와 기존 Release workflow의 결과를 확인한다.
+사운드 전면 개편은 v1.2.0으로 게시했다. 후속 모음 선택 개선은
+`docs/soundtrack-collections-plan.md`를 기준으로 v1.2.1에 반영했으며,
+Windows 실제 콘솔·배포EXE와 태그 Release workflow 검증을 완료했다.

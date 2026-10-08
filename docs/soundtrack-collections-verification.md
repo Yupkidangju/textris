@@ -43,4 +43,16 @@ zipapp/wheel에 포함한다. 상세 크기·해시는
 음원과 재생 엔진을 변경하지 않아39분 전곡·10분 믹싱 검사를 반복하지 않았다.
 물리 키보드·스피커 청취를 이번 자동 검사로 합격 선언하지 않는다.
 
-v1.2.1 태그·플랫폼 CI·GitHub Release 상태는 게시 결과 확인 후 이 절에 기록한다.
+## 게시 완료
+
+코드 커밋 `4b6da74`에 v1.2.1 태그를 푸시했다.
+[태그 CI](https://github.com/Yupkidangju/textris/actions/runs/37746663428)의7개 job이
+모두 성공해 Linux x64/ARM64, Windows x64, macOS ARM64, zipapp과 체크섬을 게시했다.
+[v1.2.1 릴리스](https://github.com/Yupkidangju/textris/releases/tag/v1.2.1).
+
+CI Windows EXE(56,115,009바이트)는 외부 PATH/PYTHONPATH 없이 실제 콘솔에서
+전통곡 모음 선택·Korobeiniki 재생·다른 테마 선택·정상 종료와WASAPI 완료PASS를 확인했다.
+게시된EXE의SHA-256 `83ef00056646bfa64ed61838c1ec3e4ada675cd552cc514d72fda904a52b3126`은
+이 검증 파일과 일치한다. 6개 게시 파일의GitHub digest와SHA256SUMS도 일치한다.
+[CI Windows 실행 근거](soundtrack-collections-evidence/ci-windows.json),
+[게시 파일·체크섬 근거](soundtrack-collections-evidence/release.json).
