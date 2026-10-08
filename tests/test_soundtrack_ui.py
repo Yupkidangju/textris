@@ -29,9 +29,57 @@ class SoundtrackUITests(unittest.TestCase):
         with patch.object(App,'_setup'):
             self.app=App(Window(),self.store,self.audio,seed=42)
 
-    def open_soundtrack(self):
+    def open_collections(self):
         a=self.app; a.handle('e'); a.handle(curses.KEY_UP); a.handle('\n')
+        self.assertEqual(a.screen,'soundtrack_collections')
+
+    def open_soundtrack(self,collection='cathedral'):
+        self.open_collections(); a=self.app
+        collections=('classic','cathedral','cyberpunk','space','fire','crt','mono','all')
+        for _ in range(collections.index(collection)): a.handle(curses.KEY_DOWN)
+        a.handle('\n')
         self.assertEqual(a.screen,'soundtrack')
+
+    def test_collection_menu_exposes_traditional_and_all_themes_at_minimum_size(self):
+        self.open_collections(); a=self.app
+        for size in ((28,64),(40,120)):
+            for mode in ('ascii','mono'):
+                a.win.size=size; a.settings.update(display_mode='ascii',color=mode!='mono')
+                with patch('curses.doupdate'): a.draw()
+                frame='\n'.join(text for y,x,text in a.win.lines)
+                self.assertTrue(frame.isascii())
+                for label in ('Traditional Tetris','All tracks',*(a.t('theme_'+theme) for theme in
+                              ('cathedral','cyberpunk','space','fire','crt','mono'))):
+                    self.assertIn(label,frame)
+                for label in ('8 tracks','3 tracks','26 tracks','Enter: open','Esc/Q: back'):
+                    self.assertIn(label,frame)
+                self.assertIn('> Traditional Tetris',frame)
+
+    def test_each_collection_is_playable_without_changing_game_theme_or_settings(self):
+        self.open_collections(); a=self.app; settings=dict(a.settings)
+        for theme,count in [('classic',8),('cathedral',3),('cyberpunk',3),('space',3),
+                            ('fire',3),('crt',3),('mono',3),('all',26)]:
+            a.handle('\n'); self.assertEqual(a.screen,'soundtrack')
+            tracks=a.soundtrack_tracks(); self.assertEqual(len(tracks),count)
+            if theme!='all': self.assertEqual({track['theme'] for track in tracks},{theme})
+            a.handle('\n'); a.tick(.1)
+            self.assertIn(('audition',tracks[0]['id'],[track['id'] for track in tracks],False,False),self.audio.calls)
+            self.assertEqual(a.settings,settings)
+            self.assertIsNone(a.session); self.assertIsNone(a.game)
+            a.handle('\x1b'); self.assertEqual(a.screen,'soundtrack_collections')
+            self.assertEqual(self.audio.music_state['mode'],'game')
+            a.handle(curses.KEY_DOWN)
+
+    def test_tab_returns_to_collection_picker_and_resets_new_track_selection(self):
+        self.open_soundtrack('classic'); a=self.app
+        a.handle(curses.KEY_DOWN); a.handle('\n'); a.handle('\t')
+        self.assertEqual(a.screen,'soundtrack_collections')
+        self.assertEqual(a.soundtrack_collection_selection,0)
+        self.assertEqual(self.audio.music_state['mode'],'game')
+        a.handle('s'); a.handle('\n')
+        self.assertEqual(a.screen,'soundtrack'); self.assertEqual(a.soundtrack_selection,0)
+        self.assertEqual(len(a.soundtrack_tracks()),3)
+        a.handle('q'); a.handle('q'); self.assertEqual(a.screen,'hub')
 
     def test_extras_last_item_audition_keeps_game_and_replay_history_empty(self):
         self.open_soundtrack(); a=self.app
@@ -42,12 +90,12 @@ class SoundtrackUITests(unittest.TestCase):
         self.assertEqual(a.replays.list(),[])
         self.assertFalse(any(self.store.records.values()))
         a.handle('\x1b')
-        self.assertEqual(a.screen,'hub'); self.assertEqual(self.audio.music_state['mode'],'game')
+        self.assertEqual(a.screen,'soundtrack_collections'); self.assertEqual(self.audio.music_state['mode'],'game')
+        a.handle('\x1b'); self.assertEqual(a.screen,'hub')
 
-    def test_filters_scrolling_metadata_and_fixed_controls_in_ascii_and_mono(self):
-        self.open_soundtrack(); a=self.app
-        a.handle('\t'); self.assertEqual(len(a.soundtrack_tracks()),8)
-        a.handle('\t'); self.assertEqual(len(a.soundtrack_tracks()),26)
+    def test_all_collection_scrolling_metadata_and_fixed_controls_in_ascii_and_mono(self):
+        self.open_soundtrack('all'); a=self.app
+        self.assertEqual(len(a.soundtrack_tracks()),26)
         for _ in range(25): a.handle(curses.KEY_DOWN)
         a.handle('\n'); self.audio.music_state['error']='Device unavailable'
         for size in ((28,64),(40,120)):
@@ -95,7 +143,7 @@ class SoundtrackUITests(unittest.TestCase):
 
     def test_global_master_and_music_keys_reach_every_screen(self):
         a=self.app
-        for screen in ('hub','profiles','gallery','replays','soundtrack','showcase','help','confirm'):
+        for screen in ('hub','profiles','gallery','replays','soundtrack_collections','soundtrack','showcase','help','confirm'):
             a.screen=screen
             for key,name in [('m','sound'),('b','music')]:
                 before=a.settings[name]; a.handle(key); self.assertIs(a.settings[name],not before)

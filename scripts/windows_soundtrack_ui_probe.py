@@ -130,7 +130,7 @@ def main():
                     original_draw(current)
                     state['frames']+=1
                     state['screen']=current.screen
-                    assert time.monotonic()-began<45,f'timeout: {state}'
+                    assert time.monotonic()-began<70,f'timeout: {state}'
                     assert current.session is None and current.game is None
                     assert not any(store.records.values()) and current.replays.list()==[]
                     music=audio.music_state; stage=state['stage']; age=time.monotonic()-stage_at
@@ -139,17 +139,37 @@ def main():
                         state['backend']=audio.status
                         advance(1,['e',curses.KEY_UP,'\n'])
                     elif stage==1:
-                        assert current.screen=='soundtrack' and len(current.soundtrack_tracks())==3
-                        frame=capture('theme-filter')
-                        assert 'Space:' in frame and 'Esc/Q:' in frame and 'BPM' in frame
-                        advance(2,['\t'])
+                        assert current.screen=='soundtrack_collections'
+                        frame=capture('collections')
+                        for label in ('Traditional Tetris','8 tracks','3 tracks','26 tracks','Enter: open','Esc/Q:'):
+                            assert label in frame,label
+                        for theme in ('cathedral','cyberpunk','space','fire','crt','mono'):
+                            assert current.t('theme_'+theme) in frame,theme
+                        state['collection_counts']=[]
+                        advance(2,['\n'])
                     elif stage==2:
+                        assert current.screen=='soundtrack'
                         assert len(current.soundtrack_tracks())==8
-                        assert 'Classic' in capture('classic-filter')
-                        advance(3,['\t'])
-                    elif stage==3:
-                        assert len(current.soundtrack_tracks())==26
-                        advance(4,[curses.KEY_DOWN]*25)
+                        frame=capture('traditional-tracks')
+                        assert 'Traditional Tetris' in frame and 'BPM' in frame and 'Space:' in frame
+                        state['collection_counts'].append(dict(collection='classic',tracks=8))
+                        advance('collection-return',['\t'])
+                    elif stage=='collection-return':
+                        assert current.screen=='soundtrack_collections'
+                        advance('theme-list',[curses.KEY_DOWN,'\n'])
+                    elif stage=='theme-list':
+                        assert current.screen=='soundtrack'
+                        from textris.expansion_ui import SOUNDTRACK_COLLECTIONS
+                        collection=SOUNDTRACK_COLLECTIONS[current.soundtrack_collection_selection]
+                        tracks=current.soundtrack_tracks()
+                        assert len(tracks)==(26 if collection=='all' else 3)
+                        if collection!='all': assert {track['theme'] for track in tracks}=={collection}
+                        assert store.settings['theme']==('mono' if mode=='mono' else 'cathedral')
+                        frame=capture(collection+'-tracks')
+                        assert current.soundtrack_collection_label(collection) in frame
+                        state['collection_counts'].append(dict(collection=collection,tracks=len(tracks)))
+                        if collection=='all': advance(4,[curses.KEY_DOWN]*25)
+                        else: advance('collection-return',['q'])
                     elif stage==4:
                         assert current.soundtrack_selection==25
                         capture('all-scrolled-last')
@@ -194,17 +214,20 @@ def main():
                     elif stage==19 and position>state['small_at']+.1:
                         capture('resumed'); advance(20,['q'])
                     elif stage==20 and music['mode']=='game':
-                        assert current.screen=='hub'
-                        capture('back-extras'); advance(21,['q'])
+                        assert current.screen=='soundtrack_collections' and current.soundtrack_collection_selection==7
+                        capture('back-collections'); advance(21,['q'])
                     elif stage==21:
-                        assert current.screen=='menu'; advance(22,['q'])
+                        assert current.screen=='hub'
+                        capture('back-extras'); advance(22,['q'])
                     elif stage==22:
+                        assert current.screen=='menu'; advance(23,['q'])
+                    elif stage==23:
                         assert not current.running
 
                 App.draw=draw
                 try:
                     app.run()
-                    assert state['stage']==22
+                    assert state['stage']==23
                     loaded=Store(store.directory); loaded.load()
                     assert loaded.settings['music_volume']==.8
                     assert loaded.settings['sound'] and loaded.settings['music']

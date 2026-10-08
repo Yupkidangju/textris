@@ -209,3 +209,13 @@ curses.wrapper를 통해 터미널 상태를 복원한다.
 Bresenham 서브셀 선분, 보스/분석/모달과 기존 파일 이행을 구현했다.
 전체118테스트/93컬러프레임/zipapp 검증 완료. 원격 릴리스는 .git 읽기 전용과 DNS 제한으로 미완료.
 자세한 수치·변경·제약·릴리스 인계는 [최신 검증](docs/terminal-art-verification.md).
+
+## 1.2.1 음악 감상 모음 선택 (2026-10-08)
+- `expansion_ui.py`에 전통곡/6테마/전체 모음을 고르는 화면을 추가했다.
+  `ui.py`는 화면과 커서를 공통 입력·렌더링·효과음 경로에 연결한다.
+- 모음은 게임 테마와 독립이며 Esc/Q/Tab으로 감상을 종료하고 모음 커서로 돌아간다.
+  기존 음원26곡/효과음30종, 오디오 엔진, 게임 난수·기록·저장 스키마는 유지한다.
+- UI 회귀12개, 전체233개(223통과/10환경별skip), 실제 Windows 콘솔4조건과
+  외부 Python 경로 없는 EXE의 전통곡·다른 테마 선택/재생/복귀를 확인했다.
+- 설계·검증·배포 근거: `docs/soundtrack-collections-plan.md`,
+  `docs/soundtrack-collections-verification.md`.

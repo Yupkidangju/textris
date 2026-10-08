@@ -62,8 +62,9 @@ OS 볼륨은 변경하지 않는다.
   경계 즉시 반복 금지. 게임 RNG/세이브/리플레이 checksum과 독립적이다.
 - 테마 변경은 짧은 fade-out 후 새 eligible pool. 다른 BPM의 곡을 길게 겹치지 않는다.
 - settings version1 보존: volume은 master 유지, music_volume=.75/sfx_volume=.85 추가.
-- Extras의 마지막 항목 Soundtrack. 위/아래 선택, Enter 재생, Space pause,
-  N/P 다음/이전, 좌/우 ±5초, Tab filter(현재테마/Classic/전체), S shuffle, R repeat,
+- Extras의 마지막 항목 Soundtrack. 후속 개선(`soundtrack-collections-plan.md`)에 따라
+  전통곡/6테마/전체 모음을 먼저 선택한다. 위/아래 선택, Enter 열기/재생, Space pause,
+  N/P 다음/이전, 좌/우 ±5초, Tab/Esc/Q 모음 선택 복귀, S shuffle, R repeat,
   M master mute, B music, +/- music volume, Esc/Q back. 64×28 스크롤/고정 안내.
   제목/분류/시간/진행/BPM/4악기/오류 표시. 영문 UI, ASCII/모노 유지.
 

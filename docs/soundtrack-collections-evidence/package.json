@@ -1,0 +1,92 @@
+{
+  "created_utc": "2026-10-08T07:53:56.979983+00:00",
+  "scope": "archive hashes and current source/code objects; executable interactive console and WASAPI completion verified separately",
+  "tracks": 26,
+  "effects": 30,
+  "catalog_failures": [],
+  "artifacts": {
+    "textris.exe": {
+      "bytes": 56821960,
+      "sha256": "146f52f093d3f5ec6c7adae6dff0a555d848a7b74fc6a359f3a5e89be99f22b9",
+      "audio_asset_count": 63,
+      "asset_missing": [],
+      "asset_hash_mismatch": [],
+      "source_missing": [],
+      "source_hash_mismatch": [],
+      "unexpected_runtime_production": [],
+      "project_license_copies": [
+        "textris/assets/audio/APACHE_LICENSE.txt"
+      ],
+      "numpy_entries": [],
+      "numpy_modules": [],
+      "module_count": 169,
+      "source_bytecode_mismatch": [],
+      "source_bytecode_missing": [
+        "textris.particles"
+      ],
+      "source_bytecode_count": 25,
+      "platform_copy_matches": true
+    },
+    "textris.pyz": {
+      "bytes": 46357617,
+      "sha256": "1114f82c778263c932193b802a4e54a3451d7dd7fa079a5d26b0666dc4d56dec",
+      "audio_asset_count": 63,
+      "asset_missing": [],
+      "asset_hash_mismatch": [],
+      "source_missing": [],
+      "source_hash_mismatch": [],
+      "source_count": 25,
+      "unexpected_runtime_production": [],
+      "project_license_copies": [
+        "textris/assets/audio/APACHE_LICENSE.txt"
+      ],
+      "zip_crc_failure": null
+    },
+    "textris_tui-1.2.1-py3-none-any.whl": {
+      "bytes": 46366585,
+      "sha256": "1e5c2ca72f5e47524b29aa3c166bdf89943878448290852b2a2180c18b73c1b7",
+      "audio_asset_count": 63,
+      "asset_missing": [],
+      "asset_hash_mismatch": [],
+      "source_missing": [],
+      "source_hash_mismatch": [],
+      "source_count": 25,
+      "unexpected_runtime_production": [],
+      "project_license_copies": [
+        "textris/assets/audio/APACHE_LICENSE.txt",
+        "textris_tui-1.2.1.dist-info/licenses/LICENSE"
+      ],
+      "zip_crc_failure": null,
+      "requirements": [
+        "Requires-Dist: windows-curses; sys_platform == \"win32\"",
+        "Requires-Dist: miniaudio==1.71",
+        "Requires-Dist: mido==1.3.3; extra == \"audio-production\"",
+        "Requires-Dist: numpy>=2.0; extra == \"audio-production\""
+      ],
+      "wheel_record_mismatch": [],
+      "wheel_record_count": 94
+    }
+  },
+  "executable_console": {
+    "path_empty": true,
+    "pythonpath_empty": true,
+    "size": [
+      120,
+      40
+    ],
+    "traditional_tracks": 8,
+    "played": "Korobeiniki",
+    "other_collection": "Orbital observatory",
+    "other_tracks": 3,
+    "exit_code": 0,
+    "game_theme_preserved": true,
+    "records_empty": true
+  },
+  "executable_audio": {
+    "backend": "WASAPI",
+    "completed": true,
+    "os_muted": false,
+    "os_volume": 0.39,
+    "listening": "unconfirmed"
+  }
+}

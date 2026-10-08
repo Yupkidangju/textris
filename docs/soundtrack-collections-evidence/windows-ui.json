@@ -1,0 +1,349 @@
+{
+  "cases": [
+    {
+      "name": "64x28-ascii",
+      "stage": 23,
+      "checks": [
+        "collections",
+        "traditional-tracks",
+        "cathedral-tracks",
+        "cyberpunk-tracks",
+        "space-tracks",
+        "fire-tracks",
+        "crt-tracks",
+        "mono-tracks",
+        "all-tracks",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-collections",
+        "back-extras"
+      ],
+      "frames": 38,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "collection_counts": [
+        {
+          "collection": "classic",
+          "tracks": 8
+        },
+        {
+          "collection": "cathedral",
+          "tracks": 3
+        },
+        {
+          "collection": "cyberpunk",
+          "tracks": 3
+        },
+        {
+          "collection": "space",
+          "tracks": 3
+        },
+        {
+          "collection": "fire",
+          "tracks": 3
+        },
+        {
+          "collection": "crt",
+          "tracks": 3
+        },
+        {
+          "collection": "mono",
+          "tracks": 3
+        },
+        {
+          "collection": "all",
+          "tracks": 26
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.24,
+      "before_seek": 2.48,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.24,
+      "music_off_at": 1.24,
+      "small_at": 3.68,
+      "encoding": "cp949",
+      "elapsed": 47.695,
+      "no_games_or_replays": true
+    },
+    {
+      "name": "64x28-mono",
+      "stage": 23,
+      "checks": [
+        "collections",
+        "traditional-tracks",
+        "cathedral-tracks",
+        "cyberpunk-tracks",
+        "space-tracks",
+        "fire-tracks",
+        "crt-tracks",
+        "mono-tracks",
+        "all-tracks",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-collections",
+        "back-extras"
+      ],
+      "frames": 38,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "collection_counts": [
+        {
+          "collection": "classic",
+          "tracks": 8
+        },
+        {
+          "collection": "cathedral",
+          "tracks": 3
+        },
+        {
+          "collection": "cyberpunk",
+          "tracks": 3
+        },
+        {
+          "collection": "space",
+          "tracks": 3
+        },
+        {
+          "collection": "fire",
+          "tracks": 3
+        },
+        {
+          "collection": "crt",
+          "tracks": 3
+        },
+        {
+          "collection": "mono",
+          "tracks": 3
+        },
+        {
+          "collection": "all",
+          "tracks": 26
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.24,
+      "before_seek": 2.48,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.24,
+      "music_off_at": 1.24,
+      "small_at": 3.8,
+      "encoding": "cp949",
+      "elapsed": 47.424,
+      "no_games_or_replays": true
+    },
+    {
+      "name": "120x40-ascii",
+      "stage": 23,
+      "checks": [
+        "collections",
+        "traditional-tracks",
+        "cathedral-tracks",
+        "cyberpunk-tracks",
+        "space-tracks",
+        "fire-tracks",
+        "crt-tracks",
+        "mono-tracks",
+        "all-tracks",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-collections",
+        "back-extras"
+      ],
+      "frames": 38,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "collection_counts": [
+        {
+          "collection": "classic",
+          "tracks": 8
+        },
+        {
+          "collection": "cathedral",
+          "tracks": 3
+        },
+        {
+          "collection": "cyberpunk",
+          "tracks": 3
+        },
+        {
+          "collection": "space",
+          "tracks": 3
+        },
+        {
+          "collection": "fire",
+          "tracks": 3
+        },
+        {
+          "collection": "crt",
+          "tracks": 3
+        },
+        {
+          "collection": "mono",
+          "tracks": 3
+        },
+        {
+          "collection": "all",
+          "tracks": 26
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.28,
+      "before_seek": 2.52,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.24,
+      "music_off_at": 1.24,
+      "small_at": 3.76,
+      "encoding": "cp949",
+      "elapsed": 48.698,
+      "no_games_or_replays": true
+    },
+    {
+      "name": "120x40-mono",
+      "stage": 23,
+      "checks": [
+        "collections",
+        "traditional-tracks",
+        "cathedral-tracks",
+        "cyberpunk-tracks",
+        "space-tracks",
+        "fire-tracks",
+        "crt-tracks",
+        "mono-tracks",
+        "all-tracks",
+        "all-scrolled-last",
+        "playing",
+        "paused",
+        "seeked",
+        "next",
+        "previous",
+        "master-muted",
+        "music-off",
+        "small-suspended",
+        "resumed",
+        "back-collections",
+        "back-extras"
+      ],
+      "frames": 38,
+      "passed": true,
+      "screen": "menu",
+      "backend": "miniaudio",
+      "last_input": [
+        {
+          "value": "'q'",
+          "type": "str"
+        }
+      ],
+      "collection_counts": [
+        {
+          "collection": "classic",
+          "tracks": 8
+        },
+        {
+          "collection": "cathedral",
+          "tracks": 3
+        },
+        {
+          "collection": "cyberpunk",
+          "tracks": 3
+        },
+        {
+          "collection": "space",
+          "tracks": 3
+        },
+        {
+          "collection": "fire",
+          "tracks": 3
+        },
+        {
+          "collection": "crt",
+          "tracks": 3
+        },
+        {
+          "collection": "mono",
+          "tracks": 3
+        },
+        {
+          "collection": "all",
+          "tracks": 26
+        }
+      ],
+      "first_track": "classic_rondo_turca",
+      "paused_at": 1.28,
+      "before_seek": 2.56,
+      "next_track": "cathedral_vault",
+      "muted_at": 1.28,
+      "music_off_at": 1.28,
+      "small_at": 3.8,
+      "encoding": "cp949",
+      "elapsed": 47.788,
+      "no_games_or_replays": true
+    }
+  ],
+  "input_diagnostics": [
+    {
+      "method": "unget_wch",
+      "requested": 259,
+      "observed": "'\u0103'",
+      "type": "str"
+    },
+    {
+      "method": "ungetch",
+      "requested": 259,
+      "observed": "'\u0103'",
+      "type": "str"
+    },
+    {
+      "method": "WriteConsoleInputW",
+      "requested": 259,
+      "observed": "259",
+      "type": "int"
+    }
+  ],
+  "scope": "real App.run, WriteConsoleInputW key events, native curses, Audio callback, local storage; no physical keyboard/listening claim"
+}

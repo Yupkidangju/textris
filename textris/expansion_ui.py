@@ -7,6 +7,7 @@ from .autoplay import Autoplayer
 
 CATALOG=BACKGROUNDS+EFFECTS
 HUB=('gallery','profiles','boss','replays','autoplay','soundtrack')
+SOUNDTRACK_COLLECTIONS=('classic',)+THEMES+('all',)
 
 
 class ExpansionUI:
@@ -17,7 +18,7 @@ class ExpansionUI:
         self.player=None; self.replay_paused=False; self.replay_speed=1.
         self.director=True; self.slow_until=0.; self.last_replay=None
         self.notice=''; self.bot=Autoplayer(); self.auto_restart=0.
-        self.soundtrack_selection=self.soundtrack_filter=self.soundtrack_scroll=0
+        self.soundtrack_selection=self.soundtrack_collection_selection=self.soundtrack_scroll=0
         self.soundtrack_shuffle=self.soundtrack_repeat=False
 
     def open_gallery(self):
@@ -59,7 +60,7 @@ class ExpansionUI:
                 elif choice=='profiles': self.profile_return='hub'; self.screen='profiles'
                 elif choice=='boss': self.start('boss')
                 elif choice=='soundtrack':
-                    self.screen='soundtrack'; self.soundtrack_selection=self.soundtrack_scroll=0
+                    self.screen='soundtrack_collections'; self.soundtrack_collection_selection=0
                 elif choice=='autoplay':
                     self.start('marathon',record=False,countdown=False); self.screen='autoplay'; self.game.state='playing'
                     self.bot=Autoplayer(); self.auto_restart=0.
@@ -113,6 +114,12 @@ class ExpansionUI:
         elif screen=='autoplay':
             if escape or key=='q': self.screen='hub'; self.game=None; self.session=None
             elif key=='p': self.auto_paused=not getattr(self,'auto_paused',False)
+        elif screen=='soundtrack_collections':
+            if up or down:
+                self.soundtrack_collection_selection=(self.soundtrack_collection_selection+(-1 if up else 1))%len(SOUNDTRACK_COLLECTIONS)
+            elif enter:
+                self.screen='soundtrack'; self.soundtrack_selection=self.soundtrack_scroll=0
+            elif escape or key=='q': self.screen='hub'
         elif screen=='soundtrack':
             self.soundtrack_handle(key,enter,escape)
         else: return False
@@ -138,17 +145,28 @@ class ExpansionUI:
                                 fever=self.effects.fever_until>self.now)
 
     def soundtrack_tracks(self):
-        theme=(self.settings['theme'],'classic',None)[self.soundtrack_filter]
-        return [track for track in self.audio.catalog if theme is None or track['theme']==theme]
+        collection=SOUNDTRACK_COLLECTIONS[self.soundtrack_collection_selection]
+        return [track for track in self.audio.catalog if collection=='all' or track['theme']==collection]
+
+    def soundtrack_collection_label(self,collection):
+        return self.t('soundtrack_traditional' if collection=='classic' else
+                      'soundtrack_all' if collection=='all' else 'theme_'+collection)
+
+    def draw_soundtrack_collections(self):
+        tracks=self.audio.catalog
+        lines=[self.t('soundtrack_collection',collection=self.soundtrack_collection_label(collection),
+                      count=sum(collection=='all' or track['theme']==collection for track in tracks))
+               for collection in SOUNDTRACK_COLLECTIONS]
+        self.panel(self.t('soundtrack'),lines,self.soundtrack_collection_selection,self.t('soundtrack_hint_open'))
+        h,w=self.win.getmaxyx()
+        self.center(h-3,self.t('soundtrack_hint_mute'),curses.A_DIM)
+        self.center(h-2,self.t('soundtrack_hint_back'),curses.A_DIM)
 
     def soundtrack_handle(self,key,enter,escape):
         tracks=self.soundtrack_tracks(); state=self.audio.music_state
         self.soundtrack_selection%=max(1,len(tracks))
-        if escape or key=='q':
-            self.audio.stop_audition(); self.screen='hub'
-        elif key=='\t':
-            self.soundtrack_filter=(self.soundtrack_filter+1)%3
-            self.soundtrack_selection=self.soundtrack_scroll=0
+        if escape or key in ('q','\t'):
+            self.audio.stop_audition(); self.screen='soundtrack_collections'
         elif key in (curses.KEY_UP,curses.KEY_DOWN,'w'):
             if tracks:
                 self.soundtrack_selection=(self.soundtrack_selection+(-1 if key in (curses.KEY_UP,'w') else 1))%len(tracks)
@@ -188,9 +206,9 @@ class ExpansionUI:
         self.soundtrack_scroll=max(0,min(self.soundtrack_scroll,self.soundtrack_selection))
         if self.soundtrack_selection>=self.soundtrack_scroll+rows:
             self.soundtrack_scroll=self.soundtrack_selection-rows+1
-        theme=(self.t('theme_'+self.settings['theme']),self.t('soundtrack_classic'),self.t('soundtrack_all'))[self.soundtrack_filter]
+        theme=self.soundtrack_collection_label(SOUNDTRACK_COLLECTIONS[self.soundtrack_collection_selection])
         self.center(1,self.t('soundtrack'),self.art_attr(9))
-        self.center(2,self.t('soundtrack_filter',filter=theme,count=len(tracks)),self.art_attr(4))
+        self.center(2,self.t('soundtrack_collection',collection=theme,count=len(tracks)),self.art_attr(4))
         def line(row,text,attr=0): self.put(row,left,clip(text,available),attr)
         def duration(seconds):
             seconds=max(0,int(seconds)); return f'{seconds//60:02}:{seconds%60:02}'
@@ -249,6 +267,8 @@ class ExpansionUI:
             self.panel(self.t('replays'),lines,self.replay_selection-start if files else None,self.t('back'))
         elif self.screen=='analysis':
             self.draw_analysis()
+        elif self.screen=='soundtrack_collections':
+            self.draw_soundtrack_collections()
         elif self.screen=='soundtrack':
             self.draw_soundtrack()
 

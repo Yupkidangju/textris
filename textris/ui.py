@@ -339,7 +339,7 @@ class App(ArtUI, ExpansionUI):
             underlying = self.confirm_return if self.screen == 'confirm' else self.help_return if self.screen == 'help' else self.screen
             if underlying in ('playing','paused','ready','result','showcase','replay','autoplay') and self.game:
                 self.draw_game()
-            elif underlying in ('hub','gallery','profiles','replays','analysis','soundtrack'):
+            elif underlying in ('hub','gallery','profiles','replays','analysis','soundtrack_collections','soundtrack'):
                 self.draw_expansion()
             elif underlying == 'settings':
                 self.draw_settings()
@@ -413,7 +413,7 @@ class App(ArtUI, ExpansionUI):
         return (self.selection,self.setting_selection,self.pause_selection,self.mode_index,
                 self.start_level,self.hub_selection,self.profile_selection,self.gallery_index,
                 self.replay_selection,self.highlight_selection,self.soundtrack_selection,
-                self.soundtrack_filter,self.replay_speed)
+                self.soundtrack_collection_selection,self.replay_speed)
 
     def _audio_paused_screen(self):
         return (self.screen in ('paused','help','confirm') or

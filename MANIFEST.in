@@ -2,6 +2,8 @@ include spec.md designs.md DESIGN_DECISIONS.md
 include docs/audio-overhaul-plan.md
 include docs/audio-overhaul-verification.md docs/audio-overhaul-progress.md
 include docs/ci-replay-fix.md
+include docs/soundtrack-collections-plan.md docs/soundtrack-collections-verification.md
+recursive-include docs/soundtrack-collections-evidence *.json
 recursive-include docs/audio-evidence *.json *.log
 recursive-include scripts *.py
 recursive-include tests *.py

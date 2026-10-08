@@ -1,13 +1,14 @@
 # TEXTRIS 실행 스펙
 
 작성: 2026-10-07. 근거: 사용자 요청, AGENTS.md, AI_IMPLEMENTATION_DOC_STANDARD.md.
-프로젝트명 TEXTRIS, 현재 버전 1.2.0, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
+프로젝트명 TEXTRIS, 현재 버전 1.2.1, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
 
 ## 목표와 완료 기준
 터미널에서 키보드로 즐기는 완성형 싱글 플레이 테트리스. 독립 코어 테스트,
 실제 PTY 키 입력/화면/종료/리사이즈 검증, MIDI/Ogg/WAV 신호 검증과 오디오 백엔드 확인을 완료한다.
-온라인 대전/계정은 범위 밖이다. 현재 작업 범위는 사운드 개편·Windows 재검증과
-사용자가 후속 승인한 패키징·커밋·v1.2.0 태그 푸시다.
+온라인 대전/계정은 범위 밖이다. 현재 작업 범위는 음악 감상의 모음 선택 개선과
+Windows 재검증이다. 기존 패키징·태그 푸시 요청에 따라 v1.2.1 수정 릴리스로 제공한다.
+구현 기준과 검증 범위는 `docs/soundtrack-collections-plan.md`에 기록한다.
 
 ## 동결 결정
 - Python 3.10 이상, Linux/macOS 표준 curses 및 Windows 조건부 windows-curses.
