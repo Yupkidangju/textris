@@ -1,0 +1,51 @@
+{
+  "assets": [
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.3.0/SHA256SUMS.txt",
+      "digest": "sha256:29f66ef46e0d369e8b87198d2e8c804059d7e7822a41e18288577ef6e63c7b40",
+      "name": "SHA256SUMS.txt",
+      "size": 428
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.3.0/textris-linux-amd64",
+      "digest": "sha256:ab3294ebe27b0479d37f7c9b2a5fb98f30a727777fdcdb389438e57a4b4d4c97",
+      "name": "textris-linux-amd64",
+      "size": 69347840
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.3.0/textris-linux-arm64",
+      "digest": "sha256:fa6c707adbd6eb0e8ebad2a80e9e9411d1d3a9cde882a9bea55804dc24074c89",
+      "name": "textris-linux-arm64",
+      "size": 56903072
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.3.0/textris-macos-arm64",
+      "digest": "sha256:c59b80f9380055639435584355fc10edf17e8bb793b96f61f2d93000f35a9d9d",
+      "name": "textris-macos-arm64",
+      "size": 55480160
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.3.0/textris-windows-amd64.exe",
+      "digest": "sha256:634e78635bc95920d682fafbe346b7c7ec2804072fa07c7226a46cb48745463c",
+      "name": "textris-windows-amd64.exe",
+      "size": 56141624
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.3.0/textris.pyz",
+      "digest": "sha256:b0ff4f1114b686b5e5d49f3e49e349f623e8a7350ce6885e555fde08aa263c84",
+      "name": "textris.pyz",
+      "size": 46432684
+    }
+  ],
+  "draft": false,
+  "html_url": "https://github.com/Yupkidangju/textris/releases/tag/v1.3.0",
+  "prerelease": false,
+  "published_at": "2026-10-13T16:58:36Z",
+  "tag_name": "v1.3.0",
+  "tag_commit": "38917770ad99a42cbb71ddfb31cbe9c123f4d65e",
+  "main_ci": "https://github.com/Yupkidangju/textris/actions/runs/38433642603",
+  "release_ci": "https://github.com/Yupkidangju/textris/actions/runs/38433642644",
+  "ci_conclusion": "success",
+  "checksums_match": true,
+  "windows_matches_executed_ci_binary": true
+}

@@ -1,0 +1,22 @@
+{
+  "version": "1.3.0",
+  "commit": "38917770ad99a42cbb71ddfb31cbe9c123f4d65e",
+  "run": "https://github.com/Yupkidangju/textris/actions/runs/38433642644",
+  "artifact": "textris-windows-amd64.exe",
+  "bytes": 56141624,
+  "sha256": "634e78635bc95920d682fafbe346b7c7ec2804072fa07c7226a46cb48745463c",
+  "external_path_empty": true,
+  "pythonpath_empty": true,
+  "interactive_game_entry": true,
+  "input_pause_help_exit": true,
+  "exit_code": 0,
+  "old_save_version_preserved": true,
+  "original_theme_sound_preserved": true,
+  "tracks": 26,
+  "effects": 30,
+  "audio_backend": "WASAPI",
+  "backend_completion": true,
+  "os_muted": true,
+  "os_volume": 0.39,
+  "listening": "unconfirmed"
+}

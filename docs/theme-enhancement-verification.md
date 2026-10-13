@@ -75,7 +75,19 @@ EXE/pyz/wheel/sdist의63오디오파일과현재소스일치, EXE27개포함모�
 ASCII게임 입력/홀드/회전/드롭/PAUSED/도움말/종료0을확인했다.
 WASAPI backend완료PASS. 당시OS 음소거true/볼륨39%를읽었으며변경하지 않았다.
 직접청취는미확인이다. 음원은변경하지않아39분음악재생검사는반복하지 않았다.
-게시용CI파일의실제실행·게시확인은릴리스완료후추가한다.
+CI Windows EXE(56,141,624바이트)도PATH/PYTHONPATH없이버전·음원·WASAPI와
+게임진입·입력·PAUSED·도움말·종료0을확인했다. 기존저장version1과CLI임시설정복원도확인했다.
+
+## 게시 완료
+
+코드커밋 `3891777`에 v1.3.0 태그를푸시했다.
+[main CI](https://github.com/Yupkidangju/textris/actions/runs/38433642603)와
+[태그 CI](https://github.com/Yupkidangju/textris/actions/runs/38433642644)가모두성공했다.
+Linux x64/ARM64, Windows x64, macOS ARM64, zipapp과체크섬의6파일을게시했다.
+[v1.3.0 릴리스](https://github.com/Yupkidangju/textris/releases/tag/v1.3.0).
+게시된Windows파일 SHA-256 `634e78635bc95920d682fafbe346b7c7ec2804072fa07c7226a46cb48745463c`는
+실제로실행한CI파일과일치하며모든GitHub digest와SHA256SUMS도일치한다.
+근거: `theme-enhancement-evidence/ci-windows.json`, `release.json`.
 
 근거파일은 `theme-enhancement-evidence/`의요약/Windows JSON과선택캡처,
 프로젝트로컬 `.antigravity/theme-enhancement-20261014/`의전체원본·로그다.
