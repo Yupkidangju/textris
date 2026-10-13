@@ -120,7 +120,7 @@ def main():
 
                 def capture(label):
                     h,w=window.getmaxyx()
-                    frame='\n'.join(window.instr(y,0,w*4).decode(window.encoding,'replace') for y in range(h))
+                    frame='\n'.join(window.instr(y,0,w*4).decode('utf-8','strict') for y in range(h))
                     (out/f'{name}-{label}.txt').write_text(frame,encoding='utf-8')
                     assert frame.isascii(),label
                     state['checks'].append(label)

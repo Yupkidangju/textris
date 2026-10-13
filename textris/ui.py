@@ -16,7 +16,7 @@ from .storage import MODES
 from .session import Session,STEP
 from .replay import ReplayStore
 from .expansion_ui import ExpansionUI, CATALOG
-from .art import Palette
+from .art import Palette,game_layout
 from .art_ui import ArtUI
 from .terminal import needs_ascii,safe_ascii
 from .audio_events import AudioEvents
@@ -102,6 +102,7 @@ class App(ArtUI, ExpansionUI):
         self.showcase_next = 0.
         self.has_color = False
         self.art_palette=Palette()
+        self._last_canvas=None
         self._setup()
 
     @property
@@ -262,10 +263,10 @@ class App(ArtUI, ExpansionUI):
     def draw_game(self):
         g = self.game
         h,w = self.win.getmaxyx()
-        ox,oy = (w-64)//2,max(0,(h-28)//2)
+        layout=game_layout(w,h); ox,oy=layout.origin
         # HUD는 고정하고 보드와 그에 속한 효과만 흔든다.
         dx,dy=self.effects.offset(self.now) if self.fx_enabled else (0,0)
-        bx,by = ox+21+dx,oy+3+dy
+        bx,by = layout.board[0]+dx,layout.board[1]+dy
         self.center(oy,'T E X T R I S  /  '+self.t(self.session.mode if self.session else g.mode),curses.A_BOLD|self.color())
         glyph = '[]' if self.ascii_mode else '██'
         ghost = '::' if self.ascii_mode else '░░'
@@ -290,11 +291,14 @@ class App(ArtUI, ExpansionUI):
         self.art_frame(bx,by)
         self.put(oy+3,ox+2,self.t('hold'),curses.A_BOLD)
         self.preview(g.held,oy+5,ox+4,g.hold_used)
-        stats = [('score',f'{g.score:,}'),('best',f'{self.best_score(self.session.mode if self.session else g.mode):,}'),
+        def hud_number(number):
+            value=f'{number:,}'
+            return value if len(value)<=16 else f'{number:.6g}'
+        stats = [('score',hud_number(g.score)),('best',hud_number(self.best_score(self.session.mode if self.session else g.mode))),
                  ('level_label',str(g.level)),('lines',str(g.lines)),('time',clock(g.elapsed))]
         for i,(key,value) in enumerate(stats):
             self.put(oy+9+i*3,ox+2,self.t(key),curses.A_DIM)
-            self.put(oy+10+i*3,ox+2,value,curses.A_BOLD|self.color('O' if key == 'score' else 'I'))
+            self.put(oy+10+i*3,ox+2,clip(value,16),curses.A_BOLD|self.color('O' if key == 'score' else 'I'))
         goal = f'{max(0,40-g.lines)}' if g.mode == 'sprint' else clock(120-g.elapsed) if g.mode == 'ultra' else f'{10-g.lines%10}'
         if self.session and self.session.mode=='boss': goal=str(sum(self.session.boss_hp))+' HP'
         self.put(oy+24,ox+2,self.t('goal')+': '+goal,curses.A_DIM)
@@ -328,8 +332,11 @@ class App(ArtUI, ExpansionUI):
     def draw(self):
         if self.art_palette.theme!=self.settings['theme']:
             self.art_palette.setup(*self.art_palette.limits,self.settings['theme'])
-        self.win.erase()
+            self._last_canvas=None
         h,w = self.win.getmaxyx()
+        old=self._last_canvas
+        if old is None or len(old)!=h or len(old[0])!=w-1:
+            self.win.erase(); old=None
         self._canvas=[[(' ',self.art_attr(0))]*(w-1) for _ in range(h)]
         if h < 28 or w < 64:
             self.center(max(0,h//2-1),self.t('resize'),curses.A_BOLD)
@@ -357,7 +364,10 @@ class App(ArtUI, ExpansionUI):
             elif self.notice:
                 self.center(h-1,self.t(self.notice),self.color('Z'))
         canvas=self._canvas; self._canvas=None
+        failed=False
         for y,row in enumerate(canvas):
+            if old is not None and row==old[y]: continue
+            # 행 전체의 속성 구간을 보내 넓은 문자 소유권과 호출 묶음을 보존한다.
             x=0
             while x<len(row):
                 start=x; attr=row[x][1]; chars=[]
@@ -368,10 +378,12 @@ class App(ArtUI, ExpansionUI):
                 if text:
                     try: self.win.addstr(y,start,text,attr)
                     except UnicodeError:
+                        failed=True
                         self.terminal_ascii=True
                         try: self.win.addstr(y,start,safe_ascii(text),attr)
                         except curses.error: pass
-                    except curses.error: pass
+                    except curses.error: failed=True
+        self._last_canvas=None if failed else canvas
         self.win.noutrefresh()
         curses.doupdate()
 
@@ -579,6 +591,7 @@ class App(ArtUI, ExpansionUI):
             self.session.observe()
         self.effects.configure(self.settings)
         self.effects.danger=any(any(row) for row in g.board[HIDDEN:HIDDEN+6])
+        self.effects.combo=max(0,g.combo); self.effects.b2b=bool(g.b2b); self.effects.level=g.level
         peak=any(e.name in ('clear','win','gameover','boss_break') for e in g.events)
         for event in g.events:
             data = event.data
@@ -725,12 +738,12 @@ class App(ArtUI, ExpansionUI):
                         key = self.win.get_wch()
                     except curses.error:
                         break
-                    if key != curses.KEY_RESIZE:
-                        self.handle(key)
+                    if key==curses.KEY_RESIZE: self._last_canvas=None
+                    else: self.handle(key)
                 self.tick(dt)
                 self.draw()
                 cost=time.monotonic()-frame_start
-                self.effects.quality=max(.4,self.effects.quality-.05) if cost>1/60 else min(1.,self.effects.quality+.005)
+                self.effects.observe_frame_cost(cost)
                 time.sleep(max(0,1/60-(time.monotonic()-frame_start)))
         finally:
             self.audio.set_music(False)

@@ -2,6 +2,7 @@
 import math
 from .art import ArtCanvas, game_layout
 from .cathedral import CathedralScene
+from .theme_surfaces import render_surfaces, samples
 
 TAU=math.tau
 
@@ -13,21 +14,57 @@ class ThemeScene:
         self._ambient=None
 
     def render(self,context,t,theme,major=None,local=(),board=None,flash=True,
-               intensity=.75,density=.75,motion_speed=1.):
+               intensity=.75,density=.75,motion_speed=1.,*,state=None):
+        from .theme_actions import render_local, render_state
+        viewports=getattr(context,'viewports',())
+        def viewport_for(player_id):
+            return next((v for v in viewports if v.player_id==player_id),None)
+        major_view=viewport_for(getattr(major,'player_id','p1')) if major else None
+        if major and viewports and major_view is None: major=None
+        major_board=major_view.board if major_view else board
         if theme=='cathedral':
-            return self.cathedral.render(context,t,major,local,board,flash,intensity,density,motion_speed)
-        c=ArtCanvas(context)
-        stamp=math.floor(t*motion_speed*12)/12
-        key=(context,stamp,theme,density)
-        if key!=self._key:
-            base=ArtCanvas(context)
-            getattr(self,theme)(base,stamp)
-            self.motes(base,stamp,theme,density)
-            self._key,self._ambient=key,base.cells
-        c.cells.update(self._ambient)
-        if major: self.ceremony(c,t,theme,major,flash,intensity,board)
-        if board:
-            for cue in local: self.cathedral.local_effect(c,board,t,cue,intensity,flash)
+            c=self.cathedral.render(context,t,board=board,flash=flash,intensity=intensity,
+                                    density=density,motion_speed=motion_speed)
+        else:
+            c=ArtCanvas(context)
+            stamp=math.floor(t*motion_speed*12)/12
+            key=(context,stamp,theme,density)
+            if key!=self._key:
+                base=ArtCanvas(context)
+                render_surfaces(base,stamp,theme)
+                getattr(self,theme)(base,stamp)
+                self.motes(base,stamp,theme,density)
+                self._key,self._ambient=key,base.cells
+            c.cells.update(self._ambient)
+        if major:
+            overlay=ArtCanvas(context)
+            if theme=='cathedral':
+                self.cathedral.ceremony(overlay,context.width/2,context.height,context.width-1,
+                                        t,major,0,0,major_board,intensity,flash,major_view)
+            else:
+                self.ceremony(overlay,t,theme,major,flash,intensity,major_board,major_view)
+            regions=major_view.effect_regions if major_view else ()
+            if major_view is not None:
+                overlay.cells={p:ink for p,ink in overlay.cells.items()
+                               if any(x<=p[0]<x+w and y<=p[1]<y+h for x,y,w,h in regions)}
+            self.cathedral.merge(c,overlay.cells)
+        states=state if isinstance(state,(tuple,list)) else (() if state is None else (state,))
+        for visual in states:
+            viewport=viewport_for(getattr(visual,'player_id','p1'))
+            if viewports and viewport is None: continue
+            render_state(c,t,theme,visual,viewport,intensity=intensity,flash=flash)
+        for cue in local:
+            viewport=viewport_for(getattr(cue,'player_id','p1'))
+            if viewports and viewport is None: continue
+            origin=viewport.board if viewport else board
+            if origin:
+                overlay=ArtCanvas(context)
+                render_local(overlay,origin,t,cue,theme,intensity,flash)
+                regions=viewport.effect_regions if viewport else ()
+                if regions:
+                    overlay.cells={p:ink for p,ink in overlay.cells.items()
+                        if any(x<=p[0]<x+w and y<=p[1]<y+h for x,y,w,h in regions)}
+                self.cathedral.merge(c,overlay.cells)
         return c
 
     @staticmethod
@@ -42,6 +79,7 @@ class ThemeScene:
 
     @staticmethod
     def ellipse(c,x,y,rx,ry,t=0,style=3,depth=0,steps=100):
+        steps=samples(c,steps,16)
         c.curve(((x+math.cos(a+t)*rx,y+math.sin(a+t)*ry)
                  for a in (i*TAU/steps for i in range(steps+1))),style,depth)
 
@@ -64,7 +102,7 @@ class ThemeScene:
             p=((i+t*.3)%6)/6
             y=horizon+(h-horizon)*p*p
             c.line((1,y),(w-2,y),6,9)
-        for i in range(3):
+        for i in range(1+int(2*c.context.quality)):
             r=5+i*2
             points=[]
             for x,y,z in ((-1,-1,-1),(1,-1,-1),(1,1,-1),(-1,1,-1),(-1,-1,-1),(-1,-1,1),(1,-1,1),(1,1,1),(-1,1,1),(-1,-1,1)):
@@ -83,11 +121,14 @@ class ThemeScene:
             for i in range(2):
                 tilt=.25+side*.25+i*.15
                 points=[]
-                for j in range(121):
-                    a=j*TAU/120
+                count=samples(c,120,24)
+                for j in range(count+1):
+                    a=j*TAU/count
                     xx=math.cos(a)*r*1.45;yy=math.sin(a)*r*.2
                     points.append((x+xx,y+yy+xx*tilt*.35))
-                c.curve(points,9 if i==0 else 3,-2)
+                middle=len(points)//2
+                c.curve(points[:middle+1],6,3)
+                c.curve(points[middle:],9 if i==0 else 3,-2)
             for k in range(10):
                 a=k*2.399+t*.025;rstar=(k%4+1)*4
                 c.put(x+math.cos(a)*rstar,y+math.sin(a)*rstar*.75,'.' if k%3 else '+',2,9)
@@ -114,8 +155,9 @@ class ThemeScene:
             center=cx+side*w*.36
             for tongue in range(9):
                 points=[]
-                for i in range(49):
-                    u=i/48
+                count=samples(c,48)
+                for i in range(count+1):
+                    u=i/count
                     x=center+(tongue-4)*1.8*(1-u)+math.sin(u*7+t*.8+tongue*.3)*u*5
                     y=h-4-u*(h*.8-abs(tongue-4)*2)
                     points.append((x,y))
@@ -140,8 +182,9 @@ class ThemeScene:
             for grid in range(-2,3):
                 c.line((x-r,y+grid*3),(x+r,y+grid*3),1,7)
             points=[]
-            for i in range(241):
-                a=i*TAU/240
+            count=samples(c,240,40)
+            for i in range(count+1):
+                a=i*TAU/count
                 points.append((x+math.sin(a*3+t*.23)*r*.85,y+math.sin(a*2)*6))
             c.curve(points,4,1)
             for k in range(6):
@@ -151,7 +194,7 @@ class ThemeScene:
             sweep=(t*4)%(h-8)+4
             c.line((x-r+1,sweep),(x+r-1,sweep),2,5)
         for i in range(3):
-            c.curve(((cx-17+j*.4,3+i+math.sin(j*.15+t+i)*.8) for j in range(86)),4 if i==1 else 2,2)
+            c.curve(((cx-17+j*.4,3+i+math.sin(j*.15+t+i)*.8) for j in range(0,86,1 if c.context.quality>.65 else 3)),4 if i==1 else 2,2)
 
     def mono(self,c,t):
         w,h=c.context.width-1,c.context.height;cx=w/2
@@ -159,8 +202,9 @@ class ThemeScene:
             x=cx+side*w*.36;y=h*.51;r=min(13,w*.11)
             for k in range(6):
                 points=[]
-                for i in range(101):
-                    a=i*TAU/100
+                count=samples(c,100,24)
+                for i in range(count+1):
+                    a=i*TAU/count
                     radius=r*(.7+.23*math.cos(a*5+k*.56+t*.12))
                     points.append((x+math.cos(a)*radius,y+math.sin(a)*radius*.7+k*.20))
                 c.curve(points,5 if k in (0,5) else 6 if k%3 else 3,k*.1)
@@ -172,7 +216,7 @@ class ThemeScene:
             c.curve(((cx,1),(cx+size,5+i*.4),(cx,9+i*.4),(cx-size,5+i*.4),(cx,1)),
                     5 if i==4 else 6,5-i)
 
-    def ceremony(self,c,t,theme,cue,flash,intensity,board=None):
+    def ceremony(self,c,t,theme,cue,flash,intensity,board=None,viewport=None):
         # 수명은 director가 관리하지만 직접 렌더/seek에서도 오래된 cue가 남지 않는다.
         if not cue.start<=t<cue.end or intensity<=0: return
         p=cue.phase(t)
@@ -182,6 +226,10 @@ class ThemeScene:
             self.clear_ceremony(c,theme,cue,p,strength,style,board)
             return
         if cue.name not in ('bloom','ascension','victory','eclipse','awakening'): return
+        if cue.name=='bloom' and getattr(cue,'variant','')=='spin':
+            from .theme_surfaces import spin_ceremony
+            spin_ceremony(c,t,theme,cue,board,strength,style,viewport)
+            return
         w,h=c.context.width-1,c.context.height
         origin=None
         if cue.name in ('bloom','ascension') and cue.coords:
@@ -189,7 +237,7 @@ class ThemeScene:
             origin=by+1+sum(cue.coords)/len(cue.coords)-2
         # 좌우 여백의 초점을 공유하되 동작 방향과 실루엣으로 사건의 의미를 전달한다.
         for side in (-1,1):
-            x=w/2+side*w*.36
+            x=((board[0]-9 if side<0 else board[0]+31) if viewport else w/2+side*w*.36)
             if cue.name in ('bloom','ascension'):
                 getattr(self,cue.name+'_ceremony')(c,theme,x,h,p,strength,style,origin)
             else:
@@ -247,9 +295,10 @@ class ThemeScene:
                     (x+math.cos(a+.12)*r*1.5,y+math.sin(a+.12)*r*.8),
                     (x+math.cos(a+.3)*r*.8,y+math.sin(a+.3)*r*.4)),style if i%2 else 9,-4)
         elif theme=='crt':
+            count=samples(c,64,16)
             for band in range(-2,3):
-                c.curve(((x-r+2*r*j/64,y+band*2+math.sin(j*.5+p*8)*strength*3)
-                         for j in range(65)),style if band==0 else 6,-4)
+                c.curve(((x-r+2*r*j/count,y+band*2+math.sin(j*32/count+p*8)*strength*3)
+                         for j in range(count+1)),style if band==0 else 6,-4)
         else:
             for i in range(8):
                 a=i*TAU/8;dx,dy=math.cos(a)*r,math.sin(a)*r*.6
@@ -266,8 +315,9 @@ class ThemeScene:
                 c.curve(((xx-1,bottom),(xx-1,top),(xx+1,top),(xx+1,bottom)),style if i==0 else 6,-4)
                 c.line((xx,top-2*strength),(xx,top),5,-4)
             elif theme=='space':
-                c.curve(((xx+math.sin(j*.15+i+p*5)*strength*3,bottom-rise*j/48)
-                         for j in range(49)),style if i%2 else 6,-4)
+                count=samples(c,48)
+                c.curve(((xx+math.sin(j*7.2/count+i+p*5)*strength*3,bottom-rise*j/count)
+                         for j in range(count+1)),style if i%2 else 6,-4)
                 c.put(xx,top,'+',5,-5)
             elif theme=='fire':
                 c.curve(((xx,bottom),(xx+math.sin(i+p*5)*strength*4,top),
@@ -285,8 +335,9 @@ class ThemeScene:
         y=h*.3;r=7+5*strength;lift=3+3*strength
         if theme=='crt':
             # 혼란스러운 폭발 파형과 달리 일정한 주기의 동기 신호가 자리 잡는다.
-            c.curve(((x-r+j*r/24,y+math.sin(j*TAU/16)*strength*2)
-                     for j in range(49)),5,-4)
+            count=samples(c,48,16)
+            c.curve(((x-r+j*2*r/count,y+math.sin(j*TAU*3/count)*strength*2)
+                     for j in range(count+1)),5,-4)
             for side in (-1,1):
                 xx=x+side*(r+1)
                 c.curve(((xx-side*2,y-lift),(xx,y-lift),(xx,y+lift),(xx-side*2,y+lift)),style,-4)
@@ -353,9 +404,10 @@ class ThemeScene:
                          (xx,y-r*.5),(xx+1,y-r*.3)),style,-4)
             c.line((x-7,y+r*.5),(x+7,y+r*.5),5,-4)
         elif theme=='space':
+            count=samples(c,64,16)
             for tilt in (-.4,.4):
                 c.curve(((x+math.cos(a)*r,y+math.sin(a)*r*.4+math.cos(a)*r*tilt)
-                         for a in (j*TAU/64 for j in range(65))),style,-4)
+                         for a in (j*TAU/count for j in range(count+1))),style,-4)
             c.put(x+math.cos(p*TAU)*r,y+math.sin(p*TAU)*r*.4,'+',5,-5)
         elif theme=='fire':
             c.curve(((x-r,y+r*.5),(x-r*.4,y-r*.4),(x,y-r),(x+r*.3,y-r*.2),

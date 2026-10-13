@@ -1,14 +1,20 @@
 # TEXTRIS 실행 스펙
 
 작성: 2026-10-07. 근거: 사용자 요청, AGENTS.md, AI_IMPLEMENTATION_DOC_STANDARD.md.
-프로젝트명 TEXTRIS, 현재 버전 1.2.1, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
+프로젝트명 TEXTRIS, 현재 버전 1.3.0, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
 
 ## 목표와 완료 기준
 터미널에서 키보드로 즐기는 완성형 싱글 플레이 테트리스. 독립 코어 테스트,
 실제 PTY 키 입력/화면/종료/리사이즈 검증, MIDI/Ogg/WAV 신호 검증과 오디오 백엔드 확인을 완료한다.
-온라인 대전/계정은 범위 밖이다. 현재 작업 범위는 음악 감상의 모음 선택 개선과
-Windows 재검증이다. 기존 패키징·태그 푸시 요청에 따라 v1.2.1 수정 릴리스로 제공한다.
-구현 기준과 검증 범위는 `docs/soundtrack-collections-plan.md`에 기록한다.
+현재 제품은 싱글플레이이며 온라인 대전/계정은 구현되어 있지 않다.
+v1.2.1 음악 감상 모음 선택 개선·Windows 재검증·패키징·태그 푸시는 완료했다.
+해당 구현 기준과 검증 범위는 `docs/soundtrack-collections-plan.md`에 기록한다.
+2026-10-14 사용자가 사전 점검과 설계를 승인했다. 현재 작업은6테마 표현 고도화의 구현과
+향후2인 배틀을 수용할 viewport/레이아웃 경계 준비다.
+테마·효과는 보드별 viewport와 플레이어별시각사건을 기준으로 확장하도록 설계하며,
+예정 구도는 `docs/theme-enhancement-layout-design.md`를 따른다.
+실제 배틀/AI/온라인 기능은 별도의 후속명세와구현 대상이다.
+현재 승인 범위의 구현·검증 순서는 `docs/theme-enhancement-implementation-plan.md`를 따른다.
 
 ## 동결 결정
 - Python 3.10 이상, Linux/macOS 표준 curses 및 Windows 조건부 windows-curses.

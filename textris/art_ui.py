@@ -14,14 +14,16 @@ class ArtUI:
         screen=self.confirm_return if self.screen=='confirm' else self.help_return if self.screen=='help' else self.screen
         playing=screen in ('playing','ready','paused','result','showcase','replay','autoplay') and self.game
         if playing:
-            protected=game_layout(w,h).protected
+            layout=game_layout(w,h); protected=layout.protected
         elif screen=='menu':
             protected=((w//2-29,1,58,9),(w//2-22,10,44,15),(0,h-3,w,3))
         elif screen=='gallery':
             protected=((0,1,w,3),(0,h-4,w,4))
         else:
             protected=((max(0,w//2-28),2,56,h-4),)
-        return RenderContext(w,h,protected,self.ascii_mode,self.settings.get('braille',True),1. if self.effects.quality>=.85 else .7 if self.effects.quality>=.6 else .4)
+        return RenderContext(w,h,protected,self.ascii_mode,self.settings.get('braille',True),
+                             1. if self.effects.quality>=.85 else .7 if self.effects.quality>=.6 else .4,
+                             layout.viewports if playing else ())
 
     def draw_art_menu(self,logo):
         h,w=self.win.getmaxyx()

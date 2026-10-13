@@ -46,7 +46,7 @@ def main():
 
         def capture(app,label):
             h,w=app.win.getmaxyx()
-            frame='\n'.join(app.win.instr(y,0,w*4).decode(app.win.encoding,'replace') for y in range(h))
+            frame='\n'.join(app.win.instr(y,0,w*4).decode('utf-8','strict') for y in range(h))
             (output/f'{name}-{label}.txt').write_text(frame,encoding='utf-8')
             state['checks'].append(label)
             return frame

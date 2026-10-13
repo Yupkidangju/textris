@@ -27,7 +27,8 @@ def main():
     def run(window):
         curses.resize_term(40,120)
         def buffer():
-            return [window.instr(y,0,480).decode(window.encoding,'replace') for y in range(40)]
+            # PDCurses의 instr 바이트는 UTF-8이며 window.encoding(CP949)과 별개다.
+            return [window.instr(y,0,480).decode('utf-8','strict') for y in range(40)]
         protected=game_layout(120,40).protected
         for mode in ('unicode','ascii','mono'):
             for theme in THEMES:
@@ -50,7 +51,7 @@ def main():
                     assert 'SCORE' in frame and 'HOLD [C]' in frame and 'NEXT' in frame
                     (out/f'{mode}-{theme}-{event}.txt').write_text(frame,encoding='utf-8')
                     results.append(dict(mode=mode,theme=theme,event=event,protected=True,
-                        encoding=window.encoding,sha256=hashlib.sha256(frame.encode()).hexdigest()))
+                        encoding=window.encoding,buffer_encoding='utf-8',sha256=hashlib.sha256(frame.encode()).hexdigest()))
     try:
         curses.wrapper(run)
     finally:

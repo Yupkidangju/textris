@@ -3,6 +3,9 @@ include docs/audio-overhaul-plan.md
 include docs/audio-overhaul-verification.md docs/audio-overhaul-progress.md
 include docs/ci-replay-fix.md
 include docs/soundtrack-collections-plan.md docs/soundtrack-collections-verification.md
+include docs/theme-enhancement-layout-design.md docs/theme-enhancement-implementation-plan.md docs/theme-enhancement-verification.md
+include docs/audit/theme_enhancement_review_20261014.md
+recursive-include docs/theme-enhancement-evidence *.json *.png
 recursive-include docs/soundtrack-collections-evidence *.json
 recursive-include docs/audio-evidence *.json *.log
 recursive-include scripts *.py

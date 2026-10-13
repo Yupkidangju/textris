@@ -219,3 +219,13 @@ Bresenham 서브셀 선분, 보스/분석/모달과 기존 파일 이행을 구�
   외부 Python 경로 없는 EXE의 전통곡·다른 테마 선택/재생/복귀를 확인했다.
 - 설계·검증·배포 근거: `docs/soundtrack-collections-plan.md`,
   `docs/soundtrack-collections-verification.md`.
+
+## 1.3.0 테마·viewport 고도화 (2026-10-14)
+- art.py: 실제정보만의보호/ASCII 선명암/품질별서브셀과예정복수BoardViewport.
+- visual_state.py/theme_actions.py/theme_surfaces.py: 읽기전용상태, 테마별조작·상태,
+  문자면/잔상/반사/거리층. theme_art.py/cathedral.py: 합성·성취·플레이어격리.
+- UI/Effects: canonical레이아웃과상태전달·캐시, 실제루프와출력검사의동일품질정책.
+- 독립검토 지적사항수정, 전체280개(270통과/10skip), Windows버퍼108과입력/Audio5조건,
+  432합성조건·36producer·추가84화면, 고정/자동출력부하검사를수행했다.
+- 변경행전송과문자폭/출력오류/리사이즈회귀를추가했다. 현재싱글플레이 기능을 유지하며 실제배틀은추후범위다.
+  출력포함프레임목표의미달조건과전체증거는 `docs/theme-enhancement-verification.md`를따른다.

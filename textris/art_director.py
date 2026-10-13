@@ -11,6 +11,8 @@ class Cue:
     power: float=1.
     coords: tuple=()
     label: str=''
+    player_id: str='p1'
+    variant: str=''
 
     def phase(self,now):
         return max(0.,min(1.,(now-self.start)/(self.end-self.start)))
@@ -27,12 +29,13 @@ class ArtDirector:
 
     def trigger(self,name,data,now,speed=1.):
         self.update(now)
-        if name in ('drop','lock','rotate','hold'):
+        if name in ('move','drop','lock','rotate','hold'):
             if name=='lock' and any(c.name=='drop' and now-c.start<.1 for c in self.local): return
             coords=tuple((x*2,y-2+(data.get('distance',0) if name=='drop' else 0))
                          for x,y in data.get('cells',()))
-            duration=.35 if name in ('drop','lock') else .22
-            self.local.append(Cue(name,now,now+duration/speed,coords=coords))
+            duration=.12 if name=='move' else .35 if name in ('drop','lock') else .22
+            self.local.append(Cue(name,now,now+duration/speed,coords=coords,
+                                  player_id=data.get('player_id','p1')))
             self.local=self.local[-8:]
             return
         if name=='clear':
@@ -44,10 +47,16 @@ class ArtDirector:
             priority=5 if name in ('win','gameover') else 2
             duration=1.8 if priority==5 else .9
         else: return
+        label=('ALL CLEAR' if data.get('perfect') else 'T SPIN' if data.get('spin') else 'TETRIS' if data.get('count')==4 else ('','SINGLE','DOUBLE','TRIPLE')[data.get('count',0)]) if name=='clear' else {'win':'VICTORY','gameover':'GAME OVER','level':'LEVEL UP','go':'GO!','boss_break':'BREAK!'}[name]
+        variant=('all_clear' if data.get('perfect') else 'spin' if data.get('spin') else
+                 'tetris' if data.get('count')==4 else ('','single','double','triple')[data.get('count',0)]) if name=='clear' else name
         if self.major and self.major.priority>=priority:
             self.major.power=min(1.6,self.major.power+.08)
+            if self.major.priority==priority:
+                self.major.name=kind; self.major.player_id=data.get('player_id','p1')
+                self.major.label=label; self.major.coords=tuple(data.get('rows',()))
+                self.major.variant=variant
             return
-        label=('ALL CLEAR' if data.get('perfect') else 'T SPIN' if data.get('spin') else 'TETRIS' if data.get('count')==4 else ('','SINGLE','DOUBLE','TRIPLE')[data.get('count',0)]) if name=='clear' else {'win':'VICTORY','gameover':'GAME OVER','level':'LEVEL UP','go':'GO!','boss_break':'BREAK!'}[name]
         self.major=Cue(kind,now,now+duration/speed,priority,
                        min(1.6,1+max(0,data.get('combo',0))*.04),
-                       tuple(data.get('rows',())),label)
+                       tuple(data.get('rows',())),label,data.get('player_id','p1'),variant)

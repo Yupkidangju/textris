@@ -1,6 +1,16 @@
 # TEXTRIS 화면 설계
 작성: 2026-10-07. 근거: spec.md. 신규 UI 설계.
 
+## 테마 고도화와 2보드 확장 준비 (2026-10-14, 예정 설계)
+
+현재 구현은 아래의1보드 싱글플레이 구조다. 테마 고도화 시에는 보드 원점·HUD 보호·효과 영역을
+화면 전체 좌표에 고정하지 않고 viewport 단위로 설계해 향후2인 배틀 화면을 수용한다.
+공용 테마 배경 위에 동일 크기의 P1/P2 보드, 각 플레이어의 정보/효과와 중앙 대전 정보를 배치한다.
+64×28 압축형·80×30 기본형·120×40 확장형의 예정 구도와6테마별 배치 방향은
+[`docs/theme-enhancement-layout-design.md`](docs/theme-enhancement-layout-design.md)에 기록한다.
+AI/온라인 기능과 대전 규칙은 향후별도 구현 명세 대상이며 현재 메뉴·게임·기록을 바꾸지 않는다.
+사전 점검: [`docs/audit/theme_enhancement_review_20261014.md`](docs/audit/theme_enhancement_review_20261014.md).
+
 ```text
 타이틀/메뉴 ─ 시작 ─ 3초 준비 ─ 게임 ─ 결과 ─ 메뉴
      │                         │

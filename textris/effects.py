@@ -5,6 +5,7 @@ from .art_director import ArtDirector, Cue
 from .theme_art import ThemeScene
 from .gallery_art import GalleryArt
 from .art import game_layout
+from .visual_state import VisualState
 
 
 FONT = {
@@ -47,8 +48,13 @@ class Effects:
         self.headline=''; self.headline_until=0.; self.priority=0
         self.glow_until=0.; self.fever=0; self.fever_until=0.; self.combo=0
         self.danger=False
+        self.b2b=False; self.level=1
 
     def configure(self,settings): self.profile=settings
+
+    def observe_frame_cost(self,seconds):
+        # 실제 루프와 출력 검사가 동일한 품질 회복/하향 정책을 사용한다.
+        self.quality=max(.4,self.quality-.05) if seconds>1/60 else min(1.,self.quality+.005)
 
     def p(self,key,default): return self.profile.get(key,default)
 
@@ -56,6 +62,7 @@ class Effects:
         self.director.trigger(name,data,now,self.p('fx_speed',1))
         if name=='clear':
             count=data.get('count',0); self.combo=max(0,data.get('combo',0))
+            self.b2b=bool(data.get('b2b',False))
             if now>=self.fever_until:
                 self.fever+=count*15+(20 if data.get('spin') or count==4 else 0)+(40 if data.get('perfect') else 0)
                 if self.fever>=100: self.fever=100; self.fever_until=now+8
@@ -91,9 +98,11 @@ class Effects:
         h,w=app.win.getmaxyx()
         board=game_layout(w,h).board if app.game else None
         active=self.director.major or self.director.local
+        state=VisualState(danger=self.danger,fever=self.fever_until>now,
+                          combo=self.combo,b2b=self.b2b,level=self.level) if board else VisualState()
         fps=24 if self.quality>=.85 else 16 if self.quality>=.65 else 10
         key=(context,int(now*fps),bool(active),self.scene,self.p('theme','cathedral'),
-             self.p('fx_speed',1),self.p('flash',True),self.p('fx_intensity',.75),self.p('fx_density',.75))
+             self.p('fx_speed',1),self.p('flash',True),self.p('fx_intensity',.75),self.p('fx_density',.75),state)
         if active or key!=self._art_key:
             stamp=now if active else int(now*fps)/fps
             if self.scene:
@@ -102,7 +111,7 @@ class Effects:
             else:
                 self._art_cache=self.stage.render(context,stamp,self.p('theme','cathedral'),
                     self.director.major,self.director.local,board,self.p('flash',True),
-                    self.p('fx_intensity',.75),self.p('fx_density',.75),self.p('fx_speed',1))
+                    self.p('fx_intensity',.75),self.p('fx_density',.75),self.p('fx_speed',1),state=state)
             self._art_key=key
         self._art_cache.paint(app)
 

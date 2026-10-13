@@ -55,19 +55,56 @@ class Palette:
 
 
 @dataclass(frozen=True)
+class BoardViewport:
+    player_id: str
+    board_rect: tuple
+    hud_rects: tuple=()
+    effect_regions: tuple=()
+
+    @property
+    def board(self): return self.board_rect[:2]
+
+    @property
+    def protected(self):
+        x,y,w,h=self.board_rect
+        return ((x-1,y-1,w+2,h+2),)+self.hud_rects
+
+
+@dataclass(frozen=True)
 class Layout:
     board: tuple
     origin: tuple
     protected: tuple
+    viewports: tuple=()
 
 
 def game_layout(width, height):
     ox,oy=(width-64)//2,max(0,(height-28)//2)
     bx,by=ox+21,oy+3
     # 흔들리는 프레임도 배경에 묻히지 않도록 1셀 여유를 둔다.
-    protected=((bx-1,by-1,24,24),(ox+1,oy+2,19,23),
-               (ox+44,oy+2,19,23),(ox,oy,64,2),(ox,oy+25,64,3))
-    return Layout((bx,by),(ox,oy),protected)
+    # HUD의 실제 정보 행만 보호해 최소 창에도 테마 문양의 공간을 남긴다.
+    hud=((ox+1,oy+2,12,2),(ox+3,oy+4,10,3),(ox+1,oy+23,18,2),
+         (ox+45,oy+2,12,2))
+    hud+=tuple((ox+1,oy+9+i*3,17,2) for i in range(5))
+    hud+=tuple((ox+46,oy+4+i*4,10,3) for i in range(5))
+    viewport=BoardViewport('p1',(bx,by,22,22),hud,((0,2,width-1,height-4),))
+    protected=viewport.protected+((ox,oy,64,2),(ox,oy+25,64,3))
+    return Layout((bx,by),(ox,oy),protected,(viewport,))
+
+
+def battle_viewports(width,height):
+    """향후 화면을 위한 공간 계약이며 두 게임 진행을 생성하지 않는다."""
+    if width<64 or height<28: raise ValueError('two board layout needs at least 64x28')
+    if width<80: points=((5,3),(36,3))
+    elif width<120: points=((10,4),(47,4))
+    else: points=((18,10),(79,10))
+    base_w,base_h=(64,28) if width<80 else (80,30) if width<120 else (120,40)
+    dx,dy=(width-base_w)//2,(height-base_h)//2
+    middle=(width-1)//2
+    areas=(((0,2,middle,height-4),),((middle,2,width-1-middle,height-4),))
+    return tuple(BoardViewport(f'p{i+1}',(x+dx,y+dy,22,22),
+                    ((x+dx,y+dy-2,22,2),(x+dx,y+dy+22,22,1)),areas[i])
+                 for i,(x,y) in enumerate(points))
 
 
 @dataclass(frozen=True)
@@ -78,6 +115,8 @@ class RenderContext:
     ascii_mode: bool=False
     braille: bool=True
     quality: float=1.
+    viewports: tuple=()
+    clip_rect: tuple|None=None
 
 
 @dataclass(slots=True)
@@ -102,7 +141,9 @@ class ArtCanvas:
         self.blocked=protected_cells(context)
 
     def accepts(self,x,y):
+        clip=self.context.clip_rect
         return (0<=x<self.context.width-1 and 0<=y<self.context.height
+                and (not clip or clip[0]<=x<clip[0]+clip[2] and clip[1]<=y<clip[1]+clip[3])
                 and (x,y) not in self.blocked)
 
     def put(self,x,y,glyph,style=3,depth=0):
@@ -119,20 +160,31 @@ class ArtCanvas:
     def _subpixel(self,px,py,style,depth):
         cx,cy=px//2,py//4
         if not self.accepts(cx,cy): return
-        if self.context.ascii_mode or not self.context.braille:
-            self.put(cx,cy,':' if self.context.ascii_mode else '·',style,depth)
-            return
         mask=1<<BRAILLE_BITS[px%2][py%4]
         old=self.cells.get((cx,cy))
         if old is not None:
             if old.mask and old.style==style and abs(old.depth-depth)<.15:
                 mask|=old.mask
                 if mask==old.mask: return
-                self.cells[cx,cy]=Ink(chr(0x2800+mask),style,min(old.depth,depth),mask)
+                self.cells[cx,cy]=Ink(self._mask_glyph(mask),style,min(old.depth,depth),mask)
                 return
             elif depth>old.depth:
                 return
-        self.cells[cx,cy]=Ink(chr(0x2800+mask),style,depth,mask)
+        self.cells[cx,cy]=Ink(self._mask_glyph(mask),style,depth,mask)
+
+    def _mask_glyph(self,mask):
+        if not self.context.ascii_mode and self.context.braille: return chr(0x2800+mask)
+        count=mask.bit_count()
+        if not self.context.ascii_mode: return '·░▒▓█'[min(4,(count+1)//2)]
+        if count>=7: return '#'
+        if count>=5: return '+'
+        points=[(x,y) for x in range(2) for y in range(4) if mask&(1<<BRAILLE_BITS[x][y])]
+        xs,ys=zip(*points)
+        if len(set(ys))==1 and len(set(xs))>1: return '-'
+        if len(set(xs))==1 and len(set(ys))>1: return '|'
+        if len(points)>1:
+            return '\\' if sum((x-xs[0])*(y-ys[0]) for x,y in points)>0 else '/'
+        return '.'
 
     def line(self,a,b,style=3,depth=0):
         if (max(a[0],b[0])<0 or min(a[0],b[0])>=self.context.width-1
@@ -143,12 +195,17 @@ class ArtCanvas:
         dx,dy=abs(endx-x),-abs(endy-y)
         sx,sy=1 if x<endx else -1,1 if y<endy else -1
         error=dx+dy
+        stride=3 if self.context.quality<.6 else 2 if self.context.quality<.85 else 1
+        step=0
         while True:
-            self._subpixel(x,y,style,depth)
+            # 낮은 곡선 표본이 긴 선분으로 다시 촘촘해지는 비용 역전을 막는다.
+            if step%stride==0 or x==endx and y==endy:
+                self._subpixel(x,y,style,depth)
             if x==endx and y==endy: break
             twice=error*2
             if twice>=dy: error+=dy; x+=sx
             if twice<=dx: error+=dx; y+=sy
+            step+=1
 
     def curve(self,points,style=3,depth=0):
         previous=None

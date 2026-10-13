@@ -1,0 +1,269 @@
+{
+  "python": "3.14.3",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "matrix_conditions": 432,
+  "producer_conditions": 36,
+  "semantics": {
+    "cathedral": {
+      "clear": {
+        "signature": "05f8b7bc7aa477cc8b22a1e4ec13aaf982ad2ac49d53cdc8035a334df28a5e87",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "bloom": {
+        "signature": "61240754c3fbbb7ad98455972a2ddf13500aeb3452677e333ff16e5dad4881f5",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "ascension": {
+        "signature": "5f3e76838573b1cf78462dd830f8e0e2f2caabd2745486c5bc724456bca6a6a7",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "victory": {
+        "signature": "a38d7ee0190b218fed733f31dc6f5ec57bc0aa1eefccd5a8d0190aa30603f2b4",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "eclipse": {
+        "signature": "223375665692df53282eed3b0fbe7905cf3d3e5558ed958b8705194ac070ebe7",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "awakening": {
+        "signature": "6878897fdea0ea6a49e1eb5c1b9af88f60df878113496730dedae1fc8428710b",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "distinct_count": 6,
+      "clear_rows_change_geometry": true
+    },
+    "cyberpunk": {
+      "clear": {
+        "signature": "44cf0370f7483570852e466251ea8d01bab14e24bf57be884b550bd138f02d38",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "bloom": {
+        "signature": "94db8ba3a4cb2614478641fe013c417df0ab180db3d2d4ae8421cff330164346",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "ascension": {
+        "signature": "95ddbf1b40801e527f3a58d731273cf8b146bb887cf2117e66533c83d9080a87",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "victory": {
+        "signature": "46f015a4e1651f12217e70ae1d85acd39f8e07887efc6856bc6fb1bf20ea09cb",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "eclipse": {
+        "signature": "86d0aa17d26dec7838ec6c1a7fc389e1481a2d8b1486becf3c3373b9adb7b80e",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "awakening": {
+        "signature": "526f7440f7e09b23214a3f83c4197f25540f12ef336c9cf26e67a80e77c3f2b1",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "distinct_count": 6,
+      "clear_rows_change_geometry": true
+    },
+    "space": {
+      "clear": {
+        "signature": "b79ee35a9d67445def6ec5a9815044721fc33dc0f2667ff2498cb8cf117a0863",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "bloom": {
+        "signature": "e350e67a81494d379b129af7ba502f982248ac606a43a3a48deef6de799be7ed",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "ascension": {
+        "signature": "2ca7bab264b2b06008d00ac15e6f1d46f26519e5e955faf256eae9962e847361",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "victory": {
+        "signature": "d0aa41259788e9c7fe2008ca286f229a975c2751d04050fe5f35ba757da5f92f",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "eclipse": {
+        "signature": "4e73c467dcdf16e80435ee01f19f4d08f30863acaee18aaebb387903b3817404",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "awakening": {
+        "signature": "313bddb710bae35343f55aabe6cf75426346a9625ae104e2ee83100d2ed6c88a",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "distinct_count": 6,
+      "clear_rows_change_geometry": true
+    },
+    "fire": {
+      "clear": {
+        "signature": "9f055b3d1de18560c71b902e0548cd5eb1734e9490f0b68ca379c9afde3534c2",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "bloom": {
+        "signature": "6a893f71f981d9df46fced86009d052a46a5ae6c4054aac3ed0d585e7ec55069",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "ascension": {
+        "signature": "cd67aa1ecbc1e110c55b9ff350139b08399b9c04421fed6a473dfd7fb3e572e2",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "victory": {
+        "signature": "7a36ed85fd7a0bc91f663f4606c902dd43580cb9cafbb83b9cc9e1a228c2740c",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "eclipse": {
+        "signature": "c866c8c913d824dced70da1cbc56ffbac6ac876be1b518e75b72ca171e0ac985",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "awakening": {
+        "signature": "37d5a2da4825be8a5b20ffc374ae1b9cf8f7e9454a1be23025b9ed49bc2bb66e",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "distinct_count": 6,
+      "clear_rows_change_geometry": true
+    },
+    "crt": {
+      "clear": {
+        "signature": "6bd70cb6d995b253f1d50b1c9a938cb896cb4833a1e88eb2cb16a761e1b4553c",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "bloom": {
+        "signature": "2ae33306b840f384e3b6d68daf3df8060b3a2e4074720e805abb4f010766af40",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "ascension": {
+        "signature": "715a17ee2be6b9c6122166350bcb1ad30142be12ea321fb37e94504a281af64f",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "victory": {
+        "signature": "4e023f76a93d4bcbddc94234387a4a1848c1cdec40c1fea9b07eb32386b06fcf",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "eclipse": {
+        "signature": "fc313c7dad0fcb1a24db4d88a15d7e5832b131bc989e1b009a4a9f32c04b2063",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "awakening": {
+        "signature": "fc6844661e6bca9e348ee4b08576ff3ae94ff8e41e96586c40a438147995a667",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "distinct_count": 6,
+      "clear_rows_change_geometry": true
+    },
+    "mono": {
+      "clear": {
+        "signature": "0e98687781eb40704bb560304ce4ca8353bb807fb5241d97a07d319d3687f84a",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "bloom": {
+        "signature": "e4f7361b4fa845708ca504a94554870a214132fb3d94c680fcf4e0c981ad2d4d",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "ascension": {
+        "signature": "bff58df036bb159257ff8341426bdd741c402e4a6b6e9da4fd90642a8b19a004",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true,
+        "rows_change_geometry": true
+      },
+      "victory": {
+        "signature": "44570896db919c483a3fb664f2ae796080f69e5bbb434041220d82964ccf84cb",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "eclipse": {
+        "signature": "179defde7ab6cf7bbe200075129b01877d907c3247189c7fbc727252ff00d7d4",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "awakening": {
+        "signature": "e809c59b8850f19dc0bc6aef3f7a9a642acceaac7666d033cb0da2b83d982f0f",
+        "intensity_changes_geometry": true,
+        "power_changes_geometry": true
+      },
+      "distinct_count": 6,
+      "clear_rows_change_geometry": true
+    }
+  },
+  "performance": {
+    "cathedral": {
+      "frames": 240,
+      "mean_ms": 10.069,
+      "p95_ms": 14.197,
+      "max_ms": 78.406
+    },
+    "cyberpunk": {
+      "frames": 240,
+      "mean_ms": 8.998,
+      "p95_ms": 13.086,
+      "max_ms": 127.181
+    },
+    "space": {
+      "frames": 240,
+      "mean_ms": 8.149,
+      "p95_ms": 11.739,
+      "max_ms": 196.748
+    },
+    "fire": {
+      "frames": 240,
+      "mean_ms": 9.616,
+      "p95_ms": 14.884,
+      "max_ms": 218.31
+    },
+    "crt": {
+      "frames": 240,
+      "mean_ms": 7.077,
+      "p95_ms": 11.162,
+      "max_ms": 17.707
+    },
+    "mono": {
+      "frames": 240,
+      "mean_ms": 4.779,
+      "p95_ms": 9.76,
+      "max_ms": 10.969
+    }
+  },
+  "cpu_includes_terminal_output": false
+}

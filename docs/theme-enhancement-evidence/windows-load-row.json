@@ -1,0 +1,73 @@
+{
+  "seconds": 60.0,
+  "adaptive": true,
+  "scope": "native curses drawing/output with real engine-produced fixtures; no physical keyboard/font or audio claim",
+  "cases": [
+    {
+      "theme": "cathedral",
+      "frames": 569,
+      "elapsed": 10.003,
+      "mean_ms": 7.841,
+      "p95_ms": 12.959,
+      "max_ms": 105.981,
+      "final_quality": 1.0,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "cyberpunk",
+      "frames": 576,
+      "elapsed": 10.015,
+      "mean_ms": 6.297,
+      "p95_ms": 15.344,
+      "max_ms": 71.061,
+      "final_quality": 1.0,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "space",
+      "frames": 581,
+      "elapsed": 10.016,
+      "mean_ms": 5.975,
+      "p95_ms": 12.709,
+      "max_ms": 43.518,
+      "final_quality": 1.0,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "fire",
+      "frames": 546,
+      "elapsed": 10.0,
+      "mean_ms": 8.106,
+      "p95_ms": 21.617,
+      "max_ms": 62.457,
+      "final_quality": 0.565,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "crt",
+      "frames": 429,
+      "elapsed": 10.147,
+      "mean_ms": 14.549,
+      "p95_ms": 45.325,
+      "max_ms": 518.965,
+      "final_quality": 0.4,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "mono",
+      "frames": 570,
+      "elapsed": 10.006,
+      "mean_ms": 5.838,
+      "p95_ms": 14.441,
+      "max_ms": 46.087,
+      "final_quality": 1.0,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    }
+  ]
+}

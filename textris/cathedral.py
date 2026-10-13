@@ -1,6 +1,7 @@
 """극좌표 장미창·천체 조각·빛 커튼으로 구성한 문자 대성당."""
 import math
-from .art import ArtCanvas
+from .art import ArtCanvas, game_layout
+from .theme_surfaces import render_surfaces, samples
 
 TAU=math.tau
 
@@ -29,12 +30,16 @@ class CathedralScene:
         c=ArtCanvas(context)
         w,h=context.width-1,context.height
         cx=w/2
+        major=major if major and major.start<=t<major.end and intensity>0 else None
         phase=major.phase(t) if major else 0
         envelope=math.sin(math.pi*phase)*major.power*intensity if major else 0
         pulse=envelope if flash else 0
         opening=envelope if major and major.name in ('bloom','ascension','victory') else 0
         # 갱신 위상을 분산해 한 프레임에 모든 절차적 장면을 다시 계산하지 않는다.
         motion=t*motion_speed
+        surface_time=math.floor(motion*8)/8
+        self.merge(c,self.layer(context,('surfaces',surface_time),
+            lambda layer:render_surfaces(layer,surface_time,'cathedral')))
         self.merge(c,self.layer(context,('arches',),lambda layer:self.arches(layer,cx,h,w,0,0)))
         radius=min(w*.21,h*.43)
         rose_time=math.floor(motion*12)/12
@@ -53,7 +58,7 @@ class CathedralScene:
         self.merge(c,self.layer(context,('floor',floor_time),lambda layer:self.floor(layer,cx,h,w,floor_time)))
         self.dust(c,w,h,motion,density,context.quality)
         if major:
-            self.ceremony(c,cx,h,w,t,major,opening,pulse)
+            self.ceremony(c,cx,h,w,t,major,opening,pulse,board,intensity,flash)
         if board:
             for cue in local:
                 self.local_effect(c,board,t,cue,intensity,flash)
@@ -97,8 +102,9 @@ class CathedralScene:
         for petal in range(12):
             angle=petal*TAU/12+spin
             points=[]
-            for i in range(49):
-                a=i*TAU/48
+            petal_count=samples(c,48)
+            for i in range(petal_count+1):
+                a=i*TAU/petal_count
                 radius=r*(.48+.28*math.cos(a))*(1+opening*.13)
                 theta=angle+.17*math.sin(a)
                 points.append((cx+math.cos(theta)*radius,cy+math.sin(theta)*radius*.48))
@@ -111,7 +117,7 @@ class CathedralScene:
         for k in range(2):
             c.curve(((cx+math.cos(a)*r*(.17+.045*math.cos(8*a+t*.13+k)),
                       cy+math.sin(a)*r*(.085+.0225*math.cos(8*a+t*.13+k)))
-                     for a in (i*TAU/160 for i in range(161))),4 if k else 7,1)
+                     for a in (i*TAU/samples(c,160,32) for i in range(samples(c,160,32)+1))),4 if k else 7,1)
 
     def orbits(self,c,cx,cy,r,t,quality,pulse):
         count=max(60,int(128*quality))
@@ -178,44 +184,86 @@ class CathedralScene:
             y=(i*17.33-t*.18*(1+i%3))%max(1,h-4)+2
             c.put(x,y,'.' if c.context.ascii_mode else '·',2,12)
 
-    def ceremony(self,c,cx,h,w,t,cue,opening,pulse):
+    def ceremony(self,c,cx,h,w,t,cue,opening,pulse,board=None,intensity=.75,flash=True,viewport=None):
+        if not cue.start<=t<cue.end or intensity<=0: return
         p=cue.phase(t)
-        if cue.name in ('ascension','victory','eclipse'):
-            radius=(.18+(.8*p if cue.name!='eclipse' else .65*(1-p)))*w
-            for ring in range(3):
-                r=radius+ring*2
-                count=max(80,int(200*c.context.quality))
-                points=((cx+math.cos(a)*r,h*.48+math.sin(a)*r*.38)
-                        for a in (i*TAU/count for i in range(count+1)))
-                if ring==0:
-                    c.curve(points,9 if pulse>.35 else 8,depth=-3)
-                else:
-                    # 바깥 두 고리는 성긴 잔광으로 남겨 주 윤곽을 강조한다.
-                    for x,y in points: c.dot(x,y,6 if ring==1 else 2,-2)
-        if cue.name in ('bloom','ascension','victory','awakening'):
-            for side in (-1,1):
-                x=cx+side*(13+p*min(12,w*.1))
-                c.line((x,3),(x,h-5),4 if pulse>.4 else 3,-3)
-                for i in range(9):
-                    yy=h-6-((p*22+i*3)%(h-8))
-                    c.put(x+side*math.sin(i+p*4)*2,yy,'+' if c.context.ascii_mode else '✧',9,-4)
+        strength=(.35+.65*min(1.,intensity))*min(1.6,max(0.,cue.power))*math.sin(math.pi*p)
+        if strength<=0: return
+        bright=9 if flash and .15<p<.65 and intensity>.5 else 8
+        bx,by=board or game_layout(c.context.width,c.context.height).board
+        rows=cue.coords or (21,)
+        origin=by+1+sum(rows)/len(rows)-2
+        count=samples(c,96,24)
+        def ring(x,y,rx,ry,style=8,depth=-4):
+            c.curve(((x+math.cos(j*TAU/count)*rx,y+math.sin(j*TAU/count)*ry)
+                     for j in range(count+1)),style,depth)
         if cue.name=='clear':
-            for row in cue.coords:
-                y=max(2,min(h-4,(h-28)//2+4+row-2))
+            for row in rows:
+                yy=by+1+row-2
                 for side in (-1,1):
-                    c.line((cx+side*13,y),(cx+side*(14+p*w*.3),y),4 if pulse>.4 else 3,-3)
+                    x=bx-2 if side<0 else bx+23
+                    reach=(5+p*w*.28)*strength
+                    c.line((x,yy),(x+side*reach,yy),bright,-4)
+                    for j in range(1+int(5*strength)):
+                        xx=x+side*reach*(j+.5)/(1+int(5*strength))
+                        c.curve(((xx-1,yy),(xx,yy-strength),(xx+1,yy),(xx,yy+strength),(xx-1,yy)),8,-5)
+            return
+        for side in (-1,1):
+            x=(bx-9 if side<0 else bx+31) if viewport else cx+side*w*.34
+            if cue.name=='bloom':
+                if getattr(cue,'variant','')=='spin':
+                    # 장미 조각이 삭제 위치를 중심으로 회전하며 Tetris의 종광과 구분된다.
+                    r=(5+12*p)*strength
+                    for j in range(8):
+                        a=j*TAU/8+p*TAU
+                        c.curve(((x+math.cos(a)*r*.35,origin+math.sin(a)*r*.18),
+                                 (x+math.cos(a+.45)*r,origin+math.sin(a+.45)*r*.45),
+                                 (x+math.cos(a+.9)*r*.65,origin+math.sin(a+.9)*r*.3)),bright,-4)
+                else:
+                    for j in range(-2,3):
+                        xx=x+j*2.5*strength
+                        reach=(4+p*h*.6)*strength*(1-abs(j)*.12)
+                        c.line((xx,origin),(xx,origin-reach),bright if j==0 else 3,-4)
+                        ring(xx,origin,2+strength*4,.5+strength,8,-5)
+            elif cue.name=='ascension':
+                # 올 클리어는 마지막 삭제 행에서 위로 올라오는 펼쳐진 유리 광막이다.
+                rise=(.25+p*.65)*max(3,origin-2)*strength
+                for j in range(-4,5):
+                    xx=x+j*2*strength;top=origin-rise*(1-abs(j)*.09)
+                    c.line((xx,origin),(xx,top),bright if j==0 else 3,-4)
+                    c.curve(((xx-1,top+2),(xx,top),(xx+1,top+2)),8,-5)
+                    for yy in range(max(0,int(top)),min(h,int(origin)),2):
+                        if (yy+j)%3==0:
+                            c.put(xx,yy,':' if c.context.ascii_mode else '░',6,-3)
+                ring(x,origin-rise,6*strength,2*strength,8,-5)
+            elif cue.name=='victory':
+                # 승리는 닫히는 아치와 완성된 장미창·왕관; 상승 광막과 형상을 공유하지 않는다.
+                yy=h*.24;r=(6+5*p)*strength
+                ring(x,yy,r,r*.42,bright)
+                for j in range(8):
+                    a=j*TAU/8
+                    c.line((x+math.cos(a)*r*.2,yy+math.sin(a)*r*.1),
+                           (x+math.cos(a)*r*.9,yy+math.sin(a)*r*.38),8,-5)
+                c.curve(((x-r,yy+4),(x-r,yy-2),(x-r*.5,yy),
+                         (x,yy-5*strength),(x+r*.5,yy),(x+r,yy-2),(x+r,yy+4)),bright,-4)
+                c.line((x-r,yy+4),(x+r,yy+4),8,-4)
+            elif cue.name=='eclipse':
+                yy=h*.5;r=(4+(1-p)*12)*strength
+                for j in range(4):
+                    a=p*.8+j*TAU/4
+                    c.curve(((x+math.cos(a)*r,yy+math.sin(a)*r*.45),
+                             (x+math.cos(a+.8)*r*.6,yy+math.sin(a+.8)*r*.28),
+                             (x+math.cos(a+1.1)*r*.2,yy+math.sin(a+1.1)*r*.1)),6,-4)
+                ring(x,yy,r*.45,r*.2,2,-5)
+            elif cue.name=='awakening':
+                yy=h*.52;r=(3+p*10)*strength
+                c.curve(((x-r,yy+r*.4),(x-r,yy),(x,yy-r*.7),
+                         (x+r,yy),(x+r,yy+r*.4)),bright,-4)
+                for j in range(-2,3):
+                    xx=x+j*r*.3
+                    c.line((xx,yy+r*.4),(xx,yy-r*.3+abs(j)*strength),3,-4)
+                ring(x,yy+r*.4,r*1.1,.5+strength,8,-5)
 
     def local_effect(self,c,board,t,cue,intensity,flash):
-        bx,by=board; p=cue.phase(t)
-        style=5 if flash and p<.3 and intensity>.5 else 3
-        if cue.name in ('drop','lock'):
-            y=by+1+max((p[1] for p in cue.coords),default=19)
-            for side in (-1,1):
-                x=bx+10+side*(34 if c.context.width>=95 else 13)
-                c.line((x,by+2),(x,y),style,-4)
-                r=2+p*9
-                c.curve(((x+math.cos(a)*r,y+math.sin(a)*r*.32)
-                         for a in (i*TAU/64 for i in range(65))),3,-3)
-        else:
-            for x in (bx-2,bx+23):
-                c.put(x,by+2+p*4,'+' if c.context.ascii_mode else '◇',9,-4)
+        from .theme_actions import render_local
+        render_local(c,board,t,cue,'cathedral',intensity,flash)
