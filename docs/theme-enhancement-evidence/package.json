@@ -26,8 +26,8 @@
       "platform_copy_matches": true
     },
     "textris.pyz": {
-      "bytes": 46367629,
-      "sha256": "7d9d1593c819109539ec17ef091e6f28974a550ccec619366fa3783999fdd386",
+      "bytes": 46367655,
+      "sha256": "8d44e4594754909d48bf47d6dc07c089c95356349791cabd2bacf631463003c8",
       "audio_asset_count": 63,
       "asset_missing": [],
       "asset_hash_mismatch": [],
@@ -41,8 +41,8 @@
       "zip_crc_failure": null
     },
     "textris_tui-1.3.0-py3-none-any.whl": {
-      "bytes": 46376738,
-      "sha256": "3b42e1e54944f8364994aa63452c9a5c8f6bf5581d31bca4a2e9e22419c42116",
+      "bytes": 46376764,
+      "sha256": "e0a4fce6aa730a588127167c7e9533032cdf314bcb047ddb19ed44b3a007ddd6",
       "audio_asset_count": 63,
       "asset_missing": [],
       "asset_hash_mismatch": [],
@@ -78,5 +78,6 @@
     "os_muted": true,
     "os_volume": 0.39,
     "listening": "unconfirmed"
-  }
+  },
+  "source_packages_refreshed_after_eof_normalization": true
 }
