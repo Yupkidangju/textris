@@ -1,0 +1,95 @@
+{
+  "seconds": 128.0,
+  "adaptive": true,
+  "scope": "native curses drawing/output with real engine-produced fixtures; no physical keyboard/font or audio claim",
+  "cases": [
+    {
+      "theme": "cathedral",
+      "frames": 761,
+      "elapsed": 16.009,
+      "mean_ms": 12.717,
+      "p95_ms": 55.357,
+      "max_ms": 173.19,
+      "final_quality": 0.595,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "cyberpunk",
+      "frames": 837,
+      "elapsed": 16.008,
+      "mean_ms": 10.08,
+      "p95_ms": 26.871,
+      "max_ms": 93.298,
+      "final_quality": 0.52,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "space",
+      "frames": 877,
+      "elapsed": 16.016,
+      "mean_ms": 8.467,
+      "p95_ms": 25.896,
+      "max_ms": 60.971,
+      "final_quality": 0.545,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "fire",
+      "frames": 834,
+      "elapsed": 16.013,
+      "mean_ms": 9.589,
+      "p95_ms": 26.131,
+      "max_ms": 83.298,
+      "final_quality": 0.4,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "crt",
+      "frames": 888,
+      "elapsed": 16.011,
+      "mean_ms": 8.067,
+      "p95_ms": 21.464,
+      "max_ms": 78.158,
+      "final_quality": 0.46,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "mono",
+      "frames": 928,
+      "elapsed": 16.017,
+      "mean_ms": 5.169,
+      "p95_ms": 12.209,
+      "max_ms": 33.859,
+      "final_quality": 1.0,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "abyss",
+      "frames": 859,
+      "elapsed": 16.006,
+      "mean_ms": 9.003,
+      "p95_ms": 22.321,
+      "max_ms": 78.166,
+      "final_quality": 0.54,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    },
+    {
+      "theme": "aurora",
+      "frames": 764,
+      "elapsed": 16.012,
+      "mean_ms": 10.985,
+      "p95_ms": 54.601,
+      "max_ms": 117.646,
+      "final_quality": 0.585,
+      "checksum_unchanged": true,
+      "includes_terminal_output": true
+    }
+  ]
+}

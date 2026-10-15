@@ -15,9 +15,15 @@ python3 -m textris --theme cathedral
 
 이미 저장한 테마는 보존됩니다. 위 명령은 이번 실행에만 대성당을 적용합니다.
 계속 사용하려면 **E → Effects & themes → Theme → Cosmic cathedral**을 선택하세요.
-6개 테마와 19종 배경·25종 효과 전체에 보호 영역·서브셀·깊이 합성을 적용했습니다.
+8개 테마와 19종 배경·25종 효과 전체에 보호 영역·서브셀·깊이 합성을 적용했습니다.
+**Bioluminescent abyss**는 해파리·수면 광선·해저 기포를,
+**Aurora snowfield**는 오로라 커튼·설산·빙면 반사와 눈 결정을 문자로 표현합니다.
+Extras → Profiles의 Theme에서 선택하거나 `--theme abyss`, `--theme aurora`로 실행하세요.
 네온 도시, 천체 관측소, 태양 대장간, 인광 실험실, 모노 판화는 서로 다른 구도와 팔레트를 사용합니다.
-[전체 테마/갤러리 프레임](docs/art-atlas.html) · [테마 비교](docs/art-themes.png) · [갤러리 비교](docs/art-gallery.png)
+[8테마 최신 검증](docs/eight-themes-verification.md) ·
+[심해 연출](docs/eight-themes-evidence/abyss-contact.png) · [오로라 연출](docs/eight-themes-evidence/aurora-contact.png)
+
+[기존 테마/갤러리 프레임](docs/art-atlas.html) · [기존 테마 비교](docs/art-themes.png) · [갤러리 비교](docs/art-gallery.png)
 
 [컬러 연속 프레임 미리보기](docs/cathedral-preview.html) ·
 [플레이 화면](docs/cathedral-idle.png) · [올 클리어](docs/cathedral-all-clear.png)
@@ -54,7 +60,8 @@ ASCII 모드에서는 메뉴·아트·동적 파일명까지 최종 출력 경�
 - 감쇠 보드 흔들림, 착지 빛 기둥, 성취 궤도·방사선·대형 문자 아트.
 - 장미창·도시 원근·천체 구체·코로나·리사주·기요셰 판화의 테마별 무대.
 - 유리 면·반사광, 네온 건물·비, 성운·행성 고리의 가림, 화염 면·용암, 인광 잔상, 판화 해칭.
-- 6개 테마별 이동·회전·홀드·드롭·착지 효과와 위험·콤보·B2B·피버 상태 반응.
+- 8개 테마별 이동·회전·홀드·드롭·착지 효과와 위험·콤보·B2B·피버 상태 반응.
+- 수명 안에서 계산하는 조작 잔상과 테마별 빛·데이터·유성·재·인광·잉크의 거리층.
 - 최소64×28에서도 보드·정보를 보호하며 테마 문양을 표시합니다. ASCII는 선 방향과 문자 밀도로 표현합니다.
 - 조립되는 타이틀, 색 단계 카운트다운과 장식 프레임, 콤보·레벨·승리·게임 오버 연출.
 - 메뉴 **V**: 연출 쇼케이스. **E**: 확장 허브(갤러리·테마·보스·리플레이·자동 전시).
@@ -118,10 +125,12 @@ python3 -m unittest discover -v
 음악은 **6테마×3곡 + Classic 8곡 = 26곡**, 각85~95초입니다. lead/harmony/bass/drums
 네 MIDI 파트로 편곡하고 풍부한 악기 음색으로 미리 렌더한 Ogg를 사용합니다.
 현재 테마의3곡과 Classic8곡을 약1:1로 섞으며 곡을 모두 소진하기 전 같은 범주의 곡을
-반복하지 않습니다. 다른 테마의 전용곡이 현재 게임에 섞이지 않습니다.
+반복하지 않습니다. 심해는 기존 우주(space) 3곡, 오로라는 모노크롬(mono) 3곡을
+연결해 사용합니다. 새 시각 테마의 추가 작곡은 없으며 전체 곡 수는 26곡입니다.
 
 메뉴 **Extras → Soundtrack**에서 **Traditional Tetris(전통곡 8곡)**,
-**6개 테마별 모음(각 3곡)**, **All tracks(전체 26곡)**을 선택할 수 있습니다.
+**8개 시각 테마별 모음(각 3곡)**, **All tracks(전체 26곡)**을 선택할 수 있습니다.
+심해·오로라 모음에는 공유하는 원래 음악 모음 이름을 표시합니다.
 위/아래와 Enter로 모음을 열고 곡을 선택합니다. Enter 재생, Space 일시정지,
 N/P 다음/이전, 좌/우5초 탐색, Tab 또는 Esc/Q로 모음 선택 복귀,
 S 셔플, R 한 곡 반복, +/- 음악 음량, M 전체 음소거, B 음악 토글입니다.

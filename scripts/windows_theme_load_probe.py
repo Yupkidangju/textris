@@ -29,7 +29,7 @@ def main():
             store=Store(out/'state'); store.settings.update(theme=theme,display_mode='unicode',shake=False,flash=False)
             app=App(window,store,AudioStub(),42)
             start=time.monotonic(); cycle=start; frames=0; timings=[]; next_event=0
-            while time.monotonic()-start<args.seconds/6:
+            while time.monotonic()-start<args.seconds/len(THEMES):
                 now=time.monotonic()
                 if frames==0 or now-cycle>=2:
                     quality=app.effects.quality
@@ -57,8 +57,8 @@ def main():
                 max_ms=round(max(timings),3),final_quality=round(app.effects.quality,3),checksum_unchanged=True,includes_terminal_output=True))
             (out/'results.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     curses.wrapper(run)
-    assert len(report['cases'])==6
-    print(json.dumps(dict(passed=6,frames=sum(c['frames'] for c in report['cases']),output=str(out))))
+    assert len(report['cases'])==len(THEMES)
+    print(json.dumps(dict(passed=len(THEMES),frames=sum(c['frames'] for c in report['cases']),output=str(out))))
 
 
 if __name__=='__main__': main()

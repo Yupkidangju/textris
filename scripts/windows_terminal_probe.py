@@ -37,7 +37,9 @@ def main():
 
     cases=[('default','auto',[],False),('unicode','ascii',['--unicode'],False),
            ('ascii','unicode',['--ascii'],True),('saved-unicode','unicode',[],False),
-           ('saved-ascii','ascii',[],True)]
+           ('saved-ascii','ascii',[],True),
+           ('abyss','unicode',['--theme','abyss'],False),
+           ('aurora','ascii',['--theme','aurora'],True)]
     for name,saved,flags,expected_ascii in cases:
         directory=output/name
         store=Store(directory); store.settings.update(display_mode=saved,ascii=saved=='ascii'); store.save()
@@ -141,6 +143,10 @@ def main():
                     state['audio']=dict(app.audio.diagnostics)
                     assert state['audio']['completed_effects']>0
                     assert state['audio']['failure_count']==0
+                    from textris.themes import music_theme
+                    state['music_source']=app.audio._theme
+                    expected_theme=name if name in ('abyss','aurora') else 'cathedral'
+                    assert state['music_source']==music_theme(expected_theme)
                     assert {'move','rotate','hold','drop','lock'}<=set(state['requested_cues'])
                 push('qy'); state['stage']=12
 

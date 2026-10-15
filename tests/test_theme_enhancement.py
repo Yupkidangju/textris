@@ -60,7 +60,7 @@ class ThemeEnhancementTests(unittest.TestCase):
             self.assertGreater(len(canvas.cells),40,theme)
             self.assertFalse(set(canvas.cells)&canvas.blocked,theme)
             pictures.append(geometry(canvas))
-        self.assertEqual(len(set(pictures)),6)
+        self.assertEqual(len(set(pictures)),len(THEMES))
 
     def test_small_window_every_ceremony_changes_exposed_art_without_covering_hud(self):
         layout=game_layout(64,28)

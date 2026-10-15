@@ -79,6 +79,8 @@ def main():
     from textris.audio import Audio
     from textris.storage import Store
     from textris.ui import App
+    from textris.expansion_ui import SOUNDTRACK_COLLECTIONS
+    from textris.themes import THEMES, music_theme
     results=[]
     input_diagnostics=[]
     original_draw=App.draw
@@ -143,7 +145,7 @@ def main():
                         frame=capture('collections')
                         for label in ('Traditional Tetris','8 tracks','3 tracks','26 tracks','Enter: open','Esc/Q:'):
                             assert label in frame,label
-                        for theme in ('cathedral','cyberpunk','space','fire','crt','mono'):
+                        for theme in THEMES:
                             assert current.t('theme_'+theme) in frame,theme
                         state['collection_counts']=[]
                         advance(2,['\n'])
@@ -159,11 +161,10 @@ def main():
                         advance('theme-list',[curses.KEY_DOWN,'\n'])
                     elif stage=='theme-list':
                         assert current.screen=='soundtrack'
-                        from textris.expansion_ui import SOUNDTRACK_COLLECTIONS
                         collection=SOUNDTRACK_COLLECTIONS[current.soundtrack_collection_selection]
                         tracks=current.soundtrack_tracks()
                         assert len(tracks)==(26 if collection=='all' else 3)
-                        if collection!='all': assert {track['theme'] for track in tracks}=={collection}
+                        if collection!='all': assert {track['theme'] for track in tracks}=={music_theme(collection)}
                         assert store.settings['theme']==('mono' if mode=='mono' else 'cathedral')
                         frame=capture(collection+'-tracks')
                         assert current.soundtrack_collection_label(collection) in frame
@@ -214,7 +215,8 @@ def main():
                     elif stage==19 and position>state['small_at']+.1:
                         capture('resumed'); advance(20,['q'])
                     elif stage==20 and music['mode']=='game':
-                        assert current.screen=='soundtrack_collections' and current.soundtrack_collection_selection==7
+                        assert current.screen=='soundtrack_collections'
+                        assert current.soundtrack_collection_selection==SOUNDTRACK_COLLECTIONS.index('all')
                         capture('back-collections'); advance(21,['q'])
                     elif stage==21:
                         assert current.screen=='hub'

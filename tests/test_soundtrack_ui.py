@@ -8,6 +8,8 @@ from unittest.mock import patch
 
 from textris.storage import Store
 from textris.ui import App
+from textris.expansion_ui import SOUNDTRACK_COLLECTIONS
+from textris.themes import THEMES, music_theme
 from tests.test_ui import AudioStub, Window
 
 
@@ -35,7 +37,7 @@ class SoundtrackUITests(unittest.TestCase):
 
     def open_soundtrack(self,collection='cathedral'):
         self.open_collections(); a=self.app
-        collections=('classic','cathedral','cyberpunk','space','fire','crt','mono','all')
+        collections=SOUNDTRACK_COLLECTIONS
         for _ in range(collections.index(collection)): a.handle(curses.KEY_DOWN)
         a.handle('\n')
         self.assertEqual(a.screen,'soundtrack')
@@ -49,7 +51,7 @@ class SoundtrackUITests(unittest.TestCase):
                 frame='\n'.join(text for y,x,text in a.win.lines)
                 self.assertTrue(frame.isascii())
                 for label in ('Traditional Tetris','All tracks',*(a.t('theme_'+theme) for theme in
-                              ('cathedral','cyberpunk','space','fire','crt','mono'))):
+                              THEMES)):
                     self.assertIn(label,frame)
                 for label in ('8 tracks','3 tracks','26 tracks','Enter: open','Esc/Q: back'):
                     self.assertIn(label,frame)
@@ -57,11 +59,11 @@ class SoundtrackUITests(unittest.TestCase):
 
     def test_each_collection_is_playable_without_changing_game_theme_or_settings(self):
         self.open_collections(); a=self.app; settings=dict(a.settings)
-        for theme,count in [('classic',8),('cathedral',3),('cyberpunk',3),('space',3),
-                            ('fire',3),('crt',3),('mono',3),('all',26)]:
+        for theme in SOUNDTRACK_COLLECTIONS:
+            count=26 if theme=='all' else 8 if theme=='classic' else 3
             a.handle('\n'); self.assertEqual(a.screen,'soundtrack')
             tracks=a.soundtrack_tracks(); self.assertEqual(len(tracks),count)
-            if theme!='all': self.assertEqual({track['theme'] for track in tracks},{theme})
+            if theme!='all': self.assertEqual({track['theme'] for track in tracks},{music_theme(theme)})
             a.handle('\n'); a.tick(.1)
             self.assertIn(('audition',tracks[0]['id'],[track['id'] for track in tracks],False,False),self.audio.calls)
             self.assertEqual(a.settings,settings)
@@ -80,6 +82,17 @@ class SoundtrackUITests(unittest.TestCase):
         self.assertEqual(a.screen,'soundtrack'); self.assertEqual(a.soundtrack_selection,0)
         self.assertEqual(len(a.soundtrack_tracks()),3)
         a.handle('q'); a.handle('q'); self.assertEqual(a.screen,'hub')
+
+    def test_shared_music_collections_identify_original_library_at_minimum_size(self):
+        a=self.app; a.win.size=(28,64)
+        a.settings.update(display_mode='ascii')
+        for theme in ('abyss','aurora'):
+            a.screen='menu'; self.open_soundtrack(theme)
+            with patch('curses.doupdate'): a.draw()
+            frame='\n'.join(text for y,x,text in a.win.lines)
+            self.assertIn('Music collection: '+a.t('theme_'+music_theme(theme)),frame)
+            self.assertIn(a.t('theme_'+theme),frame)
+            self.assertIn('Esc/Q: back',frame)
 
     def test_extras_last_item_audition_keeps_game_and_replay_history_empty(self):
         self.open_soundtrack(); a=self.app

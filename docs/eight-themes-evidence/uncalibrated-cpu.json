@@ -1,0 +1,97 @@
+{
+  "python": "3.14.3",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "seed": 42,
+  "notes": [
+    "Real App.draw; OS curses setup/output and color attributes emulated.",
+    "Actual hard-drop input handler and engine produce each semantic cue.",
+    "PNG uses exact Braille masks and Windows fonts; not a native terminal font capture.",
+    "Performance excludes terminal transfer and physical keyboard input.",
+    "Shared Windows host; timings do not guarantee performance on other terminals or machines."
+  ],
+  "performance": {
+    "cathedral": {
+      "frames": 240,
+      "mean_ms": 13.729,
+      "p95_ms": 23.239,
+      "max_ms": 82.078
+    },
+    "cyberpunk": {
+      "frames": 240,
+      "mean_ms": 11.83,
+      "p95_ms": 20.72,
+      "max_ms": 144.33
+    },
+    "space": {
+      "frames": 240,
+      "mean_ms": 8.01,
+      "p95_ms": 12.162,
+      "max_ms": 175.526
+    },
+    "fire": {
+      "frames": 240,
+      "mean_ms": 10.952,
+      "p95_ms": 18.572,
+      "max_ms": 234.316
+    },
+    "crt": {
+      "frames": 240,
+      "mean_ms": 7.677,
+      "p95_ms": 13.014,
+      "max_ms": 19.377
+    },
+    "mono": {
+      "frames": 240,
+      "mean_ms": 5.238,
+      "p95_ms": 11.047,
+      "max_ms": 14.109
+    },
+    "abyss": {
+      "frames": 240,
+      "mean_ms": 9.172,
+      "p95_ms": 12.28,
+      "max_ms": 361.052
+    },
+    "aurora": {
+      "frames": 240,
+      "mean_ms": 10.552,
+      "p95_ms": 15.276,
+      "max_ms": 398.643
+    }
+  },
+  "source_hashes": {
+    "__init__.py": "0e5c2eef42a91e8cc65feefa7d3c660758e88b501a47ec8d3c9fedcc634c7f24",
+    "__main__.py": "fea4702225b572401e01d1a222d0d4ec36cd333caddc2a3267b1d2401780d4e8",
+    "art.py": "d83deaec3315cf19814f8c4945c1476d9d2de8ba808b97f73644a565c61901b6",
+    "art_director.py": "1433f9fe8fe65f3f32abe1db3f4fab01e6e17a02ae54c2aa0f64338aea3a6530",
+    "art_ui.py": "0af2cc5e84c807432d91165f6fd497aa6899533fb5b3a1b1c0538bffc8d82aa1",
+    "asset_check.py": "a772ddc5b7bdb64ce819af6dfc472eb09951926891ca00d45ed09a654c40556f",
+    "audio.py": "d4d2a8136842d16fd2b60a89642b78397f95be1f94a88fb7dc81294ea0571d6c",
+    "audio_events.py": "bf6adbab43c0919fba1be039df4c8843fb75501abda04dbfed4f0a72552f4592",
+    "autoplay.py": "ce60b44fe12caf756c6823f90166fb1405b4b5eccbbee7e252463efba5c66510",
+    "cathedral.py": "7968c9016a76b42f397efacedee056932a73de491e9565807302c895293f5481",
+    "effects.py": "68a401583f88bf1a1b62e4721bff83c4fb3392984c372bb628c56289f52bbffe",
+    "engine.py": "816336a7e23354532a3d777fcd2af7168295de3923a94b62567a414eb341f5dd",
+    "expansion_ui.py": "14f5a5ba11226794f9b12c1da19f86373b1b5e96f089fc7747e791f9da147293",
+    "gallery_art.py": "b150e936aac6bebcf91502e70ba6c309d9308de2ad427ddcdd8268851702aa4b",
+    "i18n.py": "ff642136ab38ec8c938fe78560ccdac964d252137b7c32258de1758dc2aca57e",
+    "particles.py": "d176d497504506eb094fd444a5ec2fe13b8015f9b7eefb3eb9b8391c7c189222",
+    "replay.py": "76ef03f62b8ba5422f592639a7d0b67e7b64fcd19de07c061b8af4341287aa39",
+    "scenes.py": "e7e11c4f04b581e0af80bce7225cdd14cde3351e149af2e9517ada685b5bab48",
+    "session.py": "41e416acfaf822d9d049dd6a362364fdf0299dc8324fe286df730945bf994451",
+    "soundtrack.py": "8dc902248d6027e2d0b3c5f38672f6801dbfaa56e71c353bf9365b455a0dcb54",
+    "storage.py": "ed8c30137a4135a7b5040e6bf9423a8d83a8fef61f18638f459f545237a623a1",
+    "terminal.py": "b62bcc63c575cb18a5c4bd7f1c6921acbf1c962cebf37086ad875e477f1c08d9",
+    "theme_actions.py": "b8b556f533afb95e36d859157ebdce5ad6f3216ab71437fe6183995ad9e86c52",
+    "theme_art.py": "1108a9384ee94ba7bc2411ec8eba9f3366853180271e902feca2d1ef122ce6f8",
+    "theme_atmosphere.py": "84712bfddb57a843c23543b8e17208da625ea5ad48cc9c13c0507fe643f77a38",
+    "theme_nature.py": "6de1db0a3d50738c91ef58a8df288e2159c4237929d8a1602ffa4fa8e88aeeae",
+    "theme_surfaces.py": "0acb10b12e00bd762c4e67ee200fe07e696676cca868832a122d262634bf3421",
+    "themes.py": "51040de862b32108f5a343744892be8cc0eadc4a25ecd9b990a6e78b5f222e35",
+    "ui.py": "a40913835cf11ed54f9a33f6927f9f81ea88ec3d1398f4786676aec0b74d3aac",
+    "visual_state.py": "eb9e91e637fd70bcdebec22e05c2055f8cebf347dae3fbfb2fba1babae2d7be8",
+    "windows_audio.py": "038b69cb5d8aa0e5cf70cf70be8d847ca63c6b70e846f38e4b3d1d38c55a8254",
+    "test_theme_ceremonies.py": "6692b236cd493838bd20843c0f4083ad01130f2b660e9b8a9e75b609e6b5d73b",
+    "theme_ceremony_probe.py": "1c4bb4595d46f42c77c5d352bd4d68f01ea05d9a75c3ce9a7431ce24d4bf8107"
+  }
+}

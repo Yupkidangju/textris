@@ -4,6 +4,7 @@ from .engine import HIDDEN
 from .scenes import BACKGROUNDS,EFFECTS,THEMES,PROFILES
 from .replay import Player
 from .autoplay import Autoplayer
+from .themes import music_theme
 
 CATALOG=BACKGROUNDS+EFFECTS
 HUB=('gallery','profiles','boss','replays','autoplay','soundtrack')
@@ -146,7 +147,7 @@ class ExpansionUI:
 
     def soundtrack_tracks(self):
         collection=SOUNDTRACK_COLLECTIONS[self.soundtrack_collection_selection]
-        return [track for track in self.audio.catalog if collection=='all' or track['theme']==collection]
+        return [track for track in self.audio.catalog if collection=='all' or track['theme']==music_theme(collection)]
 
     def soundtrack_collection_label(self,collection):
         return self.t('soundtrack_traditional' if collection=='classic' else
@@ -155,7 +156,7 @@ class ExpansionUI:
     def draw_soundtrack_collections(self):
         tracks=self.audio.catalog
         lines=[self.t('soundtrack_collection',collection=self.soundtrack_collection_label(collection),
-                      count=sum(collection=='all' or track['theme']==collection for track in tracks))
+                      count=sum(collection=='all' or track['theme']==music_theme(collection) for track in tracks))
                for collection in SOUNDTRACK_COLLECTIONS]
         self.panel(self.t('soundtrack'),lines,self.soundtrack_collection_selection,self.t('soundtrack_hint_open'))
         h,w=self.win.getmaxyx()
@@ -206,9 +207,12 @@ class ExpansionUI:
         self.soundtrack_scroll=max(0,min(self.soundtrack_scroll,self.soundtrack_selection))
         if self.soundtrack_selection>=self.soundtrack_scroll+rows:
             self.soundtrack_scroll=self.soundtrack_selection-rows+1
-        theme=self.soundtrack_collection_label(SOUNDTRACK_COLLECTIONS[self.soundtrack_collection_selection])
+        collection=SOUNDTRACK_COLLECTIONS[self.soundtrack_collection_selection]
+        theme=self.soundtrack_collection_label(collection)
         self.center(1,self.t('soundtrack'),self.art_attr(9))
         self.center(2,self.t('soundtrack_collection',collection=theme,count=len(tracks)),self.art_attr(4))
+        if music_theme(collection)!=collection:
+            self.center(3,self.t('soundtrack_source',theme=self.t('theme_'+music_theme(collection))),curses.A_DIM)
         def line(row,text,attr=0): self.put(row,left,clip(text,available),attr)
         def duration(seconds):
             seconds=max(0,int(seconds)); return f'{seconds//60:02}:{seconds%60:02}'

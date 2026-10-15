@@ -20,7 +20,13 @@ def shade(canvas, x, y, light, style=3, depth=6, hatch=False):
 
 
 def render_surfaces(c, t, theme):
-    globals()[theme](c, t)
+    if theme in ('abyss','aurora'):
+        from .theme_nature import abyss_surface, aurora_surface
+        (abyss_surface if theme=='abyss' else aurora_surface)(c,t)
+    else:
+        globals()[theme](c, t)
+        from .theme_atmosphere import render_detail
+        render_detail(c,t,theme)
     if c.context.width < 95 or c.context.height < 34:
         compact(c, t, theme)
 
@@ -165,6 +171,7 @@ def compact(c,t,theme):
         'cathedral':('/\\','<>','||','/\\'), 'cyberpunk':('[]','==','|:','[]'),
         'space':('.*','()','+.', '()'), 'fire':('/^','^^','~^','~~'),
         'crt':('+-','|=','-+','::'), 'mono':('/\\','##','\\/','//'),
+        'abyss':('()','~~',':o',')('), 'aurora':('/\\','*+','|:', '\\/'),
     }
     motif=patterns[theme]
     for side in (-1,1):

@@ -1,0 +1,11 @@
+{
+  "scope": "same color transform without mock call recording; product renderer unchanged",
+  "pngs": 80,
+  "all_identical": true,
+  "profile_frames": 120,
+  "mock_calls": 46320,
+  "mock_cumulative_seconds": 0.719,
+  "initial_p95_cathedral": 21.477,
+  "repeat_uncalibrated_p95_cathedral": 23.239,
+  "calibrated_p95_cathedral": 11.064
+}

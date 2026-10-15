@@ -80,18 +80,18 @@ def main():
                'Actual hard-drop input handler and engine produce each semantic cue.',
                'PNG uses exact Braille masks and Windows fonts; not a native terminal font capture.',
                'Performance excludes terminal transfer and physical keyboard input.',
-               'Shared Windows host with concurrent remediation agents; timing is not an isolated benchmark.'],
+               'Shared Windows host; timings do not guarantee performance on other terminals or machines.'],
         producer={}, semantics={}, matrix={}, performance={}, source_hashes={})
-    for source in ('textris/theme_art.py', 'tests/test_theme_ceremonies.py', __file__):
+    for source in [*sorted(Path('textris').glob('*.py')), Path('tests/test_theme_ceremonies.py'), Path(__file__)]:
         results['source_hashes'][Path(source).name] = hashlib.sha256(Path(source).read_bytes()).hexdigest()
     frames = []
     with ExitStack() as stack:
         for name, value in [('A_COLOR',0xff00),('A_BOLD',0x200000),('A_DIM',0x100000),('A_REVERSE',0x40000)]:
             stack.enter_context(patch.object(curses, name, value))
         stack.enter_context(patch.object(App, '_setup'))
-        stack.enter_context(patch('curses.init_pair'))
-        stack.enter_context(patch('curses.color_pair', side_effect=lambda n:n<<8))
-        stack.enter_context(patch('curses.doupdate'))
+        stack.enter_context(patch('curses.init_pair', new=lambda *args:None))
+        stack.enter_context(patch('curses.color_pair', new=lambda n:n<<8))
+        stack.enter_context(patch('curses.doupdate', new=lambda:None))
         layout = game_layout(120, 40)
         context = RenderContext(120, 40, layout.protected)
         for theme in THEMES:
@@ -187,7 +187,8 @@ frames.forEach((frame,i)=>{const option=document.createElement('option');option.
 function show(){document.getElementById('screen').innerHTML=frames[+choice.value][1]}choice.onchange=show;show();</script>'''.replace('DATA',data)
     (out/'frames.html').write_text(html,encoding='utf-8')
     (out/'results.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
-    print(json.dumps(dict(out=str(out),producer_checks=36,matrix_checks=432,
+    print(json.dumps(dict(out=str(out),producer_checks=sum(map(len,results['producer'].values())),
+        matrix_checks=sum(map(len,results['matrix'].values())),
         semantics={theme:results['semantics'][theme]['distinct_count'] for theme in THEMES},
         performance={theme:{k:v for k,v in item.items() if k!='samples_ms'} for theme,item in results['performance'].items()}),indent=2))
 

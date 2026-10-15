@@ -4,6 +4,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 from tests import test_ui
+from textris.themes import THEMES
 
 
 class TerminalCompatTests(unittest.TestCase):
@@ -35,7 +36,7 @@ class TerminalCompatTests(unittest.TestCase):
     def test_ascii_output_covers_every_screen_and_dynamic_text(self):
         a=self.app;a.settings['ascii']=True;a.start();a.notice='save_read'
         with patch('curses.doupdate'):
-            for theme in ('cathedral','cyberpunk','space','fire','crt','mono'):
+            for theme in THEMES:
                 a.settings['theme']=theme
                 for screen in ('menu','playing','ready','paused','help','settings','profiles','hub','records','result'):
                     a.screen=screen;a.help_return='playing';a.now=100

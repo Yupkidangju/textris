@@ -1,7 +1,7 @@
 """플레이어별 허용 여백에 그리는 유한 조작과 읽기 전용 상태 연출."""
 import math
+from .themes import THEMES
 
-THEMES=('cathedral','cyberpunk','space','fire','crt','mono')
 ACTIONS=('drop','lock','rotate','hold','focus','move')
 
 
@@ -12,6 +12,7 @@ class _Brush:
         self.remaining=budget
         self.flash=flash
         self.quality=max(.15,min(1.,canvas.context.quality))
+        self.depth=-5
 
     def put(self,x,y,glyph,style=3):
         x,y=round(x),round(y)
@@ -20,7 +21,7 @@ class _Brush:
         if self.regions is not None and not any(a<=x<a+w and b<=y<b+h for a,b,w,h in self.regions):
             return
         self.remaining-=1
-        self.canvas.put(x,y,glyph,style if self.flash else 3,-5)
+        self.canvas.put(x,y,glyph,style if self.flash else min(style,3),self.depth)
 
     def line(self,a,b,style=3):
         dx,dy=b[0]-a[0],b[1]-a[1]
@@ -36,7 +37,7 @@ class _Brush:
 
 
 def _motif(brush,theme,x,y,r,p,style=3):
-    """색 없이도 구별되는 종/회로/궤도/불꽃/벡터/판화 골격."""
+    """색 없이도 구별되는 종/회로/궤도/불꽃/벡터/판화/해파리/결정 골격."""
     if theme=='cathedral':
         brush.path(((x-r,y+1),(x-r,y),(x,y-r*.6),(x+r,y),(x+r,y+1)),style)
         brush.line((x-r,y+1),(x+r,y+1),style)
@@ -60,10 +61,75 @@ def _motif(brush,theme,x,y,r,p,style=3):
         brush.path(((x-r,y),(x-r/2,y-r*.55),(x+r/2,y+r*.55),(x+r,y)),style)
         brush.line((x-r,y+2),(x+r,y+2),style)
         brush.put(x+(2*p-1)*r,y,'+',style)
+    elif theme=='abyss':
+        brush.path(((x-r,y),(x-r*.6,y-r*.5),(x+r*.6,y-r*.5),(x+r,y)),style)
+        brush.line((x-r,y),(x+r,y),style)
+        for i in range(max(1,int(3*brush.quality))):
+            dx=(i-1)*r*.55
+            brush.path(((x+dx,y),(x+dx+math.sin(p*6+i),y+1),
+                        (x+dx+math.sin(p*6+i+1),y+2)),style)
+        brush.put(x-r,y,'(',style);brush.put(x+r,y,')',style)
+        brush.put(x+math.sin(p*5)*r*.5,y-r*.5-1,'o',style)
+        brush.put(x-r*.5,y+3,'~',style);brush.put(x+r*.5,y+3,'~',style)
+    elif theme=='aurora':
+        brush.line((x,y+r*.6),(x,y-r*.8),style)
+        for side in (-1,1):
+            brush.path(((x,y+.5),(x+side*r*.6,y-r*.25),(x+side*r,y-r*.7)),style)
+            brush.line((x+side*r*.6,y-r*.25),(x+side*r,y),style)
+        brush.put(x,y,'+',style)
+        for i in range(max(1,int(3*brush.quality))):
+            dx=(i-1)*r*.7
+            brush.put(x+dx,y-r-1-math.sin(p*5+i)*.5,'*' if i%2 else '|',style)
     else:
         brush.path(((x-r,y),(x,y-r*.6),(x+r,y),(x,y+r*.6),(x-r,y)),style)
         for i in range(max(1,int(4*brush.quality))):
             brush.put(x-r/2+i,y+(i%2),'#' if i%2 else '/',style)
+
+
+def _action_pose(action,board,landing,row,side,p,strength):
+    bx,by=board
+    x=bx-3 if side<0 else bx+24
+    r=1+strength*(1.2+2*p)
+    if action in ('drop','lock'):
+        return x,by+1+landing,r*(1+p if action=='lock' else 1)
+    if action=='rotate':
+        return x+math.cos(p*math.tau)*1.3,by+5+p*4,r
+    if action=='hold':
+        return x+side*(1-p)*2,by+3+p*3,r*.7
+    if action=='move':
+        return x+side*(p*3-1.5),by+1+row,r*.65
+    return x,by+9-p*2,r*.65
+
+
+def _wake(brush,theme,x,y,r,p,style):
+    """주 문양을 복제하지 않고 몇 셀의 테마별 여운만 남긴다."""
+    spread=min(2,max(1,r*.45))
+    if theme=='cathedral':
+        brush.put(x,y,"'",style)
+        brush.put(x-spread,y+1,'(',style);brush.put(x+spread,y+1,')',style)
+    elif theme=='cyberpunk':
+        brush.path(((x-spread,y+1),(x-spread,y),(x,y),(x,y-1)),style)
+        brush.put(x+spread,y-1,':',style)
+    elif theme=='space':
+        for i in range(3):
+            a=p*math.tau+i*.8
+            brush.put(x+math.cos(a)*spread,y+math.sin(a),'.',style)
+        brush.put(x,y-1,'*',style)
+    elif theme=='fire':
+        brush.put(x+math.sin(p*8),y-r-1,'^',style)
+        brush.put(x-spread,y-r,',',style);brush.put(x+spread,y-r+1,':',style)
+    elif theme=='crt':
+        brush.path(((x-spread,y+1),(x,y-1),(x+spread,y)),style)
+        brush.put(x,y+2,':',style)
+    elif theme=='abyss':
+        brush.put(x,y-1,'o',style)
+        brush.put(x-spread,y+1,'~',style);brush.put(x+spread,y+1,'~',style)
+    elif theme=='aurora':
+        brush.put(x,y-1,'+',style)
+        brush.put(x-spread,y,'|',style);brush.put(x+spread,y+1,'*',style)
+    else:
+        brush.put(x-spread,y,'/',style);brush.put(x,y-1,'/',style)
+        brush.put(x+spread,y-2,'.',style)
 
 
 def render_local(canvas,board,t,cue,theme,intensity,flash):
@@ -75,44 +141,49 @@ def render_local(canvas,board,t,cue,theme,intensity,flash):
     if viewports and viewport is None:
         return
     regions=viewport.effect_regions if viewport else None
-    brush=_Brush(canvas,regions,180)
+    brush=_Brush(canvas,regions,180,flash)
     bx,by=board
     p=cue.phase(t)
     strength=min(1.6,max(.05,intensity*cue.power))
-    radius=1+strength*(1.2+2*p)
     coords=cue.coords[:4]
     landing=max((pos[1] for pos in coords),default=18)
     landing=max(0,min(19,landing))
+    row=max(0,min(19,sum(pos[1] for pos in coords)/len(coords) if coords else 8))
     style=5 if flash and p<.25 and strength>.5 else 3
     for side in (-1,1):
-        x=bx-3 if side<0 else bx+24
+        edge=bx-3 if side<0 else bx+24
+        x,y,radius=_action_pose(cue.name,board,landing,row,side,p,strength)
         if cue.name=='drop':
-            y=by+1+landing
             length=2+int((1-p)*strength*9)
             brush.line((x,y-length),(x,y),style)
             _motif(brush,theme,x,y,radius,p,style)
         elif cue.name=='lock':
-            _motif(brush,theme,x,by+1+landing,radius*(1+p),p,style)
+            _motif(brush,theme,x,y,radius,p,style)
         elif cue.name=='rotate':
-            y=by+5+p*4
-            _motif(brush,theme,x+math.cos(p*math.tau)*1.3,y,radius,p,style)
-            brush.put(x+side*radius,y-2,'<' if side<0 else '>',style)
+            _motif(brush,theme,x,y,radius,p,style)
+            brush.put(edge+side*radius,y-2,'<' if side<0 else '>',style)
         elif cue.name=='hold':
-            y=by+3+p*3
-            _motif(brush,theme,x+side*(1-p)*2,y,radius*.7,p,style)
-            brush.line((x,y+3),(x-side*(2+strength*2),y+3),style)
-            brush.put(x-side*(2+strength*2),y+3,'>' if side<0 else '<',style)
+            _motif(brush,theme,x,y,radius,p,style)
+            brush.line((edge,y+3),(edge-side*(2+strength*2),y+3),style)
+            brush.put(edge-side*(2+strength*2),y+3,'>' if side<0 else '<',style)
         elif cue.name=='move':
-            y=by+1+max(0,min(19,sum(pos[1] for pos in coords)/len(coords) if coords else 8))
-            offset=side*(p*3-1.5)
-            _motif(brush,theme,x+offset,y,radius*.65,p,style)
-            brush.line((x-side*2,y+2),(x+offset,y+2),style)
-            brush.put(x+offset,y+2,'<' if side<0 else '>',style)
+            _motif(brush,theme,x,y,radius,p,style)
+            brush.line((edge-side*2,y+2),(x,y+2),style)
+            brush.put(x,y+2,'<' if side<0 else '>',style)
         else:
-            y=by+9-p*2
-            _motif(brush,theme,x,y,radius*.65,p,style)
+            _motif(brush,theme,x,y,radius,p,style)
             brush.path(((x-2,y-3),(x,y-3),(x,y-2)),style)
             brush.path(((x+2,y+3),(x,y+3),(x,y+2)),style)
+    # 양쪽 주 문양이 예산을 먼저 사용한다. 과거 phase의 최대 두 표본은
+    # 같은 brush의 남은 예산과 뒤쪽 깊이만 써서 본 동작을 가리지 않는다.
+    for echo in range(1,min(2,int(2*brush.quality*min(1,strength)))+1):
+        previous=p-.14*echo
+        if previous<0:
+            continue
+        brush.depth=-5+echo
+        for side in (-1,1):
+            x,y,radius=_action_pose(cue.name,board,landing,row,side,previous,strength)
+            _wake(brush,theme,x,y-echo*2,radius,previous,3-echo)
 
 
 def render_state(canvas,t,theme,state,viewport=None,*,intensity=.75,flash=True):

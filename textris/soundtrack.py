@@ -10,6 +10,7 @@ import re
 import tempfile
 import threading
 from types import MappingProxyType
+from .themes import MUSIC_THEMES
 
 SAMPLE_RATE = 44100
 CHANNELS = 2
@@ -21,7 +22,7 @@ MAX_CACHE_BYTES = 128 * 1024 * 1024
 LIMITER_CEILING = .87
 LIMITER_ATTACK_STEP = 1. / (SAMPLE_RATE * .005)
 LIMITER_RELEASE = math.exp(-1. / (SAMPLE_RATE * .08))
-THEMES = {'cathedral', 'cyberpunk', 'space', 'fire', 'crt', 'mono', 'classic'}
+THEMES = {*MUSIC_THEMES, 'classic'}
 
 
 def _number(value, low, high):

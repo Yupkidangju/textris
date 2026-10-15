@@ -5,7 +5,7 @@ from textris.scenes import THEMES
 
 
 class ThemeArtTests(unittest.TestCase):
-    def test_all_six_compositions_are_distinct_deterministic_and_protected(self):
+    def test_all_compositions_are_distinct_deterministic_and_protected(self):
         from textris.theme_art import ThemeScene
         context=RenderContext(120,40,protected=((45,8,28,24),))
         renderer=ThemeScene(); pictures=[]
@@ -15,7 +15,7 @@ class ThemeArtTests(unittest.TestCase):
             self.assertEqual(a.cells,renderer.render(context,10,theme).cells)
             self.assertFalse(any(45<=x<73 and 8<=y<32 for x,y in a.cells),theme)
             pictures.append(tuple(sorted((p,v.glyph) for p,v in a.cells.items())))
-        self.assertEqual(len(set(pictures)),6)
+        self.assertEqual(len(set(pictures)),len(THEMES))
 
     def test_ascii_shapes_and_bounded_cues_for_all_themes(self):
         from textris.theme_art import ThemeScene

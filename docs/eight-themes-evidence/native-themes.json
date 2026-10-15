@@ -1,0 +1,1388 @@
+{
+  "cases": [
+    {
+      "mode": "unicode",
+      "theme": "cathedral",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ddccb0b2ed01d1a812dd840d7d81cbd1e6cc99e40cef0b1aa33689b6a3f5fcd1"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cathedral",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "4ad9124978167bc0faf9111c320fd0b9682e7892c575929791266615e767af6e"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cathedral",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b9f8051bd2fc023702270a84710bc61d9743afcd148a78d331992467a9e601c8"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cathedral",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "2a337f899108aea9c7ade15bb8228542abfeec127665fbbe9587c2bb1f4d0c86"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cathedral",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "83f8a32fd799d77894de839bdbf3b745d523d45ceb9ac5d057c06d2267305363"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cathedral",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e3c1e30171563483d0caa16c3218d313b08cc5aca3a1554537e2335e95b02104"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cyberpunk",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "78ae538b2203fcc603d43e4cd5acb816bcc131acf5b522593f5a258417a0b99b"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cyberpunk",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "33332a8b04b60bbfd7a4621b72e1914cfcf5206548816c409b52cfa677bf9abc"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cyberpunk",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "9d540283b1f5545f1736e05a5f20edbc7527281d8a6d6e5a23786f3f1cd2cd1c"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cyberpunk",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "067c73b6d8912a4c124af006f8129f734b3f86da3a33acf5cee7185ea374e22f"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cyberpunk",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "afd5c9796a6098dcc10d09b9bdfad8ed1b17f5dca023cafbadde6be27ec1d99b"
+    },
+    {
+      "mode": "unicode",
+      "theme": "cyberpunk",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "5dc89b7410211fa2c1318fa998d37871dc8be08401a27779f122f40e069cb083"
+    },
+    {
+      "mode": "unicode",
+      "theme": "space",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "58f7e782dfbb8408ec28cd7bf1498e7a348676e74d5fbb5ebdeed91d12aff36e"
+    },
+    {
+      "mode": "unicode",
+      "theme": "space",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "20726884c458567dd93b731a998c94c7c66b1389935e0589b853d771fccd48e3"
+    },
+    {
+      "mode": "unicode",
+      "theme": "space",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ddf5246b2d7db49b511cdbed4d000f6db9a4e11bb42c531ac8b3ba14d7c8dcc8"
+    },
+    {
+      "mode": "unicode",
+      "theme": "space",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "45fe859e9ff74fa626022862530f977eebe24a4d2a836eb1b27581db70950c96"
+    },
+    {
+      "mode": "unicode",
+      "theme": "space",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "517847d992575c92ad63a0bb894df15312fbcfa5dd0dd3b11e1e82dd84bfb419"
+    },
+    {
+      "mode": "unicode",
+      "theme": "space",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "3a48662d78b00ef8b0628c509ce702179ad19f9e28d7f556600cbea451897368"
+    },
+    {
+      "mode": "unicode",
+      "theme": "fire",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ea4804fc45bfa15f5dd22156341ae3a3a5e87908150c104b3966e88082b24a63"
+    },
+    {
+      "mode": "unicode",
+      "theme": "fire",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ad96ac5bfe4922c85252723fd861dfb445db2746fbbb0f6cb37f34532bf020d1"
+    },
+    {
+      "mode": "unicode",
+      "theme": "fire",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ca2d85dd9300aba346eca94cdd9278d6f0cb9b5347e7be20ccfee472b6c5a7ee"
+    },
+    {
+      "mode": "unicode",
+      "theme": "fire",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "32c2c1540bf7000957593835df1cd04cab58d28531f0c7690108b2d8d06f516c"
+    },
+    {
+      "mode": "unicode",
+      "theme": "fire",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "15e6c87ddb149421dd45ae2c89d5533c3f23fc0ded20c9126e56030313293d19"
+    },
+    {
+      "mode": "unicode",
+      "theme": "fire",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "9f5abb6156c0879d9830f442a06ade62b1ca1ecfac1cb49e6778e819f373853c"
+    },
+    {
+      "mode": "unicode",
+      "theme": "crt",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "bf1a1fc9a8f655977640590d29e1961798f169198d4d53bf298c3dfe67145b37"
+    },
+    {
+      "mode": "unicode",
+      "theme": "crt",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "9fdfea47c3bf6b75ab1178d3cb0d776588f5b2db02ba37f882d0cdda2a1915ef"
+    },
+    {
+      "mode": "unicode",
+      "theme": "crt",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "38376d69c1fd9e5631b71d1d35be0fc7e536c64a42b3c0b91a5fdac8458db17f"
+    },
+    {
+      "mode": "unicode",
+      "theme": "crt",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ea5c898186dc483bbf4ec58eefac6b3169c545f44ad3ad23041d43e83e56da56"
+    },
+    {
+      "mode": "unicode",
+      "theme": "crt",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "5e770423784379d62f12a5b8f69a7cef75de372a7eef71ff6cf7788c2649218d"
+    },
+    {
+      "mode": "unicode",
+      "theme": "crt",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "4b38fe117022b270361e537445ce75e47f5c9171081898767c08f1009abae645"
+    },
+    {
+      "mode": "unicode",
+      "theme": "mono",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "19f8acfc8d10b66f02b2e8f1d557242d64cdb2547aa88937989f2d3da1c7e64c"
+    },
+    {
+      "mode": "unicode",
+      "theme": "mono",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "c7d98d437364910d88d6a9f77f07db4a934aa11c374ec4325dc504b1ac43ed0e"
+    },
+    {
+      "mode": "unicode",
+      "theme": "mono",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "7b005813a49a0d77d540306e3605a72090cc38948c6e2c43af24a2e44b12b395"
+    },
+    {
+      "mode": "unicode",
+      "theme": "mono",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "4e4c1fc56f338ffde28ece65de3e7e7332d6b87d0e2f93b75c04fb82358121ee"
+    },
+    {
+      "mode": "unicode",
+      "theme": "mono",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "013316dd4d0fbaa7b1ea7730852b1d982ea04180cf35e3c5da6e102175be1c7e"
+    },
+    {
+      "mode": "unicode",
+      "theme": "mono",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "7e79624912fc72bcf6899115858b4ebfa5e387dafad10930754fda4cf6981f8a"
+    },
+    {
+      "mode": "unicode",
+      "theme": "abyss",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "51f3f649893a6de7e54a66bcccbb97e2eabf1909b7b205edf8ea61f6f714dcc3"
+    },
+    {
+      "mode": "unicode",
+      "theme": "abyss",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "6ec7a2b586314dedc7fcc57089b8f861f5ee2ebaab5670831d99ce5ee8948aaf"
+    },
+    {
+      "mode": "unicode",
+      "theme": "abyss",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "a5aab1b195ea686397146fb65d274a80c20006de573dd1ddb39ddc50f412b990"
+    },
+    {
+      "mode": "unicode",
+      "theme": "abyss",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "69d1c257c1dfb31825d8dfd41255b2f5775f202801a4a4e62e2a5249e00250c5"
+    },
+    {
+      "mode": "unicode",
+      "theme": "abyss",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "d613e8414217348a9380d79449428df70c5b75642f1dcc699a109ad086ea61e2"
+    },
+    {
+      "mode": "unicode",
+      "theme": "abyss",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e5b6c19a4e4effa874fa227134de688bd7b2e65994e8e7e84c4ba4a86bbf46fd"
+    },
+    {
+      "mode": "unicode",
+      "theme": "aurora",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b036cf82cb53a16adcdd652add4d08d437defadb225c618bb453fecfbc03df31"
+    },
+    {
+      "mode": "unicode",
+      "theme": "aurora",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b2ed5484360b48f8da3534f04f9fea541ce127c9966bebd521c14ad65e2ab216"
+    },
+    {
+      "mode": "unicode",
+      "theme": "aurora",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "766576d87ae3231053756fdd9b674085f518f77470894c596c802d369d7b99d0"
+    },
+    {
+      "mode": "unicode",
+      "theme": "aurora",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "48923b27cdb5ebe4ffb36bd4654d40880bbe6927fc893a9c8cacc6d9e9f0c4df"
+    },
+    {
+      "mode": "unicode",
+      "theme": "aurora",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ef9a4d037b2673ed1dad957810fb106049033b48db8689d86360a5b7d7f4c6af"
+    },
+    {
+      "mode": "unicode",
+      "theme": "aurora",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "35a9c1c383596e1a309bd22ed998763e535fa93f5f190abdb1e4abad0e9f2f0a"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cathedral",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b6218babcc46ac2577926fedf08f9d1f78ceff59c5ea1cdf1170dee7a4cdac3c"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cathedral",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "5d3ea08dc926cb9093bbbc4138a280273af9371d3261ad637fc817ed46b6a37c"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cathedral",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "714024c2f0a53fa8752df8f1ce5571004e7d387988dced006065393e1aba7354"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cathedral",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b77b0848474ecd00e6245a4c9e346e1bbd406328df50479356bd283028ca855c"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cathedral",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e19e08e9c50a20f6480a373b912fdb5831f8addf3dd4271937ac2151d0238ef6"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cathedral",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ecdfeed9ed24d66c7de066192acf0ed9f4e148b709b3fef7036b1cf2c6f2b886"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cyberpunk",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "c00b9ea00b27df68f54d9715ef3b1e06cfdb61d40c616b752b7a3b2c9ff18c0c"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cyberpunk",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e013c9371c02d6302c25679ed5282582e1da12458440823c21f7c311feaffe9b"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cyberpunk",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "adf9e754761d225437d69049ec0094b4d9f1cce21bf0f0d131b38648e6ba4d91"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cyberpunk",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "1e5a6cde1e1449b341228cd446064fb50639e80b47f8683dcd3780aa6d1b0306"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cyberpunk",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "afc6a8a7b9beb6217ab955380c741b8f67bfdbb5eef99f43522504ce36759280"
+    },
+    {
+      "mode": "ascii",
+      "theme": "cyberpunk",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "9b3ddf20d6e544940cdf860e50cc4a9c53730cbc661b07a328b9d0265ed66a8a"
+    },
+    {
+      "mode": "ascii",
+      "theme": "space",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "c9cc940883f35c5f67a089fe6151a3db8f25c1dfd62eb9d2d6cc64e67c8d0962"
+    },
+    {
+      "mode": "ascii",
+      "theme": "space",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "712b4dd5d7dbcaeeb89934546b16dedbad102102d84553bab00a2b55b55c8a0f"
+    },
+    {
+      "mode": "ascii",
+      "theme": "space",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "821e548d4444a5cfbd174ce7477786cdce24553189b4b3c903b9383345073b7e"
+    },
+    {
+      "mode": "ascii",
+      "theme": "space",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "f3eb31423aa352f038754fb5f86a44159ee86810594492a3c08d22836c447b8b"
+    },
+    {
+      "mode": "ascii",
+      "theme": "space",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "03b0e3a8fc3641436b55e016275908883b8c51b8e67f0c53521708210c3a0203"
+    },
+    {
+      "mode": "ascii",
+      "theme": "space",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "39e5fd831d8d20120ecc6e10331162cf4e981496d450d70fed23e814f2ef3c96"
+    },
+    {
+      "mode": "ascii",
+      "theme": "fire",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "715a7ca313458613bc7d2b0e68b2c71d39fca180e460f0398cfcd0ada3ffd98b"
+    },
+    {
+      "mode": "ascii",
+      "theme": "fire",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "38d996839cae526f53b86641626e40a7550b3dd75e825de9faa1714d35f96437"
+    },
+    {
+      "mode": "ascii",
+      "theme": "fire",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "1728281b8e66bd5db3adcec54f84d11b8d2ebc2b3c5d7bdb1e6e241094cddb76"
+    },
+    {
+      "mode": "ascii",
+      "theme": "fire",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "f7197cd7b6959fce9dff5157b8208ef532e3c8d7d3949c17830f16c77ce37b92"
+    },
+    {
+      "mode": "ascii",
+      "theme": "fire",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "af80497250da31980dbf3bbe7a6ed1563bff23e86f3d1dc6f9037ba28c2637fa"
+    },
+    {
+      "mode": "ascii",
+      "theme": "fire",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b175fcf25bc4298873f9d48ba05b7ebcef524931317ffee0912ad67a313331a0"
+    },
+    {
+      "mode": "ascii",
+      "theme": "crt",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "3994bb821c9d2dd9dc25b09b792e19ddbf7264b4e428f8fdd6a5f83c36b6f0ae"
+    },
+    {
+      "mode": "ascii",
+      "theme": "crt",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "382fd6f7ec1e02f062efcbcb524728b605b824c5d28a2250055968f1b1ae3aa8"
+    },
+    {
+      "mode": "ascii",
+      "theme": "crt",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "cff1e7ffa17dbc1a09efbbc3b111842a91210149ef4b87f2e641c42b90f0ead7"
+    },
+    {
+      "mode": "ascii",
+      "theme": "crt",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "d2fb82c28e4690f5d039de4b634f13524c960a86bf91956a6ea17cc23c3e3b97"
+    },
+    {
+      "mode": "ascii",
+      "theme": "crt",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "c7583fa79fd33d92a735df7953d5a6d29b0c593a0f78ce7330c3689142bdd350"
+    },
+    {
+      "mode": "ascii",
+      "theme": "crt",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "65edfa4fe04c2d33f909adde5f1bb1c2059914d11be036e59783a4f63f291a15"
+    },
+    {
+      "mode": "ascii",
+      "theme": "mono",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "7e56cc66e33e4c68394e9f72acf9e0ef6e00ef839ebdf50c4122e2b6994cee40"
+    },
+    {
+      "mode": "ascii",
+      "theme": "mono",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "01ca2b0f83e9bbc03932e6e720823ae133def20a4947b8e8e9a2870cd5c8f911"
+    },
+    {
+      "mode": "ascii",
+      "theme": "mono",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "cdf7ee0b12ca3f73ff621f65b778f65f2c7ec22628a7eeab607ee081e8181b42"
+    },
+    {
+      "mode": "ascii",
+      "theme": "mono",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "3a3d0caa689f6bbb1eda382016a7a3eda485c1ca124267aed37fa8784a0cf85b"
+    },
+    {
+      "mode": "ascii",
+      "theme": "mono",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "826e91cda7aaf615d8d9d37d2f105172abcdacb8cc3b69b50f3e09bcfb3d598c"
+    },
+    {
+      "mode": "ascii",
+      "theme": "mono",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "d8c83b4e0604bbc74105a9b094b8ca6b21d7c2b964dd20cef73545d4183e93c9"
+    },
+    {
+      "mode": "ascii",
+      "theme": "abyss",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "1e3ce4921513319233fcdd5cd77c7c85554eaf723c5e1d8c773a7cf17691456d"
+    },
+    {
+      "mode": "ascii",
+      "theme": "abyss",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "81ddb530947d0c06c086772586827da2c0761e166c1138eac1486bdc7fb424e2"
+    },
+    {
+      "mode": "ascii",
+      "theme": "abyss",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "0d02dc2c4f7f4143f5646ea853ac8ce670441124501f2f13bc4e68aba79e193a"
+    },
+    {
+      "mode": "ascii",
+      "theme": "abyss",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "a4ff8c53c01536254f6da3f70986fc86ebd78d00dc9f96dad08ef0fa08b31e6b"
+    },
+    {
+      "mode": "ascii",
+      "theme": "abyss",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "6a2bee4c821e34cece3e82726ed6b8f2b10609474f7eedfd947756f9d360bcef"
+    },
+    {
+      "mode": "ascii",
+      "theme": "abyss",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "03e39b8c05c2d6f6f34c38377588ca3d0342b5ab7b6715e50332f45621964ef4"
+    },
+    {
+      "mode": "ascii",
+      "theme": "aurora",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e76c54d7fa31b6ef2cbbe5081be92945b7ebbed3a02473d3656c3f618f15c2c1"
+    },
+    {
+      "mode": "ascii",
+      "theme": "aurora",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e6ad18e5a32d1b09be066139cfe39b3553d23a2a54df7da7d0403bb93dff0a50"
+    },
+    {
+      "mode": "ascii",
+      "theme": "aurora",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "776a048c7bf223abd36abe192456f99b6cdb210f7a958130ce0706acbb5fc640"
+    },
+    {
+      "mode": "ascii",
+      "theme": "aurora",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "7460d6cfe2c2f7087dd11d60f09c17849e588b9a38c2462dade0fcd527603f6a"
+    },
+    {
+      "mode": "ascii",
+      "theme": "aurora",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "0132bc70a983eda0a72c09eb154ec01228db2ba29394bf176dee953f65faaa38"
+    },
+    {
+      "mode": "ascii",
+      "theme": "aurora",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "56f7822595f2fe7b9327d5a2305fcc466778dd501c0860604e173be86bbd7c71"
+    },
+    {
+      "mode": "mono",
+      "theme": "cathedral",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ddccb0b2ed01d1a812dd840d7d81cbd1e6cc99e40cef0b1aa33689b6a3f5fcd1"
+    },
+    {
+      "mode": "mono",
+      "theme": "cathedral",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "4ad9124978167bc0faf9111c320fd0b9682e7892c575929791266615e767af6e"
+    },
+    {
+      "mode": "mono",
+      "theme": "cathedral",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b9f8051bd2fc023702270a84710bc61d9743afcd148a78d331992467a9e601c8"
+    },
+    {
+      "mode": "mono",
+      "theme": "cathedral",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "2a337f899108aea9c7ade15bb8228542abfeec127665fbbe9587c2bb1f4d0c86"
+    },
+    {
+      "mode": "mono",
+      "theme": "cathedral",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "83f8a32fd799d77894de839bdbf3b745d523d45ceb9ac5d057c06d2267305363"
+    },
+    {
+      "mode": "mono",
+      "theme": "cathedral",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e3c1e30171563483d0caa16c3218d313b08cc5aca3a1554537e2335e95b02104"
+    },
+    {
+      "mode": "mono",
+      "theme": "cyberpunk",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "78ae538b2203fcc603d43e4cd5acb816bcc131acf5b522593f5a258417a0b99b"
+    },
+    {
+      "mode": "mono",
+      "theme": "cyberpunk",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "33332a8b04b60bbfd7a4621b72e1914cfcf5206548816c409b52cfa677bf9abc"
+    },
+    {
+      "mode": "mono",
+      "theme": "cyberpunk",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "9d540283b1f5545f1736e05a5f20edbc7527281d8a6d6e5a23786f3f1cd2cd1c"
+    },
+    {
+      "mode": "mono",
+      "theme": "cyberpunk",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "067c73b6d8912a4c124af006f8129f734b3f86da3a33acf5cee7185ea374e22f"
+    },
+    {
+      "mode": "mono",
+      "theme": "cyberpunk",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "afd5c9796a6098dcc10d09b9bdfad8ed1b17f5dca023cafbadde6be27ec1d99b"
+    },
+    {
+      "mode": "mono",
+      "theme": "cyberpunk",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "5dc89b7410211fa2c1318fa998d37871dc8be08401a27779f122f40e069cb083"
+    },
+    {
+      "mode": "mono",
+      "theme": "space",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "58f7e782dfbb8408ec28cd7bf1498e7a348676e74d5fbb5ebdeed91d12aff36e"
+    },
+    {
+      "mode": "mono",
+      "theme": "space",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "20726884c458567dd93b731a998c94c7c66b1389935e0589b853d771fccd48e3"
+    },
+    {
+      "mode": "mono",
+      "theme": "space",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ddf5246b2d7db49b511cdbed4d000f6db9a4e11bb42c531ac8b3ba14d7c8dcc8"
+    },
+    {
+      "mode": "mono",
+      "theme": "space",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "45fe859e9ff74fa626022862530f977eebe24a4d2a836eb1b27581db70950c96"
+    },
+    {
+      "mode": "mono",
+      "theme": "space",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "517847d992575c92ad63a0bb894df15312fbcfa5dd0dd3b11e1e82dd84bfb419"
+    },
+    {
+      "mode": "mono",
+      "theme": "space",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "3a48662d78b00ef8b0628c509ce702179ad19f9e28d7f556600cbea451897368"
+    },
+    {
+      "mode": "mono",
+      "theme": "fire",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ea4804fc45bfa15f5dd22156341ae3a3a5e87908150c104b3966e88082b24a63"
+    },
+    {
+      "mode": "mono",
+      "theme": "fire",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ad96ac5bfe4922c85252723fd861dfb445db2746fbbb0f6cb37f34532bf020d1"
+    },
+    {
+      "mode": "mono",
+      "theme": "fire",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ca2d85dd9300aba346eca94cdd9278d6f0cb9b5347e7be20ccfee472b6c5a7ee"
+    },
+    {
+      "mode": "mono",
+      "theme": "fire",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "32c2c1540bf7000957593835df1cd04cab58d28531f0c7690108b2d8d06f516c"
+    },
+    {
+      "mode": "mono",
+      "theme": "fire",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "15e6c87ddb149421dd45ae2c89d5533c3f23fc0ded20c9126e56030313293d19"
+    },
+    {
+      "mode": "mono",
+      "theme": "fire",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "9f5abb6156c0879d9830f442a06ade62b1ca1ecfac1cb49e6778e819f373853c"
+    },
+    {
+      "mode": "mono",
+      "theme": "crt",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "bf1a1fc9a8f655977640590d29e1961798f169198d4d53bf298c3dfe67145b37"
+    },
+    {
+      "mode": "mono",
+      "theme": "crt",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "9fdfea47c3bf6b75ab1178d3cb0d776588f5b2db02ba37f882d0cdda2a1915ef"
+    },
+    {
+      "mode": "mono",
+      "theme": "crt",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "38376d69c1fd9e5631b71d1d35be0fc7e536c64a42b3c0b91a5fdac8458db17f"
+    },
+    {
+      "mode": "mono",
+      "theme": "crt",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ea5c898186dc483bbf4ec58eefac6b3169c545f44ad3ad23041d43e83e56da56"
+    },
+    {
+      "mode": "mono",
+      "theme": "crt",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "5e770423784379d62f12a5b8f69a7cef75de372a7eef71ff6cf7788c2649218d"
+    },
+    {
+      "mode": "mono",
+      "theme": "crt",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "4b38fe117022b270361e537445ce75e47f5c9171081898767c08f1009abae645"
+    },
+    {
+      "mode": "mono",
+      "theme": "mono",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "19f8acfc8d10b66f02b2e8f1d557242d64cdb2547aa88937989f2d3da1c7e64c"
+    },
+    {
+      "mode": "mono",
+      "theme": "mono",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "c7d98d437364910d88d6a9f77f07db4a934aa11c374ec4325dc504b1ac43ed0e"
+    },
+    {
+      "mode": "mono",
+      "theme": "mono",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "7b005813a49a0d77d540306e3605a72090cc38948c6e2c43af24a2e44b12b395"
+    },
+    {
+      "mode": "mono",
+      "theme": "mono",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "4e4c1fc56f338ffde28ece65de3e7e7332d6b87d0e2f93b75c04fb82358121ee"
+    },
+    {
+      "mode": "mono",
+      "theme": "mono",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "013316dd4d0fbaa7b1ea7730852b1d982ea04180cf35e3c5da6e102175be1c7e"
+    },
+    {
+      "mode": "mono",
+      "theme": "mono",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "7e79624912fc72bcf6899115858b4ebfa5e387dafad10930754fda4cf6981f8a"
+    },
+    {
+      "mode": "mono",
+      "theme": "abyss",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "51f3f649893a6de7e54a66bcccbb97e2eabf1909b7b205edf8ea61f6f714dcc3"
+    },
+    {
+      "mode": "mono",
+      "theme": "abyss",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "6ec7a2b586314dedc7fcc57089b8f861f5ee2ebaab5670831d99ce5ee8948aaf"
+    },
+    {
+      "mode": "mono",
+      "theme": "abyss",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "a5aab1b195ea686397146fb65d274a80c20006de573dd1ddb39ddc50f412b990"
+    },
+    {
+      "mode": "mono",
+      "theme": "abyss",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "69d1c257c1dfb31825d8dfd41255b2f5775f202801a4a4e62e2a5249e00250c5"
+    },
+    {
+      "mode": "mono",
+      "theme": "abyss",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "d613e8414217348a9380d79449428df70c5b75642f1dcc699a109ad086ea61e2"
+    },
+    {
+      "mode": "mono",
+      "theme": "abyss",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "e5b6c19a4e4effa874fa227134de688bd7b2e65994e8e7e84c4ba4a86bbf46fd"
+    },
+    {
+      "mode": "mono",
+      "theme": "aurora",
+      "event": "clear",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b036cf82cb53a16adcdd652add4d08d437defadb225c618bb453fecfbc03df31"
+    },
+    {
+      "mode": "mono",
+      "theme": "aurora",
+      "event": "bloom",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "b2ed5484360b48f8da3534f04f9fea541ce127c9966bebd521c14ad65e2ab216"
+    },
+    {
+      "mode": "mono",
+      "theme": "aurora",
+      "event": "ascension",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "766576d87ae3231053756fdd9b674085f518f77470894c596c802d369d7b99d0"
+    },
+    {
+      "mode": "mono",
+      "theme": "aurora",
+      "event": "victory",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "48923b27cdb5ebe4ffb36bd4654d40880bbe6927fc893a9c8cacc6d9e9f0c4df"
+    },
+    {
+      "mode": "mono",
+      "theme": "aurora",
+      "event": "eclipse",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "ef9a4d037b2673ed1dad957810fb106049033b48db8689d86360a5b7d7f4c6af"
+    },
+    {
+      "mode": "mono",
+      "theme": "aurora",
+      "event": "awakening",
+      "protected": true,
+      "encoding": "cp949",
+      "buffer_encoding": "utf-8",
+      "sha256": "35a9c1c383596e1a309bd22ed998763e535fa93f5f190abdb1e4abad0e9f2f0a"
+    }
+  ],
+  "total": 144,
+  "transfer": [
+    {
+      "mode": "unicode",
+      "x": 7,
+      "text": "\u6587",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "unicode",
+      "x": 8,
+      "text": "x",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "unicode",
+      "x": 7,
+      "text": "\u754cx",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "unicode",
+      "x": 6,
+      "text": "xy",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "unicode",
+      "x": 8,
+      "text": "\u6587",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "unicode",
+      "x": 7,
+      "text": "   ",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "ascii",
+      "x": 7,
+      "text": "\u6587",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "ascii",
+      "x": 8,
+      "text": "x",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "ascii",
+      "x": 7,
+      "text": "\u754cx",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "ascii",
+      "x": 6,
+      "text": "xy",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "ascii",
+      "x": 8,
+      "text": "\u6587",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    },
+    {
+      "mode": "ascii",
+      "x": 7,
+      "text": "   ",
+      "equal_full_repaint": true,
+      "unicode_fallback": false
+    }
+  ],
+  "scope": "native curses buffers with real engine producers; no physical font or keyboard claim"
+}

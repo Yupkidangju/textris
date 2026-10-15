@@ -3,6 +3,7 @@ from copy import deepcopy
 import json
 import math
 from pathlib import Path
+from .themes import THEMES
 import tempfile
 
 DEFAULTS = dict(language='en',sound=True,music=True,volume=.5,ascii=False,display_mode='auto',color=True,
@@ -52,7 +53,7 @@ class Store:
                         value = display_mode
                         valid = True
                     elif key == 'theme':
-                        valid = isinstance(value,str) and value in ('cathedral','cyberpunk','space','fire','crt','mono')
+                        valid = isinstance(value,str) and value in THEMES
                     elif key in ('fx_intensity','fx_density','fx_speed'):
                         valid = type(value) in (int,float) and math.isfinite(value) and (.5 if key=='fx_speed' else .25) <= value <= (2 if key=='fx_speed' else 1)
                     elif key in ('volume','music_volume','sfx_volume'):

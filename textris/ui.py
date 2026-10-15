@@ -148,7 +148,8 @@ class App(ArtUI, ExpansionUI):
         return self.art_attr(16+'IOTSZJL'.index(kind)) if kind else self.art_attr(3)
 
     def fx_color(self,index):
-        palette={'cathedral':'IITIJOL','cyberpunk':'ITIZTJL','space':'IJITJLI','fire':'ZOLZOLZ','crt':'SSSIOOS','mono':'IIIIIII'}
+        palette={'cathedral':'IITIJOL','cyberpunk':'ITIZTJL','space':'IJITJLI','fire':'ZOLZOLZ','crt':'SSSIOOS','mono':'IIIIIII',
+                 'abyss':'IIJSTIT','aurora':'ISTISJI'}
         return self.color(palette[self.settings.get('theme','cyberpunk')][index%7])
 
     def put(self, y, x, text, attr=0):
@@ -367,12 +368,14 @@ class App(ArtUI, ExpansionUI):
         failed=False
         for y,row in enumerate(canvas):
             if old is not None and row==old[y]: continue
-            # 행 전체의 속성 구간을 보내 넓은 문자 소유권과 호출 묶음을 보존한다.
+            # 속성 구간을 쪼개지 않아 넓은 문자 소유권을 보존한다. 변한 행에서도
+            # 같은 구간은 보내지 않아 작은 잔상의 변화가 HUD 재출력을 유발하지 않는다.
             x=0
             while x<len(row):
                 start=x; attr=row[x][1]; chars=[]
                 while x<len(row) and row[x][1]==attr:
                     chars.append(row[x][0]); x+=1
+                if old is not None and row[start:x]==old[y][start:x]: continue
                 text=''.join(chars)
                 if self.ascii_mode: text=safe_ascii(text)
                 if text:

@@ -69,6 +69,10 @@ class ThemeScene:
 
     @staticmethod
     def motes(c,t,theme,density):
+        if theme in ('abyss','aurora'):
+            from .theme_nature import motes
+            motes(c,t,theme,density)
+            return
         # 무대 골격은 유지하고 밀도 설정은 미세 장식만 조절한다.
         w,h=c.context.width-1,c.context.height
         for i in range(int(48*density*c.context.quality)):
@@ -216,12 +220,27 @@ class ThemeScene:
             c.curve(((cx,1),(cx+size,5+i*.4),(cx,9+i*.4),(cx-size,5+i*.4),(cx,1)),
                     5 if i==4 else 6,5-i)
 
+    @staticmethod
+    def abyss(c,t):
+        from .theme_nature import abyss
+        abyss(c,t)
+
+    @staticmethod
+    def aurora(c,t):
+        from .theme_nature import aurora
+        aurora(c,t)
+
     def ceremony(self,c,t,theme,cue,flash,intensity,board=None,viewport=None):
         # 수명은 director가 관리하지만 직접 렌더/seek에서도 오래된 cue가 남지 않는다.
         if not cue.start<=t<cue.end or intensity<=0: return
         p=cue.phase(t)
         strength=(.35+.65*min(1.,intensity))*min(1.6,max(0.,cue.power))*math.sin(math.pi*p)
+        if strength<=0: return
         style=9 if flash and .15<p<.65 and intensity>.5 else 4
+        if theme in ('abyss','aurora'):
+            from .theme_nature import ceremony
+            ceremony(c,t,theme,cue,strength,style,board,viewport)
+            return
         if cue.name=='clear':
             self.clear_ceremony(c,theme,cue,p,strength,style,board)
             return

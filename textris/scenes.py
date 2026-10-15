@@ -1,12 +1,12 @@
 """문자 장면 카탈로그와 작은 캔버스의 절차적/입체 배경."""
 import math
+from .themes import THEMES
 
 BACKGROUNDS=('rain','plasma','tunnel','grid','braille','cube','tetromino','torus',
              'mandelbrot','julia','aurora','fluid','metaball','space','warp','city','logo','reflection','cathedral')
 EFFECTS=('impact','elastic','echoes','cracks','shatter','ricochet','chain','lightning',
          'blackhole','glitch','smoke','fire','braille','laser','gold','vortex','electric',
          'ice','embers','typewriter','assemble','odometer','victory','collapse','ripple')
-THEMES=('cathedral','cyberpunk','space','fire','crt','mono')
 PROFILES=('theme','fx_intensity','fx_speed','fx_density','shake','flash','braille')
 
 

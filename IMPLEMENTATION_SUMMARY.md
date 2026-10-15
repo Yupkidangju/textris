@@ -220,6 +220,19 @@ Bresenham 서브셀 선분, 보스/분석/모달과 기존 파일 이행을 구�
 - 설계·검증·배포 근거: `docs/soundtrack-collections-plan.md`,
   `docs/soundtrack-collections-verification.md`.
 
+## 1.4.0 텍스트 효과와 두 자연 테마 (2026-10-15)
+- themes.py는 8개 시각 테마와 6개 원본 음악 모음, abyss→space/aurora→mono 연결을 관리한다.
+  저장·CLI·감상·오디오 worker는 같은 등록 규칙을 사용한다.
+- theme_nature.py는 심해/오로라의 면·실루엣·6성취·spin, theme_atmosphere.py는 기존 여섯
+  테마의 유한 시간층을 담당한다. 기존 ThemeScene 합성·캐시·viewport 계약을 유지한다.
+- theme_actions.py는 먼저 주 문양을 그린 뒤 남은 예산으로 과거 phase 두 개까지의 잔상을
+  추가한다. 기록할 프레임이나 입자 목록은 없다.
+- 전체 306개 검사(296통과/10skip), Windows 테마144·넓은 문자 전송12·입력/Audio7·감상4조건,
+  48개 실제 사건·576합성 조건·112상태/배치 프레임을 검증했다.
+- 최신 설계와 성능·배포 증거: `docs/eight-themes-plan.md`, `docs/eight-themes-verification.md`.
+- 변경 행 내 동일 속성 구간의 재전송도 생략한다. 전체 재출력과 동일한 픽셀을 유지하고
+  네이티브 Unicode/ASCII에서 넓은 문자·속성 교체를 검증했다.
+
 ## 1.3.0 테마·viewport 고도화 (2026-10-14)
 - art.py: 실제정보만의보호/ASCII 선명암/품질별서브셀과예정복수BoardViewport.
 - visual_state.py/theme_actions.py/theme_surfaces.py: 읽기전용상태, 테마별조작·상태,

@@ -22,7 +22,7 @@ def main():
     from textris.ui import App
     from tests.test_ui import AudioStub
     from tests.test_theme_ceremonies import produce_ceremony, CEREMONIES
-    results=[]
+    results=[]; transfer=[]
 
     def run(window):
         curses.resize_term(40,120)
@@ -52,10 +52,24 @@ def main():
                     (out/f'{mode}-{theme}-{event}.txt').write_text(frame,encoding='utf-8')
                     results.append(dict(mode=mode,theme=theme,event=event,protected=True,
                         encoding=window.encoding,buffer_encoding='utf-8',sha256=hashlib.sha256(frame.encode()).hexdigest()))
+        # 같은 행의 속성 구간 생략도 실제 넓은 문자 교체와 동일한 버퍼를 남겨야 한다.
+        for mode in ('unicode','ascii'):
+            store=Store(out/'state'); store.settings.update(display_mode=mode)
+            app=App(window,store,AudioStub(),seed=42); app.fx_enabled=False
+            for x,text,attr in ((7,'文',curses.A_BOLD),(8,'x',curses.A_REVERSE),
+                                (7,'界x',curses.A_DIM),(6,'xy',curses.A_REVERSE),
+                                (8,'文',curses.A_BOLD),(7,'   ',0)):
+                app.draw_menu=lambda:app.put(10,x,text,attr)
+                app.draw()
+                if app._last_canvas is None: app.draw()
+                incremental=buffer(); app._last_canvas=None; app.draw()
+                assert incremental==buffer(),(mode,x,text)
+                transfer.append(dict(mode=mode,x=x,text=text,equal_full_repaint=True,
+                                     unicode_fallback=app.terminal_ascii))
     try:
         curses.wrapper(run)
     finally:
-        (out/'results.json').write_text(json.dumps(dict(cases=results,total=len(results),
+        (out/'results.json').write_text(json.dumps(dict(cases=results,total=len(results),transfer=transfer,
             scope='native curses buffers with real engine producers; no physical font or keyboard claim'),indent=2),encoding='utf-8')
     print(json.dumps(dict(passed=len(results),output=str(out))))
 

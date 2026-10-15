@@ -45,6 +45,33 @@ class FrameTransferTests(unittest.TestCase):
         self.app.notice=''; self.draw()
         self.assertEqual(self.win.grid,baseline)
 
+    def test_unchanged_attribute_runs_in_a_changed_row_are_not_resent(self):
+        self.app.fx_enabled=False
+        word=['first']
+        def menu():
+            self.app.put(10,1,word[0],curses.A_BOLD)
+            self.app.put(10,25,'center',curses.A_REVERSE)
+            self.app.put(10,40,'last',curses.A_DIM)
+        with patch.object(self.app,'draw_menu',side_effect=menu):
+            self.draw(); word[0]='other'
+            with patch.object(self.win,'addstr',wraps=self.win.addstr) as output:
+                self.draw()
+            self.assertEqual([call.args[:2] for call in output.call_args_list],[(10,1)])
+            incremental=[row[:] for row in self.win.grid]
+            self.app._last_canvas=None; self.draw()
+            self.assertEqual(self.win.grid,incremental)
+
+    def test_changing_wide_glyphs_and_attributes_matches_full_repaint(self):
+        self.app.fx_enabled=False
+        values=[(7,'文',curses.A_BOLD),(8,'x',curses.A_REVERSE),
+                (7,'界x',curses.A_DIM),(6,'xy',curses.A_REVERSE),
+                (8,'文',curses.A_BOLD),(7,'   ',0)]
+        for x,text,attr in values:
+            with patch.object(self.app,'draw_menu',side_effect=lambda:self.app.put(10,x,text,attr)):
+                self.draw(); incremental=[row[:] for row in self.win.grid]
+                self.app._last_canvas=None; self.draw()
+                self.assertEqual(self.win.grid,incremental,(x,text,attr))
+
     def test_wide_overlay_replaced_by_narrow_text_clears_continuation(self):
         self.app.notice='probe_wide'; self.draw()
         self.app.notice='probe_narrow'; self.draw()

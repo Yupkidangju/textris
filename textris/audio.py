@@ -18,6 +18,7 @@ except (ImportError, OSError):
 from .soundtrack import (AssetLibrary, BalancedShuffle, CueQueue, PcmMixer, ShuffleBag,
                          SAMPLE_RATE, CHANNELS, CHUNK_FRAMES, BUFFER_CHUNKS)
 from .windows_audio import output_state
+from .themes import THEMES, music_theme
 RATE = 22050
 NATIVE_RETRY_DELAY = .5
 NATIVE_FAILURE_LIMIT = 3
@@ -163,7 +164,7 @@ class Audio:
         self._device_opened = 0.
         self._callback_error = ''
         self._error = ''
-        self._theme = settings.get('theme', 'cathedral')
+        self._theme = music_theme(settings.get('theme', 'cathedral'))
         self._rng = random.Random()
         self._game_shuffle = None
         self._track = None
@@ -457,8 +458,10 @@ class Audio:
             self._commands.clear()
         for command, *args in commands:
             if command == 'theme':
-                theme = args[0]
-                if theme == self._theme or theme not in ('cathedral', 'cyberpunk', 'space', 'fire', 'crt', 'mono'):
+                if args[0] not in THEMES:
+                    continue
+                theme = music_theme(args[0])
+                if theme == self._theme:
                     continue
                 self._theme = theme
                 self._game_shuffle = BalancedShuffle(self._catalog, theme, self._rng)

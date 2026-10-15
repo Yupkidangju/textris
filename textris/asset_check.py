@@ -7,7 +7,7 @@ import math
 from pathlib import Path, PurePosixPath
 from .soundtrack import AssetLibrary
 
-THEMES=('cathedral','cyberpunk','space','fire','crt','mono')
+from .themes import MUSIC_THEMES as THEMES
 REQUIRED_EFFECTS=frozenset(('ui_move','ui_select','ui_back','ui_toggle','ui_error','countdown','go','pause','resume',
     'move','rotate','hold','drop','lock','clear_single','clear_double','clear_triple','tetris','tspin','all_clear',
     'combo','b2b','fever_start','fever_end','level','danger','win','gameover','boss_hit','boss_break'))
