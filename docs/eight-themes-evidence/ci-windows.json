@@ -1,0 +1,29 @@
+{
+  "commit": "b484e0f96824ce10bf38a58ebe823b39152e0abd",
+  "tag": "v1.4.0",
+  "run_id": 38690811297,
+  "bytes": 56167306,
+  "sha256": "407bef86bb2abd04ec0de8fdcb7e610ac06dc6af57a01704a97a634b4abaffa7",
+  "audio_assets": 63,
+  "asset_mismatch": [],
+  "missing_theme_modules": [],
+  "decoder_entries": [
+    "_cffi_backend.cp312-win_amd64.pyd",
+    "_miniaudio.pyd"
+  ],
+  "version": "1.4.0",
+  "external_path_and_pythonpath_empty": true,
+  "wasapi_backend_completed": true,
+  "listening": "unconfirmed",
+  "interactive": {
+    "theme": "aurora",
+    "display": "unicode",
+    "all_ten_collections_visible": true,
+    "classic_eight_visible": true,
+    "aurora_three_tracks_original_mono_label": true,
+    "audition_with_master_mute": true,
+    "back_to_menu_and_normal_exit": true,
+    "exit_code": 0,
+    "cli_preferences_restored": true
+  }
+}

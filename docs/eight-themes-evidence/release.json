@@ -1,0 +1,53 @@
+{
+  "assets": [
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.4.0/SHA256SUMS.txt",
+      "digest": "sha256:ab77715ee37971951298cca2d34f50507e302d145a61084251607f40ad786751",
+      "name": "SHA256SUMS.txt",
+      "size": 428
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.4.0/textris-linux-amd64",
+      "digest": "sha256:9a34038287b0b445f37592a2ebc055f71472b6010c2197506358ff95174cba89",
+      "name": "textris-linux-amd64",
+      "size": 69374136
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.4.0/textris-linux-arm64",
+      "digest": "sha256:7b6697f5c8b78e900c24516d83ec2e2f27aae649ad288b5dfc832c7682ad3a93",
+      "name": "textris-linux-arm64",
+      "size": 56930032
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.4.0/textris-macos-arm64",
+      "digest": "sha256:defb50aa815d69d9f60da2659351095b9bbc00f25b203291be07337638b166cd",
+      "name": "textris-macos-arm64",
+      "size": 55507072
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.4.0/textris-windows-amd64.exe",
+      "digest": "sha256:407bef86bb2abd04ec0de8fdcb7e610ac06dc6af57a01704a97a634b4abaffa7",
+      "name": "textris-windows-amd64.exe",
+      "size": 56167306
+    },
+    {
+      "browser_download_url": "https://github.com/Yupkidangju/textris/releases/download/v1.4.0/textris.pyz",
+      "digest": "sha256:f64995863380f18f94b08ac53d1eb6a95be31960b75d407dd401d540446ca084",
+      "name": "textris.pyz",
+      "size": 46440740
+    }
+  ],
+  "draft": false,
+  "html_url": "https://github.com/Yupkidangju/textris/releases/tag/v1.4.0",
+  "prerelease": false,
+  "published_at": "2026-10-15T06:21:16Z",
+  "tag_name": "v1.4.0",
+  "target_commitish": "main",
+  "commit": "b484e0f96824ce10bf38a58ebe823b39152e0abd",
+  "tag_object": "d66aaaac533049d892b8cd38b4830c5d9c857971",
+  "tag_ci": 38690811297,
+  "main_ci": 38690811066,
+  "ci_conclusion": "success",
+  "checksum_manifest_matches_all_assets": true,
+  "executed_windows_artifact_matches_release": true
+}

@@ -109,4 +109,28 @@ OS 출력은 기존 음소거/39% 상태였으며 변경하지 않았다. 직접
 일시정지·종료를 확인했다. 두 번 모두 종료 코드 0이고 CLI 테마/무음 override는 기존 저장 선택으로
 복원됐다. 심해에서는 도움말 복귀도 확인했다. 기록/리플레이 사용자 디렉터리는 사용하지 않았다.
 
-태그 CI와 배포 파일 검증 결과는 게시 후 이어 기록한다.
+## 원격 태그와 배포본 검증
+
+기능 커밋 `b484e0f96824ce10bf38a58ebe823b39152e0abd`를 main에 fast-forward하고
+annotated tag `v1.4.0`과 함께 원격으로 atomic push했다. 태그 객체는
+`d66aaaac533049d892b8cd38b4830c5d9c857971`이다.
+
+[태그 CI](https://github.com/Yupkidangju/textris/actions/runs/38690811297)의 Windows 산출물을
+직접 받아 외부 PATH/PYTHONPATH 없이 version/63리소스·새 모듈·디코더/실제 WASAPI 완료를 확인했다.
+이 EXE는 56,167,306바이트이고 SHA256은
+`407bef86bb2abd04ec0de8fdcb7e610ac06dc6af57a01704a97a634b4abaffa7`이다.
+로컬 Python 3.14 빌드와 CI Python 3.12 빌드의 크기·해시는 다르므로 별도로 기록한다.
+
+CI EXE의 Unicode 오로라 배경과 Extras 감상 10모음, Traditional Tetris 8곡,
+오로라 3곡과 원래 Monochrome etching 안내, 마스터 음소거 상태의 감상·복귀·정상 종료를 확인했다.
+실제 청취는 미확인이다.
+
+태그 CI `38690811297`과 main CI `38690811066`이 모두 성공했다. 단위 검사와 Windows,
+Linux x86-64/ARM64, macOS ARM64, zipapp 및 릴리스 게시가 완료됐다.
+[v1.4.0 릴리스](https://github.com/Yupkidangju/textris/releases/tag/v1.4.0)는
+2026-10-15 06:21:16 UTC에 공개됐다. 바이너리/pyz 5개와 SHA256SUMS.txt를 포함한
+6개 자산의 GitHub digest를 검증했으며, Windows 게시 파일은 실제 실행한 CI 산출물과 같다.
+배포 목록과 해시 대조는 `eight-themes-evidence/release.json`에 기록했다.
+
+기능과 패키징·태그 푸시·배포를 완료했다. 남은 제한은 위에 명시한 일부 콘솔의 고부하 출력
+프레임 목표 미달과 물리 폰트/직접 청취 미확인이다. 실제 배틀 게임은 후속 범위로 유지한다.
