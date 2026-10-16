@@ -115,22 +115,57 @@ class UITests(unittest.TestCase):
         self.assertEqual(width('한A'),3)
         self.assertEqual(clip('한AB',3),'한A')
 
-    def test_drop_clear_particles_banner_and_animation_expiry(self):
-        a=self.app; a.settings['theme']='cyberpunk'; a.start('marathon'); a.screen='playing'; a.game.state='playing'; a.now=100.
-        a.game.emit('drop',cells=((4,2),(4,3),(4,4),(4,5)),distance=12)
-        a.game.emit('clear',rows=[21],count=1,spin=False,combo=2,b2b=False,perfect=False,points=200)
+    def test_keyboard_clear_reaches_director_renderer_banner_and_expires(self):
+        a=self.app; a.settings.update(theme='cyberpunk',shake=False,flash=False)
+        a.start('marathon'); a.screen='playing'; a.game.state='playing'; a.now=100.
+        a.game.board[21]=['J']*3+[None]*4+['J']*3
+        a.game.board[19][0]='J'
+        a.game.active=Piece('I',0,3,0); a.game.combo=1
+        a.handle(' ')
+        self.assertIn('clear',[event.name for event in a.game.events])
         a.process_events()
-        self.assertEqual(len(a.trails),1)
-        self.assertEqual(len(a.particles),6)
-        self.assertEqual(a.flash_until,100.24)
+        cue=a.effects.director.major
+        self.assertEqual((cue.name,cue.coords,cue.label),('clear',(21,),'SINGLE'))
+        self.assertEqual(a.effects.director.local,[])
         self.assertIn('COMBO x2',a.banner)
+        self.assertEqual(a.banner_until,101.6)
+        checksum,replay=a.session.checksum(),a.session.replay()
+        a.now=100.2
         with patch('curses.doupdate'):
-            a.draw(); before=a.win.lines[:]
-            a.now=100.6; a.process_events(); a.draw()
-        self.assertEqual(a.trails,[])
-        self.assertEqual(a.particles,[])
-        self.assertNotEqual(before,a.win.lines)
+            a.draw(); active=a.effects._art_cache.cells.copy()
+            self.assertTrue(any(a.banner in text for y,x,text in a.win.lines))
+            a.effects.director.major=None
+            a.effects.background(a,a.now)
+            self.assertNotEqual(active,a.effects._art_cache.cells)
+            a.effects.director.major=cue
+            a.now=100.56; a.process_events(); a.draw()
+            self.assertIsNone(a.effects.director.major)
+            a.now=101.61; a.win.erase(); a.draw()
+            self.assertFalse(any(a.banner in text for y,x,text in a.win.lines))
+        self.assertEqual(checksum,a.session.checksum())
+        self.assertEqual(replay,a.session.replay())
         self.assertIn('clear_single',a.audio.events)
+
+    def test_keyboard_drop_landing_cue_shake_and_finite_render_lifecycle(self):
+        a=self.app; a.settings.update(theme='cyberpunk',flash=False)
+        a.start('marathon'); a.screen='playing'; a.game.state='playing'; a.now=100.
+        a.game.active=Piece('I',0,3,0)
+        a.handle(' '); a.process_events()
+        self.assertEqual([cue.name for cue in a.effects.director.local],['drop'])
+        cue=a.effects.director.local[0]
+        self.assertEqual(cue.coords,((6,19),(8,19),(10,19),(12,19)))
+        self.assertEqual(a.effects.offset(100.02),(1,0))
+        a.settings['shake']=False
+        self.assertEqual(a.effects.offset(100.02),(0,0))
+        a.now=100.1
+        a.effects.background(a,a.now); active=a.effects._art_cache.cells.copy()
+        a.effects.director.local=[]
+        a.effects.background(a,a.now)
+        self.assertNotEqual(active,a.effects._art_cache.cells)
+        a.effects.director.local=[cue]
+        a.now=100.36; a.process_events()
+        self.assertEqual(a.effects.director.local,[])
+        self.assertEqual(a.effects.offset(a.now),(0,0))
 
     def test_title_animation_preserves_all_six_logo_rows(self):
         from textris.ui import LOGO

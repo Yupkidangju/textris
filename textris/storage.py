@@ -2,6 +2,8 @@
 from copy import deepcopy
 import json
 import math
+import os
+import stat
 from pathlib import Path
 from .themes import THEMES
 import tempfile
@@ -13,14 +15,51 @@ DEFAULTS = dict(language='en',sound=True,music=True,volume=.5,ascii=False,displa
 MODES = ('marathon','sprint','ultra','boss')
 
 
+def _comparison_path(path):
+    # resolve가 반환하는 Windows 확장 경로와 일반 경로는 같은 위치로 비교한다.
+    if os.name!='nt': return path
+    text=str(path)
+    if text.startswith('\\\\?\\UNC\\'): return Path('\\\\'+text[8:])
+    if text.startswith('\\\\?\\'):
+        if len(text)>=7 and text[4].isascii() and text[4].isalpha() and text[5:7]==':\\':
+            return Path(text[4:])
+        raise ValueError('unsupported device path')
+    if text.startswith('\\\\.\\'): raise ValueError('unsupported device path')
+    return path
+
+
+def _is_junction(path):
+    # Python 3.10에서도 dangling junction의 엔트리 자체를 검사한다.
+    try:
+        return getattr(path.lstat(),'st_reparse_tag',None)==getattr(stat,'IO_REPARSE_TAG_MOUNT_POINT',-1)
+    except FileNotFoundError:
+        return False
+
+
 class Store:
     def __init__(self, directory: Path):
-        self.directory = Path(directory)
+        self.directory = Path(os.path.abspath(directory))
         self.path = self.directory/'records.json'
+        try:
+            # 부모의 정상 시스템 별칭은 허용하되 저장 디렉터리의 링크 자체는 신뢰하지 않는다.
+            self._root = self.directory.parent.resolve()/self.directory.name
+        except (OSError,RuntimeError):
+            self._root = None
         self.settings = deepcopy(DEFAULTS)
         self.records = {m: [] for m in MODES}
         self.warning = ''
         self.read_only = False
+
+    def _check_directory(self):
+        if (self._root is None or self.directory.is_symlink() or _is_junction(self.directory)
+                or _comparison_path(self.directory.resolve())!=_comparison_path(self._root)):
+            raise ValueError('unsafe save directory')
+
+    def _check_path(self):
+        self._check_directory()
+        if (self.path.is_symlink() or _is_junction(self.path)
+                or _comparison_path(self.path.resolve())!=_comparison_path(self._root/'records.json')):
+            raise ValueError('unsafe save file')
 
     @staticmethod
     def valid_record(r):
@@ -32,9 +71,10 @@ class Store:
 
     def load(self):
         try:
+            self._check_path()
             if not self.path.exists():
                 return
-            if self.path.is_symlink() or self.path.stat().st_size > 1024*1024:
+            if self.path.stat().st_size > 1024*1024:
                 raise ValueError('unsafe or oversized save')
             data = json.loads(self.path.read_text(encoding='utf-8'))
             if not isinstance(data,dict) or data.get('version') != 1:
@@ -70,7 +110,7 @@ class Store:
                     if isinstance(rows,list):
                         self.records[mode] = [r for r in rows if self.valid_record(r)]
                         self._sort(mode)
-        except (OSError,ValueError,TypeError):
+        except (OSError,ValueError,TypeError,RuntimeError):
             self.warning = 'save_read'
             self.read_only = True
 
@@ -93,21 +133,27 @@ class Store:
             return False
         temp_path = None
         try:
+            self._check_path()
             self.directory.mkdir(parents=True,exist_ok=True)
+            self._check_path()
             data = dict(version=1,settings=self.settings,records=self.records)
             with tempfile.NamedTemporaryFile(mode='w',encoding='utf-8',suffix='.tmp',dir=self.directory,delete=False) as f:
                 temp_path = Path(f.name)
                 json.dump(data,f,ensure_ascii=False,indent=2,allow_nan=False)
                 f.write('\n')
+            self._check_path()
             temp_path.replace(self.path)
             self.warning = ''
             return True
-        except (OSError,ValueError):
+        except (OSError,ValueError,RuntimeError):
             self.warning = 'save_write'
             return False
         finally:
             if temp_path is not None:
                 try:
+                    self._check_directory()
+                    if _comparison_path(temp_path.resolve().parent)!=_comparison_path(self._root):
+                        raise ValueError('unsafe temporary file')
                     temp_path.unlink(missing_ok=True)
-                except OSError:
+                except (OSError,ValueError,RuntimeError):
                     self.warning = 'save_write'

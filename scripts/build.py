@@ -15,6 +15,7 @@ import subprocess
 import sys
 import tempfile
 import zipapp
+import zipfile
 
 # Windows 및 다양한 환경에서 UTF-8 입출력 강제
 if hasattr(sys.stdout, "reconfigure"):
@@ -182,9 +183,54 @@ def build_standalone_binary() -> Path | None:
     return built_target
 
 
+def verify_module_inventory(executable_path: Path, is_python_script: bool = False) -> bool:
+    """현재 소스만 기준으로 삼아 포맷별 누락과 오래된 모듈 잔존을 검출한다."""
+    sources={p.relative_to(ROOT_DIR).as_posix() for p in (ROOT_DIR/'textris').rglob('*.py')}
+    try:
+        if is_python_script:
+            expected=sources
+            with zipfile.ZipFile(executable_path) as archive:
+                actual={n for n in archive.namelist() if n.startswith('textris/') and n.endswith('.py')}
+        else:
+            expected={n[:-12].replace('/','.') if n.endswith('/__init__.py')
+                      else n[:-3].replace('/','.') for n in sources}
+            # PATH/uv fallback으로 빌드했다면 검사도 같은 PyInstaller 환경에서 실행한다.
+            command=get_pyinstaller_cmd()
+            if command is None:
+                log_error('모듈 검사에 필요한 PyInstaller 환경이 없습니다.')
+                return False
+            if command[-1]=='PyInstaller':
+                command=command[:-1]+['PyInstaller.utils.cliutils.archive_viewer']
+            elif len(command)>1:
+                command=command[:-1]+['pyi-archive_viewer']
+            else:
+                frontend=Path(command[0])
+                viewer=frontend.with_name('pyi-archive_viewer'+frontend.suffix)
+                if not viewer.is_file():
+                    log_error(f'PyInstaller 환경의 archive viewer가 없습니다: {viewer}')
+                    return False
+                command=[str(viewer)]
+            listing=subprocess.run([*command,'-l','-r','-b',str(executable_path)],cwd=ROOT_DIR,
+                                   capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=60)
+            if listing.returncode:
+                log_error(f'모듈 목록 검사 실패: {listing.stderr.strip()}')
+                return False
+            actual={line.strip() for line in listing.stdout.splitlines()
+                    if line.strip()=='textris' or line.strip().startswith('textris.')}
+        if actual!=expected:
+            log_error(f"모듈 불일치: missing={sorted(expected-actual)}, stale={sorted(actual-expected)}")
+            return False
+    except (OSError,ValueError,KeyError,zipfile.BadZipFile,subprocess.TimeoutExpired) as exc:
+        log_error(f"모듈 목록 검사 실패: {exc}")
+        return False
+    log_success(f"현재 소스 모듈 {len(expected)}개와 배포 목록 일치")
+    return True
+
+
 def verify_executable(executable_path: Path, is_python_script: bool = False) -> bool:
     """빌드된 실행 파일의 기본 인자(--version, --help) 및 동작 검증."""
     log(f"빌드 산출물 동작 검증: {executable_path.name}...")
+    if not verify_module_inventory(executable_path,is_python_script): return False
     run_cmd = [sys.executable, str(executable_path)] if is_python_script else [str(executable_path)]
 
     # 1. --version 검증

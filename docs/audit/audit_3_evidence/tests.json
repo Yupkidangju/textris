@@ -1,0 +1,19 @@
+{
+  "with_miniaudio": {
+    "tests": 331,
+    "seconds": 52.627,
+    "passed": 318,
+    "skipped": 13,
+    "failures": 0,
+    "errors": 0
+  },
+  "without_miniaudio": {
+    "tests": 331,
+    "seconds": 37.738,
+    "passed": 289,
+    "skipped": 42,
+    "failures": 0,
+    "errors": 0,
+    "isolation": "fresh subprocess, meta_path blocks only miniaudio, assert not in sys.modules"
+  }
+}

@@ -1,9 +1,19 @@
 # TEXTRIS 실행 스펙
 
 작성: 2026-10-07. 근거: 사용자 요청, AGENTS.md, AI_IMPLEMENTATION_DOC_STANDARD.md.
-프로젝트명 TEXTRIS, 현재 버전 1.4.0, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
+프로젝트명 TEXTRIS, 현재 버전 1.4.1, 로컬 Python TUI 게임. 제품 UI는 영문 단일.
 
 ## 목표와 완료 기준
+
+2026-10-16 감사 3의 AUD-001~006 수정 기준은 `docs/audit/audit_3_remediation_plan.md`다.
+Store 링크/정션 경계, 현행 오디오 진단, 미사용 코드 제거, 선택 의존성 검사와 패키지 문서를
+동기화한다. 제품 기능·저장 version 1·음원·게임 규칙을 유지한다.
+
+Store는 최초 선택한 부모의 정규 경로를 기준으로 데이터 디렉터리/records.json의 링크·정션을
+존재 확인 전에 검사하고, 임시 파일 생성·교체 전 재검증한다. 경계 실패는 비치명 경고로 처리하며
+원본 링크와 대상 파일을 보존한다. 미렌더링 UI 버퍼나 폐기된 시각/오디오 훅은 현행 계약이 아니다.
+Windows 오디오 검증은 `python scripts/windows_audio_probe.py --output .antigravity/windows-audio-probe-new`로
+실제 miniaudio/PcmMixer/Audio.diagnostics를 검사한다. 실패/종료도 JSON에 기록하며 청취와 backend 완료를 구분한다.
 터미널에서 키보드로 즐기는 완성형 싱글 플레이 테트리스. 독립 코어 테스트,
 실제 PTY 키 입력/화면/종료/리사이즈 검증, MIDI/Ogg/WAV 신호 검증과 오디오 백엔드 확인을 완료한다.
 현재 제품은 싱글플레이이며 온라인 대전/계정은 구현되어 있지 않다.

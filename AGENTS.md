@@ -2,9 +2,9 @@
 
 **Template Name:** D3D Protocol  
 **Template Version:** 1.3  
-**Project Name:** ${PROJECT_NAME}  
-**Project Version:** ${CURRENT_VERSION}  
-**Environment:** ${ENV_TYPE}
+**Project Name:** TEXTRIS
+**Project Version:** 1.4.1
+**Environment:** Python 3.10+ terminal application (Windows/Linux/macOS)
 
 ## 0. Rule Priority and Interpretation
 
@@ -22,12 +22,12 @@
 
 ## 1. Project Metadata
 
-* **Name:** ${PROJECT_NAME}
-* **Version:** ${CURRENT_VERSION}
-* **Environment:** ${ENV_TYPE}
-* **Repository Type:** ${REPOSITORY_TYPE}
-* **Documentation Profile:** ${DOC_PROFILE}
-* **User-facing Languages:** ${SUPPORTED_LANGUAGES}
+* **Name:** TEXTRIS
+* **Version:** 1.4.1
+* **Environment:** Python 3.10+ terminal application (Windows/Linux/macOS)
+* **Repository Type:** Git
+* **Documentation Profile:** 한국어 프로젝트 문서/README (기존 구조에서 추론한 가정)
+* **User-facing Languages:** en (제품 UI), ko (프로젝트 문서; 기존 구조에서 추론한 가정)
 
 값이 비어 있으면 기존 프로젝트 구조와 파일에서 추론하되, 추론한 값은 문서에 `가정` 또는 `미확정`으로 표시한다.
 

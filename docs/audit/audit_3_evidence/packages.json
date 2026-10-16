@@ -1,0 +1,44 @@
+{
+  "module_count": 30,
+  "audio_resource_count": 63,
+  "core_docs": [
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "IMPLEMENTATION_SUMMARY.md",
+    "LESSONS_LEARNED.md",
+    "spec.md",
+    "designs.md",
+    "DESIGN_DECISIONS.md"
+  ],
+  "selected_docs": [
+    "docs/audio-overhaul-plan.md",
+    "docs/audit/audit_3_remediation_plan.md",
+    "docs/ci-replay-fix.md",
+    "docs/eight-themes-plan.md",
+    "docs/soundtrack-collections-plan.md",
+    "docs/theme-enhancement-implementation-plan.md",
+    "docs/theme-enhancement-layout-design.md"
+  ],
+  "no_evidence_or_audit_report_in_sdist": true,
+  "all_source_and_asset_bytes_match": true,
+  "exe_bytecode_missing": [],
+  "artifacts": {
+    "textris.exe": {
+      "bytes": 56869156,
+      "sha256": "87ecb466714702ec67da7f0fb54887e060afec01a36a631235c0547186372e05"
+    },
+    "textris.pyz": {
+      "bytes": 46373730,
+      "sha256": "2de474bfc63ad1dc583660c2f6a50aa3b91d602ab3ae91ae2a9388965285a5c2"
+    },
+    "textris_tui-1.4.1-py3-none-any.whl": {
+      "bytes": 46382924,
+      "sha256": "fe40136d4dde728a1be09e1629426844b1137e21389a039542fc883b2d2aa331"
+    },
+    "textris_tui-1.4.1.tar.gz": {
+      "bytes": 46864703,
+      "sha256": "adb308d7ae0fcf43e64a260c7caf252ed656e4c04cc5dee9873db3955faa279f"
+    }
+  }
+}

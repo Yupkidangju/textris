@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 import zipfile
 
-from textris.audio import Audio, find_backend
+from textris.audio import Audio, find_backend, miniaudio
 from textris.soundtrack import AssetLibrary
 from textris.storage import DEFAULTS
 from tests.test_soundtrack_audio import make_assets
@@ -25,7 +25,8 @@ class SilentAudioTests(unittest.TestCase):
 
     def test_backend_selection_never_searches_or_launches_external_player(self):
         with patch('shutil.which') as which, patch('subprocess.Popen') as launch:
-            self.assertEqual(find_backend(), ('miniaudio', 'native'))
+            with patch('textris.audio.miniaudio', object()):
+                self.assertEqual(find_backend(), ('miniaudio', 'native'))
             with patch('textris.audio.miniaudio', None): self.assertIsNone(find_backend())
         which.assert_not_called(); launch.assert_not_called()
 
@@ -47,6 +48,7 @@ class SilentAudioTests(unittest.TestCase):
             self.assertFalse(audio.thread.is_alive())
             self.assertEqual(output.getvalue(), '')
 
+    @unittest.skipIf(miniaudio is None, 'miniaudio is required for native audio decoding')
     def test_missing_music_catalog_does_not_disable_valid_effect_catalog(self):
         from tests.test_soundtrack_audio import FakeDevice
         device = FakeDevice()

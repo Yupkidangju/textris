@@ -187,7 +187,6 @@ class Audio:
         self._natural_eof = False
         self._last_completed_frames = 0
         self._decoded_frames = 0
-        self.intensity = 0
         self.music_started = 0.
         self.thread = threading.Thread(target=self._worker, name='textris-audio', daemon=True)
         self.thread.start()
@@ -278,9 +277,6 @@ class Audio:
         if self._suspended != bool(suspended):
             self._suspended = bool(suspended)
             self._wake.set()
-
-    def set_intensity(self, value):
-        self.intensity = max(0, min(3, int(value)))
 
     def visual_state(self, now):
         if not hasattr(self, '_mixer'):

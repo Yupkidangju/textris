@@ -29,8 +29,10 @@ def main():
     from textris.ui import App
     from textris.storage import Store
     from textris.art import Palette
+    from textris.audio import Audio
     results=[]
     original_draw=App.draw
+    original_failure=Audio._failure
 
     def push(keys):
         for key in reversed(keys): curses.unget_wch(key)
@@ -44,6 +46,10 @@ def main():
         directory=output/name
         store=Store(directory); store.settings.update(display_mode=saved,ascii=saved=='ascii'); store.save()
         state=dict(name=name,saved=saved,flags=flags,frames=0,checks=[],stage=0)
+        def observed_failure(audio,error):
+            state.setdefault('audio_failures',[]).append(str(error))
+            return original_failure(audio,error)
+        Audio._failure=observed_failure
         began=time.monotonic()
 
         def capture(app,label):
@@ -141,6 +147,7 @@ def main():
                 capture(app,'restarted')
                 if args.sound:
                     state['audio']=dict(app.audio.diagnostics)
+                    state['music_state']=dict(app.audio.music_state)
                     assert state['audio']['completed_effects']>0
                     assert state['audio']['failure_count']==0
                     from textris.themes import music_theme
@@ -162,6 +169,7 @@ def main():
             state['passed']=True
         finally:
             App.draw=original_draw
+            Audio._failure=original_failure
             results.append(state)
             (output/'results.json').write_text(json.dumps(dict(platform=sys.platform,
                 locale=locale.getpreferredencoding(False),python=sys.version,cases=results),indent=2),encoding='utf-8')

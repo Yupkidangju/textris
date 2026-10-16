@@ -123,7 +123,3 @@ class Effects:
             self.gallery.render(context,now*self.p('fx_speed',1),name,
                 age=(now-start)*self.p('fx_speed',1),intensity=self.p('fx_intensity',.75),
                 density=self.p('fx_density',.75),flash=self.p('flash',True)).paint(app)
-
-    def reflection(self,app,bx,by,now):
-        # 반사는 갤러리의 전용 고해상도 장면으로 제공한다.
-        pass

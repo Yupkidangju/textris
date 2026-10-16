@@ -13,7 +13,7 @@ import unittest
 from unittest.mock import patch
 import wave
 
-from textris.audio import Audio, resource_root
+from textris.audio import Audio, miniaudio, resource_root
 from textris.soundtrack import AssetLibrary, BalancedShuffle, PcmMixer, LIMITER_CEILING
 from textris.storage import DEFAULTS
 
@@ -53,6 +53,7 @@ class FakeDevice:
         self.closed = True; self.running = False
 
 
+@unittest.skipIf(miniaudio is None, 'miniaudio is required for native audio decoding')
 class AudioFixture(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -281,9 +282,9 @@ class StreamingTests(AudioFixture):
         self.wait_for(lambda: self.audio.music_state['track_id'] == visited[-1])
 
 
+@unittest.skipIf(miniaudio is None, 'miniaudio is required for native audio decoding')
 class LongStreamTests(unittest.TestCase):
     def test_decoder_seek_error_always_uninitializes_native_decoder(self):
-        import miniaudio
         from unittest.mock import Mock
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / 'assets'; make_assets(root)
@@ -327,6 +328,7 @@ class LongStreamTests(unittest.TestCase):
                 self.assertTrue(device.closed)
 
 
+@unittest.skipIf(miniaudio is None, 'miniaudio is required for native audio decoding')
 class PackagedMixTests(unittest.TestCase):
     def test_actual_boss_tetris_cues_at_max_bus_gains_do_not_clip(self):
         library = AssetLibrary(resource_root(), Path('.antigravity/audio-overhaul-20261008/test-cache'))

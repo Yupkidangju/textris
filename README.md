@@ -37,7 +37,7 @@ Extras → Profiles의 Theme에서 선택하거나 `--theme abyss`, `--theme aur
 `--ascii`, 모노 설정, 흔들림·섬광 옵션과 **F** 효과 토글도 지원합니다.
 
 ```bash
-cd /home/eunho1/Projects/textris
+# 저장소 루트에서 실행
 python3 -m textris
 ```
 
@@ -105,7 +105,7 @@ N/Esc로 취소합니다. 결과 화면은 Enter/R로 재시작, Esc로 메뉴�
 
 갤러리에서는 방향키로 장면을 고르고 Space로 실행, A로 자동 순환합니다.
 T는 테마, +/-는 강도, [ / ]는 속도, { / }는 입자량입니다. 값은 자동 저장됩니다.
-우주 대성당·사이버펑크·우주·불꽃·레트로 CRT·모노크롬 프리셋과 흔들림·섬광·Braille 개별
+우주 대성당·사이버펑크·우주·불꽃·레트로 CRT·모노크롬·심해 발광·오로라 설원 프리셋과 흔들림·섬광·Braille 개별
 설정은 확장 허브 또는 설정의 **Effects & themes**에서 바꿉니다.
 
 리플레이에서는 Space/P로 정지, ↑↓로 0.5/1/2/4배속, ←→로 ±5초 이동,
@@ -206,7 +206,18 @@ Windows 전체 회귀 검사는 `python -m unittest discover -s . -v`입니다.
 Unix PTY 6개는 Windows에서 제외 사유를 표시하며, 실제 콘솔 검사는 별도로
 `python scripts/windows_terminal_probe.py --output .antigravity/native-console-new`를 실행합니다.
 출력 경로는 기존 증거를 덮어쓰지 않도록 새 디렉터리를 지정해야 합니다.
-symlink 권한이 없으면 해당 3개 테스트를 명시적으로 제외하며 Windows junction 경계는 별도로 검사합니다.
+symlink 권한이 없으면 해당 검사를 명시적으로 제외하며 Windows junction 경계는 별도로 검사합니다.
+현행 오디오 실장치 프로브는 아래와 같습니다. 30종 SFX, 6보이스 제한, 쿨다운·음소거·음량,
+음악 위치 보존·감상 복귀와 worker/장치/decoder 종료를 검사하며 `result.json`에 결과를 남깁니다.
+
+```powershell
+python scripts/windows_audio_probe.py --output .antigravity/windows-audio-probe-new
+```
+
+miniaudio/장치가 없거나 대기 제한을 넘으면 실패 JSON과 종료 코드를 반환합니다.
+PCM 제출 완료는 직접 청취 확인과 다르며 OS 볼륨·음소거를 변경하지 않습니다.
+miniaudio 미설치 환경의 단위 검사는 필요한 decoder/장치 검사만 즉시 skip하고 나머지를 실행합니다.
+sdist는 핵심 문서·선택 설계만 포함하며 저장소의 감사/증적 PNG·로그 묶음은 제외합니다.
 감사 2의 설계와 실행 증거는 [수정 계획](docs/audit/audit_2_remediation_plan.md) 및
 [재검증 보고서](docs/audit/audit_2_revalidation.md)를 참고하세요.
 

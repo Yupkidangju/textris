@@ -105,17 +105,26 @@ class ExpansionTests(unittest.TestCase):
         with patch('curses.doupdate'): a.draw()
         a.handle('\x1b'); self.assertEqual(a.screen,'result')
 
-    def test_particles_bounce_and_flash_shake_controls(self):
-        from textris.particles import Particle
-        p=Particle(100,31,19,30,20,2,'I',0,100)
-        p.advance(100.2)
-        self.assertLessEqual(p.x,32); self.assertLessEqual(p.y,20)
-        self.assertLess(p.vx,0)
-        a=self.app; a.settings['shake']=False; a.effects.configure(a.settings)
-        a.effects.preview('impact',100)
-        self.assertEqual(a.effects.offset(100.05),(0,0))
-        a.settings['flash']=False; a.effects.update(103)
-        self.assertFalse(a.effects.actions)
+    def test_keyboard_event_storm_keeps_finite_bounded_cues_without_mutating_replay(self):
+        a=self.app; a.settings.update(theme='cyberpunk',shake=False,flash=False)
+        a.start(); a.screen='playing'; a.game.state='playing'; a.now=100.
+        for i in range(40):
+            a.now=100.+i*.001
+            a.handle('a' if i%2==0 else 'd'); a.process_events()
+        self.assertEqual(len(a.effects.director.local),8)
+        self.assertTrue(all(cue.name=='move' for cue in a.effects.director.local))
+        checksum,replay=a.session.checksum(),a.session.replay()
+        a.effects.background(a,a.now)
+        canvas=a.effects._art_cache
+        self.assertTrue(canvas.cells)
+        self.assertTrue(all(0<=x<63 and 0<=y<28 and (x,y) not in canvas.blocked
+                            for x,y in canvas.cells))
+        a.now=100.2; a.process_events(); a.effects.background(a,a.now)
+        self.assertEqual(a.effects.director.local,[])
+        self.assertIsNone(a.effects.director.major)
+        self.assertEqual(a.effects.offset(a.now),(0,0))
+        self.assertEqual(checksum,a.session.checksum())
+        self.assertEqual(replay,a.session.replay())
 
     def test_replay_recent_twenty(self):
         from textris.replay import ReplayStore

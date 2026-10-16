@@ -2,7 +2,6 @@
 import curses
 from datetime import datetime
 import math
-import random
 import time
 import sys
 import locale
@@ -87,15 +86,10 @@ class App(ArtUI, ExpansionUI):
         self.running = True
         self.now = time.monotonic()
         self.art_epoch=self.now
-        self.flash_until = 0.
-        self.flash_rows = []
-        self.trails = []
-        self.particles = []
         self.banner = ''
         self.banner_until = 0.
         self.result_since = 0.
         self.new_record = False
-        self.fx_rng = random.Random(19)
         self.effects = Effects()
         self.fx_enabled = True
         self.showcase_step = 0
@@ -401,8 +395,7 @@ class App(ArtUI, ExpansionUI):
         self.game.events.clear()
         self.screen = 'ready'
         self.ready_elapsed = 0.
-        self.flash_until = self.banner_until = 0.
-        self.particles.clear(); self.trails.clear()
+        self.banner_until = 0.
         self.effects = Effects()
         self.audio_events.reset()
         self.new_record = False
@@ -602,10 +595,7 @@ class App(ArtUI, ExpansionUI):
                 fx_data=dict(data)
                 if event.name in ('win','gameover'): fx_data['cells']=tuple((x,y) for y,row in enumerate(g.board) for x,k in enumerate(row) if k)
                 self.effects.trigger(event.name,fx_data,self.now)
-            if event.name == 'drop':
-                self.trails.append((self.now,data['cells'],data['distance']))
-            elif event.name == 'clear':
-                self.flash_rows = data['rows']; self.flash_until = self.now+.24
+            if event.name == 'clear':
                 keys = ('','single','double','triple','tetris')
                 text = self.t('tspin') if data['spin'] else self.t(keys[data['count']])
                 if data['combo'] > 0:
@@ -614,17 +604,11 @@ class App(ArtUI, ExpansionUI):
                     text = self.t('perfect')
                 self.banner = text+f' +{data["points"]:,}'
                 self.banner_until = self.now+1.6
-                for row in data['rows']:
-                    for _ in range(6):
-                        self.particles.append((self.now,self.fx_rng.randrange(10),row,
-                                               self.fx_rng.uniform(-8,8),self.fx_rng.uniform(-6,0)))
             elif event.name == 'level':
                 self.banner = self.t('level',value=data['level']); self.banner_until = self.now+1.6
         self.effects.update(self.now)
         self.audio_events.process(g.events,danger=self.effects.danger,fever=self.effects.fever_until>self.now)
         g.events.clear()
-        self.trails = [t for t in self.trails if self.now-t[0] < .18]
-        self.particles = [p for p in self.particles if self.now-p[0] < .5][-600:]
         if g.state in ('won','over') and self.screen not in ('result','showcase','replay','autoplay','analysis'):
             mode=self.session.mode if self.session else g.mode
             if self.session.actions and self.session.actions[-1][0]>=self.session.tick: self.session.step()
@@ -724,8 +708,6 @@ class App(ArtUI, ExpansionUI):
             self._audio_theme=self.settings['theme']
             self.audio.set_theme(self._audio_theme)
         self.audio.set_music(music)
-        if hasattr(self.audio,'set_intensity'):
-            self.audio.set_intensity(3 if self.effects.fever_until>self.now else min(3,self.effects.combo//2))
 
     def run(self):
         last = time.monotonic()

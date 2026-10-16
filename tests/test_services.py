@@ -5,7 +5,7 @@ import tempfile
 import unittest
 import wave
 from textris.storage import Store
-from textris.audio import synthesize
+from textris.audio import miniaudio, synthesize
 from textris.i18n import STRINGS, tr
 from tests.filesystem_helpers import symlink_or_skip
 
@@ -73,6 +73,78 @@ class ServicesTests(unittest.TestCase):
 
 
 class StorageFailureTests(unittest.TestCase):
+    def test_dangling_link_is_rejected_before_exists(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as tmp:
+            store=Store(Path(tmp))
+            with patch.object(Path,'is_symlink',autospec=True,
+                              side_effect=lambda p:p==store.path), \
+                 patch.object(Path,'exists',side_effect=AssertionError('must check link first')):
+                store.load()
+            self.assertTrue(store.read_only)
+            self.assertEqual(store.warning,'save_read')
+
+    def test_real_dangling_record_link_is_preserved(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)/'data'; root.mkdir()
+            missing=Path(tmp)/'outside.json'
+            symlink_or_skip(root/'records.json',missing)
+            store=Store(root); store.load()
+            self.assertTrue(store.read_only)
+            self.assertEqual(store.warning,'save_read')
+            self.assertFalse(store.save())
+            self.assertTrue(store.path.is_symlink())
+            self.assertFalse(missing.exists())
+
+    def test_save_rechecks_record_link_created_after_load(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)/'data'; root.mkdir()
+            outside=Path(tmp)/'outside.json'; outside.write_text('do not touch')
+            store=Store(root); store.load()
+            symlink_or_skip(store.path,outside)
+            self.assertFalse(store.save())
+            self.assertEqual(store.warning,'save_write')
+            self.assertEqual(outside.read_text(),'do not touch')
+            self.assertTrue(store.path.is_symlink())
+            self.assertEqual(list(root.glob('*.tmp')),[])
+
+    def test_linked_data_directory_blocks_load_and_save_without_load(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            outside=Path(tmp)/'outside'; outside.mkdir()
+            original=b'{"version":1,"settings":{"volume":0.9}}'
+            (outside/'records.json').write_bytes(original)
+            link=Path(tmp)/'data'; symlink_or_skip(link,outside,directory=True)
+            reader=Store(link); reader.load()
+            self.assertTrue(reader.read_only)
+            self.assertEqual(reader.settings['volume'],.5)
+            writer=Store(link)
+            self.assertFalse(writer.save())
+            self.assertEqual(writer.warning,'save_write')
+            self.assertEqual((outside/'records.json').read_bytes(),original)
+            self.assertEqual(sorted(p.name for p in outside.iterdir()),['records.json'])
+
+    def test_save_rechecks_link_inserted_while_serializing(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)/'data'; root.mkdir()
+            outside=Path(tmp)/'outside.json'; outside.write_text('keep')
+            store=Store(root)
+            # 실제 링크 권한과 독립적으로 교체 직전의 검증 경계를 고정한다.
+            real_dump=json.dump
+            def dump(*args,**kwargs):
+                real_dump(*args,**kwargs)
+                patches.start()
+            patches=patch.object(Path,'is_symlink',autospec=True,side_effect=lambda p:p==store.path)
+            try:
+                with patch('textris.storage.json.dump',side_effect=dump):
+                    self.assertFalse(store.save())
+            finally:
+                patches.stop()
+            self.assertEqual(store.warning,'save_write')
+            self.assertFalse(store.path.exists())
+            self.assertEqual(outside.read_text(),'keep')
+            self.assertEqual(list(root.glob('*.tmp')),[])
+
     def test_stat_permission_error_is_nonfatal(self):
         from unittest.mock import patch
         with tempfile.TemporaryDirectory() as tmp:
@@ -114,6 +186,7 @@ class AudioBoundaryTests(unittest.TestCase):
             symlink_or_skip(root/'audio'/'move-5.wav',Path(tmp)/'outside.wav')
             with self.assertRaises(ValueError): audio_path(root,'move-5.wav')
 
+@unittest.skipIf(miniaudio is None, 'miniaudio is required for native audio decoding')
 class AudioLifecycleTests(unittest.TestCase):
     def test_music_pause_mute_close_and_failed_backend_fallback(self):
         import time

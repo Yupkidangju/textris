@@ -1,0 +1,11 @@
+{
+  "agent_metadata_only": true,
+  "policy_changed": false,
+  "module_table_exact": 30,
+  "original_audit_sha256": "50cc567e405110f5efc2dcf2d39daadb64ca16537882d151cf9dfa3b5ff27ff4",
+  "exe_junction_target_unchanged": true,
+  "outside_files": [
+    "records.json"
+  ],
+  "junction_fixture_removed": true
+}

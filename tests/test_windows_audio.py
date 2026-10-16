@@ -6,7 +6,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from textris.audio import Audio, find_backend, synthesize
+from textris.audio import Audio, find_backend, miniaudio, synthesize
 from textris.storage import DEFAULTS
 from tests.test_soundtrack_audio import AudioFixture
 
@@ -244,10 +244,10 @@ class WorkerNativeTests(AudioFixture):
         self.assertTrue(self.audio.thread.is_alive())
 
 
+@unittest.skipIf(miniaudio is None, 'miniaudio is required for native device selection')
 class DeviceSelectionTests(unittest.TestCase):
     def test_constructor_failure_releases_context_and_device_before_garbage_collection(self):
         import gc
-        import miniaudio
         from unittest.mock import Mock
         from textris.audio import StreamingDevice
         original = miniaudio.lib
@@ -272,7 +272,6 @@ class DeviceSelectionTests(unittest.TestCase):
             if enabled: gc.enable()
 
     def test_windows_wasapi_first_then_winmm_without_external_player(self):
-        import miniaudio
         from textris.audio import open_device
         from tests.test_soundtrack_audio import FakeDevice
         callback = iter(())
@@ -320,6 +319,7 @@ class AudioCheckTests(unittest.TestCase):
                 self.assertEqual(list(Path(tmp).iterdir()), [])
                 launch.assert_not_called()
 
+    @unittest.skipIf(miniaudio is None, 'miniaudio is required for native audio decoding')
     def test_packaged_effect_completion_does_not_claim_listening_when_os_muted(self):
         import threading
         from textris.audio import check_audio
@@ -350,6 +350,7 @@ class AudioCheckTests(unittest.TestCase):
         self.assertEqual(result['diagnostics']['completed_effects'], 1)
         self.assertTrue(all(device.closed for device in devices))
 
+    @unittest.skipIf(miniaudio is None, 'miniaudio is required for native audio decoding')
     def test_check_timeout_closes_streaming_device(self):
         from textris.audio import check_audio
         from tests.test_soundtrack_audio import make_assets, FakeDevice

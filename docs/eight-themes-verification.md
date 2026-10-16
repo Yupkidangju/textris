@@ -3,6 +3,14 @@
 작성: 2026-10-15. 대상 v1.4.0, 기준 `eight-themes-plan.md`.
 근거: 실제 코드/검사 결과와 `.antigravity/eight-themes-20261015` 실행 자료.
 
+재현 환경 기록 정정(2026-10-16): 로컬 검증에 사용한 의존성은 아래 실제 경로다.
+아카이브 의존성 경로는 이 개발 체크아웃에만 해당하며 일반 설치는 `python -m pip install .`을 사용한다.
+
+```powershell
+$env:PYTHONPATH="$PWD\.antigravity\audio-overhaul-20261008\deps;$PWD\.antigravity\audit-20261007-status\deps"
+python -m unittest discover -s . -v
+```
+
 ## 구현
 
 - 기존 6테마의 광점·반사·유성·재·인광·잉크 시간층을 강화했다.
